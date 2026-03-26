@@ -1,10 +1,12 @@
 # Ignore everything
 *
 
-# Except portfolio-site
+# Except portfolio site files
 !portfolio-site/
 !portfolio-site/**
-
-# And the gitignore and README
 !.gitignore
 !README.md
+!index.html
+!style.css
+!docs/
+!docs/**
