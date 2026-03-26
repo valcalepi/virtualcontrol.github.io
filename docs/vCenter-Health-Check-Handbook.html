@@ -280,9 +280,50 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 .cover-page h1 { font-size: 28pt; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 30px; border-radius: 10px; }
 .cover-page .subtitle { font-size: 14pt; color: #1565c0; margin-top: 20px; }
 .cover-page .meta { font-size: 10pt; color: #666; margin-top: 40px; line-height: 2; }
-.page-break { page-break-before: always; }</style></head>
+.page-break { page-break-before: always; }
+.binder-cover { width: 100%; min-height: 100vh; position: relative; overflow: hidden; page-break-after: always; background: #ffffff; }
+.binder-cover .bc-header { position: absolute; top: 0; left: 0; right: 0; height: 5in; background: linear-gradient(145deg, #041e3a 0%, #0b3d6b 30%, #1565c0 65%, #1e88e5 100%); clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+.binder-cover .bc-glow { position: absolute; top: 0.8in; right: 0.6in; width: 3in; height: 3in; border-radius: 50%; background: radial-gradient(circle, rgba(66,165,245,0.3) 0%, rgba(66,165,245,0.05) 50%, transparent 70%); }
+.binder-cover .bc-glow2 { position: absolute; top: 2.5in; left: -0.5in; width: 2.5in; height: 2.5in; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%); }
+.binder-cover .bc-grid { position: absolute; top: 0; left: 0; right: 0; height: 5in; opacity: 0.06; background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 0.4in 0.4in; }
+.binder-cover .bc-dots { position: absolute; top: 0.5in; right: 0.3in; width: 4in; height: 4in; opacity: 0.08; background-image: radial-gradient(circle, #ffffff 2px, transparent 2px); background-size: 0.35in 0.35in; }
+.binder-cover .bc-left { position: absolute; top: 0; left: 0; width: 0.35in; height: 100%; background: linear-gradient(180deg, #42a5f5, #1565c0, #0b3d6b, #1565c0, #42a5f5); }
+.binder-cover .bc-logo-section { position: absolute; top: 0.7in; left: 0.85in; z-index: 10; }
+.binder-cover .bc-logo-box { display: inline-flex; align-items: center; justify-content: center; width: 1.3in; height: 1.3in; background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.35); border-radius: 16px; }
+.binder-cover .bc-logo-letters { font-size: 48pt; font-weight: 800; color: #ffffff; letter-spacing: -3px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+.binder-cover .bc-logo-letters span { color: #90caf9; }
+.binder-cover .bc-company-line { margin-top: 0.15in; margin-left: 0.05in; }
+.binder-cover .bc-company-name { font-size: 18pt; font-weight: 700; color: #ffffff; letter-spacing: 3px; text-transform: uppercase; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+.binder-cover .bc-company-tag { font-size: 8.5pt; color: #90caf9; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; margin-top: 0.03in; }
+.binder-cover .bc-badge { position: absolute; top: 0.7in; right: 0.7in; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 0.06in 0.25in; z-index: 10; }
+.binder-cover .bc-badge-text { font-size: 8pt; font-weight: 600; color: #e3f2fd; letter-spacing: 2px; text-transform: uppercase; }
+.binder-cover .bc-title-area { position: absolute; top: 3.2in; left: 0.85in; right: 0.7in; z-index: 10; }
+.binder-cover .bc-title { font-size: 30pt; font-weight: 800; color: #ffffff; line-height: 1.15; text-shadow: 0 2px 8px rgba(0,0,0,0.25); margin-bottom: 0.12in; }
+.binder-cover .bc-title-bar { width: 2in; height: 4px; background: linear-gradient(90deg, #42a5f5, #90caf9, transparent); border-radius: 2px; margin-bottom: 0.15in; }
+.binder-cover .bc-tagline { font-size: 11pt; color: #546e7a; font-weight: 500; line-height: 1.4; max-width: 5.5in; }
+.binder-cover .bc-keywords { position: absolute; top: 6in; left: 0.85in; right: 0.7in; display: flex; flex-wrap: wrap; gap: 0.08in; }
+.binder-cover .bc-kw { display: inline-block; background: linear-gradient(135deg, #e3f2fd, #bbdefb); color: #0b3d6b; font-size: 8pt; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.05in 0.18in; border-radius: 4px; border: 1px solid #90caf9; }
+.binder-cover .bc-version { position: absolute; bottom: 2in; left: 0.85in; display: flex; align-items: center; gap: 0.12in; }
+.binder-cover .bc-ver-box { background: linear-gradient(135deg, #0b3d6b, #1565c0); color: #ffffff; font-size: 14pt; font-weight: 800; padding: 0.1in 0.22in; border-radius: 8px; letter-spacing: 1px; }
+.binder-cover .bc-ver-label { font-size: 9pt; color: #78909c; font-weight: 500; letter-spacing: 1px; }
+.binder-cover .bc-bottom-stripe { position: absolute; bottom: 0; left: 0; right: 0; height: 0.15in; background: linear-gradient(90deg, #0b3d6b, #1565c0, #42a5f5, #1565c0, #0b3d6b); }
+.binder-cover .bc-bottom { position: absolute; bottom: 0.5in; left: 0.85in; right: 0.7in; display: flex; justify-content: space-between; align-items: flex-end; }
+.binder-cover .bc-copyright { font-size: 8pt; color: #90a4ae; font-weight: 500; }
+.binder-cover .bc-conf { font-size: 7pt; color: #b0bec5; letter-spacing: 2px; text-transform: uppercase; border: 1px solid #cfd8dc; padding: 0.03in 0.12in; border-radius: 3px; }</style></head>
 	<body class="">
-		<div class="cover-page">
+		<div class="binder-cover">
+<div class="bc-header"></div><div class="bc-glow"></div><div class="bc-glow2"></div><div class="bc-grid"></div><div class="bc-dots"></div><div class="bc-left"></div>
+<div class="bc-logo-section"><div class="bc-logo-box"><div class="bc-logo-letters">V<span>C</span></div></div><div class="bc-company-line"><div class="bc-company-name">Virtual Control</div><div class="bc-company-tag">VMware Cloud Foundation Solutions</div></div></div>
+<div class="bc-badge"><div class="bc-badge-text">Health Check Handbook</div></div>
+<div class="bc-title-area"><div class="bc-title">vCenter Server<br>Health Check Handbook</div><div class="bc-title-bar"></div><div class="bc-tagline">Comprehensive vCenter Server health validation including services, database, SSO, certificates, inventory, and performance assessment.</div></div>
+<div class="bc-keywords"><span class="bc-kw">vCenter</span><span class="bc-kw">VPXD</span><span class="bc-kw">Database</span><span class="bc-kw">SSO</span><span class="bc-kw">Certificates</span></div>
+<div class="bc-version"><div class="bc-ver-box">VCF 9.0</div><div class="bc-ver-label">VMware Cloud Foundation</div></div>
+<div class="bc-bottom-stripe"></div>
+<div class="bc-bottom"><div class="bc-copyright">© 2026 Virtual Control LLC — All Rights Reserved</div><div class="bc-conf">Proprietary &amp; Confidential</div></div>
+</div>
+
+
+<div class="cover-page">
 
 <h1 id="vcenter-server-health-check-handbook">vCenter Server Health Check Handbook</h1>
 <div class="subtitle">Comprehensive Health Verification for vCenter Server in VCF 9</div>
