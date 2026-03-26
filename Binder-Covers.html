@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Control LLC — Binder Covers</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+    }
+
+    .cover {
+      width: 8.5in;
+      height: 11in;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    .cover:last-child {
+      page-break-after: avoid;
+    }
+
+    /* The SVG background layer — fills the entire cover */
+    .cover svg.bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Logo area in header */
+    .logo-section {
+      position: absolute;
+      top: 0.7in;
+      left: 0.85in;
+      z-index: 10;
+    }
+
+    .logo-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.3in;
+      height: 1.3in;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-radius: 16px;
+    }
+
+    .logo-letters {
+      font-size: 48pt;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -3px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .logo-letters span {
+      color: #90caf9;
+    }
+
+    .company-line {
+      margin-top: 0.15in;
+      margin-left: 0.05in;
+    }
+
+    .company-name {
+      font-size: 18pt;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+
+    .company-tag {
+      font-size: 8.5pt;
+      color: #90caf9;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: 0.03in;
+    }
+
+    /* Category badge */
+    .category-badge {
+      position: absolute;
+      top: 0.7in;
+      right: 0.7in;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 0.06in 0.25in;
+      z-index: 10;
+    }
+
+    .category-text {
+      font-size: 8pt;
+      font-weight: 600;
+      color: #e3f2fd;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Title area */
+    .title-area {
+      position: absolute;
+      top: 3.2in;
+      left: 0.85in;
+      right: 0.7in;
+      z-index: 10;
+    }
+
+    .doc-title {
+      font-size: 30pt;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      margin-bottom: 0.12in;
+    }
+
+    /* Title bar uses SVG inline instead of CSS gradient */
+    .title-bar {
+      width: 2in;
+      height: 4px;
+      margin-bottom: 0.15in;
+      overflow: hidden;
+    }
+
+    .doc-tagline {
+      font-size: 11pt;
+      color: #546e7a;
+      font-weight: 500;
+      line-height: 1.4;
+      max-width: 5.5in;
+    }
+
+    /* Keywords section */
+    .keywords {
+      position: absolute;
+      top: 6in;
+      left: 0.85in;
+      right: 0.7in;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.08in;
+    }
+
+    .keyword {
+      display: inline-block;
+      color: #0b3d6b;
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.05in 0.18in;
+      border-radius: 4px;
+      border: 1px solid #90caf9;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* keyword background via SVG */
+    .keyword svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Version badge */
+    .version-badge {
+      position: absolute;
+      bottom: 2in;
+      left: 0.85in;
+      display: flex;
+      align-items: center;
+      gap: 0.12in;
+    }
+
+    .version-box {
+      color: #ffffff;
+      font-size: 14pt;
+      font-weight: 800;
+      padding: 0.1in 0.22in;
+      border-radius: 8px;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .version-box svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .version-box span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .version-label {
+      font-size: 9pt;
+      color: #78909c;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    /* Bottom section */
+    .bottom-content {
+      position: absolute;
+      bottom: 0.5in;
+      left: 0.85in;
+      right: 0.7in;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .copyright {
+      font-size: 8pt;
+      color: #90a4ae;
+      font-weight: 500;
+    }
+
+    .confidential {
+      font-size: 7pt;
+      color: #b0bec5;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 1px solid #cfd8dc;
+      padding: 0.03in 0.12in;
+      border-radius: 3px;
+    }
+
+    /* Screen-only helpers */
+    @media screen {
+      body {
+        background: #37474f;
+        padding: 0.5in 0;
+      }
+      .cover {
+        margin: 0.25in auto;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. NSX Manager Cold Start Service Failure -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="hdr1" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)">
+          <stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/>
+        </linearGradient>
+        <linearGradient id="left1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/>
+        </linearGradient>
+        <linearGradient id="bstripe1" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/>
+        </linearGradient>
+        <radialGradient id="glow1a" cx="75%" cy="20%" r="35%">
+          <stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+        <radialGradient id="glow1b" cx="10%" cy="45%" r="25%">
+          <stop offset="0%" stop-color="rgba(255,255,255,0.08)"/><stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+      </defs>
+      <!-- White page background -->
+      <rect width="816" height="1056" fill="#ffffff"/>
+      <!-- Diagonal header -->
+      <polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr1)"/>
+      <!-- Glow orbs -->
+      <rect width="816" height="1056" fill="url(#glow1a)"/>
+      <rect width="816" height="1056" fill="url(#glow1b)"/>
+      <!-- Grid lines in header -->
+      <g opacity="0.06" clip-path="polygon(0,0 816,0 816,408 0,480)">
+        <pattern id="grid1" width="38" height="38" patternUnits="userSpaceOnUse">
+          <path d="M 38 0 L 0 0 0 38" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+        </pattern>
+        <rect width="816" height="480" fill="url(#grid1)"/>
+      </g>
+      <!-- Dot pattern -->
+      <g opacity="0.08">
+        <pattern id="dots1" width="34" height="34" patternUnits="userSpaceOnUse">
+          <circle cx="17" cy="17" r="2" fill="#ffffff"/>
+        </pattern>
+        <rect x="400" y="48" width="384" height="384" fill="url(#dots1)"/>
+      </g>
+      <!-- Left accent bar -->
+      <rect x="0" y="0" width="34" height="1056" fill="url(#left1)"/>
+      <!-- Bottom stripe -->
+      <rect x="0" y="1041" width="816" height="15" fill="url(#bstripe1)"/>
+    </svg>
+    <div class="logo-section">
+      <div class="logo-box"><div class="logo-letters">V<span>C</span></div></div>
+      <div class="company-line">
+        <div class="company-name">Virtual Control</div>
+        <div class="company-tag">VMware Cloud Foundation Solutions</div>
+      </div>
+    </div>
+    <div class="category-badge"><div class="category-text">Troubleshooting Report</div></div>
+    <div class="title-area">
+      <div class="doc-title">NSX Manager 9.0.1<br>Cold Start Service Failure</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb1)"/></svg></div>
+      <div class="doc-tagline">Root cause analysis documenting NSX Manager service chain failure after cold start, manual service recovery, and VCF Operations re-integration.</div>
+    </div>
+    <div class="keywords">
+      <span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>NSX Manager</span>
+      <span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Cold Start</span>
+      <span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Service Recovery</span>
+      <span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Root Cause Analysis</span>
+    </div>
+    <div class="version-badge">
+      <div class="version-box"><svg><defs><linearGradient id="vb1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb1)"/></svg><span>VCF 9.0</span></div>
+      <div class="version-label">VMware Cloud Foundation</div>
+    </div>
+    <div class="bottom-content">
+      <div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div>
+      <div class="confidential">Proprietary &amp; Confidential</div>
+    </div>
+  </div>
+
+  <!-- 2. VCF Environment Health Check Report -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="hdr2" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient>
+        <linearGradient id="left2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient>
+        <linearGradient id="bstripe2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient>
+        <radialGradient id="glow2a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+      </defs>
+      <rect width="816" height="1056" fill="#ffffff"/>
+      <polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr2)"/>
+      <rect width="816" height="1056" fill="url(#glow2a)"/>
+      <rect x="0" y="0" width="34" height="1056" fill="url(#left2)"/>
+      <rect x="0" y="1041" width="816" height="15" fill="url(#bstripe2)"/>
+    </svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Health Check Report</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF Environment<br>Health Check Report</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb2)"/></svg></div>
+      <div class="doc-tagline">Comprehensive environment health assessment covering cluster status, resource utilization, compliance validation, and remediation recommendations.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Cluster Status</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Resources</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Compliance</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Remediation</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb2)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 3. NSX Health Check Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr3" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow3a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr3)"/><rect width="816" height="1056" fill="url(#glow3a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left3)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe3)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Health Check Handbook</div></div>
+    <div class="title-area">
+      <div class="doc-title">NSX<br>Health Check Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb3)"/></svg></div>
+      <div class="doc-tagline">Complete NSX Manager health check procedures covering cluster status, transport nodes, logical switching, routing, firewall rules, and certificate validation.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>NSX Manager</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Transport Nodes</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Routing</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>DFW</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Certificates</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb3)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 4. vCenter Health Check Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr4" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow4a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr4)"/><rect width="816" height="1056" fill="url(#glow4a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left4)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe4)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Health Check Handbook</div></div>
+    <div class="title-area">
+      <div class="doc-title">vCenter Server<br>Health Check Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb4)"/></svg></div>
+      <div class="doc-tagline">Comprehensive vCenter Server health validation including services, database, SSO, certificates, inventory, and performance assessment.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>vCenter</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>VPXD</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Database</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>SSO</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Certificates</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb4)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 5. ESXi Health Check Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr5" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow5a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr5)"/><rect width="816" height="1056" fill="url(#glow5a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left5)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe5)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Health Check Handbook</div></div>
+    <div class="title-area">
+      <div class="doc-title">ESXi Hosts<br>Health Check Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb5)"/></svg></div>
+      <div class="doc-tagline">ESXi host health validation covering hardware sensors, storage, networking, services, patches, security configuration, and performance analysis.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>ESXi</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Hardware</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Storage</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Networking</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Security</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb5)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 6. vSAN Health Check Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr6" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe6" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow6a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr6)"/><rect width="816" height="1056" fill="url(#glow6a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left6)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe6)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Health Check Handbook</div></div>
+    <div class="title-area">
+      <div class="doc-title">vSAN<br>Health Check Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb6" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb6)"/></svg></div>
+      <div class="doc-tagline">vSAN cluster health assessment including disk groups, resync status, capacity, performance, network configuration, and data integrity checks.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>vSAN</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Disk Groups</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Capacity</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Resync</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Performance</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb6)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 7. VCF Operations for Logs Health Check Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr7" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe7" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow7a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr7)"/><rect width="816" height="1056" fill="url(#glow7a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left7)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe7)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Health Check Handbook</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF Operations for Logs<br>Health Check Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb7" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb7)"/></svg></div>
+      <div class="doc-tagline">Health validation covering cluster status, ingestion rates, storage capacity, log forwarders, content packs, and alerting configuration.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Log Insight</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Ingestion</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Forwarders</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Content Packs</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Cassandra</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb7)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 8. Fleet / SDDC Manager Health Check Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr8" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left8" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe8" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow8a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr8)"/><rect width="816" height="1056" fill="url(#glow8a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left8)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe8)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Health Check Handbook</div></div>
+    <div class="title-area">
+      <div class="doc-title">Fleet / SDDC Manager<br>Health Check Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb8" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb8)"/></svg></div>
+      <div class="doc-tagline">SDDC Manager and Fleet Management health checks covering lifecycle operations, bundle management, credential rotation, and workload domain validation.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>SDDC Manager</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Lifecycle</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Bundles</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Credentials</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Domains</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb8" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb8)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 9. VCF 9 Professional Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr9" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe9" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow9a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr9)"/><rect width="816" height="1056" fill="url(#glow9a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left9)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe9)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Professional Reference</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF 9<br>Professional Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb9" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb9)"/></svg></div>
+      <div class="doc-tagline">Comprehensive professional reference covering VCF 9 architecture, deployment workflows, operational procedures, and advanced troubleshooting techniques.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Architecture</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Deployment</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Operations</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Troubleshooting</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb9" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb9)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 10. VCF Operations Health Check Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr10" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left10" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe10" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow10a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr10)"/><rect width="816" height="1056" fill="url(#glow10a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left10)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe10)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Health Check Handbook</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF Operations<br>Health Check Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb10" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb10)"/></svg></div>
+      <div class="doc-tagline">Analytics cluster health validation covering node status, adapters, collection, certificates, Cassandra, alert engine, and remote collectors.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Analytics</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Adapters</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Collectors</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Alerts</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Cassandra</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb10" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb10)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 11. VCF Undocumented Issues Reference -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr11" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left11" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe11" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow11a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr11)"/><rect width="816" height="1056" fill="url(#glow11a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left11)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe11)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Reference Guide</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF Undocumented<br>Issues Reference</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb11" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb11)"/></svg></div>
+      <div class="doc-tagline">Real-world undocumented issues, edge cases, and workarounds discovered through hands-on VCF operations not found in official documentation.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Edge Cases</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Workarounds</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Undocumented</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Real-World Fixes</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb11" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb11)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 12. VCF Operations Configuration Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr12" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left12" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe12" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow12a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr12)"/><rect width="816" height="1056" fill="url(#glow12a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left12)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe12)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Configuration Handbook</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF Operations<br>Configuration Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb12" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb12)"/></svg></div>
+      <div class="doc-tagline">Comprehensive guide covering deployment, dashboard design, alerting, and integration configuration for VCF Operations 9.0.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Dashboards</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Alerting</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Integrations</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Configuration</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb12" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb12)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 13. VCF Operations for Logs Troubleshooting Report -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr13" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left13" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe13" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow13a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr13)"/><rect width="816" height="1056" fill="url(#glow13a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left13)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe13)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Troubleshooting Report</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF Operations for Logs<br>Troubleshooting Report</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb13" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb13)"/></svg></div>
+      <div class="doc-tagline">Detailed troubleshooting documentation including service recovery, Cassandra repair, memory tuning, and bootstrap procedures.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Service Recovery</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Cassandra</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Memory Tuning</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Bootstrap</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb13" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb13)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 14. VCF Troubleshooting Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr14" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left14" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe14" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow14a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr14)"/><rect width="816" height="1056" fill="url(#glow14a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left14)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe14)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Troubleshooting Handbook</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF<br>Troubleshooting Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb14" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb14)"/></svg></div>
+      <div class="doc-tagline">End-to-end troubleshooting procedures for VCF components including SDDC Manager, vCenter, ESXi, and NSX.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>SDDC Manager</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>vCenter</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>ESXi</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>NSX</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>End-to-End</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb14" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb14)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 15. VCF Operations 30-Day Mastery -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr15" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left15" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe15" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow15a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr15)"/><rect width="816" height="1056" fill="url(#glow15a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left15)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe15)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Training &amp; Mastery</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF Operations<br>30-Day Mastery</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb15" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb15)"/></svg></div>
+      <div class="doc-tagline">Structured 30-day learning path for mastering VCF Operations with daily objectives, hands-on exercises, and progression milestones.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>30-Day Plan</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Daily Objectives</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Hands-On</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Milestones</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb15" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb15)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 16. VCF Offline Depot Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr16" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left16" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe16" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow16a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr16)"/><rect width="816" height="1056" fill="url(#glow16a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left16)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe16)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Deployment Handbook</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF Offline Depot<br>Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb16" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb16)"/></svg></div>
+      <div class="doc-tagline">Step-by-step guide to building and configuring HTTPS offline depots for air-gapped VCF deployments.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Offline Depot</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>HTTPS</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Air-Gapped</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Repository</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb16" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb16)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 17. SDDC Manager API Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr17" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left17" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe17" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow17a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr17)"/><rect width="816" height="1056" fill="url(#glow17a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left17)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe17)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">API Reference</div></div>
+    <div class="title-area">
+      <div class="doc-title">SDDC Manager<br>API Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb17" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb17)"/></svg></div>
+      <div class="doc-tagline">Complete API reference for SDDC Manager including authentication, lifecycle operations, and automation workflows.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>REST API</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Authentication</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Lifecycle</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Automation</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb17" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb17)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 18. VCF 9 Master Bible -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr18" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left18" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe18" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow18a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr18)"/><rect width="816" height="1056" fill="url(#glow18a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left18)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe18)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Definitive Reference</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF 9<br>Master Bible</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb18" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb18)"/></svg></div>
+      <div class="doc-tagline">The definitive 294-page reference covering every aspect of VCF 9 architecture, deployment, operations, and advanced configurations.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>294 Pages</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Architecture</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Deployment</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Advanced Config</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb18" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb18)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 19. VCF Operations Complete Handbook -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr19" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left19" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe19" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow19a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr19)"/><rect width="816" height="1056" fill="url(#glow19a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left19)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe19)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Complete Handbook</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF Operations<br>Complete Handbook</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb19" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb19)"/></svg></div>
+      <div class="doc-tagline">Comprehensive 180-page handbook covering VCF Operations and Operations for Logs deployment, configuration, and management.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>180 Pages</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Operations</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Ops for Logs</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Management</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb19" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb19)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 20. VCF Command Reference -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr20" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left20" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe20" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow20a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr20)"/><rect width="816" height="1056" fill="url(#glow20a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left20)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe20)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Quick Reference</div></div>
+    <div class="title-area">
+      <div class="doc-title">VCF<br>Command Reference</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb20" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb20)"/></svg></div>
+      <div class="doc-tagline">Quick-reference guide to essential CLI commands for VCF component management, troubleshooting, and daily operations.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>CLI Commands</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Management</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Troubleshooting</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Daily Ops</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb20" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb20)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+  <!-- 21. Diagnostic Scripts Cheatsheet -->
+  <div class="cover">
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 1056" preserveAspectRatio="none"><defs><linearGradient id="hdr21" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(145)"><stop offset="0%" stop-color="#041e3a"/><stop offset="30%" stop-color="#0b3d6b"/><stop offset="65%" stop-color="#1565c0"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient><linearGradient id="left21" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#42a5f5"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#0b3d6b"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient><linearGradient id="bstripe21" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="25%" stop-color="#1565c0"/><stop offset="50%" stop-color="#42a5f5"/><stop offset="75%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0b3d6b"/></linearGradient><radialGradient id="glow21a" cx="75%" cy="20%" r="35%"><stop offset="0%" stop-color="rgba(66,165,245,0.3)"/><stop offset="50%" stop-color="rgba(66,165,245,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect width="816" height="1056" fill="#ffffff"/><polygon points="0,0 816,0 816,408 0,480" fill="url(#hdr21)"/><rect width="816" height="1056" fill="url(#glow21a)"/><rect x="0" y="0" width="34" height="1056" fill="url(#left21)"/><rect x="0" y="1041" width="816" height="15" fill="url(#bstripe21)"/></svg>
+    <div class="logo-section"><div class="logo-box"><div class="logo-letters">V<span>C</span></div></div><div class="company-line"><div class="company-name">Virtual Control</div><div class="company-tag">VMware Cloud Foundation Solutions</div></div></div>
+    <div class="category-badge"><div class="category-text">Cheatsheet</div></div>
+    <div class="title-area">
+      <div class="doc-title">Diagnostic Scripts<br>Cheatsheet</div>
+      <div class="title-bar"><svg width="100%" height="4"><defs><linearGradient id="tb21" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#42a5f5"/><stop offset="60%" stop-color="#90caf9"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><rect width="100%" height="4" rx="2" fill="url(#tb21)"/></svg></div>
+      <div class="doc-tagline">Quick-reference cheatsheet of diagnostic scripts and one-liners for rapid VCF component troubleshooting and health validation.</div>
+    </div>
+    <div class="keywords"><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Scripts</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>One-Liners</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Diagnostics</span><span class="keyword"><svg><rect width="100%" height="100%" fill="#e3f2fd"/></svg>Rapid Triage</span></div>
+    <div class="version-badge"><div class="version-box"><svg><defs><linearGradient id="vb21" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0b3d6b"/><stop offset="100%" stop-color="#1565c0"/></linearGradient></defs><rect width="100%" height="100%" rx="8" fill="url(#vb21)"/></svg><span>VCF 9.0</span></div><div class="version-label">VMware Cloud Foundation</div></div>
+    <div class="bottom-content"><div class="copyright">&copy; 2026 Virtual Control LLC &mdash; All Rights Reserved</div><div class="confidential">Proprietary &amp; Confidential</div></div>
+  </div>
+
+</body>
+</html>
