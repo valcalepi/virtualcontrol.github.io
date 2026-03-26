@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# Except portfolio-site
+!portfolio-site/
+!portfolio-site/**
+
+# And the gitignore itself
+!.gitignore
