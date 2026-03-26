@@ -249,7 +249,7 @@ code.hljs {
   
 }/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
 h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
-h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; page-break-before: always; }
 h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
 h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
 table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
@@ -297,7 +297,7 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 </div>
 </div>
 
-<hr>
+
 <div class="toc">
 
 <h2 id="table-of-contents">Table of Contents</h2>
@@ -383,7 +383,6 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 
 </div>
 
-<div class="page-break"></div>
 
 <h2 id="1-overview--purpose"><span id="overview"></span>1. Overview &amp; Purpose</h2>
 <p>This handbook provides a <strong>complete, step-by-step health check procedure</strong> for VMware NSX 4.x deployed within a VCF 9.0 environment. It is designed for VMware administrators who need to verify NSX health during:</p>
@@ -443,8 +442,7 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 <code>$NSX_PASS</code> = NSX Manager admin password
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="2-prerequisites"><span id="prerequisites"></span>2. Prerequisites</h2>
 <h3 id="required-access">Required Access</h3>
@@ -540,8 +538,7 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 <strong>Security Note:</strong> Never store passwords in plain text in production. Use a credential vault or enter passwords interactively. These examples use environment variables for convenience during health checks only.
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="3-quick-reference--all-checks-summary"><span id="quick-reference"></span>3. Quick Reference — All Checks Summary</h2>
 <table>
@@ -708,9 +705,6 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 <td>Critical alarms present</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="4-nsx-manager-cluster-health"><span id="mgr-cluster"></span>4. NSX Manager Cluster Health</h2>
 <h3 id="41-cluster-status-api--cli"><span id="mgr-cluster-status"></span>4.1 Cluster Status (API + CLI)</h3>
 <p><strong>What:</strong> Verify the NSX Manager cluster is stable with all 3 nodes participating.</p>
@@ -821,7 +815,7 @@ Group Type: POLICY
 5. If split-brain: identify the minority partition and restart those nodes
 </div>
 
-<hr>
+
 <h3 id="42-individual-node-health"><span id="mgr-node-health"></span>4.2 Individual Node Health</h3>
 <p><strong>What:</strong> Check the health status of each individual NSX Manager node.</p>
 <p><strong>Why:</strong> A node can be in the cluster but unhealthy (high load, service failures).</p>
@@ -873,7 +867,6 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
 <td>Node failure</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="43-service-status-verification"><span id="mgr-service-status"></span>4.3 Service Status Verification</h3>
 <p><strong>What:</strong> Verify all critical NSX Manager services are running on each node.</p>
 <p><strong>Why:</strong> Individual service failures can cause specific feature outages even when the cluster appears healthy.</p>
@@ -968,8 +961,7 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
 <strong>Critical:</strong> If <code>controller</code>, <code>corfu</code>, or <code>manager</code> are not running, the NSX environment is in a critical state. Do not make configuration changes until these services are restored.
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="5-nsx-manager-resource-utilization"><span id="mgr-resources"></span>5. NSX Manager Resource Utilization</h2>
 <h3 id="51-cpu--memory"><span id="mgr-cpu-mem"></span>5.1 CPU &amp; Memory</h3>
@@ -1042,7 +1034,7 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
 3. Swap usage: Indicates memory pressure — investigate with <code>top -b -n 1 | head -20</code> (as root)
 </div>
 
-<hr>
+
 <h3 id="52-disk--filesystem"><span id="mgr-disk"></span>5.2 Disk &amp; Filesystem</h3>
 <p><strong>What:</strong> Check disk space utilization on all NSX Manager filesystem partitions.</p>
 <p><strong>Why:</strong> Full disks cause service crashes, log loss, and database corruption.</p>
@@ -1110,7 +1102,7 @@ tmpfs            24G   12M    24G    1%  /dev/shm
 4. Check corfu compaction: <code>get service corfu compaction-status</code>
 </div>
 
-<hr>
+
 <h3 id="53-thresholds--alarms"><span id="mgr-thresholds"></span>5.3 Thresholds &amp; Alarms</h3>
 <p><strong>What:</strong> Check if any resource-related alarms are active on NSX Manager nodes.</p>
 <h4 id="api-method-5">API Method</h4>
@@ -1124,9 +1116,6 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
     entity_id: .entity_id
   }'</span>
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="6-certificate-health"><span id="certificates"></span>6. Certificate Health</h2>
 <h3 id="61-list-all-certificates"><span id="cert-list"></span>6.1 List All Certificates</h3>
 <p><strong>What:</strong> Retrieve all certificates managed by NSX and verify none are expired or expiring soon.</p>
@@ -1203,8 +1192,7 @@ issuer=CN = NSX CA
 <strong>Action:</strong> Follow VMware KB 83054 to replace expired certificates.
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="7-backup-verification"><span id="backups"></span>7. Backup Verification</h2>
 <h3 id="71-backup-configuration"><span id="backup-config"></span>7.1 Backup Configuration</h3>
@@ -1276,8 +1264,7 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
 4. Check SFTP permissions on backup target directory
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="8-transport-node-health"><span id="transport-nodes"></span>8. Transport Node Health</h2>
 <h3 id="81-transport-node-status"><span id="tn-status"></span>8.1 Transport Node Status</h3>
@@ -1338,7 +1325,6 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
 <td>Immediate investigation</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="82-esxi-nsxcli-commands"><span id="tn-esxi-cli"></span>8.2 ESXi nsxcli Commands</h3>
 <p><strong>What:</strong> Verify NSX components on individual ESXi hosts via the <code>nsxcli</code> shell.</p>
 <h4 id="ssh-to-esxi-and-enter-nsxcli">SSH to ESXi and Enter nsxcli</h4>
@@ -1364,7 +1350,6 @@ Controller IP  : 192.168.1.73
 Connected to   : 192.168.1.72
 Status         : Connected
 </code></pre>
-<hr>
 <h3 id="83-nsx-agent-status"><span id="tn-agent"></span>8.3 NSX Agent Status</h3>
 <p><strong>What:</strong> Verify the NSX agent processes (nsx-mpa, nsx-proxy) are running on each ESXi host.</p>
 <p><strong>Why:</strong> These agents handle management plane communication and data plane programming.</p>
@@ -1396,7 +1381,7 @@ nsx-proxy              4.2.0.0.0-12345678   VMW  VMwareCertified  2026-01-15
 4. If persistent: Re-prepare host via NSX Manager UI → Fabric → Host Transport Nodes → Resolve
 </div>
 
-<hr>
+
 <h3 id="84-port-connectivity"><span id="tn-ports"></span>8.4 Port Connectivity</h3>
 <p><strong>What:</strong> Verify ESXi transport nodes can reach NSX Managers on required ports.</p>
 <h4 id="port-requirements">Port Requirements</h4>
@@ -1466,9 +1451,6 @@ Connection to nsx-vip.lab.local 1235 port [tcp/*] succeeded!
 Connection to nsx-vip.lab.local 5671 port [tcp/*] succeeded!
 Connection to nsx-vip.lab.local 443 port [tcp/https] succeeded!
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="9-tep-connectivity"><span id="tep"></span>9. TEP Connectivity</h2>
 <h3 id="91-vmkping-tests-with-mtu-validation"><span id="tep-vmkping"></span>9.1 vmkping Tests with MTU Validation</h3>
 <p><strong>What:</strong> Verify Tunnel Endpoint (TEP) connectivity between all ESXi hosts with proper MTU.</p>
@@ -1532,7 +1514,7 @@ REMOTE_TEPS=<span class="hljs-string">"192.168.12.75 192.168.12.76 192.168.12.82
 4. Test with smaller MTU to isolate: <code>vmkping -I vmk10 -d -s 1400 &lt;TEP&gt;</code>
 </div>
 
-<hr>
+
 <h3 id="92-bfd-session-verification"><span id="tep-bfd"></span>9.2 BFD Session Verification</h3>
 <p><strong>What:</strong> Verify Bidirectional Forwarding Detection (BFD) sessions between transport nodes.</p>
 <p><strong>Why:</strong> BFD provides fast failure detection for TEP tunnels. Down BFD = NSX considers the tunnel failed.</p>
@@ -1573,7 +1555,6 @@ nsxcli
 <td>Tunnel failure</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="93-tunnel-status"><span id="tep-tunnels"></span>9.3 Tunnel Status</h3>
 <p><strong>What:</strong> Verify overlay tunnel status between transport nodes.</p>
 <h4 id="nsxcli-method">nsxcli Method</h4>
@@ -1594,9 +1575,6 @@ vxlan_12     192.168.12.75    Geneve UP
 vxlan_13     192.168.12.76    Geneve UP
 vxlan_14     192.168.12.82    Geneve UP
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="10-edge-node-health"><span id="edge-nodes"></span>10. Edge Node Health</h2>
 <h3 id="101-edge-cluster-status"><span id="edge-cluster"></span>10.1 Edge Cluster Status</h3>
 <p><strong>What:</strong> Verify the Edge cluster and all member Edge nodes are operational.</p>
@@ -1633,7 +1611,6 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
   <span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-<hr>
 <h3 id="102-ha-state-verification"><span id="edge-ha"></span>10.2 HA State Verification</h3>
 <p><strong>What:</strong> Verify Edge High Availability is correctly configured with proper ACTIVE/STANDBY states.</p>
 <h4 id="api-method--tier-0-ha-status">API Method — Tier-0 HA Status</h4>
@@ -1686,7 +1663,7 @@ get high-availability status
 <strong>Split-Brain Warning:</strong> If both edges are ACTIVE, this is a split-brain condition. Traffic may be blackholed. Immediate remediation: restart HA on the secondary edge: <code>restart service high-availability</code>
 </div>
 
-<hr>
+
 <h3 id="103-service-channels"><span id="edge-channels"></span>10.3 Service Channels</h3>
 <p><strong>What:</strong> Verify datapath and routing services on edge nodes.</p>
 <h4 id="cli-method-on-edge-node">CLI Method (on Edge Node)</h4>
@@ -1712,9 +1689,6 @@ fp-eth0      192.168.10.1/24    00:50:56:xx:xx:01 1500  UP
 fp-eth1      192.168.20.1/24    00:50:56:xx:xx:02 1500  UP
 fp-eth2      169.254.0.1/28     02:50:56:xx:xx:03 1500  UP
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="11-routing--bgp-health"><span id="routing"></span>11. Routing &amp; BGP Health</h2>
 <h3 id="111-bgp-neighbor-summary"><span id="bgp-neighbors"></span>11.1 BGP Neighbor Summary</h3>
 <p><strong>What:</strong> Verify BGP sessions with upstream physical routers are established and routes are being exchanged.</p>
@@ -1772,7 +1746,7 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
 5. Check firewall: TCP port 179 must be open between peers
 </div>
 
-<hr>
+
 <h3 id="112-route-table-verification"><span id="route-tables"></span>11.2 Route Table Verification</h3>
 <p><strong>What:</strong> Verify the routing table contains expected routes for all network segments.</p>
 <h4 id="cli-method-edge-node">CLI Method (Edge Node)</h4>
@@ -1819,7 +1793,6 @@ ns&gt;* 172.17.0.0/16     via 169.254.0.2       linked    [3/0]
 <td>Physical router IP</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="113-gateway-realized-state"><span id="gw-realized"></span>11.3 Gateway Realized State</h3>
 <p><strong>What:</strong> Verify Tier-0 and Tier-1 gateways are fully realized (configured intent matches actual state).</p>
 <h4 id="api-method--tier-0">API Method — Tier-0</h4>
@@ -1870,9 +1843,6 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
 <td>Configuration failure</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="12-distributed-firewall-health"><span id="dfw"></span>12. Distributed Firewall Health</h2>
 <h3 id="121-dfw-rule-realization-status"><span id="dfw-realization"></span>12.1 DFW Rule Realization Status</h3>
 <p><strong>What:</strong> Verify all DFW security policies and rules have been successfully realized (pushed) to transport nodes.</p>
@@ -1924,7 +1894,6 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
 <td>Rules NOT enforced — security gap</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="122-esxi-dvfilter-verification"><span id="dfw-dvfilter"></span>12.2 ESXi dvfilter Verification</h3>
 <p><strong>What:</strong> Verify DFW filters are attached to VM vNICs on ESXi hosts.</p>
 <p><strong>Why:</strong> If dvfilter is not attached, DFW rules are not applied to that VM regardless of realization status.</p>
@@ -1947,7 +1916,7 @@ summarize-dvfilter
 - Each VM vNIC should have a corresponding dvfilter entry
 </div>
 
-<hr>
+
 <h3 id="123-vsipioctl-commands"><span id="dfw-vsipioctl"></span>12.3 vsipioctl Commands</h3>
 <p><strong>What:</strong> Verify DFW rules are programmed on the ESXi datapath using vsipioctl.</p>
 <h4 id="get-filter-list">Get Filter List</h4>
@@ -1973,9 +1942,6 @@ Filter Rules:
 <h4 id="view-address-sets">View Address Sets</h4>
 <pre><code class="hljs bash">vsipioctl getaddrsets -f nic-12345678-eth0-vmware-sfw.2
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="13-gateway-firewall-health"><span id="gw-fw"></span>13. Gateway Firewall Health</h2>
 <p><strong>What:</strong> Verify Gateway Firewall rules on Tier-0 and Tier-1 gateways are realized and synchronized between HA edge pairs.</p>
 <p><strong>Why:</strong> Gateway firewall protects north-south traffic. Desynchronized rules between active/standby edges create intermittent security gaps during failover.</p>
@@ -2033,9 +1999,6 @@ get firewall rules | <span class="hljs-built_in">wc</span> -l
 <td>Security gap</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="14-segments--logical-switches"><span id="segments"></span>14. Segments &amp; Logical Switches</h2>
 <h3 id="141-segment-status"><span id="seg-status"></span>14.1 Segment Status</h3>
 <p><strong>What:</strong> Verify all NSX segments are operational and correctly realized.</p>
@@ -2085,7 +2048,6 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
 <td>Connectivity loss</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="142-mac--arp--vtep-tables"><span id="seg-tables"></span>14.2 MAC / ARP / VTEP Tables</h3>
 <p><strong>What:</strong> Verify logical switch forwarding tables are populated correctly.</p>
 <h4 id="nsxcli-on-esxi">nsxcli on ESXi</h4>
@@ -2119,9 +2081,6 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
 192.168.12.75     00:50:56:66:xx:02    192.168.12.0  false
 192.168.12.76     00:50:56:66:xx:03    192.168.12.0  false
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="15-nsx-alarms"><span id="alarms"></span>15. NSX Alarms</h2>
 <p><strong>What:</strong> Check for active alarms on the NSX Manager that indicate current or impending issues.</p>
 <p><strong>Why:</strong> NSX generates alarms for certificate expiry, resource exhaustion, connectivity failures, and more. Unresolved alarms indicate health issues.</p>
@@ -2227,9 +2186,6 @@ curl -sk -X POST -u <span class="hljs-string">"<span class="hljs-variable">$NSX_
 curl -sk -X POST -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
   <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/alarms/&lt;alarm-id&gt;?action=set_status&amp;new_status=RESOLVED"</span>
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="16-port-reference-table"><span id="ports"></span>16. Port Reference Table</h2>
 <h3 id="nsx-manager-ports">NSX Manager Ports</h3>
 <table>
@@ -2470,9 +2426,6 @@ curl -sk -X POST -u <span class="hljs-string">"<span class="hljs-variable">$NSX_
 <td>BFD (if configured)</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="17-common-issues--remediation"><span id="common-issues"></span>17. Common Issues &amp; Remediation</h2>
 <h3 id="171-control-plane-connectivity-issues">17.1 Control Plane Connectivity Issues</h3>
 <table>
@@ -2568,8 +2521,7 @@ curl -sk -X POST -u <span class="hljs-string">"<span class="hljs-variable">$NSX_
 <strong>Warning:</strong> Never force-delete a cluster node during split-brain. This can cause permanent data loss. Always follow the VMware documented procedure.
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="18-cli-quick-reference-card"><span id="cli-reference"></span>18. CLI Quick Reference Card</h2>
 <h3 id="nsx-manager-cli-ssh-as-admin">NSX Manager CLI (SSH as admin)</h3>
@@ -2760,9 +2712,6 @@ curl -sk -X POST -u <span class="hljs-string">"<span class="hljs-variable">$NSX_
 <td>ARP entries</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="19-api-quick-reference"><span id="api-reference"></span>19. API Quick Reference</h2>
 <h3 id="authentication">Authentication</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># Basic authentication (used throughout this document)</span>
@@ -2917,7 +2866,6 @@ curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</sp
   <span class="hljs-attr">"product_version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4.2.0.0.0.12345678"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-<hr>
 <div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #1565c0; color: #666; font-size: 9pt;">
 
 <p><strong>NSX 4.x Health Check Handbook</strong>

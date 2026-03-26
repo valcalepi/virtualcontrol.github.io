@@ -1,0 +1,618 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8"><style>* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	line-height: 1.6;
+	font-size: 0.6875em; /* 11 pt */
+	color: #111;
+	margin: 0;
+}
+
+body > :first-child {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+body > :last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0.5em 0 0.25em;
+}
+
+h5,
+h6 {
+	padding: 0;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h6 {
+	font-size: 0.875em;
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0.25em 0 1em;
+}
+
+blockquote {
+	margin: 0.5em 0 1em;
+	padding-left: 0.5em;
+	padding-right: 1em;
+	border-left: 4px solid gainsboro;
+	font-style: italic;
+}
+
+ul,
+ol {
+	margin: 0;
+	margin-left: 1em;
+	padding: 0 1.5em 0.5em;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+p code,
+li code,
+pre code {
+	background-color: #f8f8f8;
+	padding: 0.1em 0.375em;
+	border: 1px solid #f8f8f8;
+	border-radius: 0.25em;
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+pre code {
+	display: block;
+	padding: 0.5em;
+}
+
+.page-break {
+	page-break-after: always;
+}
+
+img {
+	max-width: 100%;
+	margin: 1em 0;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: block;
+	margin: 0 0 1em;
+	width: 100%;
+	overflow: auto;
+}
+
+table th,
+table td {
+	padding: 0.5em 1em;
+	border: 1px solid gainsboro;
+}
+
+table th {
+	font-weight: 600;
+}
+
+table tr {
+	background-color: white;
+	border-top: 1px solid gainsboro;
+}
+
+table tr:nth-child(2n) {
+	background-color: whitesmoke;
+}
+/*# sourceURL=C:\VCF-Depot\node_modules\md-to-pdf\markdown.css*/</style><style>pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/
+.hljs {
+  color: #24292e;
+  background: #ffffff
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  /* prettylights-syntax-keyword */
+  color: #d73a49
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  /* prettylights-syntax-entity */
+  color: #6f42c1
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  /* prettylights-syntax-constant */
+  color: #005cc5
+}
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  /* prettylights-syntax-string */
+  color: #032f62
+}
+.hljs-built_in,
+.hljs-symbol {
+  /* prettylights-syntax-variable */
+  color: #e36209
+}
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  /* prettylights-syntax-comment */
+  color: #6a737d
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  /* prettylights-syntax-entity-tag */
+  color: #22863a
+}
+.hljs-subst {
+  /* prettylights-syntax-storage-modifier-import */
+  color: #24292e
+}
+.hljs-section {
+  /* prettylights-syntax-markup-heading */
+  color: #005cc5;
+  font-weight: bold
+}
+.hljs-bullet {
+  /* prettylights-syntax-markup-list */
+  color: #735c0f
+}
+.hljs-emphasis {
+  /* prettylights-syntax-markup-italic */
+  color: #24292e;
+  font-style: italic
+}
+.hljs-strong {
+  /* prettylights-syntax-markup-bold */
+  color: #24292e;
+  font-weight: bold
+}
+.hljs-addition {
+  /* prettylights-syntax-markup-inserted */
+  color: #22863a;
+  background-color: #f0fff4
+}
+.hljs-deletion {
+  /* prettylights-syntax-markup-deleted */
+  color: #b31d28;
+  background-color: #ffeef0
+}
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
+  
+}/*# sourceURL=C:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; }
+h1 { color: #1a3a5c; border-bottom: 3px solid #1a3a5c; padding-bottom: 8px; font-size: 22pt; }
+h2 { color: #2c5f8a; border-bottom: 1px solid #d0d0d0; padding-bottom: 4px; margin-top: 24px; font-size: 14pt; }
+h3 { color: #3a7ab5; margin-top: 16px; font-size: 11pt; }
+table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 9pt; }
+th { background-color: #1a3a5c; color: white; padding: 6px 8px; text-align: left; }
+td { border: 1px solid #d0d0d0; padding: 5px 8px; }
+tr:nth-child(even) { background-color: #f5f8fb; }
+code { background-color: #f0f4f8; padding: 1px 4px; border-radius: 3px; font-size: 9pt; }
+pre { background-color: #f0f4f8; padding: 10px; border-radius: 4px; border-left: 3px solid #2c5f8a; font-size: 9pt; }
+blockquote { border-left: 3px solid #e8a020; background: #fff8e8; padding: 8px 12px; margin: 8px 0; font-size: 9pt; }
+.danger { border-left: 3px solid #c0392b; background: #fdf0ef; padding: 8px 12px; margin: 8px 0; font-size: 9pt; }</style></head>
+	<body class="">
+		<h1 id="vcf-901-diagnostic-scripts-cheat-sheet">VCF 9.0.1 Diagnostic Scripts Cheat Sheet</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#overview">Overview</a><ul>
+<li><a href="#connection-targets">Connection Targets</a></li>
+</ul>
+</li>
+<li><a href="#quick-reference-card">Quick Reference Card</a></li>
+<li><a href="#status--health-checks-read-only">Status &amp; Health Checks (Read-Only)</a></li>
+<li><a href="#nsx-diagnostics-read-only">NSX Diagnostics (Read-Only)</a><ul>
+<li><a href="#diagnostic-escalation-path">Diagnostic Escalation Path</a></li>
+</ul>
+</li>
+<li><a href="#credential-operations">Credential Operations</a></li>
+<li><a href="#nsx-service-management">NSX Service Management</a><ul>
+<li><a href="#service-recovery-sequence">Service Recovery Sequence</a></li>
+</ul>
+</li>
+<li><a href="#database-fixes">Database Fixes</a><ul>
+<li><a href="#database-repair-quick-reference">Database Repair Quick Reference</a></li>
+</ul>
+</li>
+<li><a href="#troubleshooting-decision-tree">Troubleshooting Decision Tree</a></li>
+</ol>
+<hr>
+<h2 id="overview">Overview</h2>
+<p>20 Python diagnostic scripts for VCF 9.0.1 nested lab troubleshooting. All use <strong>Paramiko</strong> for SSH and run from a Windows workstation.</p>
+<pre><code>pip install paramiko
+python &lt;script-name&gt;.py
+</code></pre>
+<h3 id="connection-targets">Connection Targets</h3>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>IP</th>
+<th>User</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SDDC Manager</td>
+<td>192.168.1.241</td>
+<td>vcf</td>
+<td>API gateway, database access (su to root)</td>
+</tr>
+<tr>
+<td>NSX Node</td>
+<td>192.168.1.71</td>
+<td>root</td>
+<td>Direct NSX service management</td>
+</tr>
+<tr>
+<td>NSX VIP</td>
+<td>192.168.1.70</td>
+<td>admin</td>
+<td>NSX cluster API (via curl from SDDC Mgr)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> All scripts use the standard lab password. If <code>vcf</code> is locked out: <code>faillock --user vcf --reset</code> from SDDC Manager console as root.</p>
+</blockquote>
+<hr>
+<h2 id="quick-reference-card">Quick Reference Card</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Script</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Is everything healthy?</td>
+<td><code>python quick_status.py</code></td>
+</tr>
+<tr>
+<td>NSX slow after boot?</td>
+<td><code>python nsx_monitor.py</code></td>
+</tr>
+<tr>
+<td>Credential operation failed?</td>
+<td><code>python check_remediate_error.py</code></td>
+</tr>
+<tr>
+<td>Need to update NSX password?</td>
+<td><code>python nsx_cred_update.py</code></td>
+</tr>
+<tr>
+<td>NSX CPU overloaded?</td>
+<td><code>python nsx_slim.py</code></td>
+</tr>
+<tr>
+<td>Put NSX services back?</td>
+<td><code>python nsx_restart_all.py</code></td>
+</tr>
+<tr>
+<td>Clear stale DB locks?</td>
+<td><code>python clear_locks.py</code></td>
+</tr>
+<tr>
+<td>Fix stuck tasks in DB?</td>
+<td><code>python fix_stuck_tasks.py</code></td>
+</tr>
+<tr>
+<td>Full cascade fix?</td>
+<td><code>python full_remediate_fix.py</code></td>
+</tr>
+<tr>
+<td>System clean after fix?</td>
+<td><code>python final_check.py</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="status--health-checks-read-only">Status &amp; Health Checks (Read-Only)</h2>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Connects To</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>quick_status.py</code></td>
+<td>SDDC Manager</td>
+<td><strong>Start here.</strong> NSX status, VIP health, resource locks, notifications, credentials</td>
+</tr>
+<tr>
+<td><code>final_check.py</code></td>
+<td>SDDC Manager</td>
+<td>Lightweight: notifications and resource locks only</td>
+</tr>
+<tr>
+<td><code>diag.py</code></td>
+<td>localhost</td>
+<td>DNS resolution, TCP 443 connectivity, ARP/routing from Windows host</td>
+</tr>
+<tr>
+<td><code>nsx_monitor.py</code></td>
+<td>NSX Node</td>
+<td>Polls cluster status + load avg every 60s for 10 iterations</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="nsx-diagnostics-read-only">NSX Diagnostics (Read-Only)</h2>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Connects To</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>nsx_check.py</code></td>
+<td>SDDC Manager</td>
+<td>Tests both NSX VIP and direct node connectivity — diagnoses VIP failover issues</td>
+</tr>
+<tr>
+<td><code>nsx_diag.py</code></td>
+<td>NSX Node</td>
+<td>Top CPU consumers, disk space, service health via API, catalina errors</td>
+</tr>
+<tr>
+<td><code>nsx_resource_check.py</code></td>
+<td>SDDC Manager</td>
+<td>NSX clusters, credentials, warnings, DB resource state</td>
+</tr>
+<tr>
+<td><code>sddc_nsx_status.py</code></td>
+<td>SDDC Manager</td>
+<td>Compares SDDC Manager's NSX status vs actual NSX VIP cluster status</td>
+</tr>
+</tbody></table>
+<h3 id="diagnostic-escalation-path">Diagnostic Escalation Path</h3>
+<pre><code>python quick_status.py          # 1. Overall health
+python nsx_check.py             # 2. VIP + node connectivity
+python nsx_diag.py              # 3. Performance &amp; services
+python sddc_nsx_status.py       # 4. SDDC Manager vs NSX sync
+</code></pre>
+<hr>
+<h2 id="credential-operations">Credential Operations</h2>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Modifies</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>nsx_cred_update.py</code></td>
+<td><strong>Yes</strong></td>
+<td>Full workflow: health checks, lists credentials, updates admin API, monitors 200s</td>
+</tr>
+<tr>
+<td><code>nsx_retry_when_ready.py</code></td>
+<td><strong>Yes</strong></td>
+<td>Waits up to 15 min for NSX API, then submits update with 450s monitoring</td>
+</tr>
+<tr>
+<td><code>check_disconnected.py</code></td>
+<td>No</td>
+<td>Inspects all credential objects for connection status fields</td>
+</tr>
+<tr>
+<td><code>check_remediate_error.py</code></td>
+<td>No</td>
+<td>Failed task details with full error messages, NSX connectivity test, log search</td>
+</tr>
+</tbody></table>
+<div class="danger">
+
+<p><strong>WARNING:</strong> Do not run credential update scripts if NSX status is not <code>ACTIVE</code> in SDDC Manager or <code>STABLE</code> at the VIP. A failed update creates stale locks and stuck tasks, requiring database repair.</p>
+</div>
+
+<hr>
+<h2 id="nsx-service-management">NSX Service Management</h2>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Action</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>nsx_slim.py</code></td>
+<td><strong>Stops</strong></td>
+<td>Stops 5 non-essential services to free CPU during boot storm</td>
+</tr>
+<tr>
+<td><code>nsx_restart_all.py</code></td>
+<td><strong>Starts</strong></td>
+<td>Restarts all services stopped by nsx_slim.py</td>
+</tr>
+<tr>
+<td><code>nsx_fix_svc.py</code></td>
+<td><strong>Restarts</strong></td>
+<td>Restarts search, nsx-sha, nsx-appl-proxy, validates health</td>
+</tr>
+</tbody></table>
+<h3 id="service-recovery-sequence">Service Recovery Sequence</h3>
+<pre><code>python nsx_slim.py              # Free CPU (if load &gt; 30)
+# Wait for load to drop below 15
+python nsx_restart_all.py       # Bring services back
+python nsx_check.py             # Verify cluster health
+</code></pre>
+<hr>
+<h2 id="database-fixes">Database Fixes</h2>
+<p>Scripts that modify SDDC Manager's PostgreSQL database. All use the trust auth workaround (backup pg_hba.conf, set trust, fix, restore).</p>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>clear_locks.py</code></td>
+<td>Fixes NSX status (ACTIVATING/ERROR -&gt; ACTIVE), clears <code>lock</code> table, restarts operationsmanager</td>
+</tr>
+<tr>
+<td><code>fix_stuck_tasks.py</code></td>
+<td>Marks stuck <code>task_metadata</code> as resolved, clears <code>task_lock</code>, fixes <code>execution_to_task</code> orphans</td>
+</tr>
+<tr>
+<td><code>full_remediate_fix.py</code></td>
+<td><strong>Complete cascade fix:</strong> NSX health check + DB fix (status + locks + tasks) + service restart</td>
+</tr>
+<tr>
+<td><code>find_pg_pass.py</code></td>
+<td>Searches for PostgreSQL password in config files (read-only)</td>
+</tr>
+<tr>
+<td><code>get_task.py</code></td>
+<td>Retrieves task details by ID with subtask errors (edit task_id before running)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Always use <code>PAGER=cat</code> when running psql to prevent pager traps in remote sessions.</p>
+</blockquote>
+<h3 id="database-repair-quick-reference">Database Repair Quick Reference</h3>
+<pre><code class="hljs sql"><span class="hljs-comment">-- Connect: su - postgres -c "PAGER=cat psql -h 127.0.0.1 -d platform"</span>
+
+<span class="hljs-comment">-- Fix NSX status (covers ACTIVATING and ERROR)</span>
+<span class="hljs-keyword">UPDATE</span> nsxt <span class="hljs-keyword">SET</span> status <span class="hljs-operator">=</span> <span class="hljs-string">'ACTIVE'</span> <span class="hljs-keyword">WHERE</span> status <span class="hljs-operator">!=</span> <span class="hljs-string">'ACTIVE'</span>;
+
+<span class="hljs-comment">-- Clear stale locks</span>
+<span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> lock;
+
+<span class="hljs-comment">-- Resolve stuck tasks</span>
+<span class="hljs-keyword">UPDATE</span> task_metadata <span class="hljs-keyword">SET</span> resolved <span class="hljs-operator">=</span> <span class="hljs-literal">true</span> <span class="hljs-keyword">WHERE</span> resolved <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
+<span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> task_lock;
+</code></pre>
+<blockquote>
+<p>Full procedure: <a href="../VCF_Troubleshooting_Handbook.md">Troubleshooting Handbook</a> Section 10</p>
+</blockquote>
+<hr>
+<h2 id="troubleshooting-decision-tree">Troubleshooting Decision Tree</h2>
+<pre><code>Problem: Credential operation failed
+    |
+    +-- python quick_status.py
+    |    |
+    |    +-- NSX Status = ACTIVATING or ERROR?
+    |    |    +-- python clear_locks.py (fix DB status + locks)
+    |    |    +-- python fix_stuck_tasks.py (resolve stuck tasks)
+    |    |    +-- OR: python full_remediate_fix.py (all-in-one)
+    |    |
+    |    +-- NSX VIP returning 503?
+    |    |    +-- python nsx_diag.py (check load)
+    |    |    +-- Load &gt; 30? -&gt; python nsx_slim.py (free CPU)
+    |    |    +-- Wait -&gt; python nsx_monitor.py (track recovery)
+    |    |
+    |    +-- All green?
+    |         +-- python nsx_cred_update.py (retry update)
+</code></pre>
+<hr>
+<p><strong>Document Information</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Document Title</td>
+<td>VCF 9.0.1 Diagnostic Scripts Cheat Sheet</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>Last Updated</td>
+<td>February 2026</td>
+</tr>
+<tr>
+<td>Script Count</td>
+<td>20 scripts</td>
+</tr>
+<tr>
+<td>Prerequisite</td>
+<td>Python 3.x + Paramiko (<code>pip install paramiko</code>)</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>Dell Precision 7920, VMware Workstation Nested Lab</td>
+</tr>
+</tbody></table>
+<p><em>Scripts are for lab/educational purposes. Verify target hosts before running. Database-modifying scripts back up and restore pg_hba.conf automatically.</em></p>
+
+	
+
+</body></html>

@@ -1,0 +1,1002 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8"><style>* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	line-height: 1.6;
+	font-size: 0.6875em; /* 11 pt */
+	color: #111;
+	margin: 0;
+}
+
+body > :first-child {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+body > :last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0.5em 0 0.25em;
+}
+
+h5,
+h6 {
+	padding: 0;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h6 {
+	font-size: 0.875em;
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0.25em 0 1em;
+}
+
+blockquote {
+	margin: 0.5em 0 1em;
+	padding-left: 0.5em;
+	padding-right: 1em;
+	border-left: 4px solid gainsboro;
+	font-style: italic;
+}
+
+ul,
+ol {
+	margin: 0;
+	margin-left: 1em;
+	padding: 0 1.5em 0.5em;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+p code,
+li code,
+pre code {
+	background-color: #f8f8f8;
+	padding: 0.1em 0.375em;
+	border: 1px solid #f8f8f8;
+	border-radius: 0.25em;
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+pre code {
+	display: block;
+	padding: 0.5em;
+}
+
+.page-break {
+	page-break-after: always;
+}
+
+img {
+	max-width: 100%;
+	margin: 1em 0;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: block;
+	margin: 0 0 1em;
+	width: 100%;
+	overflow: auto;
+}
+
+table th,
+table td {
+	padding: 0.5em 1em;
+	border: 1px solid gainsboro;
+}
+
+table th {
+	font-weight: 600;
+}
+
+table tr {
+	background-color: white;
+	border-top: 1px solid gainsboro;
+}
+
+table tr:nth-child(2n) {
+	background-color: whitesmoke;
+}
+/*# sourceURL=E:\VCF-Depot\node_modules\md-to-pdf\markdown.css*/</style><style>pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/
+.hljs {
+  color: #24292e;
+  background: #ffffff
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  /* prettylights-syntax-keyword */
+  color: #d73a49
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  /* prettylights-syntax-entity */
+  color: #6f42c1
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  /* prettylights-syntax-constant */
+  color: #005cc5
+}
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  /* prettylights-syntax-string */
+  color: #032f62
+}
+.hljs-built_in,
+.hljs-symbol {
+  /* prettylights-syntax-variable */
+  color: #e36209
+}
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  /* prettylights-syntax-comment */
+  color: #6a737d
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  /* prettylights-syntax-entity-tag */
+  color: #22863a
+}
+.hljs-subst {
+  /* prettylights-syntax-storage-modifier-import */
+  color: #24292e
+}
+.hljs-section {
+  /* prettylights-syntax-markup-heading */
+  color: #005cc5;
+  font-weight: bold
+}
+.hljs-bullet {
+  /* prettylights-syntax-markup-list */
+  color: #735c0f
+}
+.hljs-emphasis {
+  /* prettylights-syntax-markup-italic */
+  color: #24292e;
+  font-style: italic
+}
+.hljs-strong {
+  /* prettylights-syntax-markup-bold */
+  color: #24292e;
+  font-weight: bold
+}
+.hljs-addition {
+  /* prettylights-syntax-markup-inserted */
+  color: #22863a;
+  background-color: #f0fff4
+}
+.hljs-deletion {
+  /* prettylights-syntax-markup-deleted */
+  color: #b31d28;
+  background-color: #ffeef0
+}
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
+  
+}/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; }
+h1 { color: #0b3d6b; border-bottom: 3px solid #0b3d6b; padding-bottom: 8px; font-size: 22pt; }
+h2 { color: #0b3d6b; border-bottom: 1px solid #d0d0d0; padding-bottom: 4px; margin-top: 28px; font-size: 14pt; }
+h3 { color: #1a5276; margin-top: 16px; font-size: 11pt; }
+table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 9pt; }
+th { background-color: #0b3d6b; color: white; padding: 6px 8px; text-align: left; }
+td { border: 1px solid #d0d0d0; padding: 5px 8px; }
+tr:nth-child(even) { background-color: #f5f8fb; }
+code { background-color: #f0f4f8; padding: 1px 4px; border-radius: 3px; font-size: 9pt; }
+pre { background-color: #f0f4f8; padding: 10px; border-radius: 4px; border-left: 3px solid #0b3d6b; font-size: 9pt; }
+blockquote { border-left: 3px solid #ff9800; background: #fff8e1; padding: 8px 12px; margin: 8px 0; font-size: 9pt; }</style></head>
+	<body class="">
+		<h1 id="vcf-901-offline-depot-handbook">VCF 9.0.1 Offline Depot Handbook</h1>
+<h2 id="1-environment-reference">1. Environment Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>IP Address</th>
+<th>FQDN</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows Depot Server</td>
+<td>192.168.1.160</td>
+<td>—</td>
+<td>HTTPS offline depot (Python), port 8443</td>
+</tr>
+<tr>
+<td>VCF Installer</td>
+<td>192.168.1.240</td>
+<td>vcf-installer.lab.local</td>
+<td>Initial bring-up appliance</td>
+</tr>
+<tr>
+<td>SDDC Manager</td>
+<td>192.168.1.241</td>
+<td>sddc-manager.lab.local</td>
+<td>Post-deployment lifecycle management</td>
+</tr>
+<tr>
+<td>vCenter Server</td>
+<td>192.168.1.69</td>
+<td>vcenter.lab.local</td>
+<td>vSphere management</td>
+</tr>
+<tr>
+<td>DNS / NTP / AD</td>
+<td>192.168.1.230</td>
+<td>dc.lab.local</td>
+<td>Infrastructure services</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td>192.168.1.1</td>
+<td>—</td>
+<td>Default gateway</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> The VCF Installer appliance (192.168.1.240) is used during initial bring-up. After deployment completes, SDDC Manager (192.168.1.241) takes over lifecycle management and depot operations. Both need depot access at different stages.</p>
+</blockquote>
+<hr>
+<h2 id="2-prerequisites">2. Prerequisites</h2>
+<h3 id="21-required-downloads-from-broadcom-support-portal">2.1 Required Downloads from Broadcom Support Portal</h3>
+<p><strong>Metadata (required):</strong></p>
+<ul>
+<li><code>vcf-9.0.1.0-offline-depot-metadata.zip</code> — Contains the PROD directory structure with manifest, product version catalog, vSAN HCL data, and compatibility data</li>
+</ul>
+<p><strong>Appliances and Binaries (VCF 9.0.1):</strong></p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Component</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>VCF-SDDC-Manager-Appliance-9.0.1.0.24962180.ova</code></td>
+<td>SDDC Manager</td>
+<td>~15 GB</td>
+</tr>
+<tr>
+<td><code>VMware-VCSA-all-9.0.1.0.24957454.iso</code></td>
+<td>vCenter Server</td>
+<td>~8 GB</td>
+</tr>
+<tr>
+<td><code>nsx-unified-appliance-9.0.1.0.24952114.ova</code></td>
+<td>NSX Manager</td>
+<td>~12 GB</td>
+</tr>
+<tr>
+<td><code>VCF-OPS-Lifecycle-Manager-Appliance-9.0.1.0.24960371.ova</code></td>
+<td>Aria Lifecycle</td>
+<td>~5 GB</td>
+</tr>
+<tr>
+<td><code>Operations-Appliance-9.0.1.0.24960351.ova</code></td>
+<td>VCF Operations</td>
+<td>~5 GB</td>
+</tr>
+<tr>
+<td><code>Operations-Cloud-Proxy-9.0.1.0.24960349.ova</code></td>
+<td>Operations Collector</td>
+<td>~3 GB</td>
+</tr>
+<tr>
+<td><code>O11N_VA-9.0.1.0.24923009.ova</code></td>
+<td>Orchestrator</td>
+<td>~3 GB</td>
+</tr>
+<tr>
+<td><code>vmsp-vcfa-combined-9.0.1.0.24965341.tar</code></td>
+<td>VCF Automation</td>
+<td>~15 GB</td>
+</tr>
+<tr>
+<td><code>Operations-Logs-Appliance-9.0.1.0.24960345.ova</code></td>
+<td>Operations for Logs</td>
+<td>~4 GB</td>
+</tr>
+<tr>
+<td><code>Operations-Logs-Appliance-9.0.1.0.24960345.pak</code></td>
+<td>Operations for Logs PAK</td>
+<td>~1 GB</td>
+</tr>
+<tr>
+<td><code>vidb-external-9.0.1.0.24941398.tar</code></td>
+<td>Identity Broker</td>
+<td>~2 GB</td>
+</tr>
+<tr>
+<td><code>VmwareCompatibilityData.json</code></td>
+<td>Compatibility Data</td>
+<td>~1 MB</td>
+</tr>
+</tbody></table>
+<h3 id="22-software-requirements">2.2 Software Requirements</h3>
+<ul>
+<li>Windows machine with Python 3.x installed</li>
+<li>OpenSSL (included with Git for Windows or standalone)</li>
+<li>Network connectivity between the depot server and SDDC Manager / VCF Installer</li>
+</ul>
+<hr>
+<h2 id="3-https-depot-server-setup-windows">3. HTTPS Depot Server Setup (Windows)</h2>
+<h3 id="31-generate-self-signed-tls-certificate">3.1 Generate Self-Signed TLS Certificate</h3>
+<pre><code class="hljs powershell">openssl req <span class="hljs-literal">-x509</span> <span class="hljs-literal">-newkey</span> rsa:<span class="hljs-number">2048</span> `
+  <span class="hljs-literal">-keyout</span> <span class="hljs-string">"C:\VCF-Depot\server.key"</span> `
+  <span class="hljs-literal">-out</span> <span class="hljs-string">"C:\VCF-Depot\server.crt"</span> `
+  <span class="hljs-literal">-days</span> <span class="hljs-number">365</span> <span class="hljs-literal">-nodes</span> `
+  <span class="hljs-literal">-subj</span> <span class="hljs-string">"/CN=192.168.1.160"</span> `
+  <span class="hljs-literal">-addext</span> <span class="hljs-string">"subjectAltName=IP:192.168.1.160"</span> <span class="hljs-literal">-sha256</span>
+</code></pre>
+<p>Alternatively, use the Python certificate generator:</p>
+<pre><code>cd C:\VCF-Depot
+python generate_cert.py
+</code></pre>
+<p>This creates:</p>
+<ul>
+<li><code>server.crt</code> — the public certificate (will be imported into SDDC Manager)</li>
+<li><code>server.key</code> — the private key (stays on the depot server)</li>
+</ul>
+<h3 id="32-https-server-options">3.2 HTTPS Server Options</h3>
+<p>Two server scripts are available depending on your authentication needs:</p>
+<p><strong>Option A: FIPS-Compliant Server (No Authentication)</strong></p>
+<p>Script: <code>C:\VCF-Depot\https_server_fips.py</code></p>
+<ul>
+<li>TLS 1.2 only (required for BouncyCastle FIPS on SDDC Manager)</li>
+<li>FIPS-approved cipher suites (AES-GCM)</li>
+<li>No authentication — use when depot is on isolated lab network</li>
+<li>Listens on port 8443</li>
+</ul>
+<pre><code class="hljs cmd"><span class="hljs-built_in">cd</span> C:\VCF-Depot
+python https_server_fips.py
+</code></pre>
+<p><strong>Option B: Authenticated Server (Basic Auth)</strong></p>
+<p>Script: <code>C:\VCF-Depot\https_server.py</code></p>
+<ul>
+<li>TLS 1.2–1.3</li>
+<li>Basic authentication (default: admin/admin)</li>
+<li>Use when depot needs access control</li>
+<li>Listens on port 8443</li>
+</ul>
+<pre><code class="hljs cmd"><span class="hljs-built_in">cd</span> C:\VCF-Depot
+python https_server.py
+</code></pre>
+<blockquote>
+<p><strong>Which to use:</strong> For the VCF Installer bring-up phase, use the <strong>FIPS server (Option A)</strong> — the installer's BouncyCastle FIPS implementation is strict about cipher suites. For post-deployment depot operations through SDDC Manager, either option works. When using Option B, enter the username/password in the depot configuration UI.</p>
+</blockquote>
+<h3 id="33-windows-firewall-rule">3.3 Windows Firewall Rule</h3>
+<pre><code class="hljs powershell">netsh advfirewall firewall add rule name=<span class="hljs-string">"VCF Depot 8443"</span> <span class="hljs-built_in">dir</span>=<span class="hljs-keyword">in</span> action=allow protocol=tcp localport=<span class="hljs-number">8443</span>
+</code></pre>
+<h3 id="34-verify-the-server">3.4 Verify the Server</h3>
+<p>Open a browser and navigate to:</p>
+<pre><code>https://192.168.1.160:8443/
+</code></pre>
+<p>Accept the self-signed certificate warning. You should see a directory listing.</p>
+<hr>
+<h2 id="4-depot-directory-structure">4. Depot Directory Structure</h2>
+<h3 id="41-extract-metadata">4.1 Extract Metadata</h3>
+<p>Extract the official metadata zip to create the base PROD structure:</p>
+<pre><code class="hljs powershell"><span class="hljs-built_in">Expand-Archive</span> <span class="hljs-literal">-Path</span> <span class="hljs-string">"vcf-9.0.1.0-offline-depot-metadata.zip"</span> <span class="hljs-literal">-DestinationPath</span> <span class="hljs-string">"C:\VCF-Depot\metadata-extract"</span> <span class="hljs-literal">-Force</span>
+<span class="hljs-built_in">Copy-Item</span> <span class="hljs-string">"C:\VCF-Depot\metadata-extract\PROD\*"</span> <span class="hljs-string">"C:\VCF-Depot\PROD\"</span> <span class="hljs-literal">-Recurse</span> <span class="hljs-literal">-Force</span>
+</code></pre>
+<p>This creates the metadata structure that SDDC Manager queries first:</p>
+<pre><code>C:\VCF-Depot\PROD\
+├── metadata\
+│   ├── manifest\v1\
+│   │   └── vcfManifest.json
+│   └── productVersionCatalog\v1\
+│       ├── productVersionCatalog.json
+│       └── productVersionCatalog.sig
+├── vsan\hcl\
+│   ├── all.json
+│   └── lastupdatedtime.json
+└── COMP\SDDC_MANAGER_VCF\Compatibility\
+    └── VmwareCompatibilityData.json
+</code></pre>
+<h3 id="42-create-component-directories">4.2 Create Component Directories</h3>
+<pre><code class="hljs powershell"><span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Path</span> <span class="hljs-string">"C:\VCF-Depot\PROD\COMP\SDDC_MANAGER_VCF"</span> <span class="hljs-literal">-Force</span>
+<span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Path</span> <span class="hljs-string">"C:\VCF-Depot\PROD\COMP\VCENTER"</span> <span class="hljs-literal">-Force</span>
+<span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Path</span> <span class="hljs-string">"C:\VCF-Depot\PROD\COMP\NSX_T_MANAGER"</span> <span class="hljs-literal">-Force</span>
+<span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Path</span> <span class="hljs-string">"C:\VCF-Depot\PROD\COMP\VRSLCM"</span> <span class="hljs-literal">-Force</span>
+<span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Path</span> <span class="hljs-string">"C:\VCF-Depot\PROD\COMP\VROPS"</span> <span class="hljs-literal">-Force</span>
+<span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Path</span> <span class="hljs-string">"C:\VCF-Depot\PROD\COMP\VCF_OPS_CLOUD_PROXY"</span> <span class="hljs-literal">-Force</span>
+<span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Path</span> <span class="hljs-string">"C:\VCF-Depot\PROD\COMP\VRA"</span> <span class="hljs-literal">-Force</span>
+<span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Path</span> <span class="hljs-string">"C:\VCF-Depot\PROD\COMP\VRO"</span> <span class="hljs-literal">-Force</span>
+<span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Path</span> <span class="hljs-string">"C:\VCF-Depot\PROD\COMP\VRLI"</span> <span class="hljs-literal">-Force</span>
+<span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Path</span> <span class="hljs-string">"C:\VCF-Depot\PROD\COMP\SDDC_MANAGER_VCF\lcm\productVersionCatalog"</span> <span class="hljs-literal">-Force</span>
+</code></pre>
+<h3 id="43-place-binaries">4.3 Place Binaries</h3>
+<p>Copy each binary to its respective component directory:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Destination Directory</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>VCF-SDDC-Manager-Appliance-9.0.1.0.24962180.ova</code></td>
+<td><code>PROD\COMP\SDDC_MANAGER_VCF\</code></td>
+</tr>
+<tr>
+<td><code>VMware-VCSA-all-9.0.1.0.24957454.iso</code></td>
+<td><code>PROD\COMP\VCENTER\</code></td>
+</tr>
+<tr>
+<td><code>nsx-unified-appliance-9.0.1.0.24952114.ova</code></td>
+<td><code>PROD\COMP\NSX_T_MANAGER\</code></td>
+</tr>
+<tr>
+<td><code>VCF-OPS-Lifecycle-Manager-Appliance-9.0.1.0.24960371.ova</code></td>
+<td><code>PROD\COMP\VRSLCM\</code></td>
+</tr>
+<tr>
+<td><code>Operations-Appliance-9.0.1.0.24960351.ova</code></td>
+<td><code>PROD\COMP\VROPS\</code></td>
+</tr>
+<tr>
+<td><code>Operations-Cloud-Proxy-9.0.1.0.24960349.ova</code></td>
+<td><code>PROD\COMP\VCF_OPS_CLOUD_PROXY\</code></td>
+</tr>
+<tr>
+<td><code>O11N_VA-9.0.1.0.24923009.ova</code></td>
+<td><code>PROD\COMP\VRO\</code></td>
+</tr>
+<tr>
+<td><code>vmsp-vcfa-combined-9.0.1.0.24965341.tar</code></td>
+<td><code>PROD\COMP\VRA\</code></td>
+</tr>
+<tr>
+<td><code>Operations-Logs-Appliance-9.0.1.0.24960345.ova</code></td>
+<td><code>PROD\COMP\VRLI\</code></td>
+</tr>
+<tr>
+<td><code>Operations-Logs-Appliance-9.0.1.0.24960345.pak</code></td>
+<td><code>PROD\COMP\VRLI\</code></td>
+</tr>
+<tr>
+<td><code>vidb-external-9.0.1.0.24941398.tar</code></td>
+<td><code>PROD\COMP\VIDB\</code></td>
+</tr>
+<tr>
+<td><code>productVersionCatalog.json</code></td>
+<td><code>PROD\COMP\SDDC_MANAGER_VCF\lcm\productVersionCatalog\</code></td>
+</tr>
+</tbody></table>
+<h3 id="44-final-directory-structure">4.4 Final Directory Structure</h3>
+<pre><code>C:\VCF-Depot\
+├── https_server.py              # Authenticated HTTPS server
+├── https_server_fips.py         # FIPS-compliant HTTPS server
+├── generate_cert.py             # Certificate generator
+├── server.crt                   # TLS certificate
+├── server.key                   # TLS private key
+├── start_depot.bat              # Server startup script
+└── PROD\
+    ├── metadata\
+    │   ├── manifest\v1\
+    │   │   └── vcfManifest.json
+    │   └── productVersionCatalog\v1\
+    │       ├── productVersionCatalog.json
+    │       └── productVersionCatalog.sig
+    ├── vsan\hcl\
+    │   ├── all.json
+    │   └── lastupdatedtime.json
+    └── COMP\
+        ├── SDDC_MANAGER_VCF\
+        │   ├── VCF-SDDC-Manager-Appliance-9.0.1.0.24962180.ova
+        │   ├── Compatibility\
+        │   │   └── VmwareCompatibilityData.json
+        │   └── lcm\productVersionCatalog\
+        │       └── productVersionCatalog.json
+        ├── VCENTER\
+        │   └── VMware-VCSA-all-9.0.1.0.24957454.iso
+        ├── NSX_T_MANAGER\
+        │   └── nsx-unified-appliance-9.0.1.0.24952114.ova
+        ├── VRSLCM\
+        │   └── VCF-OPS-Lifecycle-Manager-Appliance-9.0.1.0.24960371.ova
+        ├── VROPS\
+        │   └── Operations-Appliance-9.0.1.0.24960351.ova
+        ├── VCF_OPS_CLOUD_PROXY\
+        │   └── Operations-Cloud-Proxy-9.0.1.0.24960349.ova
+        ├── VRA\
+        │   └── vmsp-vcfa-combined-9.0.1.0.24965341.tar
+        ├── VRLI\
+        │   ├── Operations-Logs-Appliance-9.0.1.0.24960345.ova
+        │   └── Operations-Logs-Appliance-9.0.1.0.24960345.pak
+        ├── VIDB\
+        │   └── vidb-external-9.0.1.0.24941398.tar
+        └── VRO\
+            └── O11N_VA-9.0.1.0.24923009.ova
+</code></pre>
+<hr>
+<h2 id="5-sddc-manager--vcf-installer-preparation">5. SDDC Manager / VCF Installer Preparation</h2>
+<p>Before configuring the depot, two prerequisites must be completed on the appliance.</p>
+<h3 id="51-fix-hostname-resolution">5.1 Fix Hostname Resolution</h3>
+<p>The appliance must resolve its own hostname and vCenter's hostname. Without self-resolution, the LCM service fails with <code>java.net.UnknownHostException</code>.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH into the appliance</span>
+ssh vcf@192.168.1.240    <span class="hljs-comment"># VCF Installer during bring-up</span>
+<span class="hljs-comment"># or</span>
+ssh vcf@192.168.1.241    <span class="hljs-comment"># SDDC Manager post-deployment</span>
+su -
+
+<span class="hljs-comment"># Verify hostname resolves</span>
+hostname -f
+
+<span class="hljs-comment"># If it returns "Unknown host", add entries to /etc/hosts:</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"192.168.1.240 vcf-installer.lab.local vcf-installer"</span> &gt;&gt; /etc/hosts
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"192.168.1.69 vcenter.lab.local vcenter"</span> &gt;&gt; /etc/hosts
+
+<span class="hljs-comment"># Verify</span>
+hostname -f
+python3 -c <span class="hljs-string">"import socket; print(socket.getaddrinfo('vcenter.lab.local', 443))"</span>
+</code></pre>
+<h3 id="52-import-depot-certificate-into-trust-stores">5.2 Import Depot Certificate into Trust Stores</h3>
+<p>The self-signed certificate from the depot server must be imported into the Java trust store before the depot can be configured.</p>
+<p><strong>Step 1: Extract the certificate from the running depot server:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-built_in">echo</span> | openssl s_client -connect 192.168.1.160:8443 2&gt;/dev/null | openssl x509 &gt; /tmp/depot.crt
+<span class="hljs-built_in">cat</span> /tmp/depot.crt    <span class="hljs-comment"># Verify it shows a PEM certificate</span>
+</code></pre>
+<p><strong>Step 2: Find and import into Java cacerts:</strong></p>
+<pre><code class="hljs bash">CACERTS=$(find /usr -name cacerts 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1)
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Truststore: <span class="hljs-variable">$CACERTS</span>"</span>
+
+keytool -importcert -trustcacerts -<span class="hljs-built_in">alias</span> offline-depot \
+  -file /tmp/depot.crt \
+  -keystore <span class="hljs-variable">$CACERTS</span> \
+  -storepass <span class="hljs-string">"changeit"</span> -noprompt
+</code></pre>
+<p><strong>Step 3: Import into commonsvcs trust store (if it exists):</strong></p>
+<pre><code class="hljs bash">COMMONSVCS=<span class="hljs-string">"/etc/vmware/vcf/commonsvcs/temp_java_trusted_certificates.store"</span>
+<span class="hljs-keyword">if</span> [ -f <span class="hljs-string">"<span class="hljs-variable">$COMMONSVCS</span>"</span> ]; <span class="hljs-keyword">then</span>
+  keytool -importcert -trustcacerts -<span class="hljs-built_in">alias</span> offline-depot \
+    -file /tmp/depot.crt \
+    -keystore <span class="hljs-variable">$COMMONSVCS</span> \
+    -storepass <span class="hljs-string">"changeit"</span> -noprompt
+<span class="hljs-keyword">fi</span>
+</code></pre>
+<p><strong>Step 4: Restart services and verify:</strong></p>
+<pre><code class="hljs bash">systemctl restart commonsvcs lcm
+<span class="hljs-comment"># Wait 2-3 minutes</span>
+systemctl status commonsvcs lcm
+</code></pre>
+<p>Both services should show <code>active (running)</code>.</p>
+<p><strong>Step 5: Verify import:</strong></p>
+<pre><code class="hljs bash">keytool -list -keystore <span class="hljs-variable">$CACERTS</span> -storepass changeit | grep offline-depot
+</code></pre>
+<hr>
+<h2 id="6-configure-offline-depot-in-sddc-manager-ui">6. Configure Offline Depot in SDDC Manager UI</h2>
+<h3 id="61-access-the-ui">6.1 Access the UI</h3>
+<p>Open a browser and navigate to:</p>
+<pre><code>https://192.168.1.240/    # VCF Installer during bring-up
+# or
+https://192.168.1.241/    # SDDC Manager post-deployment
+</code></pre>
+<h3 id="62-configure-depot-connection">6.2 Configure Depot Connection</h3>
+<p>In the depot configuration screen, enter:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value (FIPS Server)</th>
+<th>Value (Auth Server)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FQDN or IP Address</td>
+<td><code>192.168.1.160</code></td>
+<td><code>192.168.1.160</code></td>
+</tr>
+<tr>
+<td>Port</td>
+<td><code>8443</code></td>
+<td><code>8443</code></td>
+</tr>
+<tr>
+<td>Repository Path</td>
+<td><code>/PROD</code></td>
+<td><code>/PROD</code></td>
+</tr>
+<tr>
+<td>Username</td>
+<td><em>(leave empty)</em></td>
+<td><code>admin</code></td>
+</tr>
+<tr>
+<td>Password</td>
+<td><em>(leave empty)</em></td>
+<td><code>admin</code></td>
+</tr>
+</tbody></table>
+<p>Click <strong>Configure</strong>. SDDC Manager validates connectivity with a HEAD request to:</p>
+<pre><code>/PROD/metadata/productVersionCatalog/v1/productVersionCatalog.json
+</code></pre>
+<p>On success, the available VCF versions (e.g., 9.0.0.0, 9.0.1.0) appear in the UI.</p>
+<h3 id="63-download-binaries">6.3 Download Binaries</h3>
+<p>Select <strong>VCF 9.0.1.0</strong> and initiate the binary download. Monitor the depot server console window for request activity. All requests should return <code>200</code> status codes.</p>
+<p>SDDC Manager downloads binaries to:</p>
+<pre><code>/nfs/vmware/vcf/nfs-mount/bundle/
+</code></pre>
+<hr>
+<h2 id="7-troubleshooting">7. Troubleshooting</h2>
+<h3 id="71-secure-protocol-communication-error--502-on-v1systemsettingsdepot">7.1 "Secure protocol communication error" / 502 on /v1/system/settings/depot</h3>
+<p><strong>Cause:</strong> SDDC Manager cannot validate the TLS connection to the depot server. The self-signed certificate is not in the trust store, or internal services are not running.</p>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Verify the certificate is imported into both trust stores (Section 5.2)</li>
+<li>Verify <code>/etc/hosts</code> is configured correctly (Section 5.1)</li>
+<li>Restart services: <code>systemctl restart commonsvcs lcm</code></li>
+<li>Check service status: <code>systemctl status commonsvcs lcm</code></li>
+</ol>
+<h3 id="72-path-not-found--404-file-not-found">7.2 "Path not found" / 404 File Not Found</h3>
+<p><strong>Cause:</strong> The requested file does not exist at the expected path in the depot.</p>
+<p><strong>Fix:</strong> Check the HTTPS server console logs on the Windows machine. The log shows the exact path requested:</p>
+<pre><code>192.168.1.241 - "HEAD /PROD/COMP/VCENTER/VMware-VCSA-all-9.0.1.0.24957454.iso HTTP/1.1" 404 -
+</code></pre>
+<p>This tells you:</p>
+<ul>
+<li><strong>Component directory:</strong> <code>VCENTER</code></li>
+<li><strong>Required file:</strong> <code>VMware-VCSA-all-9.0.1.0.24957454.iso</code></li>
+<li><strong>Action:</strong> Place the file at <code>C:\VCF-Depot\PROD\COMP\VCENTER\VMware-VCSA-all-9.0.1.0.24957454.iso</code></li>
+</ul>
+<p>Reference: <a href="https://knowledge.broadcom.com/external/article/413848">Broadcom KB 413848</a></p>
+<h3 id="73-product-version-catalog-pvc-does-not-exist">7.3 "Product Version Catalog (PVC) does not exist"</h3>
+<p><strong>Cause:</strong> The <code>productVersionCatalog.json</code> was not extracted from the official metadata zip, or the LCM-specific copy is missing.</p>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Extract metadata from the official zip file (Section 4.1)</li>
+<li>Copy <code>productVersionCatalog.json</code> to <code>PROD\COMP\SDDC_MANAGER_VCF\lcm\productVersionCatalog\</code></li>
+</ol>
+<h3 id="74-lcm-service-fails-to-start-unknownhostexception">7.4 LCM Service Fails to Start (UnknownHostException)</h3>
+<p><strong>Cause:</strong> The SDDC Manager appliance cannot resolve its own hostname.</p>
+<p><strong>Fix:</strong> Add the hostname to <code>/etc/hosts</code> (Section 5.1). The entry must map the appliance IP to the FQDN and short hostname.</p>
+<h3 id="75-connection-refused-on-port-7100">7.5 Connection Refused on Port 7100</h3>
+<p><strong>Cause:</strong> An internal SDDC Manager service is not running or has not fully started.</p>
+<p><strong>Fix:</strong></p>
+<pre><code class="hljs bash">systemctl restart commonsvcs lcm
+<span class="hljs-comment"># Wait 3-5 minutes</span>
+
+<span class="hljs-comment"># Verify all ports are listening</span>
+ss -tlnp | grep -E <span class="hljs-string">"7100|7200|7300|7400|7500"</span>
+<span class="hljs-comment"># All five ports should show LISTEN state</span>
+</code></pre>
+<h3 id="76-certificate-already-exists-alias-conflict">7.6 Certificate Already Exists (Alias Conflict)</h3>
+<p><strong>Cause:</strong> The certificate was already imported with the same alias.</p>
+<p><strong>Fix:</strong> This is safe to ignore. If you need to replace the certificate:</p>
+<pre><code class="hljs bash">keytool -delete -<span class="hljs-built_in">alias</span> offline-depot -keystore <span class="hljs-variable">$CACERTS</span> -storepass <span class="hljs-string">"changeit"</span>
+keytool -importcert -trustcacerts -<span class="hljs-built_in">alias</span> offline-depot -file /tmp/depot.crt \
+  -keystore <span class="hljs-variable">$CACERTS</span> -storepass <span class="hljs-string">"changeit"</span> -noprompt
+</code></pre>
+<h3 id="77-esxi-certificate-san-mismatch-sslpeerunverifiedexception">7.7 ESXi Certificate SAN Mismatch (SSLPeerUnverifiedException)</h3>
+<p><strong>Cause:</strong> ESXi hosts were booted before their hostname was configured. The auto-generated SSL certificate contains <code>localhost.localdomain</code> as the SAN instead of the actual FQDN.</p>
+<p><strong>Symptoms:</strong></p>
+<pre><code>javax.net.ssl.SSLPeerUnverifiedException: Certificate for &lt;esxi01.lab.local&gt;
+doesn't match any of the subject alternative names: [localhost.localdomain]
+</code></pre>
+<p><strong>Fix:</strong> On each ESXi host, regenerate the SSL certificate:</p>
+<pre><code class="hljs bash">ssh root@esxi01.lab.local
+
+<span class="hljs-comment"># Verify hostname is correct</span>
+esxcli system hostname get
+
+<span class="hljs-comment"># If wrong, set it</span>
+esxcli system hostname <span class="hljs-built_in">set</span> --fqdn=esxi01.lab.local
+
+<span class="hljs-comment"># Regenerate certificates</span>
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.crt /etc/vmware/ssl/rui.crt.bak
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.key /etc/vmware/ssl/rui.key.bak
+/sbin/generate-certificates
+
+<span class="hljs-comment"># Restart ALL management services (hostd-only restart is insufficient)</span>
+services.sh restart
+
+<span class="hljs-comment"># Verify new certificate SAN</span>
+openssl x509 -<span class="hljs-keyword">in</span> /etc/vmware/ssl/rui.crt -noout -text | grep -A2 <span class="hljs-string">"Subject Alternative"</span>
+</code></pre>
+<p>Verify from SDDC Manager:</p>
+<pre><code class="hljs bash"><span class="hljs-built_in">echo</span> | openssl s_client -connect esxi01.lab.local:443 2&gt;/dev/null | openssl x509 -noout -text | grep -A2 <span class="hljs-string">"Subject Alternative"</span>
+</code></pre>
+<p>Repeat for all ESXi hosts before proceeding with VCF deployment.</p>
+<h3 id="78-esxi-host-connection-refused-after-certificate-regeneration">7.8 ESXi Host Connection Refused After Certificate Regeneration</h3>
+<p><strong>Cause:</strong> <code>services.sh restart</code> did not fully bring all management services back up.</p>
+<p><strong>Fix:</strong> Access the ESXi host console (VMware Workstation console, press Alt+F1 for shell):</p>
+<pre><code class="hljs bash">/etc/init.d/hostd start
+services.sh restart
+</code></pre>
+<h3 id="79-vsan-storage-policy-non-compliant-during-bringup">7.9 vSAN Storage Policy Non-Compliant During Bringup</h3>
+<p><strong>Symptoms:</strong> Bringup stuck at "Enable vSAN Policies." The domainmanager log shows:</p>
+<pre><code>VM vcenter is not compliant with the default storage policy
+Waiting for 60 secs before checking storage compliance again
+</code></pre>
+<p><strong>Cause:</strong> vSAN is actively rebuilding/resyncing data. The default policy requires FTT=1, which can't be satisfied until resync completes. The bringup checks every 60 seconds and proceeds automatically.</p>
+<p><strong>How to verify it is NOT hung:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-built_in">tail</span> -f /var/log/vmware/vcf/domainmanager/domainmanager.log | grep -E <span class="hljs-string">"compliant|Waiting|vsan"</span>
+<span class="hljs-comment"># New lines every 60 seconds = working. Do NOT restart services.</span>
+</code></pre>
+<p><strong>How to check if it IS hung:</strong></p>
+<pre><code class="hljs bash">curl -s -k -u admin:&lt;password&gt; https://localhost/v1/sddcs | python3 -m json.tool | grep -i <span class="hljs-string">"status"</span>
+
+<span class="hljs-comment"># Check all services running</span>
+systemctl status commonsvcs domainmanager lcm operationsmanager | grep -E <span class="hljs-string">"Active:|service"</span>
+
+<span class="hljs-comment"># Verify all ports listening</span>
+ss -tlnp | grep -E <span class="hljs-string">"7100|7200|7300|7400|7500"</span>
+</code></pre>
+<p><strong>Resolution:</strong> Wait for vSAN resync to complete. In nested environments this can take 30-60+ minutes. Do NOT restart services.</p>
+<h3 id="710-vcf-operations-deployment-timeout-ova-upload">7.10 VCF Operations Deployment Timeout (OVA Upload)</h3>
+<p><strong>Symptoms:</strong> VCF Operations deployment fails with:</p>
+<pre><code>failed due to time out after 20 MINUTES with exit value 137
+</code></pre>
+<p><strong>Cause:</strong> The ovftool OVA deployment has a hardcoded 20-minute timeout in the domainmanager JAR. In nested environments with slow disk I/O, the upload can't complete in time. No external configuration exists to change this timeout.</p>
+<p><strong>Fix: Manual OVA Deployment with ovftool</strong></p>
+<p><strong>Step 1: Discover vCenter inventory path:</strong></p>
+<pre><code class="hljs bash">ovftool --noSSLVerify <span class="hljs-string">"vi://administrator%40vsphere.local:&lt;password&gt;@vcenter.lab.local/"</span>
+<span class="hljs-comment"># Lists datacenters — drill into each level:</span>
+ovftool --noSSLVerify <span class="hljs-string">"vi://administrator%40vsphere.local:&lt;password&gt;@vcenter.lab.local/&lt;datacenter&gt;/host/"</span>
+</code></pre>
+<p><strong>Step 2: Find the OVA:</strong></p>
+<pre><code class="hljs bash">find /nfs/vmware/vcf/nfs-mount/bundle/ -name <span class="hljs-string">"Operations-Appliance*.ova"</span> 2&gt;/dev/null
+</code></pre>
+<p><strong>Step 3: Deploy manually (single-line command — no backslash continuation):</strong></p>
+<pre><code class="hljs bash">ovftool --acceptAllEulas --skipManifestCheck --noSSLVerify --diskMode=thin --powerOn --name=vrops-appliance --datastore=vcenter-cl01-ds-vsan01 --net:<span class="hljs-string">"Network 1"</span>=<span class="hljs-string">"vcenter-cl01-vds01-pg-vm-mgmt"</span> --prop:vamitimezone=UTC --prop:root_password=<span class="hljs-string">'&lt;password&gt;'</span> <span class="hljs-string">"/nfs/vmware/vcf/nfs-mount/bundle/&lt;bundle-id&gt;/&lt;bundle-id&gt;/Operations-Appliance-9.0.1.0.24960351.ova"</span> <span class="hljs-string">"vi://administrator%40vsphere.local:&lt;url-encoded-password&gt;@vcenter.lab.local/vcenter-dc01/host/vcenter-cl01/"</span>
+</code></pre>
+<blockquote>
+<p><strong>Important:</strong> Special characters in the password must be URL-encoded in the vi:// URL (e.g., <code>!</code> = <code>%21</code>). The <code>@</code> in <code>administrator@vsphere.local</code> must be encoded as <code>%40</code>. OVF network name "Network 1" must be mapped to the target portgroup using <code>--net:</code> syntax.</p>
+</blockquote>
+<h3 id="711-vcenter-hostname-not-resolving-from-sddc-manager">7.11 vCenter Hostname Not Resolving from SDDC Manager</h3>
+<p><strong>Symptoms:</strong> ovftool fails with <code>"No version for VMODL calls"</code> or curl to vCenter returns empty.</p>
+<p><strong>Fix:</strong> Add vCenter to <code>/etc/hosts</code>:</p>
+<pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">"192.168.1.69 vcenter.lab.local vcenter"</span> &gt;&gt; /etc/hosts
+python3 -c <span class="hljs-string">"import socket; s=socket.socket(); s.settimeout(5); s.connect(('vcenter.lab.local',443)); print('OPEN'); s.close()"</span>
+<span class="hljs-comment"># Expected: OPEN</span>
+</code></pre>
+<p>If vCenter services are down:</p>
+<pre><code class="hljs bash">ssh root@vcenter.lab.local
+service-control --status
+service-control --start --all
+</code></pre>
+<h3 id="712-nested-esxi-promiscuous-mode-and-forged-transmits">7.12 Nested ESXi: Promiscuous Mode and Forged Transmits</h3>
+<p><strong>Symptoms:</strong> Network failures between nested VMs, vMotion failures, or vSAN connectivity issues.</p>
+<p><strong>Cause:</strong> Nested ESXi VMs generate traffic with MAC addresses different from the parent VM's NIC.</p>
+<p><strong>Fix:</strong> Enable these security settings on ALL VDS portgroups (Management, vMotion, vSAN, VM-Mgmt):</p>
+<ul>
+<li>Promiscuous Mode: <strong>Accept</strong></li>
+<li>Forged Transmits: <strong>Accept</strong></li>
+<li>MAC Address Changes: <strong>Accept</strong></li>
+</ul>
+<h3 id="713-monitoring-depot-server-requests">7.13 Monitoring Depot Server Requests</h3>
+<p>The HTTPS server logs all requests to the console:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>200</code></td>
+<td>Successful request</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Missing file — check path and filename</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>Authentication failure (auth-enabled server only)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="8-key-file-locations">8. Key File Locations</h2>
+<h3 id="81-windows-depot-server">8.1 Windows Depot Server</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FIPS HTTPS Server</td>
+<td><code>C:\VCF-Depot\https_server_fips.py</code></td>
+</tr>
+<tr>
+<td>Auth HTTPS Server</td>
+<td><code>C:\VCF-Depot\https_server.py</code></td>
+</tr>
+<tr>
+<td>TLS Certificate</td>
+<td><code>C:\VCF-Depot\server.crt</code></td>
+</tr>
+<tr>
+<td>TLS Private Key</td>
+<td><code>C:\VCF-Depot\server.key</code></td>
+</tr>
+<tr>
+<td>Depot Root</td>
+<td><code>C:\VCF-Depot\PROD\</code></td>
+</tr>
+<tr>
+<td>Startup Script</td>
+<td><code>C:\VCF-Depot\start_depot.bat</code></td>
+</tr>
+</tbody></table>
+<h3 id="82-sddc-manager--vcf-installer-appliance">8.2 SDDC Manager / VCF Installer Appliance</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Java cacerts</td>
+<td><code>/usr/lib/jvm/openjdk-java17-headless.x86_64/lib/security/cacerts</code></td>
+</tr>
+<tr>
+<td>Commonsvcs Trust Store</td>
+<td><code>/etc/vmware/vcf/commonsvcs/temp_java_trusted_certificates.store</code></td>
+</tr>
+<tr>
+<td>Hosts File</td>
+<td><code>/etc/hosts</code></td>
+</tr>
+<tr>
+<td>Commonsvcs Logs</td>
+<td><code>/var/log/vmware/vcf/commonsvcs/</code></td>
+</tr>
+<tr>
+<td>Domain Manager Logs</td>
+<td><code>/var/log/vmware/vcf/domainmanager/</code></td>
+</tr>
+<tr>
+<td>LCM Logs</td>
+<td><code>/var/log/vmware/vcf/lcm/</code></td>
+</tr>
+<tr>
+<td>OVFTool Logs</td>
+<td><code>/var/log/vmware/vcf/domainmanager/vcf-ops-ovf-tool-*.log</code></td>
+</tr>
+<tr>
+<td>Bundle Downloads</td>
+<td><code>/nfs/vmware/vcf/nfs-mount/bundle/</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="9-quick-reference-complete-setup-sequence">9. Quick Reference: Complete Setup Sequence</h2>
+<ol>
+<li>Generate TLS certificate on Windows depot server</li>
+<li>Extract metadata zip into <code>PROD\</code> directory structure</li>
+<li>Place all component binaries in <code>PROD\COMP\&lt;COMPONENT&gt;\</code> directories</li>
+<li>Start the HTTPS depot server on port 8443</li>
+<li>Open Windows Firewall port 8443</li>
+<li>SSH into SDDC Manager / VCF Installer</li>
+<li>Fix <code>/etc/hosts</code> — add appliance hostname and vCenter hostname</li>
+<li>Extract depot certificate using <code>openssl s_client</code></li>
+<li>Import certificate into Java cacerts</li>
+<li>Import certificate into commonsvcs trust store (if exists)</li>
+<li>Restart <code>commonsvcs</code> and <code>lcm</code> services</li>
+<li>Wait 2-3 minutes for services to initialize</li>
+<li>Configure depot in SDDC Manager UI (IP, port 8443, path <code>/PROD</code>)</li>
+<li>Download binaries</li>
+<li>If VCF Operations OVA deployment times out, use manual ovftool deployment (Section 7.10)</li>
+</ol>
+<hr>
+<h2 id="10-references">10. References</h2>
+<ul>
+<li><a href="https://knowledge.broadcom.com/external/article/312168/vcf-offline-depot-deployment.html">Broadcom KB 312168 — VCF Offline Depot Deployment</a></li>
+<li><a href="https://knowledge.broadcom.com/external/article/413848/the-vmware-cloud-foundation-vcf-installe.html">Broadcom KB 413848 — Path Not Found Error</a></li>
+<li><a href="https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/deployment/deploying-a-new-vmware-cloud-foundation-or-vmware-vsphere-foundation-private-cloud-/preparing-your-environment/downloading-binaries-to-the-vcf-installer-appliance/connect-to-an-offline-depot-to-download-binaries/set-up-an-offline-depot-web-server-for-vmware-cloud-foundation.html">Broadcom Techdocs — Set Up an Offline Depot Web Server</a></li>
+<li><a href="https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/deployment/deploying-a-new-vmware-cloud-foundation-or-vmware-vsphere-foundation-private-cloud-/preparing-your-environment/downloading-binaries-to-the-vcf-installer-appliance/download-install-binaries-to-an-offline-depot.html">Broadcom Techdocs — Download Install Binaries to an Offline Depot</a></li>
+<li><a href="https://williamlam.com/2025/10/vcf-software-depot-structure-deep-dive-for-install-upgrade.html">William Lam — VCF Software Depot Structure Deep Dive</a></li>
+</ul>
+<hr>
+<p><strong>Document Information</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Document Title</td>
+<td>VCF 9.0.1 Offline Depot Handbook</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>2.0 (merged from Setup Guide + Handbook)</td>
+</tr>
+<tr>
+<td>Last Updated</td>
+<td>February 2026</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>VMware Workstation 17.x Nested Lab</td>
+</tr>
+<tr>
+<td>VCF Version</td>
+<td>9.0.1</td>
+</tr>
+</tbody></table>
+<p><em>This handbook is intended for lab and educational purposes. Always consult official VMware documentation for production deployments.</em></p>
+<p><em>(c) 2026 Virtual Control LLC. All rights reserved.</em></p>
+
+	
+
+</body></html>
