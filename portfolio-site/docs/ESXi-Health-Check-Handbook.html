@@ -249,7 +249,7 @@ code.hljs {
   
 }/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
 h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
-h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; page-break-before: always; }
 h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
 h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
 table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
@@ -297,7 +297,7 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 </div>
 </div>
 
-<hr>
+
 <div class="toc">
 
 <h2 id="table-of-contents">Table of Contents</h2>
@@ -368,7 +368,6 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 
 </div>
 
-<div class="page-break"></div>
 
 <h2 id="1-overview--purpose"><span id="overview"></span>1. Overview &amp; Purpose</h2>
 <p>This handbook provides a <strong>complete, step-by-step health check procedure</strong> for ESXi 8.0 hosts deployed within a VCF 9.0 environment. Use this during:</p>
@@ -419,8 +418,7 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 <strong>Notation:</strong> All commands in this document are run via SSH as <code>root</code> on the ESXi host unless otherwise specified. Replace <code>&lt;esxi-host&gt;</code> with your actual hostname or IP.
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="2-prerequisites"><span id="prerequisites"></span>2. Prerequisites</h2>
 <h3 id="required-access">Required Access</h3>
@@ -468,9 +466,6 @@ vim-cmd hostsvc/start_ssh
   ssh root@<span class="hljs-variable">$HOST</span> <span class="hljs-string">'&lt;command&gt;'</span>
 <span class="hljs-keyword">done</span>
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="3-quick-reference--all-checks-summary"><span id="quick-reference"></span>3. Quick Reference — All Checks Summary</h2>
 <table>
 <thead>
@@ -628,9 +623,6 @@ vim-cmd hostsvc/start_ssh
 <td>2+ patches behind</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="4-hardware-health"><span id="hardware"></span>4. Hardware Health</h2>
 <h3 id="41-hardware-sensors-ipmi"><span id="hw-sensors"></span>4.1 Hardware Sensors (IPMI)</h3>
 <p><strong>What:</strong> Read IPMI sensor data to verify temperatures, voltages, fan speeds, and power supply status.</p>
@@ -721,7 +713,7 @@ esxcli hardware ipmi bmc get
 4. Always cross-reference with vendor BMC (iDRAC, iLO, IPMI web UI)
 </div>
 
-<hr>
+
 <h3 id="42-memory-hardware-errors"><span id="hw-memory"></span>4.2 Memory Hardware Errors</h3>
 <p><strong>What:</strong> Check for correctable (CE) and uncorrectable (UE) memory errors.</p>
 <pre><code class="hljs bash"><span class="hljs-comment"># Memory overview</span>
@@ -768,7 +760,6 @@ P1-DIMMC1        Bank 2   DDR5   4800    32768 MB  ok
 <td>Immediate replacement</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="43-cpu-health"><span id="hw-cpu"></span>4.3 CPU Health</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># CPU info</span>
 esxcli hardware cpu list | <span class="hljs-built_in">head</span> -30
@@ -783,12 +774,10 @@ CPU Threads: 64
 Hyperthreading Active: true
 Hyperthreading Supported: true
 </code></pre>
-<hr>
 <h3 id="44-pci-devices"><span id="hw-pci"></span>4.4 PCI Devices</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># List all PCI devices</span>
 esxcli hardware pci list | grep -E <span class="hljs-string">"Device Name|Vendor Name|Address"</span>
 </code></pre>
-<hr>
 <h3 id="45-firmware-versions"><span id="hw-firmware"></span>4.5 Firmware Versions</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># BIOS info</span>
 esxcli hardware platform get
@@ -796,9 +785,6 @@ esxcli hardware platform get
 <span class="hljs-comment"># Storage controller firmware</span>
 esxcli storage core adapter list
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="5-storage-health"><span id="storage"></span>5. Storage Health</h2>
 <h3 id="51-vmfs-datastores"><span id="stor-vmfs"></span>5.1 VMFS Datastores</h3>
 <p><strong>What:</strong> Verify all VMFS datastores are mounted, accessible, and have adequate free space.</p>
@@ -845,7 +831,6 @@ esxcli storage filesystem list
 <td>Critical — VMs may not power on</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="52-scsi-device-status"><span id="stor-scsi"></span>5.2 SCSI Device Status</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># List all SCSI devices</span>
 esxcli storage core device list
@@ -882,7 +867,7 @@ esxcli storage core device list | grep -E <span class="hljs-string">"Display Nam
 <strong>APD / PDL Warning:</strong> If any device shows APD or PDL, VMs on that storage may be inaccessible. APD triggers automatic VM termination after 140 seconds by default. Check <code>Misc.APDHandlingEnable</code> and <code>Misc.APDTimeout</code>.
 </div>
 
-<hr>
+
 <h3 id="53-hba-health--multipathing"><span id="stor-hba"></span>5.3 HBA Health &amp; Multipathing</h3>
 <p><strong>What:</strong> Verify all storage paths are active and HBAs are functioning.</p>
 <pre><code class="hljs bash"><span class="hljs-comment"># List HBAs</span>
@@ -946,7 +931,7 @@ Runtime Name: vmhba1:C0:T0:L0
 4. Check multipath policy: <code>esxcli storage nmp device list</code>
 </div>
 
-<hr>
+
 <h3 id="54-nfs-mounts"><span id="stor-nfs"></span>5.4 NFS Mounts</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># List NFS datastores</span>
 esxcli storage nfs list
@@ -975,7 +960,6 @@ nfs-backup   192.168.1.100   /exports   true        true     false      Supporte
 <td>NFS server unreachable</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="55-disk-latency--smart"><span id="stor-latency"></span>5.5 Disk Latency &amp; SMART</h3>
 <p><strong>What:</strong> Check real-time disk latency and SMART health data.</p>
 <h4 id="check-latency-via-esxtop">Check Latency via esxtop</h4>
@@ -1022,9 +1006,6 @@ esxtop -b -d 5 -n 3 | grep -E <span class="hljs-string">"DAVG|KAVG|GAVG"</span>
 <pre><code class="hljs bash"><span class="hljs-comment"># Check SMART status for local disks</span>
 esxcli storage core device smart get -d &lt;device-naa-id&gt;
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="6-networking-health"><span id="networking"></span>6. Networking Health</h2>
 <h3 id="61-vmkernel-adapters"><span id="net-vmknics"></span>6.1 VMkernel Adapters</h3>
 <p><strong>What:</strong> Verify all VMkernel adapters have correct IPs, MTU, and enabled services.</p>
@@ -1097,7 +1078,6 @@ esxcli network ip interface tag get -i vmk2
 <td>Connectivity loss</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="62-vswitch--vds-configuration"><span id="net-vswitches"></span>6.2 vSwitch / vDS Configuration</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># List standard vSwitches</span>
 esxcli network vswitch standard list
@@ -1119,7 +1099,6 @@ Name: DSwitch-Compute
   MTU: 9000
   Uplinks: vmnic2, vmnic3
 </code></pre>
-<hr>
 <h3 id="63-physical-uplink-status"><span id="net-uplinks"></span>6.3 Physical Uplink Status</h3>
 <p><strong>What:</strong> Verify all physical NICs are connected, at expected speed, and link is up.</p>
 <pre><code class="hljs bash">esxcli network nic list
@@ -1163,7 +1142,7 @@ vmnic3  0000:5e:01  i40en   Up            Up           25000  Full    9000   00:
 3. Replace NIC driver: <code>esxcli software vib install -v /path/to/driver.vib</code>
 </div>
 
-<hr>
+
 <h3 id="64-nic-driver--firmware"><span id="net-drivers"></span>6.4 NIC Driver &amp; Firmware</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># Driver details per NIC</span>
 esxcli network nic get -n vmnic0
@@ -1179,7 +1158,6 @@ Driver Info:
 Link Detected: true
 Link Status: Up
 </code></pre>
-<hr>
 <h3 id="65-cdp--lldp-neighbor-info"><span id="net-cdp"></span>6.5 CDP / LLDP Neighbor Info</h3>
 <p><strong>What:</strong> Discover the physical switch port each ESXi NIC is connected to.</p>
 <pre><code class="hljs bash"><span class="hljs-comment"># CDP (Cisco Discovery Protocol)</span>
@@ -1195,7 +1173,6 @@ import ssl
 # ... (connect to host and query PhysicalNicHintInfo)
 "</span>
 </code></pre>
-<hr>
 <h3 id="66-vmkping-connectivity-tests"><span id="net-vmkping"></span>6.6 vmkping Connectivity Tests</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># Management network</span>
 vmkping -I vmk0 &lt;vcenter-ip&gt;
@@ -1238,9 +1215,6 @@ vmkping -I vmk10 -d -s 1572 &lt;other-host-tep-ip&gt;
 <td>Loss or MTU error</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="7-services-health"><span id="services"></span>7. Services Health</h2>
 <h3 id="71-service-listing"><span id="svc-list"></span>7.1 Service Listing</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># List all services and their status</span>
@@ -1333,8 +1307,7 @@ chkconfig --list | <span class="hljs-built_in">sort</span>
 4. Check logs: <code>/var/log/hostd.log</code>, <code>/var/log/vpxa.log</code>
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="8-ntp-configuration"><span id="ntp"></span>8. NTP Configuration</h2>
 <p><strong>What:</strong> Verify NTP is configured, running, and the host clock is synchronized.</p>
@@ -1389,7 +1362,7 @@ ntpq -p
 <strong>Time Sync Critical:</strong> ESXi hosts with &gt; 5 seconds clock drift can cause vSAN issues, certificate validation failures, and cluster partition events.
 </div>
 
-<hr>
+
 <h2 id="9-syslog-configuration"><span id="syslog"></span>9. Syslog Configuration</h2>
 <p><strong>What:</strong> Verify syslog is forwarding to a remote collector.</p>
 <pre><code class="hljs bash"><span class="hljs-comment"># Get syslog config</span>
@@ -1431,7 +1404,6 @@ esxcli system syslog mark --message=<span class="hljs-string">"Health Check Test
 <td>No logging</td>
 </tr>
 </tbody></table>
-<hr>
 <h2 id="10-scratch-partition"><span id="scratch"></span>10. Scratch Partition</h2>
 <p><strong>What:</strong> Verify the scratch partition points to persistent storage (not ramdisk).</p>
 <pre><code class="hljs bash">vim-cmd hostsvc/advopt/get ScratchConfig.ConfiguredScratchLocation
@@ -1445,7 +1417,7 @@ CurrentScratchLocation: /vmfs/volumes/datastore1/.locker-&lt;hostname&gt;
 <strong>Warning:</strong> If the scratch location is <code>/tmp/scratch</code> or empty, it's using ramdisk. Logs and coredumps will be lost on reboot. Set it to persistent storage.
 </div>
 
-<hr>
+
 <h2 id="11-core-dump-configuration"><span id="coredump"></span>11. Core Dump Configuration</h2>
 <pre><code class="hljs bash"><span class="hljs-comment"># Check core dump partition</span>
 esxcli system coredump partition get
@@ -1488,9 +1460,6 @@ Network Server Port: 6500
 <td>PSOD data will be lost</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="12-security-health"><span id="security"></span>12. Security Health</h2>
 <h3 id="121-ssh-status"><span id="sec-ssh"></span>12.1 SSH Status</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># Check if SSH is running</span>
@@ -1519,7 +1488,6 @@ esxcli system settings advanced list -o /UserVars/ESXiShellTimeOut
 <td>900 seconds</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="122-lockdown-mode"><span id="sec-lockdown"></span>12.2 Lockdown Mode</h3>
 <pre><code class="hljs bash">vim-cmd hostsvc/hostsummary | grep lockdownMode
 </code></pre>
@@ -1550,7 +1518,6 @@ esxcli system settings advanced list -o /UserVars/ESXiShellTimeOut
 <td>High-security environments</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="123-esxi-firewall-rules"><span id="sec-firewall"></span>12.3 ESXi Firewall Rules</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># List all firewall rulesets</span>
 esxcli network firewall ruleset list
@@ -1598,7 +1565,6 @@ esxcli network firewall ruleset rule list --ruleset-id=sshServer
 <td>Log forwarding</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="124-certificate-validity"><span id="sec-certs"></span>12.4 Certificate Validity</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># Check the ESXi host certificate</span>
 openssl x509 -<span class="hljs-keyword">in</span> /etc/vmware/ssl/rui.crt -noout -dates -subject
@@ -1632,7 +1598,6 @@ subject=CN = esxi-01.lab.local, ...
 <td>Renew immediately</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="125-account-lockout-policy"><span id="sec-accounts"></span>12.5 Account Lockout Policy</h3>
 <pre><code class="hljs bash">esxcli system account policy get
 </code></pre>
@@ -1640,9 +1605,6 @@ subject=CN = esxi-01.lab.local, ...
 <pre><code>Maximum Failed Login Attempts: 5
 Unlock Time (seconds): 900
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="13-performance-health"><span id="performance"></span>13. Performance Health</h2>
 <h3 id="131-cpu-ready--co-stop"><span id="perf-cpu"></span>13.1 CPU Ready &amp; Co-Stop</h3>
 <p><strong>What:</strong> Check if VMs are experiencing CPU scheduling delays (CPU ready time) or NUMA/co-stop issues.</p>
@@ -1690,7 +1652,7 @@ esxtop -b -d 5 -n 3 &gt; /tmp/esxtop-cpu.csv
 <strong>CPU Ready Explained:</strong> %RDY shows the percentage of time a vCPU wanted to run but had to wait for a physical CPU. High values indicate host CPU overcommitment. Reduce VM vCPU count or migrate VMs to balance load.
 </div>
 
-<hr>
+
 <h3 id="132-memory-ballooning--swap"><span id="perf-mem"></span>13.2 Memory Ballooning &amp; Swap</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># Host memory summary</span>
 esxcli hardware memory get
@@ -1742,7 +1704,7 @@ esxtop
 <strong>Swap Warning:</strong> Active swapping (SWR/s &gt; 0) causes severe VM performance degradation. Add physical memory or reduce VM count.
 </div>
 
-<hr>
+
 <h3 id="133-host-overcommit-ratio"><span id="perf-overcommit"></span>13.3 Host Overcommit Ratio</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># Calculate overcommit ratio</span>
 <span class="hljs-comment"># Total VM vCPUs / Physical threads</span>
@@ -1775,9 +1737,6 @@ esxcli hardware memory get
 <td>&gt; 1.5:1</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="14-boot-configuration"><span id="boot"></span>14. Boot Configuration</h2>
 <p><strong>What:</strong> Verify the boot device, boot banks, and acceptance level.</p>
 <pre><code class="hljs bash"><span class="hljs-comment"># Boot device</span>
@@ -1820,7 +1779,6 @@ Acceptance Level: VMwareCertified
 <td>Remediation needed</td>
 </tr>
 </tbody></table>
-<hr>
 <h2 id="15-patch--vib-level"><span id="patches"></span>15. Patch / VIB Level</h2>
 <p><strong>What:</strong> Verify the installed ESXi image profile matches the VCF BOM.</p>
 <pre><code class="hljs bash"><span class="hljs-comment"># Installed image profile</span>
@@ -1864,9 +1822,6 @@ esxcli software vib list | grep -i nsx
 <td>Per HCL</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="16-port-reference-table"><span id="ports"></span>16. Port Reference Table</h2>
 <h3 id="inbound-ports-to-esxi">Inbound Ports (to ESXi)</h3>
 <table>
@@ -2022,9 +1977,6 @@ esxcli software vib list | grep -i nsx
 <td>Network core dump</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="17-common-issues--remediation"><span id="common-issues"></span>17. Common Issues &amp; Remediation</h2>
 <h3 id="171-psod-purple-screen-of-death">17.1 PSOD (Purple Screen of Death)</h3>
 <table>
@@ -2140,9 +2092,6 @@ esxcli software vib list | grep -i nsx
 <td>Check NIC errors, replace cable/NIC</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="18-cli-quick-reference-card"><span id="cli-reference"></span>18. CLI Quick Reference Card</h2>
 <h3 id="system-information">System Information</h3>
 <table>
@@ -2415,7 +2364,6 @@ esxcli software vib list | grep -i nsx
 <td>vCenter agent log</td>
 </tr>
 </tbody></table>
-<hr>
 <div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #1565c0; color: #666; font-size: 9pt;">
 
 <p><strong>ESXi Hosts Health Check Handbook</strong>

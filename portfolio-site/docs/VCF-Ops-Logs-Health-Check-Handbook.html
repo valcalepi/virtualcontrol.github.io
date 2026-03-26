@@ -249,7 +249,7 @@ code.hljs {
   
 }/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
 h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
-h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; page-break-before: always; }
 h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
 h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
 table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
@@ -430,7 +430,6 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="overview-purpose"></a></p>
 <h1 id="1-overview--purpose">1. Overview &amp; Purpose</h1>
@@ -560,7 +559,6 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 <strong>Note:</strong> In VCF 9, Operations for Logs is deployed and lifecycle-managed through SDDC Manager. The product was previously known as VMware Aria Operations for Logs (8.x) and vRealize Log Insight (pre-8.x). API endpoints and CLI commands remain largely consistent across naming transitions.
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="prerequisites"></a></p>
 <h1 id="2-prerequisites">2. Prerequisites</h1>
@@ -671,8 +669,6 @@ curl -sk -X POST <span class="hljs-string">"https://ops-for-logs.vcf.local/api/v
 <td><code>dig -v</code></td>
 </tr>
 </tbody></table>
-<div class="page-break"></div>
-
 <p><a id="quick-reference"></a></p>
 <h1 id="3-quick-reference-summary-table">3. Quick Reference Summary Table</h1>
 <p>This table provides a single-glance view of every health check in this handbook, with pass/warn/fail criteria.</p>
@@ -872,8 +868,6 @@ curl -sk -X POST <span class="hljs-string">"https://ops-for-logs.vcf.local/api/v
 <td>&gt; 90% heap / OOM</td>
 </tr>
 </tbody></table>
-<div class="page-break"></div>
-
 <p><a id="service-status"></a></p>
 <h1 id="4-service-status">4. Service Status</h1>
 <p>All Ops for Logs nodes run a set of critical services. Each must be verified on <strong>every node</strong> in the cluster. Execute the following checks via SSH to each node.</p>
@@ -1167,8 +1161,6 @@ fluentd         Active: active       Enabled: enabled
   <span class="hljs-built_in">echo</span> <span class="hljs-string">""</span>
 <span class="hljs-keyword">done</span>
 </code></pre>
-<div class="page-break"></div>
-
 <p><a id="cluster-health"></a></p>
 <h1 id="5-cluster-health">5. Cluster Health</h1>
 <p>VCF Operations for Logs operates as a clustered appliance with a minimum of three nodes for high availability. Cluster health verification ensures that all nodes are online, roles are correctly assigned, and the integrated load balancer is distributing traffic.</p>
@@ -1385,8 +1377,6 @@ Connection to ops-for-logs-node3.vcf.local 9042 port [tcp/*] succeeded!
 Connection to ops-for-logs-node2.vcf.local 7000 port [tcp/*] succeeded!
 Connection to ops-for-logs-node3.vcf.local 7000 port [tcp/*] succeeded!
 </code></pre>
-<div class="page-break"></div>
-
 <p><a id="disk-storage"></a></p>
 <h1 id="6-disk--storage-health">6. Disk &amp; Storage Health</h1>
 <p>Storage is the most common source of Ops for Logs issues. The appliance stores all ingested log data, Cassandra metadata, and indexes on the <code>/storage/var</code> partition.</p>
@@ -1573,7 +1563,6 @@ ssh root@<span class="hljs-variable">${OFL_NODE1}</span> <span class="hljs-strin
 4. Check for and remove stale Cassandra snapshots: <code>nodetool clearsnapshot</code>
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="ingestion-rate"></a></p>
 <h1 id="7-ingestion-rate-monitoring">7. Ingestion Rate Monitoring</h1>
@@ -1687,7 +1676,6 @@ ssh root@<span class="hljs-variable">${OFL_NODE1}</span> <span class="hljs-strin
 5. Review forwarding destinations -- slow downstream targets can cause backpressure
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="log-forwarding"></a></p>
 <h1 id="8-log-forwarding-configuration">8. Log Forwarding Configuration</h1>
@@ -1862,7 +1850,6 @@ curl -sk -X POST <span class="hljs-string">"<span class="hljs-variable">${OFL_AP
 5. Check destination-side logs for connection rejections
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="content-packs"></a></p>
 <h1 id="9-content-packs">9. Content Packs</h1>
@@ -2026,7 +2013,6 @@ curl -sk -X GET <span class="hljs-string">"<span class="hljs-variable">${OFL_API
 4. Enable auto-update: <code>PUT /api/v1/content/contentpack/autoupdate</code> with <code>{"autoUpdateEnabled": true}</code>
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="integration-ops"></a></p>
 <h1 id="10-integration-with-vcf-operations">10. Integration with VCF Operations</h1>
@@ -2170,7 +2156,6 @@ curl -sk -X POST <span class="hljs-string">"<span class="hljs-variable">${OFL_AP
 5. Restart the integration service: <code>systemctl restart loginsight</code> (integration is part of the main daemon)
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="agent-status"></a></p>
 <h1 id="11-agent-status">11. Agent Status</h1>
@@ -2324,7 +2309,6 @@ curl -sk -X GET <span class="hljs-string">"<span class="hljs-variable">${OFL_API
 6. Verify agent can reach Ops for Logs on port 9543: <code>nc -zv ops-for-logs.vcf.local 9543</code>
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="api-health"></a></p>
 <h1 id="12-api-health">12. API Health</h1>
@@ -2476,7 +2460,6 @@ forwarding                200 0.145s
 6. As a last resort, restart the loginsight daemon: <code>systemctl restart loginsight</code>
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="certificate-health"></a></p>
 <h1 id="13-certificate-health">13. Certificate Health</h1>
@@ -2607,7 +2590,6 @@ Days remaining: 677
 6. Verify all agents reconnect after certificate change -- agents must trust the new CA
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="ntp-dns"></a></p>
 <h1 id="14-ntp--dns">14. NTP &amp; DNS</h1>
@@ -2787,7 +2769,6 @@ nameserver 192.168.1.11
 5. Clear DNS cache if applicable: <code>systemd-resolve --flush-caches</code>
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="backup-config"></a></p>
 <h1 id="15-backup-configuration">15. Backup Configuration</h1>
@@ -2896,7 +2877,6 @@ ssh root@<span class="hljs-variable">${OFL_NODE1}</span> <span class="hljs-strin
 6. Verify backup integrity by testing a restore in a non-production environment
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="resource-utilization"></a></p>
 <h1 id="16-resource-utilization">16. Resource Utilization</h1>
@@ -3095,7 +3075,6 @@ sdb await: 2.34ms util: 18.56%
 5. <strong>JVM Heap:</strong> Increase Cassandra heap in <code>/storage/var/cassandra/conf/cassandra-env.sh</code>. Restart Cassandra after changes.
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="port-reference"></a></p>
 <h1 id="17-port-reference-table">17. Port Reference Table</h1>
@@ -3357,8 +3336,6 @@ ssh root@<span class="hljs-variable">${OFL_NODE1}</span> <span class="hljs-strin
   nc -zv <span class="hljs-variable">${OFL_HOST}</span> <span class="hljs-variable">${PORT}</span> 2&gt;&amp;1 | grep -E <span class="hljs-string">'succeeded|refused|timed'</span>
 <span class="hljs-keyword">done</span>
 </code></pre>
-<div class="page-break"></div>
-
 <p><a id="common-issues"></a></p>
 <h1 id="18-common-issues--remediation">18. Common Issues &amp; Remediation</h1>
 <p>This section provides detailed troubleshooting guidance for the most frequently encountered Ops for Logs problems.</p>
@@ -3566,7 +3543,6 @@ ssh root@&lt;esxi-host&gt; <span class="hljs-string">"nc -zv <span class="hljs-v
 6. <strong>DNS issue:</strong> Verify the agent can resolve the Ops for Logs FQDN
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="cli-reference"></a></p>
 <h1 id="19-cli-quick-reference-card">19. CLI Quick Reference Card</h1>
@@ -3903,8 +3879,6 @@ ssh root@&lt;esxi-host&gt; <span class="hljs-string">"nc -zv <span class="hljs-v
 <td>Log Insight agent log (on agent hosts)</td>
 </tr>
 </tbody></table>
-<div class="page-break"></div>
-
 <p><a id="api-reference"></a></p>
 <h1 id="20-api-quick-reference">20. API Quick Reference</h1>
 <p>All API endpoints use the base URL <code>https://&lt;ops-for-logs-vip&gt;/api/v1/</code>. Authentication is required for most endpoints via the <code>Authorization: Bearer &lt;token&gt;</code> header.</p>
@@ -4117,9 +4091,6 @@ curl -sk -X PUT <span class="hljs-string">"https://<span class="hljs-variable">$
 curl -sk -X GET <span class="hljs-string">"https://<span class="hljs-variable">${OFL_HOST}</span>/api/v1/archive"</span> \
   -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">${TOKEN}</span>"</span> | jq <span class="hljs-string">'.'</span>
 </code></pre>
-<div class="page-break"></div>
-
-<hr>
 <div style="text-align: center; padding: 40px 20px; color: #666;">
 
 <p><strong>VCF Operations for Logs Health Check Handbook</strong></p>

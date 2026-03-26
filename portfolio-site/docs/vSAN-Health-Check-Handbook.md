@@ -8,7 +8,7 @@ classification: "Internal Use"
 css: |-
   body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
   h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
-  h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+  h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; page-break-before: always; }
   h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
   h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
   table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
@@ -64,7 +64,6 @@ pdf_options:
 
 </div>
 
----
 
 <div class="toc">
 
@@ -189,7 +188,6 @@ pdf_options:
 
 </div>
 
-<div class="page-break"></div>
 
 <a id="overview-and-purpose"></a>
 
@@ -250,7 +248,6 @@ This handbook is intended for:
 - **Operations Teams** performing routine maintenance windows
 - **Escalation Engineers** troubleshooting vSAN issues
 
-<div class="page-break"></div>
 
 <a id="prerequisites"></a>
 
@@ -361,7 +358,6 @@ Get-Module VMware.VimAutomation.Storage -ListAvailable
 <strong>PowerCLI 13.3+:</strong> VCF 9 ships with vCenter 8.x which requires PowerCLI 13.3 or later for full vSAN ESA cmdlet support. Ensure you are running the latest version before executing vSAN commands.
 </div>
 
-<div class="page-break"></div>
 
 <a id="quick-reference-summary"></a>
 
@@ -397,7 +393,6 @@ The following table provides a consolidated view of every health check in this h
 | 24 | Health Service Status | vCenter UI | Running, recent test | Last test > 24h ago | Service not running |
 | 25 | Silenced Alarms | Health service | 0 silenced | 1-3 silenced | > 3 silenced |
 
-<div class="page-break"></div>
 
 <a id="vsan-cluster-health"></a>
 
@@ -600,7 +595,6 @@ done
 5. As a last resort, remove and re-add the host to the vSAN cluster
 </div>
 
-<div class="page-break"></div>
 
 <a id="disk-group-status"></a>
 
@@ -767,7 +761,6 @@ foreach ($disk in $vsanDisks) {
 } | Format-Table -AutoSize
 ```
 
-<div class="page-break"></div>
 
 <a id="capacity-analysis"></a>
 
@@ -929,7 +922,6 @@ With FTT=1, RAID-1 mirroring:
 6. Review and right-size VMDK allocations
 </div>
 
-<div class="page-break"></div>
 
 <a id="resync-status"></a>
 
@@ -1041,7 +1033,6 @@ esxcli system settings advanced list -o /VSAN/ResyncThrottleAdaptive
 <strong>Performance Impact:</strong> During large-scale resyncs (e.g., after host failure), expect 10-30% reduction in VM IO performance. Avoid scheduling additional maintenance operations or large deployments until resyncs complete.
 </div>
 
-<div class="page-break"></div>
 
 <a id="vsan-network-health"></a>
 
@@ -1274,7 +1265,6 @@ esxcli vsan cluster get | grep -A2 "Witness"
 | <span class="badge-warn">WARN</span> | Witness reachable but RTT > 100ms | Investigate WAN link quality |
 | <span class="badge-fail">FAIL</span> | Witness unreachable from either site | Immediate investigation -- quorum at risk |
 
-<div class="page-break"></div>
 
 <a id="performance-health"></a>
 
@@ -1468,7 +1458,6 @@ esxcli vsan health cluster list -t "Performance Service"
 | <span class="badge-warn">WARN</span> | Service enabled but stats database > 80% full | Archive or increase stats DB size |
 | <span class="badge-fail">FAIL</span> | Performance service disabled or not functioning | Enable via PowerCLI or vCenter UI |
 
-<div class="page-break"></div>
 
 <a id="object-health-compliance"></a>
 
@@ -1619,7 +1608,6 @@ esxcli vsan debug object list --type=reducedRedundancy
 5. Restart CLOMD if the service is stuck: <code>/etc/init.d/clomd restart</code>
 </div>
 
-<div class="page-break"></div>
 
 <a id="stretched-cluster-health"></a>
 
@@ -1760,7 +1748,6 @@ vmkping -I vmk1 -c 100 <site-b-host-vsan-ip>
 <strong>Latency Note:</strong> vSAN stretched clusters in VCF 9 support up to 5ms RTT between data sites for write operations (synchronous replication). The witness host can tolerate up to 200ms RTT. Exceeding these limits will cause write performance degradation or cluster instability.
 </div>
 
-<div class="page-break"></div>
 
 <a id="fault-domains"></a>
 
@@ -1856,7 +1843,6 @@ foreach ($pol in $policies) {
 <code>New-VsanFaultDomain -Name "rack-05" -VMHost (Get-VMHost "esx-05.vcf.local")</code>
 </div>
 
-<div class="page-break"></div>
 
 <a id="vsan-health-service-detail"></a>
 
@@ -1955,7 +1941,6 @@ $healthSystem.VsanHealthSetVsanClusterSilentChecks(
 | <span class="badge-warn">WARN</span> | 1-3 silenced alarms | Review each; unsilence if no longer needed |
 | <span class="badge-fail">FAIL</span> | > 3 silenced alarms | Audit all silenced checks; likely masking real issues |
 
-<div class="page-break"></div>
 
 <a id="hcl-compliance"></a>
 
@@ -2055,7 +2040,6 @@ $healthSystem.VsanVcUploadHclDb($jsonContent)
 4. After updating, re-run health checks to verify compliance
 </div>
 
-<div class="page-break"></div>
 
 <a id="port-reference-table"></a>
 
@@ -2106,7 +2090,6 @@ nc -z -w3 172.16.10.104 2233 && echo "OK" || echo "FAIL"
 <strong>VCF 9 Note:</strong> In VCF 9, vSAN ESA may use RDMA transport on ports 8100/8200 when supported NICs are present. Ensure these ports are open if RDMA is enabled in your environment.
 </div>
 
-<div class="page-break"></div>
 
 <a id="common-issues-remediation"></a>
 
@@ -2334,7 +2317,6 @@ esxcli vsan debug object list --type=nonCompliant
 6. After resolving constraints, CLOM will automatically retry placement
 </div>
 
-<div class="page-break"></div>
 
 <a id="cli-quick-reference-card"></a>
 
@@ -2500,7 +2482,6 @@ esxcli system settings advanced set -o /VSAN/ResyncThrottleAdaptive -i 1
 /var/log/vsan/observer/
 ```
 
-<div class="page-break"></div>
 
 <a id="powercli-quick-reference"></a>
 
@@ -2784,9 +2765,7 @@ function Get-VsanHealthReport {
 Get-VsanHealthReport -ClusterName "SDDC-Cluster1"
 ```
 
-<div class="page-break"></div>
 
----
 
 <div style="text-align: center; padding: 40px 20px; color: #666;">
 
