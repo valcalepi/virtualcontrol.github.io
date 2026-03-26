@@ -5,5 +5,6 @@
 !portfolio-site/
 !portfolio-site/**
 
-# And the gitignore itself
+# And the gitignore and README
 !.gitignore
+!README.md
