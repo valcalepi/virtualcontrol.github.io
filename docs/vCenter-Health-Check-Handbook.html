@@ -249,7 +249,7 @@ code.hljs {
   
 }/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
 h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
-h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; page-break-before: always; }
 h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
 h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
 table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
@@ -297,7 +297,7 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 </div>
 </div>
 
-<hr>
+
 <div class="toc">
 
 <h2 id="table-of-contents">Table of Contents</h2>
@@ -417,7 +417,6 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 
 </div>
 
-<div class="page-break"></div>
 
 <h2 id="1-overview--purpose"><span id="overview"></span>1. Overview &amp; Purpose</h2>
 <p>This handbook provides a <strong>complete, step-by-step health check procedure</strong> for VMware vCenter Server 8.x deployed within a VCF 9.0 environment. It is designed for VMware administrators who need to verify vCenter Server health during:</p>
@@ -506,8 +505,7 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 <code>$VC_TOKEN</code> = Session token obtained via authentication API
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="2-prerequisites"><span id="prerequisites"></span>2. Prerequisites</h2>
 <h3 id="required-access">Required Access</h3>
@@ -601,9 +599,6 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
   -d <span class="hljs-string">'{"enabled": true}'</span>
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="3-quick-reference----all-checks-summary"><span id="quick-reference"></span>3. Quick Reference -- All Checks Summary</h2>
 <table>
 <thead>
@@ -777,9 +772,6 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 <td><span class="badge-fail">Not configured</span></td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="4-vpxd-service-health"><span id="vpxd-health"></span>4. VPXD Service Health</h2>
 <p>The <strong>VPXD</strong> (VMware VirtualCenter Server Daemon) is the core service of vCenter Server. It manages ESXi hosts, virtual machines, storage, and networking. If VPXD is down, the entire vCenter is non-functional.</p>
 <h3 id="41-vpxd-process-status"><span id="vpxd-process"></span>4.1 VPXD Process Status</h3>
@@ -921,9 +913,6 @@ grep -c <span class="hljs-string">"core dump\|segfault\|SIGABRT"</span> /var/log
 <td><span class="badge-fail">FAIL</span></td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="5-vcenter-services-status"><span id="vcenter-services"></span>5. vCenter Services Status</h2>
 <h3 id="51-vmon-cli-service-listing"><span id="vmon-cli"></span>5.1 vmon-cli Service Listing</h3>
 <p>The <code>vmon-cli</code> utility manages vCenter services at the vMon (VMware Service Lifecycle Manager) level.</p>
@@ -1143,8 +1132,7 @@ service-control --stop vmware-vsphere-ui &amp;&amp; service-control --start vmwa
 4. Last resort full restart: <code>reboot</code> (from appliance shell)
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="6-vcenter-appliance-health-vami"><span id="vami-health"></span>6. vCenter Appliance Health (VAMI)</h2>
 <p>The VAMI (vCenter Server Appliance Management Interface) REST API provides health status for all key appliance subsystems. These endpoints return standardized color-coded health states: <code>green</code>, <code>yellow</code>, <code>orange</code>, <code>red</code>, <code>gray</code>.</p>
@@ -1409,9 +1397,6 @@ load                      : green
 swap                      : green
 softwarepackages          : green
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="7-database-health"><span id="database-health"></span>7. Database Health</h2>
 <p>vCenter Server 8.x uses an embedded PostgreSQL database (vPostgres) for all configuration and inventory data. Database health is foundational to vCenter operations.</p>
 <h3 id="71-postgresql-embedded-db-status"><span id="db-postgres"></span>7.1 PostgreSQL Embedded DB Status</h3>
@@ -1574,9 +1559,6 @@ LIMIT 10;"</span>
 <td><span class="badge-fail">FAIL</span></td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="8-vcenter-ha-vcha"><span id="vcha"></span>8. vCenter HA (VCHA)</h2>
 <p>vCenter High Availability (VCHA) provides automated failover for vCenter Server using an active/passive/witness architecture.</p>
 <h3 id="81-vcha-mode--status"><span id="vcha-mode"></span>8.1 VCHA Mode &amp; Status</h3>
@@ -1711,8 +1693,7 @@ curl -sk -X POST \
 5. If passive node offline, redeploy: remove and re-add VCHA via vSphere Client
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="9-certificate-health"><span id="certificate-health"></span>9. Certificate Health</h2>
 <p>Certificate expiry is one of the most common causes of vCenter outages. Regular monitoring of all certificate stores is essential.</p>
@@ -1898,8 +1879,7 @@ Certificate will not expire
 4. KB Reference: <a href="https://knowledge.broadcom.com/external/article?legacyId=2111411">KB 2111411</a> for STS certificate renewal
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="10-storage-health"><span id="storage-health"></span>10. Storage Health</h2>
 <h3 id="101-disk-partitions--filesystem"><span id="disk-partitions"></span>10.1 Disk Partitions &amp; Filesystem</h3>
@@ -2017,8 +1997,7 @@ tmpfs           6.0G   48M  5.9G   1% /dev/shm
 5. Expand disk: Shutdown appliance, expand VMDK, boot, run <code>/usr/lib/applmgmt/support/scripts/expand_disk.sh</code>
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="11-performance--resource-utilization"><span id="performance"></span>11. Performance &amp; Resource Utilization</h2>
 <h3 id="111-cpu-utilization"><span id="perf-cpu"></span>11.1 CPU Utilization</h3>
@@ -2139,8 +2118,7 @@ vmstat 1 5
 5. Check for DRS/HA tasks in loop: review <code>/var/log/vmware/vpxd/vpxd.log</code> for repeated task patterns
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="12-sso--identity-source-health"><span id="sso-health"></span>12. SSO / Identity Source Health</h2>
 <h3 id="121-sso-domain-health"><span id="sso-domain"></span>12.1 SSO Domain Health</h3>
@@ -2259,8 +2237,7 @@ curl -sk -X GET \
 5. STS cert expiry: Replace using KB 79248 procedures
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="13-plugins--extensions"><span id="plugins"></span>13. Plugins &amp; Extensions</h2>
 <h3 id="131-registered-plugins"><span id="plugins-list"></span>13.1 Registered Plugins</h3>
@@ -2348,8 +2325,7 @@ curl -sk -X GET \
 4. Check plugin compatibility with current vCenter version
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="14-lookup-service--psc"><span id="lookup-service"></span>14. Lookup Service &amp; PSC</h2>
 <p>The Lookup Service is the service registry for all vSphere components. Since vCenter 7.0+, the Platform Services Controller (PSC) is embedded.</p>
@@ -2464,8 +2440,7 @@ Service Type: cs.envoy
 4. If corrupted, run: <code>/usr/lib/vmware-lookupsvc/tools/ls_recover.py</code>
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="15-inventory-verification"><span id="inventory"></span>15. Inventory Verification</h2>
 <h3 id="151-datacenter--cluster--host--vm-counts"><span id="inv-counts"></span>15.1 Datacenter / Cluster / Host / VM Counts</h3>
@@ -2595,8 +2570,7 @@ NET=$(curl -sk <span class="hljs-string">"https://<span class="hljs-variable">${
 4. If hosts persistently disconnect, check network, DNS, and host certificates
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="16-syslog--log-configuration"><span id="syslog"></span>16. Syslog &amp; Log Configuration</h2>
 <h3 id="161-syslog-forwarding"><span id="syslog-forward"></span>16.1 Syslog Forwarding</h3>
@@ -2691,8 +2665,7 @@ vc-support-bundle
 <strong>Tip:</strong> Support bundles can be large (several GB). Ensure sufficient free space in <code>/storage/log</code> before generating. Target directory: <code>/var/log/vmware/support/</code>
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="17-ntp-configuration"><span id="ntp"></span>17. NTP Configuration</h2>
 <p>Time synchronization is critical for vCenter operations, certificate validation, SSO token integrity, and log correlation.</p>
@@ -2785,8 +2758,7 @@ Last offset     : +0.000000312 seconds
 4. Check firewall allows NTP (UDP 123) outbound
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="18-port-reference-table"><span id="ports"></span>18. Port Reference Table</h2>
 <h3 id="vcenter-server-inbound-ports">vCenter Server Inbound Ports</h3>
@@ -3005,9 +2977,6 @@ nc -zv ntp1.lab.local 123 2&gt;&amp;1
 nc -zv dc01.lab.local 389 2&gt;&amp;1
 nc -zv esxi01.lab.local 443 2&gt;&amp;1
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="19-common-issues--remediation"><span id="common-issues"></span>19. Common Issues &amp; Remediation</h2>
 <h3 id="191-vpxd-crashes-or-wont-start">19.1 VPXD Crashes or Won't Start</h3>
 <p><strong>Symptoms:</strong> vSphere Client inaccessible, <code>service-control --status vmware-vpxd</code> shows STOPPED.</p>
@@ -3121,8 +3090,7 @@ grep -i <span class="hljs-string">"login\|auth\|lock"</span> /var/log/vmware/sso
 6. Long-term: right-size vCenter appliance per VMware sizing guidelines
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="20-cli-quick-reference-card"><span id="cli-reference"></span>20. CLI Quick Reference Card</h2>
 <h3 id="service-management">Service Management</h3>
@@ -3402,9 +3370,6 @@ grep -i <span class="hljs-string">"login\|auth\|lock"</span> /var/log/vmware/sso
 <td>DNS resolution test</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="21-api-quick-reference"><span id="api-reference"></span>21. API Quick Reference</h2>
 <h3 id="authentication">Authentication</h3>
 <table>
@@ -3700,7 +3665,6 @@ curl -sk -X DELETE \
   -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
 <span class="hljs-built_in">unset</span> VC_TOKEN VC_PASS
 </code></pre>
-<hr>
 <div class="info-box">
 <strong>Document Information:</strong><br>
 <b>Title:</b> vCenter Server Health Check Handbook<br>

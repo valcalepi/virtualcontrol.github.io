@@ -1,0 +1,2165 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8"><style>* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	line-height: 1.6;
+	font-size: 0.6875em; /* 11 pt */
+	color: #111;
+	margin: 0;
+}
+
+body > :first-child {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+body > :last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0.5em 0 0.25em;
+}
+
+h5,
+h6 {
+	padding: 0;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h6 {
+	font-size: 0.875em;
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0.25em 0 1em;
+}
+
+blockquote {
+	margin: 0.5em 0 1em;
+	padding-left: 0.5em;
+	padding-right: 1em;
+	border-left: 4px solid gainsboro;
+	font-style: italic;
+}
+
+ul,
+ol {
+	margin: 0;
+	margin-left: 1em;
+	padding: 0 1.5em 0.5em;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+p code,
+li code,
+pre code {
+	background-color: #f8f8f8;
+	padding: 0.1em 0.375em;
+	border: 1px solid #f8f8f8;
+	border-radius: 0.25em;
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+pre code {
+	display: block;
+	padding: 0.5em;
+}
+
+.page-break {
+	page-break-after: always;
+}
+
+img {
+	max-width: 100%;
+	margin: 1em 0;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: block;
+	margin: 0 0 1em;
+	width: 100%;
+	overflow: auto;
+}
+
+table th,
+table td {
+	padding: 0.5em 1em;
+	border: 1px solid gainsboro;
+}
+
+table th {
+	font-weight: 600;
+}
+
+table tr {
+	background-color: white;
+	border-top: 1px solid gainsboro;
+}
+
+table tr:nth-child(2n) {
+	background-color: whitesmoke;
+}
+/*# sourceURL=E:\VCF-Depot\node_modules\md-to-pdf\markdown.css*/</style><style>pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/
+.hljs {
+  color: #24292e;
+  background: #ffffff
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  /* prettylights-syntax-keyword */
+  color: #d73a49
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  /* prettylights-syntax-entity */
+  color: #6f42c1
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  /* prettylights-syntax-constant */
+  color: #005cc5
+}
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  /* prettylights-syntax-string */
+  color: #032f62
+}
+.hljs-built_in,
+.hljs-symbol {
+  /* prettylights-syntax-variable */
+  color: #e36209
+}
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  /* prettylights-syntax-comment */
+  color: #6a737d
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  /* prettylights-syntax-entity-tag */
+  color: #22863a
+}
+.hljs-subst {
+  /* prettylights-syntax-storage-modifier-import */
+  color: #24292e
+}
+.hljs-section {
+  /* prettylights-syntax-markup-heading */
+  color: #005cc5;
+  font-weight: bold
+}
+.hljs-bullet {
+  /* prettylights-syntax-markup-list */
+  color: #735c0f
+}
+.hljs-emphasis {
+  /* prettylights-syntax-markup-italic */
+  color: #24292e;
+  font-style: italic
+}
+.hljs-strong {
+  /* prettylights-syntax-markup-bold */
+  color: #24292e;
+  font-weight: bold
+}
+.hljs-addition {
+  /* prettylights-syntax-markup-inserted */
+  color: #22863a;
+  background-color: #f0fff4
+}
+.hljs-deletion {
+  /* prettylights-syntax-markup-deleted */
+  color: #b31d28;
+  background-color: #ffeef0
+}
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
+  
+}/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; }
+h1 { color: #ffffff; background: linear-gradient(135deg, #4a148c, #7b1fa2); padding: 14px 20px; border-radius: 6px; font-size: 22pt; }
+h2 { color: #4a148c; border-bottom: 3px solid #7b1fa2; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+h3 { color: #6a1b9a; font-size: 11pt; margin-top: 16px; border-left: 4px solid #7b1fa2; padding-left: 10px; }
+table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 9pt; }
+th { background-color: #4a148c; color: white; padding: 6px 8px; text-align: left; }
+td { border: 1px solid #d0d0d0; padding: 5px 8px; }
+tr:nth-child(even) { background-color: #f3e5f5; }
+code { background-color: #f3e5f5; padding: 1px 4px; border-radius: 3px; font-size: 9pt; font-family: 'Cascadia Code', Consolas, monospace; }
+pre { background-color: #f3e5f5; padding: 10px; border-radius: 4px; border-left: 4px solid #7b1fa2; font-size: 9pt; line-height: 1.4; }
+a { color: #6a1b9a; text-decoration: none; }
+blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 8px 12px; margin: 8px 0; font-size: 9pt; }
+.toc ul { list-style: none; padding-left: 0; }
+.toc > ul > li { margin-bottom: 8px; }
+.toc > ul > li > a { font-weight: bold; font-size: 11pt; color: #4a148c; text-decoration: none; }
+.toc ul ul { padding-left: 20px; margin-top: 4px; }
+.toc ul ul li a { font-size: 9.5pt; color: #333; text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.danger { border-left: 4px solid #c0392b; background: #fdf0ef; padding: 8px 12px; margin: 8px 0; font-size: 9pt; }</style></head>
+	<body class="">
+		<h1 id="vcf-90-undocumented-issues--discoveries-reference">VCF 9.0 Undocumented Issues &amp; Discoveries Reference</h1>
+<p><strong>Version:</strong> 3.0 | <strong>Date:</strong> March 2026 | <strong>Total Discoveries:</strong> 35</p>
+<blockquote>
+<p>Every issue in this document was discovered through independent lab investigation. None have official Broadcom KB articles, documentation, or known workarounds at the time of discovery. Each entry includes the exact problem, impact, and <strong>complete copy-paste-ready resolution steps</strong>.</p>
+</blockquote>
+<hr>
+<div class="toc">
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#summary">1. Summary by Category</a></li>
+<li><a href="#db">2. Database &amp; Credential Operations (7 issues)</a></li>
+<li><a href="#nsx">3. NSX in Nested/Resource-Constrained Environments (6 issues)</a></li>
+<li><a href="#certs">4. Certificate Management (5 issues)</a></li>
+<li><a href="#vcfops">5. VCF Operations 9.x Changes (6 issues)</a></li>
+<li><a href="#infra">6. Infrastructure &amp; Platform (4 issues)</a></li>
+<li><a href="#crash">7. Crash Recovery &amp; VCF Operations Suite-API (7 issues)</a></li>
+<li><a href="#quick">8. Quick Reference: All 35 Issues</a></li>
+<li><a href="#docinfo">9. Document Information</a></li>
+</ul>
+
+</div>
+
+<hr>
+<h2 id="1-summary-by-category"><span id="summary"></span>1. Summary by Category</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Issues</th>
+<th>Severity Range</th>
+<th>Key Impact</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Database &amp; Credential Operations</td>
+<td>#1–7</td>
+<td>Critical</td>
+<td>All future credential ops blocked without DB repair</td>
+</tr>
+<tr>
+<td>NSX in Nested Environments</td>
+<td>#8–13</td>
+<td>High</td>
+<td>OOM crashes, boot storms, service instability</td>
+</tr>
+<tr>
+<td>Certificate Management</td>
+<td>#14–18</td>
+<td>High</td>
+<td>VDT failures, SDDC Manager trust broken</td>
+</tr>
+<tr>
+<td>VCF Operations 9.x Changes</td>
+<td>#19–24</td>
+<td>Medium-High</td>
+<td>Log/cert paths changed, adapters fail silently</td>
+</tr>
+<tr>
+<td>Infrastructure &amp; Platform</td>
+<td>#25–28</td>
+<td>Medium</td>
+<td>vMotion failures, storage waste, missing tools</td>
+</tr>
+<tr>
+<td>Crash Recovery &amp; Suite-API</td>
+<td>#29–35</td>
+<td>High</td>
+<td>Cannot manage VCF Ops without undocumented API formats</td>
+</tr>
+</tbody></table>
+<p><strong>Discovery Timeline:</strong></p>
+<ul>
+<li>Issues #1–28: Discovered during initial VCF 9.0.1 deployment (January–February 2026)</li>
+<li>Issues #29–35: Discovered during Windows Update crash recovery (March 2026)</li>
+</ul>
+<hr>
+<h2 id="2-database--credential-operations"><span id="db"></span>2. Database &amp; Credential Operations</h2>
+<h3 id="issue-1-sddc-manager-postgresql-schema-unmapped">Issue #1: SDDC Manager PostgreSQL Schema Unmapped</h3>
+<p><strong>Problem:</strong> The SDDC Manager PostgreSQL database schema — table names, column names, and relationships — is completely undocumented by Broadcom.</p>
+<p><strong>Impact:</strong> Cannot troubleshoot credential failures, stuck tasks, or stale locks without knowing the schema.</p>
+<p><strong>Resolution — Map the schema yourself:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Step 1: SSH to SDDC Manager</span>
+ssh vcf@sddc-manager.lab.local
+<span class="hljs-comment"># Enter password when prompted: Success01!0909!!</span>
+
+<span class="hljs-comment"># Step 2: Switch to root (needed for postgres access)</span>
+su -
+<span class="hljs-comment"># Enter root password: Success01!0909!!</span>
+
+<span class="hljs-comment"># Step 3: Connect to PostgreSQL (MUST use -h 127.0.0.1 — see Issue #5)</span>
+<span class="hljs-built_in">sudo</span> -u postgres psql -h 127.0.0.1 -d platform
+
+<span class="hljs-comment"># Step 4: List all tables in the platform database</span>
+SELECT table_name FROM information_schema.tables
+WHERE table_schema = <span class="hljs-string">'public'</span> ORDER BY table_name;
+
+<span class="hljs-comment"># Step 5: Get column details for any table</span>
+SELECT column_name, data_type, is_nullable
+FROM information_schema.columns
+WHERE table_name = <span class="hljs-string">'nsxt'</span> ORDER BY ordinal_position;
+
+<span class="hljs-comment"># Step 6: Check a table's current content</span>
+SELECT * FROM nsxt;
+SELECT * FROM lock;
+SELECT <span class="hljs-built_in">id</span>, status, resolved FROM task_metadata ORDER BY <span class="hljs-built_in">id</span> DESC LIMIT 10;
+</code></pre>
+<p><strong>Key tables discovered (complete reference):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Purpose</th>
+<th>Key Columns</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>nsxt</code></td>
+<td>NSX cluster status</td>
+<td><code>id</code>, <code>state</code> (NOT <code>status</code>)</td>
+<td><code>state</code> must be <code>ACTIVE</code> for credential ops</td>
+</tr>
+<tr>
+<td><code>lock</code></td>
+<td>Resource-level locks</td>
+<td><code>resource_id</code>, <code>lock_type</code>, <code>created_at</code></td>
+<td>Stale locks block ALL operations</td>
+</tr>
+<tr>
+<td><code>task_metadata</code></td>
+<td>Task tracking</td>
+<td><code>id</code>, <code>resolved</code> (boolean), <code>status</code></td>
+<td><code>resolved</code> must be <code>true</code> for completed tasks</td>
+</tr>
+<tr>
+<td><code>task_lock</code></td>
+<td>Task-level locks</td>
+<td><code>task_id</code>, <code>resource_id</code></td>
+<td>Links tasks to locked resources</td>
+</tr>
+<tr>
+<td><code>credential</code></td>
+<td>Managed credentials</td>
+<td><code>id</code>, <code>resource_type</code>, <code>account_type</code></td>
+<td>Credential inventory</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td>ESXi hosts</td>
+<td><code>id</code>, <code>fqdn</code>, <code>status</code></td>
+<td>Commissioned host records</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="issue-2-credential-cascade-failure-mechanism">Issue #2: Credential Cascade Failure Mechanism</h3>
+<p><strong>Problem:</strong> A failed credential rotation leaves NSX stuck in <code>ACTIVATING</code> state, stale locks accumulate, and unresolved tasks pile up. Each UI retry creates more locks, making it progressively worse.</p>
+<p><strong>Impact:</strong> All future credential operations are permanently blocked. The SDDC Manager UI shows errors on every credential operation.</p>
+<p><strong>How to identify this issue:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Step 1: Get SDDC Manager API token</span>
+TOKEN=$(curl -sk -X POST https://sddc-manager.lab.local/v1/tokens \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"administrator@vsphere.local","password":"Success01!0909!!"}'</span> \
+  | python3 -c <span class="hljs-string">"import sys,json;print(json.load(sys.stdin)['accessToken'])"</span>)
+
+<span class="hljs-comment"># Step 2: Check for stuck tasks</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks?status=IN_PROGRESS"</span> | python3 -m json.tool
+
+<span class="hljs-comment"># Step 3: Check for resource locks</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/resource-locks | python3 -m json.tool
+
+<span class="hljs-comment"># Step 4: Check NSX status (should be ACTIVE, not ACTIVATING)</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/nsxt-clusters | python3 -m json.tool
+</code></pre>
+<p><strong>If you see:</strong> stuck IN_PROGRESS tasks, active resource locks, and/or NSX in ACTIVATING state — you have a credential cascade failure. <strong>Follow Issue #4 for the complete 6-step fix.</strong></p>
+<hr>
+<h3 id="issue-3-api-cannot-cancel-stuck-tasks">Issue #3: API Cannot Cancel Stuck Tasks</h3>
+<p><strong>Problem:</strong> The SDDC Manager API returns <code>TA_TASK_CAN_NOT_BE_RETRIED</code> when attempting to retry stuck tasks. DELETE returns HTTP 500.</p>
+<p><strong>Impact:</strong> Database repair is the only fix path — the API provides no mechanism to resolve this.</p>
+<p><strong>How to confirm the API cannot help:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Attempt to retry a stuck task (this will fail)</span>
+curl -sk -X PATCH <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks/&lt;task-id&gt;"</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"status":"IN_PROGRESS"}'</span>
+<span class="hljs-comment"># Response: {"errorCode":"TA_TASK_CAN_NOT_BE_RETRIED","message":"Task cannot be retried"}</span>
+
+<span class="hljs-comment"># Attempt to delete a stuck task (this will also fail)</span>
+curl -sk -X DELETE <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks/&lt;task-id&gt;"</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span>
+<span class="hljs-comment"># Response: HTTP 500</span>
+</code></pre>
+<p><strong>Resolution — Direct SQL fix:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH to SDDC Manager and connect to PostgreSQL</span>
+ssh vcf@sddc-manager.lab.local
+su -
+<span class="hljs-built_in">sudo</span> -u postgres psql -h 127.0.0.1 -d platform
+
+<span class="hljs-comment"># Find the stuck task ID</span>
+SELECT <span class="hljs-built_in">id</span>, name, status, resolved FROM task_metadata
+WHERE status = <span class="hljs-string">'IN_PROGRESS'</span> OR resolved = <span class="hljs-literal">false</span>
+ORDER BY <span class="hljs-built_in">id</span> DESC;
+
+<span class="hljs-comment"># Mark the specific stuck task as resolved</span>
+UPDATE task_metadata SET resolved = <span class="hljs-literal">true</span> WHERE <span class="hljs-built_in">id</span> = <span class="hljs-string">'&lt;task-id&gt;'</span>;
+
+<span class="hljs-comment"># Or mark ALL unresolved tasks as resolved (nuclear option)</span>
+UPDATE task_metadata SET resolved = <span class="hljs-literal">true</span> WHERE resolved = <span class="hljs-literal">false</span>;
+
+<span class="hljs-comment"># Verify the fix</span>
+SELECT <span class="hljs-built_in">id</span>, name, status, resolved FROM task_metadata
+WHERE resolved = <span class="hljs-literal">false</span>;
+-- Should <span class="hljs-built_in">return</span> 0 rows
+
+<span class="hljs-comment"># Exit psql</span>
+\q
+</code></pre>
+<hr>
+<h3 id="issue-4-6-step-postgresql-repair-procedure">Issue #4: 6-Step PostgreSQL Repair Procedure</h3>
+<p><strong>Problem:</strong> Fixing a credential cascade failure requires updating three tables in a specific sequence. Partial fixes still fail because all three tables participate in prevalidation. You MUST do all steps in order.</p>
+<p><strong>Impact:</strong> Without all 6 steps in order, the system remains broken.</p>
+<p><strong>Complete fix procedure (copy-paste every command):</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># ================================================================</span>
+<span class="hljs-comment"># SDDC MANAGER CREDENTIAL CASCADE FAILURE — COMPLETE FIX</span>
+<span class="hljs-comment"># ================================================================</span>
+<span class="hljs-comment"># Run each step in order. Do NOT skip steps.</span>
+<span class="hljs-comment"># ================================================================</span>
+
+<span class="hljs-comment"># STEP 1: SSH to SDDC Manager</span>
+ssh vcf@sddc-manager.lab.local
+<span class="hljs-comment"># Password: Success01!0909!!</span>
+
+<span class="hljs-comment"># Switch to root</span>
+su -
+<span class="hljs-comment"># Password: Success01!0909!!</span>
+
+<span class="hljs-comment"># STEP 2: Enable trust authentication for PostgreSQL</span>
+<span class="hljs-comment"># (Required because the PostgreSQL password is not discoverable)</span>
+<span class="hljs-built_in">cp</span> /data/vmware/vcf/commonsvcs/postgresql/pg_hba.conf \
+   /data/vmware/vcf/commonsvcs/postgresql/pg_hba.conf.backup
+
+<span class="hljs-comment"># Change "md5" to "trust" for local connections</span>
+sed -i <span class="hljs-string">'s/host    all.*127.0.0.1\/32.*md5/host    all             all             127.0.0.1\/32            trust/'</span> \
+  /data/vmware/vcf/commonsvcs/postgresql/pg_hba.conf
+
+<span class="hljs-comment"># Restart PostgreSQL to pick up the change</span>
+systemctl restart postgresql
+
+<span class="hljs-comment"># STEP 3: Connect to the platform database</span>
+<span class="hljs-built_in">sudo</span> -u postgres psql -h 127.0.0.1 -d platform
+
+<span class="hljs-comment"># STEP 4: Fix NSX cluster status (change ACTIVATING → ACTIVE)</span>
+SELECT <span class="hljs-built_in">id</span>, state FROM nsxt;
+-- If state shows <span class="hljs-string">'ACTIVATING'</span>, run:
+UPDATE nsxt SET state = <span class="hljs-string">'ACTIVE'</span> WHERE state = <span class="hljs-string">'ACTIVATING'</span>;
+
+<span class="hljs-comment"># STEP 5: Clear ALL resource locks</span>
+SELECT * FROM lock;
+-- Note how many rows exist (these are all stale)
+DELETE FROM lock;
+-- Should <span class="hljs-built_in">return</span>: DELETE &lt;count&gt;
+
+<span class="hljs-comment"># STEP 6: Mark ALL unresolved tasks as resolved</span>
+SELECT <span class="hljs-built_in">id</span>, name, status, resolved FROM task_metadata WHERE resolved = <span class="hljs-literal">false</span>;
+-- Note the stuck tasks
+UPDATE task_metadata SET resolved = <span class="hljs-literal">true</span> WHERE resolved = <span class="hljs-literal">false</span>;
+
+<span class="hljs-comment"># STEP 7: Clear task-level locks</span>
+SELECT * FROM task_lock;
+DELETE FROM task_lock;
+
+<span class="hljs-comment"># STEP 8: Exit PostgreSQL</span>
+\q
+
+<span class="hljs-comment"># STEP 9: Restore md5 authentication (IMPORTANT — do not leave trust enabled)</span>
+<span class="hljs-built_in">cp</span> /data/vmware/vcf/commonsvcs/postgresql/pg_hba.conf.backup \
+   /data/vmware/vcf/commonsvcs/postgresql/pg_hba.conf
+
+systemctl restart postgresql
+
+<span class="hljs-comment"># STEP 10: Restart SDDC Manager operations service</span>
+systemctl restart operationsmanager
+
+<span class="hljs-comment"># Wait 5 minutes for operationsmanager to fully start</span>
+
+<span class="hljs-comment"># STEP 11: Verify the fix — get a fresh token and check status</span>
+TOKEN=$(curl -sk -X POST https://sddc-manager.lab.local/v1/tokens \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"administrator@vsphere.local","password":"Success01!0909!!"}'</span> \
+  | python3 -c <span class="hljs-string">"import sys,json;print(json.load(sys.stdin)['accessToken'])"</span>)
+
+<span class="hljs-comment"># Should show: no IN_PROGRESS tasks</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks?status=IN_PROGRESS"</span> \
+  | python3 -c <span class="hljs-string">"import sys,json;print(len(json.load(sys.stdin).get('elements',[])),'stuck tasks')"</span>
+
+<span class="hljs-comment"># Should show: no resource locks</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/resource-locks \
+  | python3 -c <span class="hljs-string">"import sys,json;print(len(json.load(sys.stdin).get('elements',[])),'locks')"</span>
+
+<span class="hljs-comment"># Should show: NSX status = ACTIVE</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/nsxt-clusters \
+  | python3 -c <span class="hljs-string">"import sys,json;d=json.load(sys.stdin);print(d['elements'][0]['status'])"</span>
+</code></pre>
+<hr>
+<h3 id="issue-5-postgresql-requires-tcp-connection">Issue #5: PostgreSQL Requires TCP Connection</h3>
+<p><strong>Problem:</strong> SDDC Manager PostgreSQL doesn't accept Unix socket connections. Must use <code>-h 127.0.0.1</code>.</p>
+<p><strong>Impact:</strong> <code>psql</code> without <code>-h</code> flag silently fails or connects to the wrong instance.</p>
+<p><strong>Resolution:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># WRONG — silently fails or connects to system PostgreSQL</span>
+<span class="hljs-built_in">sudo</span> -u postgres psql -d platform
+<span class="hljs-comment"># Error: "FATAL: Peer authentication failed" or connects to wrong DB</span>
+
+<span class="hljs-comment"># CORRECT — always use -h 127.0.0.1</span>
+<span class="hljs-built_in">sudo</span> -u postgres psql -h 127.0.0.1 -d platform
+
+<span class="hljs-comment"># Verify you're connected to the right database</span>
+SELECT current_database();
+-- Should <span class="hljs-built_in">return</span>: platform
+
+SELECT count(*) FROM nsxt;
+-- Should <span class="hljs-built_in">return</span> a row count (1 or more)
+</code></pre>
+<hr>
+<h3 id="issue-6-database-column-naming-inconsistencies">Issue #6: Database Column Naming Inconsistencies</h3>
+<p><strong>Problem:</strong> The <code>nsxt</code> table uses <code>state</code> (not <code>status</code>), and <code>task_metadata</code> uses a <code>resolved</code> boolean (not a status enum). If you guess the column names wrong, your fix queries will silently do nothing.</p>
+<p><strong>Impact:</strong> Wrong column names = wrong queries = no fix.</p>
+<p><strong>Resolution — Use the correct column names:</strong></p>
+<pre><code class="hljs sql"><span class="hljs-comment">-- WRONG — these columns don't exist and will error</span>
+<span class="hljs-keyword">UPDATE</span> nsxt <span class="hljs-keyword">SET</span> status <span class="hljs-operator">=</span> <span class="hljs-string">'ACTIVE'</span>;           <span class="hljs-comment">-- ERROR: column "status" does not exist</span>
+<span class="hljs-keyword">UPDATE</span> task_metadata <span class="hljs-keyword">SET</span> status <span class="hljs-operator">=</span> <span class="hljs-string">'RESOLVED'</span>; <span class="hljs-comment">-- This changes the wrong column</span>
+
+<span class="hljs-comment">-- CORRECT column names</span>
+<span class="hljs-keyword">UPDATE</span> nsxt <span class="hljs-keyword">SET</span> state <span class="hljs-operator">=</span> <span class="hljs-string">'ACTIVE'</span> <span class="hljs-keyword">WHERE</span> state <span class="hljs-operator">=</span> <span class="hljs-string">'ACTIVATING'</span>;
+<span class="hljs-keyword">UPDATE</span> task_metadata <span class="hljs-keyword">SET</span> resolved <span class="hljs-operator">=</span> <span class="hljs-literal">true</span> <span class="hljs-keyword">WHERE</span> resolved <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
+</code></pre>
+<p><strong>Complete column reference:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Column</th>
+<th>Type</th>
+<th>Valid Values</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>nsxt</code></td>
+<td><code>state</code></td>
+<td>varchar</td>
+<td><code>ACTIVE</code>, <code>ACTIVATING</code>, <code>ERROR</code></td>
+</tr>
+<tr>
+<td><code>task_metadata</code></td>
+<td><code>resolved</code></td>
+<td>boolean</td>
+<td><code>true</code>, <code>false</code></td>
+</tr>
+<tr>
+<td><code>task_metadata</code></td>
+<td><code>status</code></td>
+<td>varchar</td>
+<td><code>SUCCESSFUL</code>, <code>FAILED</code>, <code>IN_PROGRESS</code></td>
+</tr>
+<tr>
+<td><code>lock</code></td>
+<td><code>resource_id</code></td>
+<td>varchar</td>
+<td>UUID of locked resource</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="issue-7-postgresql-password-not-discoverable">Issue #7: PostgreSQL Password Not Discoverable</h3>
+<p><strong>Problem:</strong> There is no documented method to obtain the SDDC Manager PostgreSQL password. The password is not stored in any accessible config file.</p>
+<p><strong>Impact:</strong> Cannot connect to the database for troubleshooting without a workaround.</p>
+<p><strong>Resolution — Trust authentication workaround:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Step 1: SSH to SDDC Manager as root</span>
+ssh vcf@sddc-manager.lab.local
+su -
+
+<span class="hljs-comment"># Step 2: Backup the current pg_hba.conf</span>
+<span class="hljs-built_in">cp</span> /data/vmware/vcf/commonsvcs/postgresql/pg_hba.conf \
+   /data/vmware/vcf/commonsvcs/postgresql/pg_hba.conf.backup
+
+<span class="hljs-comment"># Step 3: View current auth settings</span>
+<span class="hljs-built_in">cat</span> /data/vmware/vcf/commonsvcs/postgresql/pg_hba.conf
+<span class="hljs-comment"># Look for the line: host  all  all  127.0.0.1/32  md5</span>
+
+<span class="hljs-comment"># Step 4: Change md5 to trust for local connections</span>
+sed -i <span class="hljs-string">'s/host    all.*127.0.0.1\/32.*md5/host    all             all             127.0.0.1\/32            trust/'</span> \
+  /data/vmware/vcf/commonsvcs/postgresql/pg_hba.conf
+
+<span class="hljs-comment"># Step 5: Restart PostgreSQL</span>
+systemctl restart postgresql
+
+<span class="hljs-comment"># Step 6: Now you can connect without a password</span>
+<span class="hljs-built_in">sudo</span> -u postgres psql -h 127.0.0.1 -d platform
+
+<span class="hljs-comment"># Step 7: Do your work...</span>
+
+<span class="hljs-comment"># Step 8: CRITICAL — Restore md5 auth when done</span>
+\q
+<span class="hljs-built_in">cp</span> /data/vmware/vcf/commonsvcs/postgresql/pg_hba.conf.backup \
+   /data/vmware/vcf/commonsvcs/postgresql/pg_hba.conf
+systemctl restart postgresql
+
+<span class="hljs-comment"># Step 9: Verify auth is restored (this should now fail)</span>
+psql -h 127.0.0.1 -U postgres -d platform
+<span class="hljs-comment"># Expected: "FATAL: password authentication failed" — this confirms md5 is back</span>
+</code></pre>
+<blockquote>
+<p><strong>WARNING:</strong> Do NOT leave trust authentication enabled. Always restore the backup pg_hba.conf after completing your database work. Trust auth allows anyone with local shell access to connect to the database without credentials.</p>
+</blockquote>
+<hr>
+<h2 id="3-nsx-in-nestedresource-constrained-environments"><span id="nsx"></span>3. NSX in Nested/Resource-Constrained Environments</h2>
+<h3 id="issue-8-nsx-requires-32gb-ram-minimum">Issue #8: NSX Requires 32GB RAM Minimum</h3>
+<p><strong>Problem:</strong> Broadcom documentation states 16GB minimum RAM for NSX Manager. In practice: 16GB = OOM kills, 24GB = intermittent crashes, 32GB = stable.</p>
+<p><strong>Impact:</strong> Under-provisioned NSX cascades into all VCF operations — credential rotation fails, SDDC Manager reports NSX as "UNSTABLE", and VDT fails.</p>
+<p><strong>Resolution — Set correct VM resources:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Option A: Via vCenter UI</span>
+<span class="hljs-comment"># 1. Power off NSX Manager VM</span>
+<span class="hljs-comment"># 2. Right-click &gt; Edit Settings</span>
+<span class="hljs-comment"># 3. Set Memory: 32768 MB (32 GB)</span>
+<span class="hljs-comment"># 4. Set CPU: 6 vCPU</span>
+<span class="hljs-comment"># 5. Power on</span>
+
+<span class="hljs-comment"># Option B: Via vCenter REST API</span>
+SESSION=$(curl -sk -X POST https://vcenter.lab.local/api/session \
+  -H <span class="hljs-string">"Authorization: Basic <span class="hljs-subst">$(echo -n 'administrator@vsphere.local:Success01!0909!!' | base64)</span>"</span> \
+  | <span class="hljs-built_in">tr</span> -d <span class="hljs-string">'"'</span>)
+
+<span class="hljs-comment"># Power off the NSX Manager VM first</span>
+curl -sk -X POST <span class="hljs-string">"https://vcenter.lab.local/api/vcenter/vm/vm-58/power?action=stop"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">$SESSION</span>"</span>
+
+<span class="hljs-comment"># Wait for power off to complete (check status)</span>
+curl -sk -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">$SESSION</span>"</span> \
+  <span class="hljs-string">"https://vcenter.lab.local/api/vcenter/vm/vm-58"</span> \
+  | python3 -c <span class="hljs-string">"import sys,json;print(json.load(sys.stdin)['power_state'])"</span>
+
+<span class="hljs-comment"># Update memory (API requires power off first)</span>
+curl -sk -X PATCH <span class="hljs-string">"https://vcenter.lab.local/api/vcenter/vm/vm-58"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">$SESSION</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"memory":{"size_MiB":32768}}'</span>
+
+<span class="hljs-comment"># Power on</span>
+curl -sk -X POST <span class="hljs-string">"https://vcenter.lab.local/api/vcenter/vm/vm-58/power?action=start"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">$SESSION</span>"</span>
+</code></pre>
+<p><strong>Tested configurations:</strong></p>
+<table>
+<thead>
+<tr>
+<th>RAM</th>
+<th>vCPU</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>16 GB</td>
+<td>4</td>
+<td>OOM kills within 30 minutes</td>
+</tr>
+<tr>
+<td>24 GB</td>
+<td>6</td>
+<td>Intermittent crashes under load</td>
+</tr>
+<tr>
+<td>30 GB</td>
+<td>6</td>
+<td>Stable with occasional high load</td>
+</tr>
+<tr>
+<td><strong>32 GB</strong></td>
+<td><strong>6</strong></td>
+<td><strong>Stable — recommended</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="issue-9-boot-storm-load-100-is-normal">Issue #9: Boot Storm Load &gt;100 is Normal</h3>
+<p><strong>Problem:</strong> After power-on, NSX Manager experiences load averages exceeding 100 on 6 cores for 30-60 minutes. The VIP remains offline until services stabilize.</p>
+<p><strong>Impact:</strong> Credential operations triggered during boot storms cause cascade failures (Issue #2).</p>
+<p><strong>Resolution — Monitor and wait:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH to NSX Manager (may take several attempts during boot storm)</span>
+ssh admin@192.168.1.71
+<span class="hljs-comment"># Password: Success01!0909!!</span>
+
+<span class="hljs-comment"># Check load average</span>
+get node-stats
+
+<span class="hljs-comment"># From an ESXi host, monitor NSX VM's CPU</span>
+esxtop
+<span class="hljs-comment"># Press 'c' for CPU view, look for the NSX VM process</span>
+
+<span class="hljs-comment"># Check if VIP is responding (run from any host with network access)</span>
+curl -sk --connect-timeout 5 https://nsx-vip.lab.local/api/v1/cluster/status \
+  -u admin:<span class="hljs-string">'Success01!0909!!'</span> 2&gt;&amp;1 | <span class="hljs-built_in">head</span> -5
+<span class="hljs-comment"># If "Connection refused" or timeout — VIP is still coming up. Wait.</span>
+
+<span class="hljs-comment"># Check service status from NSX CLI</span>
+get service
+<span class="hljs-comment"># Services should all show "running" after 30-60 min</span>
+</code></pre>
+<p><strong>Timeline after power-on:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Expected State</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0-5 min</td>
+<td>SSH not responsive, VIP offline</td>
+</tr>
+<tr>
+<td>5-15 min</td>
+<td>SSH responds, load &gt;50, services starting</td>
+</tr>
+<tr>
+<td>15-30 min</td>
+<td>Load 10-50, some services running</td>
+</tr>
+<tr>
+<td>30-60 min</td>
+<td>Load &lt;10, all services stable, VIP online</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Rule:</strong> Do NOT run credential rotations, certificate operations, or SDDC Manager tasks until load average drops below 10 and VIP is responding.</p>
+</blockquote>
+<hr>
+<h3 id="issue-10-adding-more-vcpu-is-counterproductive">Issue #10: Adding More vCPU is Counterproductive</h3>
+<p><strong>Problem:</strong> Increasing NSX Manager vCPU count beyond 6 causes worse performance due to VMware co-scheduling overhead. ESXi must schedule all vCPUs simultaneously, meaning more vCPUs = harder to schedule = more wait time.</p>
+<p><strong>Impact:</strong> The intuitive fix (more CPU) actually makes the problem worse.</p>
+<p><strong>Resolution:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># If NSX Manager has &gt;6 vCPU, reduce it:</span>
+<span class="hljs-comment"># 1. Power off the NSX Manager VM</span>
+<span class="hljs-comment"># 2. In vCenter UI: Right-click &gt; Edit Settings</span>
+<span class="hljs-comment"># 3. Set CPU to 6 vCPU</span>
+<span class="hljs-comment"># 4. Power on</span>
+
+<span class="hljs-comment"># If performance is still poor with 6 vCPU + 32GB RAM:</span>
+<span class="hljs-comment"># Increase RAM to 48GB instead of adding more CPU</span>
+<span class="hljs-comment"># The bottleneck is memory pressure from Java/Corfu, not CPU</span>
+</code></pre>
+<hr>
+<h3 id="issue-11-services-take-10-15-minutes-to-stabilize">Issue #11: Services Take 10-15 Minutes to Stabilize</h3>
+<p><strong>Problem:</strong> After NSX Manager restart, services take 10-15 minutes to fully stabilize. The API returns <code>error 101</code> during this period.</p>
+<p><strong>Impact:</strong> Premature API calls fail and can trigger unnecessary retries. SDDC Manager may interpret the errors as a real failure and start cascading.</p>
+<p><strong>Resolution — Wait and verify:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># After restarting NSX Manager, run this loop from any machine with access:</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> $(<span class="hljs-built_in">seq</span> 1 30); <span class="hljs-keyword">do</span>
+  STATUS=$(curl -sk --connect-timeout 5 \
+    -u admin:<span class="hljs-string">'Success01!0909!!'</span> \
+    https://nsx-vip.lab.local/api/v1/cluster/status 2&gt;/dev/null \
+    | python3 -c <span class="hljs-string">"import sys,json;d=json.load(sys.stdin);print(d.get('control_cluster_status',{}).get('status','UNAVAILABLE'))"</span> 2&gt;/dev/null || <span class="hljs-built_in">echo</span> <span class="hljs-string">"UNREACHABLE"</span>)
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"[<span class="hljs-subst">$(date +%H:%M:%S)</span>] Cluster status: <span class="hljs-variable">$STATUS</span>"</span>
+  <span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$STATUS</span>"</span> = <span class="hljs-string">"STABLE"</span> ]; <span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"NSX Manager is ready."</span>
+    <span class="hljs-built_in">break</span>
+  <span class="hljs-keyword">fi</span>
+  <span class="hljs-built_in">sleep</span> 30
+<span class="hljs-keyword">done</span>
+</code></pre>
+<hr>
+<h3 id="issue-12-dnsntp-must-be-set-via-admin-cli">Issue #12: DNS/NTP Must Be Set via Admin CLI</h3>
+<p><strong>Problem:</strong> DNS and NTP settings must be configured using the NSX admin CLI, not the UI. UI settings don't persist in some nested configurations.</p>
+<p><strong>Impact:</strong> DNS resolution fails, causing certificate validation errors, SDDC Manager communication failures, and VDT failures.</p>
+<p><strong>Resolution — Set via CLI:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH to NSX Manager</span>
+ssh admin@nsx-vip.lab.local
+<span class="hljs-comment"># Password: Success01!0909!!</span>
+
+<span class="hljs-comment"># Set DNS server(s)</span>
+<span class="hljs-built_in">set</span> name-servers 192.168.1.230
+
+<span class="hljs-comment"># Set NTP server(s)</span>
+<span class="hljs-built_in">set</span> ntp-servers 192.168.1.230
+
+<span class="hljs-comment"># Verify DNS</span>
+nslookup vcenter.lab.local
+nslookup sddc-manager.lab.local
+
+<span class="hljs-comment"># Verify NTP</span>
+get ntp-servers
+get ntp-status
+</code></pre>
+<hr>
+<h3 id="issue-13-tep-on-vmk0-new-in-nsx-90">Issue #13: TEP on vmk0 (New in NSX 9.0)</h3>
+<p><strong>Problem:</strong> NSX 9.0 supports "Use VMkernel Adapter" which reuses vmk0 as a Tunnel Endpoint (TEP), eliminating the need for a dedicated TEP VLAN. This is new in NSX 9.0 and not clearly documented.</p>
+<p><strong>Impact:</strong> Simplifies nested environments — no dedicated TEP VLAN required.</p>
+<p><strong>Resolution — Configure during Transport Node Profile creation:</strong></p>
+<pre><code>In NSX Manager UI:
+1. Navigate to: System &gt; Fabric &gt; Profiles &gt; Transport Node Profiles
+2. Click "Add Profile"
+3. Under "Host Switch" configuration:
+   - Type: VDS (Virtual Distributed Switch)
+   - Mode: Standard
+4. Under "IP Assignment":
+   - Select: "Use VMkernel Adapter"
+   - Select: vmk0
+5. This reuses the management VMkernel as the TEP interface
+6. No additional VLAN or IP pool configuration needed
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> This is only recommended for nested lab environments or environments where a dedicated TEP VLAN is not available. Production environments should use a dedicated TEP VLAN for performance isolation.</p>
+</blockquote>
+<hr>
+<h2 id="4-certificate-management"><span id="certs"></span>4. Certificate Management</h2>
+<h3 id="issue-14-nsx-cert-san-must-include-sddc-managers-registered-fqdn">Issue #14: NSX Cert SAN Must Include SDDC Manager's Registered FQDN</h3>
+<p><strong>Problem:</strong> The NSX certificate Subject Alternative Names (SAN) must include the FQDN that SDDC Manager registered the NSX cluster with (e.g., <code>nsx-manager.lab.local</code>), NOT just the VIP and node FQDNs.</p>
+<p><strong>Impact:</strong> VDT reports SAN check failure. SDDC Manager loses trust in NSX. Certificate replacement appears successful but breaks SDDC Manager integration.</p>
+<p><strong>Resolution — Complete NSX certificate replacement procedure:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># ================================================================</span>
+<span class="hljs-comment"># NSX CERTIFICATE REPLACEMENT — COMPLETE PROCEDURE</span>
+<span class="hljs-comment"># ================================================================</span>
+<span class="hljs-comment"># Run from NSX Manager SSH session (as root)</span>
+<span class="hljs-comment"># ================================================================</span>
+
+<span class="hljs-comment"># STEP 1: SSH to NSX Manager as root</span>
+ssh root@192.168.1.71
+<span class="hljs-comment"># Password: Success01!0909!!</span>
+
+<span class="hljs-comment"># STEP 2: Create OpenSSL configuration file with ALL required SANs</span>
+<span class="hljs-built_in">cat</span> &gt; /tmp/nsx-cert.conf &lt;&lt; <span class="hljs-string">'EOF'</span>
+[ req ]
+default_bits = 2048
+distinguished_name = req_distinguished_name
+req_extensions = req_ext
+x509_extensions = req_ext
+prompt = no
+
+[ req_distinguished_name ]
+countryName = US
+stateOrProvinceName = Lab
+localityName = Lab
+organizationName = lab.local
+commonName = nsx-vip.lab.local
+
+[ req_ext ]
+basicConstraints = CA:FALSE
+keyUsage = digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth, clientAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = nsx-vip.lab.local
+DNS.2 = nsx-node1.lab.local
+DNS.3 = nsx-manager.lab.local
+IP.1 = 192.168.1.70
+IP.2 = 192.168.1.71
+EOF
+
+<span class="hljs-comment"># CRITICAL: DNS.3 = nsx-manager.lab.local is REQUIRED because that's</span>
+<span class="hljs-comment"># the FQDN SDDC Manager registered. Without it, VDT fails SAN check.</span>
+
+<span class="hljs-comment"># STEP 3: Generate the certificate and private key</span>
+openssl req -x509 -nodes -days 825 -newkey rsa:2048 \
+  -keyout /tmp/nsx.key -out /tmp/nsx.crt \
+  -config /tmp/nsx-cert.conf -sha256
+
+<span class="hljs-comment"># STEP 4: Verify the SAN entries are correct</span>
+openssl x509 -<span class="hljs-keyword">in</span> /tmp/nsx.crt -text -noout | grep -A4 <span class="hljs-string">"Subject Alternative Name"</span>
+<span class="hljs-comment"># Expected output should show ALL 5 SANs:</span>
+<span class="hljs-comment">#   DNS:nsx-vip.lab.local, DNS:nsx-node1.lab.local,</span>
+<span class="hljs-comment">#   DNS:nsx-manager.lab.local, IP Address:192.168.1.70, IP Address:192.168.1.71</span>
+
+<span class="hljs-comment"># STEP 5: Create JSON import payload using Python (avoids shell PEM escaping)</span>
+python3 -c <span class="hljs-string">"
+import json
+cert = open('/tmp/nsx.crt').read()
+key = open('/tmp/nsx.key').read()
+print(json.dumps({'pem_encoded': cert, 'private_key': key}))
+"</span> &gt; /tmp/nsx-import.json
+
+<span class="hljs-comment"># STEP 6: Import certificate into NSX</span>
+curl -k -u admin:<span class="hljs-string">'Success01!0909!!'</span> \
+  -X POST <span class="hljs-string">"https://192.168.1.71/api/v1/trust-management/certificates?action=import"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d @/tmp/nsx-import.json
+<span class="hljs-comment"># SAVE the certificate ID from the response, e.g.: 701d1416-5054-4038-8749-4ac495980ebd</span>
+
+<span class="hljs-comment"># STEP 7: Get the NSX node UUID</span>
+curl -k -u admin:<span class="hljs-string">'Success01!0909!!'</span> https://192.168.1.71/api/v1/cluster \
+  | python3 -c <span class="hljs-string">"import sys,json;d=json.load(sys.stdin);print('Node UUID:',d['nodes'][0]['node_uuid'])"</span>
+<span class="hljs-comment"># SAVE the node UUID, e.g.: 95493642-ef4a-cb8e-ed7c-5bc20033f2c2</span>
+
+<span class="hljs-comment"># STEP 8: Apply certificate to the NSX Manager node</span>
+<span class="hljs-comment"># Replace &lt;CERT-ID&gt; and &lt;NODE-UUID&gt; with actual values from steps 6 and 7</span>
+curl -k -u admin:<span class="hljs-string">'Success01!0909!!'</span> \
+  -X POST <span class="hljs-string">"https://192.168.1.71/api/v1/trust-management/certificates/&lt;CERT-ID&gt;?action=apply_certificate&amp;service_type=API&amp;node_id=&lt;NODE-UUID&gt;"</span>
+<span class="hljs-comment"># NSX Manager will restart — wait 2-3 minutes</span>
+
+<span class="hljs-comment"># STEP 9: Apply certificate to the cluster VIP</span>
+curl -k -u admin:<span class="hljs-string">'Success01!0909!!'</span> \
+  -X POST <span class="hljs-string">"https://192.168.1.71/api/v1/trust-management/certificates/&lt;CERT-ID&gt;?action=apply_certificate&amp;service_type=MGMT_CLUSTER"</span>
+
+<span class="hljs-comment"># STEP 10: Verify the new certificate is active</span>
+openssl s_client -connect 192.168.1.71:443 -showcerts &lt;/dev/null 2&gt;/dev/null \
+  | openssl x509 -noout -text | grep -A2 <span class="hljs-string">"Subject Alternative Name"</span>
+openssl s_client -connect 192.168.1.70:443 -showcerts &lt;/dev/null 2&gt;/dev/null \
+  | openssl x509 -noout -text | grep -A2 <span class="hljs-string">"Subject Alternative Name"</span>
+</code></pre>
+<p><strong>Then import into SDDC Manager trust stores (see Issue #15).</strong></p>
+<hr>
+<h3 id="issue-15-two-separate-trust-stores-must-be-updated">Issue #15: Two Separate Trust Stores Must Be Updated</h3>
+<p><strong>Problem:</strong> VCF has two separate trust stores that both need CA cert imports: the VCF common services trust store and the Java cacerts keystore. KB 316056 only documents one of them.</p>
+<p><strong>Impact:</strong> Missing either import causes VDT failures and inter-component trust issues.</p>
+<p><strong>Resolution — Import into BOTH trust stores on SDDC Manager:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH to SDDC Manager as root</span>
+ssh vcf@sddc-manager.lab.local
+su -
+
+<span class="hljs-comment"># STEP 1: Pull the active NSX certificate</span>
+openssl s_client -showcerts -connect 192.168.1.71:443 &lt; /dev/null 2&gt;/dev/null \
+  | openssl x509 -outform PEM &gt; /tmp/nsx-root.crt
+
+<span class="hljs-comment"># Verify you got a valid certificate</span>
+openssl x509 -<span class="hljs-keyword">in</span> /tmp/nsx-root.crt -noout -subject -issuer -dates
+
+<span class="hljs-comment"># STEP 2: Import into VCF common services trust store</span>
+<span class="hljs-comment"># First, get the keystore password</span>
+KEY=$(<span class="hljs-built_in">cat</span> /etc/vmware/vcf/commonsvcs/trusted_certificates.key)
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Keystore password: <span class="hljs-variable">$KEY</span>"</span>
+
+<span class="hljs-comment"># Import the certificate</span>
+keytool -importcert -<span class="hljs-built_in">alias</span> nsx-selfsigned \
+  -file /tmp/nsx-root.crt \
+  -keystore /etc/vmware/vcf/commonsvcs/trusted_certificates.store \
+  -storepass <span class="hljs-string">"<span class="hljs-variable">$KEY</span>"</span> -noprompt
+
+<span class="hljs-comment"># Verify it was imported</span>
+keytool -list -keystore /etc/vmware/vcf/commonsvcs/trusted_certificates.store \
+  -storepass <span class="hljs-string">"<span class="hljs-variable">$KEY</span>"</span> | grep nsx-selfsigned
+
+<span class="hljs-comment"># STEP 3: Import into Java cacerts trust store</span>
+keytool -importcert -<span class="hljs-built_in">alias</span> nsx-selfsigned \
+  -file /tmp/nsx-root.crt \
+  -keystore /etc/alternatives/jre/lib/security/cacerts \
+  -storepass changeit -noprompt
+
+<span class="hljs-comment"># Verify it was imported</span>
+keytool -list -keystore /etc/alternatives/jre/lib/security/cacerts \
+  -storepass changeit | grep nsx-selfsigned
+
+<span class="hljs-comment"># STEP 4: Restart SDDC Manager services to pick up the new trust</span>
+/opt/vmware/vcf/operationsmanager/scripts/cli/sddcmanager_restart_services.sh
+
+<span class="hljs-comment"># Wait approximately 5 minutes for all services to restart</span>
+
+<span class="hljs-comment"># STEP 5: Verify trust by re-running VDT</span>
+<span class="hljs-comment"># (See Issue #28 for VDT installation if not already installed)</span>
+</code></pre>
+<hr>
+<h3 id="issue-16-fleet-management-cert-generator-produces-wrong-sans">Issue #16: Fleet Management Cert Generator Produces Wrong SANs</h3>
+<p><strong>Problem:</strong> The Fleet Management deployment wizard's "Generate self-signed certificate" option produces a certificate whose SAN entries do not match the node FQDN/IP, causing a precheck error: <em>"Certificate validation for component — The hosts in the certificate doesn't match with the provided/product hosts."</em></p>
+<p><strong>Impact:</strong> Fleet Management deployment wizard precheck fails.</p>
+<p><strong>Resolution — Generate a correct certificate manually with OpenSSL:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Run on SDDC Manager (SSH as root) or any Linux host with openssl</span>
+
+<span class="hljs-comment"># STEP 1: Create OpenSSL config for Fleet Management</span>
+<span class="hljs-comment"># Replace fleet.lab.local / 192.168.1.78 with your Fleet FQDN/IP</span>
+<span class="hljs-built_in">cat</span> &gt; /tmp/fleet-cert.cnf &lt;&lt; <span class="hljs-string">'EOF'</span>
+[req]
+default_bits = 4096
+prompt = no
+default_md = sha256
+distinguished_name = dn
+req_extensions = v3_req
+x509_extensions = v3_req
+
+[dn]
+C = US
+ST = California
+L = Lab
+O = Lab
+OU = VCF
+CN = fleet.lab.local
+
+[v3_req]
+basicConstraints = CA:FALSE
+keyUsage = digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth, clientAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = fleet.lab.local
+DNS.2 = fleet
+IP.1 = 192.168.1.78
+EOF
+
+<span class="hljs-comment"># STEP 2: Generate certificate and key</span>
+openssl req -x509 -nodes -days 730 -newkey rsa:4096 \
+  -keyout /tmp/fleet.key -out /tmp/fleet.crt \
+  -config /tmp/fleet-cert.cnf
+
+<span class="hljs-comment"># STEP 3: Verify SANs are correct</span>
+openssl x509 -<span class="hljs-keyword">in</span> /tmp/fleet.crt -noout -text | grep -A5 <span class="hljs-string">"Subject Alternative Name"</span>
+<span class="hljs-comment"># Expected: DNS:fleet.lab.local, DNS:fleet, IP Address:192.168.1.78</span>
+
+<span class="hljs-comment"># STEP 4: Display cert and key for copy-paste into the wizard</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== CERTIFICATE ==="</span>
+<span class="hljs-built_in">cat</span> /tmp/fleet.crt
+<span class="hljs-built_in">echo</span> <span class="hljs-string">""</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== PRIVATE KEY ==="</span>
+<span class="hljs-built_in">cat</span> /tmp/fleet.key
+
+<span class="hljs-comment"># STEP 5: In the Fleet Management deployment wizard:</span>
+<span class="hljs-comment"># 1. At the "Certificate" step, select "Import"</span>
+<span class="hljs-comment"># 2. Paste the certificate content (fleet.crt) into the Certificate field</span>
+<span class="hljs-comment"># 3. Paste the key content (fleet.key) into the Private Key field</span>
+<span class="hljs-comment"># 4. Click "Validate"</span>
+<span class="hljs-comment"># 5. Continue to Component Configuration</span>
+<span class="hljs-comment"># 6. Run Precheck — should now pass</span>
+</code></pre>
+<hr>
+<h3 id="issue-17-vcf-ops-for-logs-cert-generator--same-san-mismatch">Issue #17: VCF Ops for Logs Cert Generator — Same SAN Mismatch</h3>
+<p><strong>Problem:</strong> Identical pattern to Issue #16 — the VCF Operations for Logs certificate generator produces wrong SANs.</p>
+<p><strong>Impact:</strong> Logs deployment wizard precheck fails with the same "hosts in the certificate doesn't match" error.</p>
+<p><strong>Resolution — Generate a correct certificate manually with OpenSSL:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Run on SDDC Manager (SSH as root) or any Linux host with openssl</span>
+
+<span class="hljs-comment"># STEP 1: Create OpenSSL config for VCF Ops for Logs</span>
+<span class="hljs-comment"># Replace logs.lab.local / 192.168.1.242 with your Logs FQDN/IP</span>
+<span class="hljs-built_in">cat</span> &gt; /tmp/vrli-cert.cnf &lt;&lt; <span class="hljs-string">'EOF'</span>
+[req]
+default_bits = 4096
+prompt = no
+default_md = sha256
+distinguished_name = dn
+req_extensions = v3_req
+x509_extensions = v3_req
+
+[dn]
+C = US
+ST = California
+L = Lab
+O = Lab
+OU = VCF
+CN = logs.lab.local
+
+[v3_req]
+basicConstraints = CA:FALSE
+keyUsage = digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth, clientAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = logs.lab.local
+DNS.2 = logs
+IP.1 = 192.168.1.242
+EOF
+
+<span class="hljs-comment"># STEP 2: Generate certificate and key</span>
+openssl req -x509 -nodes -days 730 -newkey rsa:4096 \
+  -keyout /tmp/vrli.key -out /tmp/vrli.crt \
+  -config /tmp/vrli-cert.cnf
+
+<span class="hljs-comment"># STEP 3: Verify SANs are correct</span>
+openssl x509 -<span class="hljs-keyword">in</span> /tmp/vrli.crt -noout -text | grep -A5 <span class="hljs-string">"Subject Alternative Name"</span>
+<span class="hljs-comment"># Expected: DNS:logs.lab.local, DNS:logs, IP Address:192.168.1.242</span>
+
+<span class="hljs-comment"># STEP 4: Display cert and key for copy-paste into the wizard</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== CERTIFICATE ==="</span>
+<span class="hljs-built_in">cat</span> /tmp/vrli.crt
+<span class="hljs-built_in">echo</span> <span class="hljs-string">""</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== PRIVATE KEY ==="</span>
+<span class="hljs-built_in">cat</span> /tmp/vrli.key
+
+<span class="hljs-comment"># STEP 5: In the Logs deployment wizard:</span>
+<span class="hljs-comment"># 1. At the "Certificate" step, select "Import"</span>
+<span class="hljs-comment"># 2. Paste the certificate (vrli.crt) and key (vrli.key)</span>
+<span class="hljs-comment"># 3. Click "Validate"</span>
+<span class="hljs-comment"># 4. Run Precheck — should now pass</span>
+
+<span class="hljs-comment"># STEP 6: After deployment, verify the cert on the deployed appliance</span>
+openssl s_client -connect logs.lab.local:443 -servername logs.lab.local \
+  &lt;/dev/null 2&gt;/dev/null | openssl x509 -noout -subject -issuer -dates
+</code></pre>
+<hr>
+<h3 id="issue-18-shell-cant-handle-pem-escaping-for-nsx-api">Issue #18: Shell Can't Handle PEM Escaping for NSX API</h3>
+<p><strong>Problem:</strong> When importing certificates via the NSX REST API, the JSON payload requires PEM certificate content with proper newline escaping. Bash/curl with inline PEM content breaks because PEM files contain newlines that JSON requires escaped as <code>\n</code>.</p>
+<p><strong>Impact:</strong> Cannot import certificates via a simple curl command.</p>
+<p><strong>Resolution — Use Python to construct and send the JSON payload:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># OPTION A: Python script (recommended)</span>
+python3 &lt;&lt; <span class="hljs-string">'PYEOF'</span>
+import json, requests, urllib3
+urllib3.disable_warnings()
+
+<span class="hljs-comment"># Read cert and key files</span>
+with open(<span class="hljs-string">'/tmp/nsx.crt'</span>) as f:
+    cert = f.read()
+with open(<span class="hljs-string">'/tmp/nsx.key'</span>) as f:
+    key = f.read()
+
+<span class="hljs-comment"># Construct JSON payload — Python handles the escaping automatically</span>
+payload = {<span class="hljs-string">"pem_encoded"</span>: cert, <span class="hljs-string">"private_key"</span>: key}
+
+<span class="hljs-comment"># Import certificate</span>
+resp = requests.post(
+    <span class="hljs-string">"https://192.168.1.71/api/v1/trust-management/certificates?action=import"</span>,
+    auth=(<span class="hljs-string">"admin"</span>, <span class="hljs-string">"Success01!0909!!"</span>),
+    json=payload,
+    verify=False
+)
+<span class="hljs-built_in">print</span>(f<span class="hljs-string">"Status: {resp.status_code}"</span>)
+<span class="hljs-built_in">print</span>(f<span class="hljs-string">"Response: {resp.text}"</span>)
+<span class="hljs-comment"># Save the certificate ID from the response</span>
+PYEOF
+
+<span class="hljs-comment"># OPTION B: Create JSON file first, then use curl</span>
+python3 -c <span class="hljs-string">"
+import json
+cert = open('/tmp/nsx.crt').read()
+key = open('/tmp/nsx.key').read()
+print(json.dumps({'pem_encoded': cert, 'private_key': key}))
+"</span> &gt; /tmp/nsx-import.json
+
+<span class="hljs-comment"># Then use curl with the JSON file</span>
+curl -k -u admin:<span class="hljs-string">'Success01!0909!!'</span> \
+  -X POST <span class="hljs-string">"https://192.168.1.71/api/v1/trust-management/certificates?action=import"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d @/tmp/nsx-import.json
+</code></pre>
+<blockquote>
+<p><strong>Why this matters:</strong> If you try to embed PEM content directly in a curl <code>-d</code> argument, the newlines in the PEM file break the JSON structure. Python's <code>json.dumps()</code> properly escapes <code>\n</code> characters automatically.</p>
+</blockquote>
+<hr>
+<h2 id="5-vcf-operations-9x-changes"><span id="vcfops"></span>5. VCF Operations 9.x Changes</h2>
+<h3 id="issue-19-adapter-log-paths-changed">Issue #19: Adapter Log Paths Changed</h3>
+<p><strong>Problem:</strong> VCF Operations 9.x changed adapter log paths. The legacy path documented in older guides doesn't exist.</p>
+<p><strong>Impact:</strong> Cannot find logs for adapter troubleshooting.</p>
+<p><strong>Resolution — Use the correct paths:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH to VCF Operations node</span>
+ssh root@192.168.1.77
+<span class="hljs-comment"># Password: Success01!0909!!</span>
+
+<span class="hljs-comment"># CORRECT path for adapter logs in VCF Ops 9.x</span>
+<span class="hljs-built_in">ls</span> /storage/log/vcops/log/adapters/
+
+<span class="hljs-comment"># View a specific adapter's log</span>
+<span class="hljs-built_in">ls</span> /storage/log/vcops/log/adapters/
+<span class="hljs-comment"># Pick the adapter directory, e.g., VMware_NSXTAdapter/</span>
+<span class="hljs-built_in">tail</span> -100 /storage/log/vcops/log/adapters/VMware_NSXTAdapter/*.<span class="hljs-built_in">log</span>
+
+<span class="hljs-comment"># WRONG legacy path (does not exist in 9.x)</span>
+<span class="hljs-built_in">ls</span> /usr/lib/vmware-vcops/user/plugins/inbound/*/logs/
+<span class="hljs-comment"># Error: No such file or directory</span>
+
+<span class="hljs-comment"># Other useful log locations</span>
+<span class="hljs-built_in">tail</span> -100 /usr/lib/vmware-casa/casa-webapp/logs/casa.log
+<span class="hljs-built_in">tail</span> -100 /storage/log/vcops/log/vcops-admin.log
+</code></pre>
+<hr>
+<h3 id="issue-20-jre-path-changed">Issue #20: JRE Path Changed</h3>
+<p><strong>Problem:</strong> The JRE path changed to <code>/usr/java/jre-vmware-17/</code>. The legacy <code>jre-vmware</code> symlink doesn't exist.</p>
+<p><strong>Impact:</strong> Cannot import certificates into the correct truststore; keytool commands fail.</p>
+<p><strong>Resolution — Use the correct JRE path:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH to VCF Operations node</span>
+ssh root@192.168.1.77
+
+<span class="hljs-comment"># CORRECT JRE path in VCF Ops 9.x</span>
+<span class="hljs-built_in">ls</span> /usr/java/jre-vmware-17/
+
+<span class="hljs-comment"># CORRECT cacerts path</span>
+<span class="hljs-built_in">ls</span> -la /usr/java/jre-vmware-17/lib/security/cacerts
+
+<span class="hljs-comment"># Import a CA certificate into the correct truststore</span>
+keytool -import -trustcacerts -<span class="hljs-built_in">alias</span> my-ca \
+  -file /tmp/ca-cert.pem \
+  -keystore /usr/java/jre-vmware-17/lib/security/cacerts \
+  -storepass changeit -noprompt
+
+<span class="hljs-comment"># List certificates in the truststore</span>
+keytool -list -keystore /usr/java/jre-vmware-17/lib/security/cacerts \
+  -storepass changeit | grep my-ca
+
+<span class="hljs-comment"># WRONG legacy path (does not exist)</span>
+<span class="hljs-built_in">ls</span> /usr/java/jre-vmware/
+<span class="hljs-comment"># Error: No such file or directory</span>
+</code></pre>
+<hr>
+<h3 id="issue-21-two-separate-nsx-adapters">Issue #21: Two Separate NSX Adapters</h3>
+<p><strong>Problem:</strong> VCF Operations has two separate NSX adapters — the VCF section auto-creates one using the VIP, while the "Aria Admin" section uses the individual node FQDN.</p>
+<p><strong>Impact:</strong> Both need separate credentials configured. The Aria Admin adapter may continue working when the VIP is down.</p>
+<p><strong>Resolution — Configure both adapters:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get Suite-API token</span>
+TOKEN=$(curl -sk -X POST https://192.168.1.77/suite-api/api/auth/token/acquire \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"admin","password":"Success01!0909!!","authSource":"local"}'</span> \
+  | python3 -c <span class="hljs-string">"import sys,json;print(json.load(sys.stdin)['token'])"</span>)
+
+<span class="hljs-comment"># List all adapters to see both NSX adapters</span>
+curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://192.168.1.77/suite-api/api/adapters \
+  | python3 -c <span class="hljs-string">"
+import sys,json
+d=json.load(sys.stdin)
+for a in d.get('adapterInstancesInfoDto',[]):
+    kind=a.get('resourceKey',{}).get('adapterKindKey','')
+    if 'NSX' in kind.upper():
+        name=a.get('resourceKey',{}).get('name','?')
+        aid=a.get('id','?')
+        print(f'ID: {aid} | Name: {name} | Kind: {kind}')
+"</span>
+
+<span class="hljs-comment"># You will see two NSX-related adapters:</span>
+<span class="hljs-comment"># 1. VCF adapter's auto-discovered NSX (uses VIP: nsx-vip.lab.local)</span>
+<span class="hljs-comment"># 2. Standalone NSXTAdapter (may use node FQDN: nsx-manager.lab.local)</span>
+<span class="hljs-comment"># Both need valid credentials to function properly</span>
+</code></pre>
+<hr>
+<h3 id="issue-22-system-managed-credential-rotate-doesnt-work-for-nsx">Issue #22: System Managed Credential ROTATE Doesn't Work for NSX</h3>
+<p><strong>Problem:</strong> The system-managed credential rotation for the NSX adapter silently fails — the credential is not actually rotated, but no error is shown.</p>
+<p><strong>Impact:</strong> NSX monitoring stops when the password changes but the adapter still has the old password.</p>
+<p><strong>Resolution — Set credentials manually:</strong></p>
+<pre><code>In VCF Operations Admin UI (https://192.168.1.77/):
+1. Navigate to: Administration &gt; Solutions &gt; Adapters
+2. Find the NSX adapter (NSXTAdapter)
+3. Click the adapter name to edit
+4. Under Credential:
+   - UNCHECK "System Managed"
+   - Enter the username: admin
+   - Enter the current password manually
+5. Click Save
+6. Click "Test Connection" to verify
+7. If the connection test passes, the adapter will resume data collection
+</code></pre>
+<hr>
+<h3 id="issue-23-ssh-enable-via-admin-ui-only">Issue #23: SSH Enable via Admin UI Only</h3>
+<p><strong>Problem:</strong> SSH access to VCF Operations can only be enabled through the Admin UI at <code>https://&lt;vcf-ops&gt;:443/admin/</code>. Console and systemctl approaches don't work.</p>
+<p><strong>Impact:</strong> Cannot SSH for troubleshooting without Admin UI access first.</p>
+<p><strong>Resolution:</strong></p>
+<pre><code>1. Open a browser and navigate to: https://192.168.1.77/admin/
+2. Log in with:
+   - Username: admin
+   - Password: Success01!0909!!
+3. Navigate to: Administration &gt; Access &gt; SSH
+4. Toggle SSH to: Enabled
+5. Click Save
+
+# Now you can SSH:
+ssh root@192.168.1.77
+# Password: Success01!0909!!
+</code></pre>
+<blockquote>
+<p><strong>If Admin UI is not accessible:</strong> You must use the VM console (vCenter &gt; VM &gt; Launch Console) to access the appliance. From the console, the <code>admin</code> user can access the Admin UI settings.</p>
+</blockquote>
+<hr>
+<h3 id="issue-24-health-adapter-silently-fails-on-stale-credential">Issue #24: Health Adapter Silently Fails on Stale Credential</h3>
+<p><strong>Problem:</strong> The VMWARE_INFRA_HEALTH adapter silently fails when an SDDC Manager credential becomes stale (e.g., after password rotation). The UI stop/start does not fix it.</p>
+<p><strong>Impact:</strong> Health monitoring stops. No alerts, no health data collection.</p>
+<p><strong>Resolution — Full appliance reboot required:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Step 1: Verify the health adapter is actually failing</span>
+TOKEN=$(curl -sk -X POST https://192.168.1.77/suite-api/api/auth/token/acquire \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"admin","password":"Success01!0909!!","authSource":"local"}'</span> \
+  | python3 -c <span class="hljs-string">"import sys,json;print(json.load(sys.stdin)['token'])"</span>)
+
+curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://192.168.1.77/suite-api/api/adapters \
+  | python3 -c <span class="hljs-string">"
+import sys,json
+d=json.load(sys.stdin)
+for a in d.get('adapterInstancesInfoDto',[]):
+    kind=a.get('resourceKey',{}).get('adapterKindKey','')
+    if 'HEALTH' in kind:
+        name=a.get('resourceKey',{}).get('name','?')
+        status=a.get('adapter-status',{}).get('adapterStatus','?')
+        print(f'{name}: {status}')
+"</span>
+
+<span class="hljs-comment"># Step 2: Try stop/start first (usually doesn't work but worth trying)</span>
+<span class="hljs-comment"># Find the adapter ID from the output above, then:</span>
+curl -sk -X PUT \
+  <span class="hljs-string">"https://192.168.1.77/suite-api/api/adapters/&lt;adapter-id&gt;/monitoringstate/stop"</span> \
+  -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span>
+<span class="hljs-built_in">sleep</span> 10
+curl -sk -X PUT \
+  <span class="hljs-string">"https://192.168.1.77/suite-api/api/adapters/&lt;adapter-id&gt;/monitoringstate/start"</span> \
+  -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span>
+
+<span class="hljs-comment"># Step 3: If stop/start doesn't fix it, reboot the appliance</span>
+ssh root@192.168.1.77
+reboot
+
+<span class="hljs-comment"># Wait 10-15 minutes for the appliance to fully restart</span>
+<span class="hljs-comment"># Then verify the health adapter is collecting data again</span>
+</code></pre>
+<hr>
+<h2 id="6-infrastructure--platform"><span id="infra"></span>6. Infrastructure &amp; Platform</h2>
+<h3 id="issue-25-vcenter-cant-thin-provision-to-vsan">Issue #25: vCenter Can't Thin-Provision to vSAN</h3>
+<p><strong>Problem:</strong> The vCenter storage migration wizard keeps thick provisioning even when thin is selected. In this lab, SDDC Manager had 914GB allocated but only 108GB of actual data.</p>
+<p><strong>Impact:</strong> Massive storage waste on vSAN. A single VM can consume 10x more space than it actually needs.</p>
+<p><strong>Resolution — Use vmkfstools to clone each disk as thin:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># ================================================================</span>
+<span class="hljs-comment"># THICK-TO-THIN MIGRATION — COMPLETE PROCEDURE</span>
+<span class="hljs-comment"># ================================================================</span>
+<span class="hljs-comment"># Example: SDDC Manager (6 disks, 914GB thick → ~108GB thin)</span>
+<span class="hljs-comment"># ================================================================</span>
+
+<span class="hljs-comment"># STEP 1: Power off the VM in vCenter (UI or API)</span>
+SESSION=$(curl -sk -X POST https://vcenter.lab.local/api/session \
+  -H <span class="hljs-string">"Authorization: Basic <span class="hljs-subst">$(echo -n 'administrator@vsphere.local:Success01!0909!!' | base64)</span>"</span> \
+  | <span class="hljs-built_in">tr</span> -d <span class="hljs-string">'"'</span>)
+curl -sk -X POST <span class="hljs-string">"https://vcenter.lab.local/api/vcenter/vm/vm-68/power?action=stop"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">$SESSION</span>"</span>
+
+<span class="hljs-comment"># STEP 2: SSH to the ESXi host where the VM is registered</span>
+ssh root@192.168.1.201
+<span class="hljs-comment"># Password: Success01!0909!!</span>
+
+<span class="hljs-comment"># STEP 3: Create destination directory on vSAN</span>
+<span class="hljs-built_in">mkdir</span> -p /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/
+
+<span class="hljs-comment"># STEP 4: Clone each disk as thin provisioned</span>
+<span class="hljs-comment"># Syntax: vmkfstools -i &lt;source.vmdk&gt; &lt;dest.vmdk&gt; -d thin</span>
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager.vmdk -d thin
+
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager_1.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_1.vmdk -d thin
+
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager_2.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_2.vmdk -d thin
+
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager_3.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_3.vmdk -d thin
+
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager_4.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_4.vmdk -d thin
+
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager_5.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_5.vmdk -d thin
+
+<span class="hljs-comment"># NOTE: If a clone fails partway through (e.g., host disconnect), delete the</span>
+<span class="hljs-comment"># partial copy before retrying:</span>
+<span class="hljs-comment"># vmkfstools -U /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_3.vmdk</span>
+<span class="hljs-comment"># Then retry the clone command.</span>
+
+<span class="hljs-comment"># STEP 5: Copy configuration files (VMX, NVRAM, VMSD)</span>
+<span class="hljs-built_in">cp</span> /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager.vmx \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/
+<span class="hljs-built_in">cp</span> /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager.nvram \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/
+<span class="hljs-built_in">cp</span> /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager.vmsd \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/
+
+<span class="hljs-comment"># STEP 6: Verify thin provisioned disks</span>
+<span class="hljs-built_in">du</span> -sh /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/
+<span class="hljs-comment"># Should show ~108GB instead of 914GB</span>
+
+<span class="hljs-comment"># STEP 7: In vCenter UI:</span>
+<span class="hljs-comment"># - Right-click original VM &gt; "Remove from Inventory" (NOT Delete from Disk)</span>
+<span class="hljs-comment"># - Navigate to Datastores &gt; vSAN &gt; Browse &gt; sddc-manager/</span>
+<span class="hljs-comment"># - Right-click sddc-manager.vmx &gt; "Register VM"</span>
+<span class="hljs-comment"># - Power on and verify</span>
+</code></pre>
+<hr>
+<h3 id="issue-26-vhvenable-ghost-setting">Issue #26: <code>vhv.enable</code> Ghost Setting</h3>
+<p><strong>Problem:</strong> The <code>vhv.enable</code> setting persists in a VM's runtime DICT (vmware.log) even when it is not present in the VMX file. This causes vMotion to fail with: <em>"The virtual machine cannot be restored because the snapshot was taken with VHV enabled."</em></p>
+<p><strong>Impact:</strong> vMotion fails with a confusing error. The vCenter UI shows "Expose hardware assisted virtualization" unchecked, and the VMX file has no <code>vhv.enable</code> entry — yet the setting is active.</p>
+<p><strong>Resolution — Explicitly set FALSE in the VMX file:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Step 1: Power off the VM</span>
+
+<span class="hljs-comment"># Step 2: SSH to the ESXi host where the VM resides</span>
+ssh root@192.168.1.201
+
+<span class="hljs-comment"># Step 3: Check if vhv.enable exists in the VMX file</span>
+grep -i vhv /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager.vmx
+<span class="hljs-comment"># If no output, the setting is NOT in the file (but may be in runtime)</span>
+
+<span class="hljs-comment"># Step 4: Add explicit FALSE — even if the line doesn't exist</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">'vhv.enable = "FALSE"'</span> &gt;&gt; /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager.vmx
+
+<span class="hljs-comment"># Step 5: Verify it was added</span>
+grep -i vhv /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager.vmx
+<span class="hljs-comment"># Should show: vhv.enable = "FALSE"</span>
+
+<span class="hljs-comment"># Step 6: Power on the VM and retry vMotion</span>
+</code></pre>
+<blockquote>
+<p><strong>Key lesson:</strong> The ABSENCE of <code>vhv.enable</code> in the VMX file does NOT mean it is disabled. The setting can persist from a previous deployment environment. You must always add an explicit <code>vhv.enable = "FALSE"</code> to fix vMotion failures.</p>
+</blockquote>
+<hr>
+<h3 id="issue-27-hot-vmotion-fails-in-nested-environments">Issue #27: Hot vMotion Fails in Nested Environments</h3>
+<p><strong>Problem:</strong> Live vMotion (hot migration) fails due to memory convergence timeout. The hypervisor cannot converge the memory pages fast enough through the nested network stack.</p>
+<p><strong>Impact:</strong> Must use cold migration as a fallback. This means VM downtime during migration.</p>
+<p><strong>Resolution — Use cold migration:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Step 1: Power off the VM</span>
+<span class="hljs-comment"># Via vCenter UI: Right-click VM &gt; Power &gt; Shut Down Guest OS</span>
+<span class="hljs-comment"># Or via API:</span>
+SESSION=$(curl -sk -X POST https://vcenter.lab.local/api/session \
+  -H <span class="hljs-string">"Authorization: Basic <span class="hljs-subst">$(echo -n 'administrator@vsphere.local:Success01!0909!!' | base64)</span>"</span> \
+  | <span class="hljs-built_in">tr</span> -d <span class="hljs-string">'"'</span>)
+curl -sk -X POST <span class="hljs-string">"https://vcenter.lab.local/api/vcenter/vm/&lt;vm-id&gt;/power?action=stop"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">$SESSION</span>"</span>
+
+<span class="hljs-comment"># Step 2: In vCenter UI:</span>
+<span class="hljs-comment"># Right-click VM &gt; Migrate</span>
+<span class="hljs-comment"># Select "Change both compute resource and storage"</span>
+<span class="hljs-comment"># Select destination host/datastore</span>
+<span class="hljs-comment"># The migration will proceed as a cold migration (relocate powered-off VM)</span>
+
+<span class="hljs-comment"># Step 3: Power on VM at the new location</span>
+curl -sk -X POST <span class="hljs-string">"https://vcenter.lab.local/api/vcenter/vm/&lt;vm-id&gt;/power?action=start"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">$SESSION</span>"</span>
+</code></pre>
+<blockquote>
+<p><strong>Alternative:</strong> If you must avoid downtime, try increasing the vMotion timeout in the advanced settings: <code>Host &gt; Configuration &gt; Advanced Settings &gt; Migrate.Enabled = 1</code> and <code>Migrate.PreCopyAbsoluteMaxRound = 200</code>. This may help in some cases but is not guaranteed for nested environments.</p>
+</blockquote>
+<hr>
+<h3 id="issue-28-vdt-not-pre-installed-on-sddc-manager">Issue #28: VDT Not Pre-Installed on SDDC Manager</h3>
+<p><strong>Problem:</strong> The VMware Deployment Toolkit (VDT) is not pre-installed on SDDC Manager. Must download from Broadcom KB 344917 and upload manually.</p>
+<p><strong>Impact:</strong> Cannot run health checks or validation without manual setup.</p>
+<p><strong>Resolution — Download, upload, install, and run VDT:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># STEP 1: Download VDT from Broadcom</span>
+<span class="hljs-comment"># Go to: https://knowledge.broadcom.com/external/article/344917</span>
+<span class="hljs-comment"># Download the latest VDT zip file (e.g., vdt-2.2.7_02-05-2026.zip)</span>
+
+<span class="hljs-comment"># STEP 2: Upload to SDDC Manager via SCP</span>
+<span class="hljs-comment"># From your workstation:</span>
+scp vdt-2.2.7_02-05-2026.zip vcf@sddc-manager.lab.local:/tmp/
+<span class="hljs-comment"># Password: Success01!0909!!</span>
+
+<span class="hljs-comment"># STEP 3: SSH to SDDC Manager and install</span>
+ssh vcf@sddc-manager.lab.local
+su -
+
+<span class="hljs-built_in">cd</span> /tmp
+unzip vdt-2.2.7_02-05-2026.zip -d /opt/vmware/vdt/
+
+<span class="hljs-comment"># STEP 4: Run VDT</span>
+<span class="hljs-built_in">cd</span> /opt/vmware/vdt/
+python3 vdt.py
+
+<span class="hljs-comment"># VDT will check:</span>
+<span class="hljs-comment"># - DNS resolution (forward and reverse)</span>
+<span class="hljs-comment"># - NTP synchronization</span>
+<span class="hljs-comment"># - Certificate validity and SAN matching</span>
+<span class="hljs-comment"># - Service health</span>
+<span class="hljs-comment"># - Password status</span>
+<span class="hljs-comment"># - Component connectivity</span>
+
+<span class="hljs-comment"># STEP 5: Review results</span>
+<span class="hljs-comment"># VDT creates a report at:</span>
+<span class="hljs-built_in">cat</span> /var/log/vmware/vcf/vdt/vdt-*.txt
+</code></pre>
+<hr>
+<h2 id="7-crash-recovery--vcf-operations-suite-api"><span id="crash"></span>7. Crash Recovery &amp; VCF Operations Suite-API</h2>
+<p><em>These issues were discovered during the Windows Update crash recovery in March 2026.</em></p>
+<h3 id="issue-29-vcf-operations-suite-api-uses-non-standard-auth-header">Issue #29: VCF Operations Suite-API Uses Non-Standard Auth Header</h3>
+<p><strong>Problem:</strong> The VCF Operations Suite-API requires the auth header format <code>vRealizeOpsToken &lt;token&gt;</code> — NOT <code>Bearer</code> or <code>VMware</code> like every other VMware API.</p>
+<p><strong>Impact:</strong> All API calls fail with 401 Unauthorized if using the standard <code>Bearer</code> format. Error message does not explain the correct format.</p>
+<p><strong>Resolution — Complete working example:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># STEP 1: Get authentication token</span>
+TOKEN=$(curl -sk -X POST https://192.168.1.77/suite-api/api/auth/token/acquire \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"admin","password":"Success01!0909!!","authSource":"local"}'</span> \
+  | python3 -c <span class="hljs-string">"import sys,json;print(json.load(sys.stdin)['token'])"</span>)
+
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Token: <span class="hljs-variable">$TOKEN</span>"</span>
+
+<span class="hljs-comment"># STEP 2: Use the token with the CORRECT header format</span>
+<span class="hljs-comment"># WRONG — returns 401:</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://192.168.1.77/suite-api/api/auth/users
+
+<span class="hljs-comment"># CORRECT — returns 200:</span>
+curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://192.168.1.77/suite-api/api/auth/users | python3 -m json.tool
+
+<span class="hljs-comment"># All subsequent API calls must use "vRealizeOpsToken" prefix:</span>
+curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://192.168.1.77/suite-api/api/adapters | python3 -m json.tool
+
+curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://192.168.1.77/suite-api/api/deployment/node/status | python3 -m json.tool
+
+curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://192.168.1.77/suite-api/api/collectors | python3 -m json.tool
+</code></pre>
+<hr>
+<h3 id="issue-30-vcf-operations-permissions-api-requires-single-object-not-array">Issue #30: VCF Operations Permissions API Requires Single Object (Not Array)</h3>
+<p><strong>Problem:</strong> The PUT body for user permissions at <code>/suite-api/api/auth/users/{id}/permissions</code> must be a single JSON object with <code>roleName</code>, NOT wrapped in an array, <code>permissions</code> key, or any other wrapper.</p>
+<p><strong>Impact:</strong> Every other format returns "Role with name: null cannot be found" — an unhelpful error that doesn't indicate the format is wrong.</p>
+<p><strong>Resolution — Complete working example:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># STEP 1: Get the user ID you want to modify</span>
+curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://192.168.1.77/suite-api/api/auth/users \
+  | python3 -c <span class="hljs-string">"
+import sys,json
+d=json.load(sys.stdin)
+for u in d.get('users',[]):
+    print(f\"ID: {u['id']} | Username: {u['username']} | Roles: {u.get('roleNames',[])}\")"</span>
+
+<span class="hljs-comment"># STEP 2: List available roles</span>
+curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://192.168.1.77/suite-api/api/auth/roles \
+  | python3 -c <span class="hljs-string">"
+import sys,json
+d=json.load(sys.stdin)
+for r in d.get('roles',[]):
+    print(f\"Role: {r['name']} | Privileges: {len(r.get('privilege-keys',[]))}\")"</span>
+
+<span class="hljs-comment"># STEP 3: Assign the Administrator role to a user</span>
+<span class="hljs-comment"># Replace &lt;USER-ID&gt; with the actual user ID from step 1</span>
+
+<span class="hljs-comment"># CORRECT format — single JSON object, NOT an array:</span>
+curl -sk -X PUT \
+  <span class="hljs-string">"https://192.168.1.77/suite-api/api/auth/users/&lt;USER-ID&gt;/permissions"</span> \
+  -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -H <span class="hljs-string">"Accept: application/json"</span> \
+  -d <span class="hljs-string">'{"roleName":"Administrator","allowAllObjects":true,"traversal-spec-instances":[]}'</span>
+
+<span class="hljs-comment"># WRONG formats that all return "Role with name: null":</span>
+<span class="hljs-comment"># {"permissions": [{"roleName": "Administrator"}]}</span>
+<span class="hljs-comment"># [{"roleName": "Administrator"}]</span>
+<span class="hljs-comment"># {"roleName": "Administrator", "permissions": []}</span>
+<span class="hljs-comment"># {"role": {"name": "Administrator"}}</span>
+
+<span class="hljs-comment"># STEP 4: Verify the role was assigned</span>
+curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  <span class="hljs-string">"https://192.168.1.77/suite-api/api/auth/users/&lt;USER-ID&gt;"</span> \
+  | python3 -c <span class="hljs-string">"import sys,json;d=json.load(sys.stdin);print('Roles:',d.get('roleNames',[]))"</span>
+</code></pre>
+<hr>
+<h3 id="issue-31-vcf-operations-super-admin-shows-empty-roles-by-design">Issue #31: VCF Operations Super Admin Shows Empty Roles (By Design)</h3>
+<p><strong>Problem:</strong> The built-in <code>admin</code> user always shows <code>roleNames: []</code> in the Suite-API. This looks like a bug but is by design.</p>
+<p><strong>Impact:</strong> Administrators waste time trying to "fix" the admin role assignment. Any attempt to modify the admin user fails.</p>
+<p><strong>Resolution — No action needed. Confirm it's working:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Verify admin has implicit full access despite empty roles</span>
+TOKEN=$(curl -sk -X POST https://192.168.1.77/suite-api/api/auth/token/acquire \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"admin","password":"Success01!0909!!","authSource":"local"}'</span> \
+  | python3 -c <span class="hljs-string">"import sys,json;print(json.load(sys.stdin)['token'])"</span>)
+
+<span class="hljs-comment"># These all work — proving admin has full access:</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Users (admin-only):"</span>
+curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://192.168.1.77/suite-api/api/auth/users -o /dev/null -w <span class="hljs-string">"%{http_code}\n"</span>
+
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Adapters:"</span>
+curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://192.168.1.77/suite-api/api/adapters -o /dev/null -w <span class="hljs-string">"%{http_code}\n"</span>
+
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Cluster status:"</span>
+curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://192.168.1.77/suite-api/api/deployment/node/status -o /dev/null -w <span class="hljs-string">"%{http_code}\n"</span>
+<span class="hljs-comment"># All should return: 200</span>
+
+<span class="hljs-comment"># These will FAIL (by design):</span>
+<span class="hljs-comment"># PUT to modify admin user → HTTP 500 "Cannot create or update super admin"</span>
+<span class="hljs-comment"># DELETE admin user → HTTP 500 "system created and cannot be deleted"</span>
+<span class="hljs-comment"># Neither of these is a bug — admin is a protected super admin account</span>
+</code></pre>
+<hr>
+<h3 id="issue-32-sddc-manager-domainmanager-uses-http-not-https-on-port-7200">Issue #32: SDDC Manager domainmanager Uses HTTP (Not HTTPS) on Port 7200</h3>
+<p><strong>Problem:</strong> The <code>domainmanager</code> service on SDDC Manager listens on port 7200 using plain <strong>HTTP</strong> (not HTTPS). Using <code>curl -sk https://localhost:7200</code> fails with "wrong version number" — a confusing error that suggests a TLS problem.</p>
+<p><strong>Impact:</strong> You waste time troubleshooting TLS when the real issue is just wrong protocol.</p>
+<p><strong>Resolution:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH to SDDC Manager</span>
+ssh vcf@sddc-manager.lab.local
+
+<span class="hljs-comment"># WRONG — misleading "wrong version number" error:</span>
+curl -sk https://localhost:7200/health
+<span class="hljs-comment"># Error: curl: (35) error:1408F10B:SSL routines:ssl3_get_record:wrong version number</span>
+
+<span class="hljs-comment"># CORRECT — use HTTP:</span>
+curl -s http://localhost:7200/health
+<span class="hljs-comment"># Returns: {"status":"UP"}</span>
+
+<span class="hljs-comment"># All internal service ports and their protocols:</span>
+<span class="hljs-comment"># Port 7200 — domainmanager — HTTP  (not HTTPS!)</span>
+<span class="hljs-comment"># Port 7300 — operationsmanager — HTTP</span>
+<span class="hljs-comment"># Port 7400 — lcm — HTTP</span>
+<span class="hljs-comment"># Port 443  — Nginx reverse proxy — HTTPS (this is what external clients use)</span>
+
+<span class="hljs-comment"># Quick check for all services:</span>
+<span class="hljs-keyword">for</span> port <span class="hljs-keyword">in</span> 7200 7300 7400; <span class="hljs-keyword">do</span>
+  STATUS=$(curl -s --connect-timeout 3 http://localhost:<span class="hljs-variable">$port</span>/health 2&gt;/dev/null)
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"Port <span class="hljs-variable">$port</span>: <span class="hljs-variable">$STATUS</span>"</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+<hr>
+<h3 id="issue-33-nsx-adapter-credential-fields-must-use-uppercase-names">Issue #33: NSX Adapter Credential Fields Must Use Uppercase Names</h3>
+<p><strong>Problem:</strong> When creating NSX adapter credentials via Suite-API, the field names must be <code>USERNAME</code> and <code>PASSWORD</code> (all uppercase). Using <code>USER</code> or <code>user</code> fails with "USERNAME is mandatory".</p>
+<p><strong>Impact:</strong> No documentation specifies the exact field names. Trial and error is the only way to discover this.</p>
+<p><strong>Resolution — Complete credential and adapter creation:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># STEP 1: Create the credential with CORRECT field names</span>
+CRED_RESP=$(curl -sk -X POST <span class="hljs-string">"https://192.168.1.77/suite-api/api/credentials"</span> \
+  -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{
+    "name": "nsx-vip.lab.local",
+    "adapterKindKey": "NSXTAdapter",
+    "credentialKindKey": "NSXTCREDENTIAL",
+    "fields": [
+      {"name": "USERNAME", "value": "admin"},
+      {"name": "PASSWORD", "value": "Success01!0909!!"}
+    ]
+  }'</span>)
+
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$CRED_RESP</span>"</span> | python3 -m json.tool
+CRED_ID=$(<span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$CRED_RESP</span>"</span> | python3 -c <span class="hljs-string">"import sys,json;print(json.load(sys.stdin)['id'])"</span>)
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Credential ID: <span class="hljs-variable">$CRED_ID</span>"</span>
+
+<span class="hljs-comment"># WRONG field names that will fail:</span>
+<span class="hljs-comment"># {"name": "USER", "value": "admin"}        → "USERNAME is mandatory"</span>
+<span class="hljs-comment"># {"name": "user", "value": "admin"}        → "USERNAME is mandatory"</span>
+<span class="hljs-comment"># {"name": "username", "value": "admin"}    → "USERNAME is mandatory"</span>
+<span class="hljs-comment"># {"name": "PASS", "value": "..."}          → "PASSWORD is mandatory"</span>
+
+<span class="hljs-comment"># STEP 2: Create the NSX adapter using the credential</span>
+curl -sk -X POST <span class="hljs-string">"https://192.168.1.77/suite-api/api/adapters"</span> \
+  -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">"{
+    \"name\": \"nsx-vip.lab.local\",
+    \"description\": \"NSX Manager\",
+    \"adapterKindKey\": \"NSXTAdapter\",
+    \"resourceIdentifiers\": [
+      {\"name\": \"NSXTHOST\", \"value\": \"nsx-vip.lab.local\"},
+      {\"name\": \"AUTO_DISCOVERY\", \"value\": \"true\"},
+      {\"name\": \"ENABLE_ALERTS_FROM_NSX\", \"value\": \"false\"},
+      {\"name\": \"VCURL\", \"value\": \"vcenter.lab.local\"},
+      {\"name\": \"VMEntityVCID\", \"value\": \"92109cf0-ad3b-4ffa-8972-a77bb7fadacf\"},
+      {\"name\": \"NSX_CLUSTER_ID\", \"value\": \"6c55d856-ab96-4190-8495-3cc8cb23450c\"}
+    ],
+    \"credential\": {\"id\": \"<span class="hljs-variable">$CRED_ID</span>\"},
+    \"collectorId\": 2
+  }"</span>
+</code></pre>
+<hr>
+<h3 id="issue-34-gemfire-cache-takes-5-10-minutes-to-populate-after-cluster-init">Issue #34: Gemfire Cache Takes 5-10 Minutes to Populate After Cluster Init</h3>
+<p><strong>Problem:</strong> After VCF Operations cluster initialization, the Gemfire distributed cache takes 5-10 minutes to fully populate. Roles, users, adapters, and other data may not appear in API responses during this window.</p>
+<p><strong>Impact:</strong> Administrators conclude data is missing and take unnecessary corrective action (like trying to recreate roles or reinitialize the cluster).</p>
+<p><strong>Resolution — Wait and verify:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># After cluster initialization, run this monitoring loop:</span>
+TOKEN=$(curl -sk -X POST https://192.168.1.77/suite-api/api/auth/token/acquire \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"admin","password":"Success01!0909!!","authSource":"local"}'</span> \
+  | python3 -c <span class="hljs-string">"import sys,json;print(json.load(sys.stdin)['token'])"</span>)
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> $(<span class="hljs-built_in">seq</span> 1 20); <span class="hljs-keyword">do</span>
+  ROLES=$(curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+    https://192.168.1.77/suite-api/api/auth/roles 2&gt;/dev/null \
+    | python3 -c <span class="hljs-string">"import sys,json;d=json.load(sys.stdin);print(len(d.get('roles',[])))"</span> 2&gt;/dev/null || <span class="hljs-built_in">echo</span> <span class="hljs-string">"0"</span>)
+  ADAPTERS=$(curl -sk -H <span class="hljs-string">"Authorization: vRealizeOpsToken <span class="hljs-variable">$TOKEN</span>"</span> \
+    https://192.168.1.77/suite-api/api/adapters 2&gt;/dev/null \
+    | python3 -c <span class="hljs-string">"import sys,json;d=json.load(sys.stdin);print(len(d.get('adapterInstancesInfoDto',[])))"</span> 2&gt;/dev/null || <span class="hljs-built_in">echo</span> <span class="hljs-string">"0"</span>)
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"[<span class="hljs-subst">$(date +%H:%M:%S)</span>] Roles: <span class="hljs-variable">$ROLES</span> | Adapters: <span class="hljs-variable">$ADAPTERS</span>"</span>
+  <span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$ROLES</span>"</span> -gt 0 ] &amp;&amp; [ <span class="hljs-string">"<span class="hljs-variable">$ADAPTERS</span>"</span> -gt 0 ] 2&gt;/dev/null; <span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Gemfire cache populated — system ready."</span>
+    <span class="hljs-built_in">break</span>
+  <span class="hljs-keyword">fi</span>
+  <span class="hljs-built_in">sleep</span> 30
+<span class="hljs-keyword">done</span>
+</code></pre>
+<p><strong>Expected timeline after cluster init:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Roles Visible</th>
+<th>Adapters Visible</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0-2 min</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2-5 min</td>
+<td>0-3</td>
+<td>0-5</td>
+</tr>
+<tr>
+<td>5-10 min</td>
+<td>All (e.g., 5)</td>
+<td>All (e.g., 15+)</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="issue-35-vcf-operations-hsqldb-reset-required-after-unclean-shutdown">Issue #35: VCF Operations HSQLDB Reset Required After Unclean Shutdown</h3>
+<p><strong>Problem:</strong> An unclean shutdown of VCF Operations leaves the HSQLDB and Gemfire cache in an inconsistent state, causing <code>INITIALIZATION_FAILED</code>. There is no automatic recovery mechanism.</p>
+<p><strong>Impact:</strong> VCF Operations is completely non-functional until manual HSQLDB reset.</p>
+<p><strong>Resolution — Complete HSQLDB reset procedure:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># ================================================================</span>
+<span class="hljs-comment"># VCF OPERATIONS HSQLDB RESET — COMPLETE PROCEDURE</span>
+<span class="hljs-comment"># ================================================================</span>
+
+<span class="hljs-comment"># STEP 1: SSH to VCF Operations node as root</span>
+ssh root@192.168.1.77
+<span class="hljs-comment"># Password: Success01!0909!!</span>
+
+<span class="hljs-comment"># STEP 2: Verify the problem — check cluster state</span>
+curl -sk https://localhost/casa/cluster/status
+<span class="hljs-comment"># Expected: "state": "INITIALIZATION_FAILED"</span>
+
+<span class="hljs-comment"># STEP 3: Stop all VCF Operations services</span>
+systemctl stop vmware-casa
+systemctl stop vmware-vcops-watchdog
+
+<span class="hljs-comment"># STEP 4: Backup the HSQLDB script file</span>
+<span class="hljs-built_in">cp</span> /storage/db/casa/webapp/hsqldb/casa.db.script \
+   /storage/db/casa/webapp/hsqldb/casa.db.script.bak
+
+<span class="hljs-comment"># STEP 5: Edit the HSQLDB — change initialization state</span>
+<span class="hljs-comment"># Find the line containing "initialization_state":"FAILED"</span>
+grep -n <span class="hljs-string">"initialization_state"</span> /storage/db/casa/webapp/hsqldb/casa.db.script
+<span class="hljs-comment"># Note the line number</span>
+
+<span class="hljs-comment"># Option A: Use sed to do the replacement</span>
+sed -i <span class="hljs-string">'s/"initialization_state":"FAILED"/"initialization_state":"NONE"/g'</span> \
+  /storage/db/casa/webapp/hsqldb/casa.db.script
+
+<span class="hljs-comment"># Option B: Use vi if you prefer manual editing</span>
+<span class="hljs-comment"># vi /storage/db/casa/webapp/hsqldb/casa.db.script</span>
+<span class="hljs-comment"># Find: "initialization_state":"FAILED"</span>
+<span class="hljs-comment"># Replace with: "initialization_state":"NONE"</span>
+<span class="hljs-comment"># Save and exit (:wq)</span>
+
+<span class="hljs-comment"># Verify the change was made</span>
+grep <span class="hljs-string">"initialization_state"</span> /storage/db/casa/webapp/hsqldb/casa.db.script
+<span class="hljs-comment"># Should show: "initialization_state":"NONE"</span>
+
+<span class="hljs-comment"># STEP 6: Clear the HSQLDB log file (forces clean state)</span>
+&gt; /storage/db/casa/webapp/hsqldb/casa.db.log
+
+<span class="hljs-comment"># STEP 7: Clear admin password hash (forces regeneration)</span>
+<span class="hljs-built_in">cat</span> &gt; /storage/vcops/user/conf/adminuser.properties &lt;&lt; <span class="hljs-string">'EOF'</span>
+<span class="hljs-comment">#Properties for vCOps user 'admin'</span>
+username=admin
+hashed_password=
+EOF
+
+<span class="hljs-comment"># STEP 8: Get the SHA1 thumbprint (used during initialization)</span>
+THUMBPRINT=$(openssl x509 -<span class="hljs-keyword">in</span> /storage/vcops/user/conf/ssl/cert.pem \
+  -noout -fingerprint -sha1 | sed <span class="hljs-string">'s/SHA1 Fingerprint=//'</span>)
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"SHA1 Thumbprint: <span class="hljs-variable">$THUMBPRINT</span>"</span>
+
+<span class="hljs-comment"># STEP 9: Restart services</span>
+systemctl start vmware-casa
+systemctl start vmware-vcops-watchdog
+
+<span class="hljs-comment"># STEP 10: Wait for CASA to fully start (monitor logs)</span>
+<span class="hljs-built_in">tail</span> -f /usr/lib/vmware-casa/casa-webapp/logs/casa.log | grep -i <span class="hljs-string">'startup\|init\|error'</span>
+<span class="hljs-comment"># Wait until you see "Started Application" or similar startup message</span>
+<span class="hljs-comment"># Press Ctrl+C to stop tailing</span>
+
+<span class="hljs-comment"># STEP 11: Trigger cluster initialization</span>
+curl -sk -X POST https://localhost/casa/cluster/init \
+  -H <span class="hljs-string">"Content-Type: application/json"</span>
+
+<span class="hljs-comment"># STEP 12: Verify cluster status</span>
+curl -sk https://localhost/casa/cluster/status
+<span class="hljs-comment"># Expected: "cluster_state": "INITIALIZED"</span>
+
+<span class="hljs-comment"># STEP 13: Verify slice is online</span>
+curl -sk https://localhost/casa/sysadmin/slice/online_state
+<span class="hljs-comment"># Expected: "onlineState":"ONLINE"</span>
+
+<span class="hljs-comment"># STEP 14: Wait 5-10 minutes for Gemfire cache to populate (see Issue #34)</span>
+<span class="hljs-comment"># Then log in to the VCF Operations UI at https://192.168.1.77/</span>
+<span class="hljs-comment"># Username: admin</span>
+<span class="hljs-comment"># Password: Success01!0909!!</span>
+</code></pre>
+<hr>
+<h2 id="8-quick-reference-all-35-issues"><span id="quick"></span>8. Quick Reference: All 35 Issues</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Issue</th>
+<th>Category</th>
+<th>Severity</th>
+<th>Fix Summary</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>PostgreSQL schema unmapped</td>
+<td>Database</td>
+<td>Critical</td>
+<td>Map via <code>information_schema</code> queries</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Credential cascade failure</td>
+<td>Database</td>
+<td>Critical</td>
+<td>6-step DB repair (Issue #4)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>API can't cancel stuck tasks</td>
+<td>Database</td>
+<td>Critical</td>
+<td><code>UPDATE task_metadata SET resolved = true</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>6-step repair must be in sequence</td>
+<td>Database</td>
+<td>Critical</td>
+<td>Full procedure with all SQL commands</td>
+</tr>
+<tr>
+<td>5</td>
+<td>PostgreSQL requires <code>-h 127.0.0.1</code></td>
+<td>Database</td>
+<td>Medium</td>
+<td>Always use <code>-h 127.0.0.1</code> flag</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Column naming inconsistencies</td>
+<td>Database</td>
+<td>Medium</td>
+<td><code>state</code> not <code>status</code>, <code>resolved</code> boolean</td>
+</tr>
+<tr>
+<td>7</td>
+<td>PostgreSQL password not discoverable</td>
+<td>Database</td>
+<td>High</td>
+<td><code>pg_hba.conf</code> trust auth workaround</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NSX needs 32GB RAM (not 16GB)</td>
+<td>NSX</td>
+<td>High</td>
+<td>Set VM to 32GB RAM / 6 vCPU</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Boot storm load &gt;100 is normal</td>
+<td>NSX</td>
+<td>High</td>
+<td>Wait 30-60 min after power-on</td>
+</tr>
+<tr>
+<td>10</td>
+<td>More vCPU makes it worse</td>
+<td>NSX</td>
+<td>Medium</td>
+<td>Keep at 6 vCPU, increase RAM instead</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Services need 10-15 min</td>
+<td>NSX</td>
+<td>Medium</td>
+<td>Wait before API calls; use monitoring loop</td>
+</tr>
+<tr>
+<td>12</td>
+<td>DNS/NTP via CLI only</td>
+<td>NSX</td>
+<td>Medium</td>
+<td><code>set name-servers</code>, <code>set ntp-servers</code></td>
+</tr>
+<tr>
+<td>13</td>
+<td>TEP on vmk0 (new in 9.0)</td>
+<td>NSX</td>
+<td>Low</td>
+<td>Select "Use VMkernel Adapter" in Transport Profile</td>
+</tr>
+<tr>
+<td>14</td>
+<td>NSX cert SAN must include SDDC FQDN</td>
+<td>Certs</td>
+<td>High</td>
+<td>Full OpenSSL config with all 5 SANs</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Two trust stores need updating</td>
+<td>Certs</td>
+<td>High</td>
+<td>Import to VCF trust store AND Java cacerts</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Fleet cert generator wrong SANs</td>
+<td>Certs</td>
+<td>High</td>
+<td>Full OpenSSL cert generation procedure</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Logs cert generator wrong SANs</td>
+<td>Certs</td>
+<td>High</td>
+<td>Full OpenSSL cert generation procedure</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Shell can't handle PEM escaping</td>
+<td>Certs</td>
+<td>Medium</td>
+<td>Python script to build JSON payload</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Adapter log paths changed</td>
+<td>VCF Ops</td>
+<td>Medium</td>
+<td><code>/storage/log/vcops/log/adapters/</code></td>
+</tr>
+<tr>
+<td>20</td>
+<td>JRE path changed</td>
+<td>VCF Ops</td>
+<td>Medium</td>
+<td><code>/usr/java/jre-vmware-17/</code></td>
+</tr>
+<tr>
+<td>21</td>
+<td>Two separate NSX adapters</td>
+<td>VCF Ops</td>
+<td>Medium</td>
+<td>Configure both VCF and Aria Admin adapters</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Credential ROTATE broken for NSX</td>
+<td>VCF Ops</td>
+<td>High</td>
+<td>Uncheck system managed, set manually</td>
+</tr>
+<tr>
+<td>23</td>
+<td>SSH enable via Admin UI only</td>
+<td>VCF Ops</td>
+<td>Medium</td>
+<td><code>https://&lt;host&gt;/admin/</code> &gt; SSH &gt; Enable</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Health adapter fails silently</td>
+<td>VCF Ops</td>
+<td>High</td>
+<td>Full appliance reboot required</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Can't thin-provision to vSAN</td>
+<td>Infra</td>
+<td>Medium</td>
+<td><code>vmkfstools -i &lt;src&gt; &lt;dst&gt; -d thin</code> per disk</td>
+</tr>
+<tr>
+<td>26</td>
+<td>vhv.enable ghost setting</td>
+<td>Infra</td>
+<td>Medium</td>
+<td>Add <code>vhv.enable = "FALSE"</code> to VMX</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Hot vMotion fails nested</td>
+<td>Infra</td>
+<td>Medium</td>
+<td>Power off VM, cold migrate, power on</td>
+</tr>
+<tr>
+<td>28</td>
+<td>VDT not pre-installed</td>
+<td>Infra</td>
+<td>Low</td>
+<td>Download from KB 344917, SCP, unzip, run</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Suite-API uses vRealizeOpsToken</td>
+<td>Suite-API</td>
+<td>High</td>
+<td><code>Authorization: vRealizeOpsToken &lt;token&gt;</code></td>
+</tr>
+<tr>
+<td>30</td>
+<td>Permissions API single object</td>
+<td>Suite-API</td>
+<td>High</td>
+<td><code>{"roleName":"Administrator","allowAllObjects":true}</code></td>
+</tr>
+<tr>
+<td>31</td>
+<td>Super admin empty roles</td>
+<td>Suite-API</td>
+<td>Low</td>
+<td>By design — no action needed</td>
+</tr>
+<tr>
+<td>32</td>
+<td>domainmanager port 7200 HTTP</td>
+<td>SDDC</td>
+<td>Medium</td>
+<td>Use <code>http://localhost:7200</code> not https</td>
+</tr>
+<tr>
+<td>33</td>
+<td>NSX credential fields uppercase</td>
+<td>Suite-API</td>
+<td>Medium</td>
+<td><code>USERNAME</code> and <code>PASSWORD</code> (not USER)</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Gemfire cache needs 5-10 min</td>
+<td>VCF Ops</td>
+<td>Medium</td>
+<td>Wait after init; use monitoring loop</td>
+</tr>
+<tr>
+<td>35</td>
+<td>HSQLDB reset after crash</td>
+<td>VCF Ops</td>
+<td>Critical</td>
+<td>Full sed/restart/init procedure</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="9-document-information"><span id="docinfo"></span>9. Document Information</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Document Title</td>
+<td>VCF 9.0 Undocumented Issues &amp; Discoveries Reference</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>Author</td>
+<td>Virtual Control LLC</td>
+</tr>
+<tr>
+<td>Date Created</td>
+<td>March 15, 2026</td>
+</tr>
+<tr>
+<td>Last Updated</td>
+<td>March 16, 2026</td>
+</tr>
+<tr>
+<td>Total Discoveries</td>
+<td>35</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>VMware Cloud Foundation 9.0.1 / Nested Lab</td>
+</tr>
+<tr>
+<td>Issues #1-28</td>
+<td>Discovered during initial deployment (Jan-Feb 2026)</td>
+</tr>
+<tr>
+<td>Issues #29-35</td>
+<td>Discovered during crash recovery (Mar 2026)</td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>This document is part of the VCF 9.0 Lab Documentation Suite:</em></p>
+<ul>
+<li><strong>VCF9-Master-Bible.pdf</strong> — Complete VCF 9.0 reference guide (includes all 35 issues in Appendix G.6)</li>
+<li><strong>VCF-Windows-Update-Crash-Recovery.pdf</strong> — Crash recovery runbook (source for issues #29-35)</li>
+<li><strong>VCF-Environment-Health-Check.pdf</strong> — Reusable environment health check</li>
+<li><strong>VCF_Troubleshooting_Handbook.pdf</strong> — General troubleshooting procedures</li>
+<li><strong>VCF-SDDC-Manager-API-Handbook.pdf</strong> — SDDC Manager API reference</li>
+</ul>
+<p><em>(c) 2026 Virtual Control LLC. All rights reserved.</em></p>
+
+	
+
+</body></html>

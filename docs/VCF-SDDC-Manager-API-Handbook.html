@@ -1,0 +1,1850 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8"><style>* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	line-height: 1.6;
+	font-size: 0.6875em; /* 11 pt */
+	color: #111;
+	margin: 0;
+}
+
+body > :first-child {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+body > :last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0.5em 0 0.25em;
+}
+
+h5,
+h6 {
+	padding: 0;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h6 {
+	font-size: 0.875em;
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0.25em 0 1em;
+}
+
+blockquote {
+	margin: 0.5em 0 1em;
+	padding-left: 0.5em;
+	padding-right: 1em;
+	border-left: 4px solid gainsboro;
+	font-style: italic;
+}
+
+ul,
+ol {
+	margin: 0;
+	margin-left: 1em;
+	padding: 0 1.5em 0.5em;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+p code,
+li code,
+pre code {
+	background-color: #f8f8f8;
+	padding: 0.1em 0.375em;
+	border: 1px solid #f8f8f8;
+	border-radius: 0.25em;
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+pre code {
+	display: block;
+	padding: 0.5em;
+}
+
+.page-break {
+	page-break-after: always;
+}
+
+img {
+	max-width: 100%;
+	margin: 1em 0;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: block;
+	margin: 0 0 1em;
+	width: 100%;
+	overflow: auto;
+}
+
+table th,
+table td {
+	padding: 0.5em 1em;
+	border: 1px solid gainsboro;
+}
+
+table th {
+	font-weight: 600;
+}
+
+table tr {
+	background-color: white;
+	border-top: 1px solid gainsboro;
+}
+
+table tr:nth-child(2n) {
+	background-color: whitesmoke;
+}
+/*# sourceURL=E:\VCF-Depot\node_modules\md-to-pdf\markdown.css*/</style><style>pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/
+.hljs {
+  color: #24292e;
+  background: #ffffff
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  /* prettylights-syntax-keyword */
+  color: #d73a49
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  /* prettylights-syntax-entity */
+  color: #6f42c1
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  /* prettylights-syntax-constant */
+  color: #005cc5
+}
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  /* prettylights-syntax-string */
+  color: #032f62
+}
+.hljs-built_in,
+.hljs-symbol {
+  /* prettylights-syntax-variable */
+  color: #e36209
+}
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  /* prettylights-syntax-comment */
+  color: #6a737d
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  /* prettylights-syntax-entity-tag */
+  color: #22863a
+}
+.hljs-subst {
+  /* prettylights-syntax-storage-modifier-import */
+  color: #24292e
+}
+.hljs-section {
+  /* prettylights-syntax-markup-heading */
+  color: #005cc5;
+  font-weight: bold
+}
+.hljs-bullet {
+  /* prettylights-syntax-markup-list */
+  color: #735c0f
+}
+.hljs-emphasis {
+  /* prettylights-syntax-markup-italic */
+  color: #24292e;
+  font-style: italic
+}
+.hljs-strong {
+  /* prettylights-syntax-markup-bold */
+  color: #24292e;
+  font-weight: bold
+}
+.hljs-addition {
+  /* prettylights-syntax-markup-inserted */
+  color: #22863a;
+  background-color: #f0fff4
+}
+.hljs-deletion {
+  /* prettylights-syntax-markup-deleted */
+  color: #b31d28;
+  background-color: #ffeef0
+}
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
+  
+}/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; line-height: 1.5; color: #1a1a1a; }
+h1 { color: #fff; background: linear-gradient(135deg, #1a237e, #283593); padding: 14px 20px; border-radius: 6px; font-size: 20pt; }
+h2 { color: #1a237e; border-bottom: 3px solid #3949ab; padding-bottom: 5px; font-size: 14pt; margin-top: 24px; page-break-before: always; }
+h3 { color: #283593; font-size: 11pt; margin-top: 14px; }
+h4 { color: #3949ab; font-size: 10pt; margin-top: 10px; }
+table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 9pt; }
+th { background: #1a237e; color: white; padding: 6px 8px; text-align: left; }
+td { border: 1px solid #ccc; padding: 5px 8px; }
+tr:nth-child(even) { background: #e8eaf6; }
+code { font-family: Consolas, monospace; font-size: 9pt; background: #e8eaf6; padding: 1px 4px; border-radius: 3px; }
+pre { background: #e8eaf6; border-left: 4px solid #3949ab; padding: 10px; font-size: 8.5pt; border-radius: 4px; overflow-x: auto; }
+blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 8px 14px; margin: 10px 0; font-size: 9.5pt; }
+.danger { border-left: 4px solid #c0392b; background: #fdf0ef; padding: 8px 12px; }
+strong { color: #1a237e; }
+ul { margin: 4px 0; }
+li { margin-bottom: 3px; }</style></head>
+	<body class="">
+		<h1 id="vcf-901--sddc-manager-rest-api-handbook">VCF 9.0.1 — SDDC Manager REST API Handbook</h1>
+<p><strong>Environment:</strong> VCF 9.0.1 Nested Lab — Dell Precision 7920
+<strong>SDDC Manager:</strong> <code>https://sddc-manager.lab.local</code> (192.168.1.241)
+<strong>API Base Path:</strong> <code>/v1/</code>
+<strong>Authentication:</strong> Bearer Token (JWT)
+<strong>Date:</strong> February 2026</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-api-architecture-overview">API Architecture Overview</a></li>
+<li><a href="#2-authentication--token-management">Authentication &amp; Token Management</a></li>
+<li><a href="#3-system-health--information">System Health &amp; Information</a></li>
+<li><a href="#4-credentials-management">Credentials Management</a></li>
+<li><a href="#5-nsx-t-cluster-inventory">NSX-T Cluster Inventory</a></li>
+<li><a href="#6-task-lifecycle--monitoring">Task Lifecycle &amp; Monitoring</a></li>
+<li><a href="#7-resource-locks--concurrency">Resource Locks &amp; Concurrency</a></li>
+<li><a href="#8-hosts-management">Hosts Management</a></li>
+<li><a href="#9-domains--clusters">Domains &amp; Clusters</a></li>
+<li><a href="#10-bundles--lifecycle-updates">Bundles &amp; Lifecycle Updates</a></li>
+<li><a href="#11-notifications--events">Notifications &amp; Events</a></li>
+<li><a href="#12-vcf-services--depot">VCF Services &amp; Depot</a></li>
+<li><a href="#13-complete-endpoint-reference">Complete Endpoint Reference</a></li>
+<li><a href="#14-python-automation-scripts">Python Automation Scripts</a></li>
+<li><a href="#15-postman-collection">Postman Collection</a></li>
+<li><a href="#16-troubleshooting-api-issues">Troubleshooting API Issues</a></li>
+<li><a href="#17-lab-tested-workflows">Lab-Tested Workflows</a></li>
+<li><a href="#18-references">References</a></li>
+</ol>
+<hr>
+<h2 id="1-api-architecture-overview">1. API Architecture Overview</h2>
+<h3 id="how-the-sddc-manager-api-works">How the SDDC Manager API Works</h3>
+<p>SDDC Manager exposes a REST API under the <code>/v1/</code> base path. All operations require Bearer token authentication obtained from the <code>/v1/tokens</code> endpoint. The API is primarily <strong>asynchronous</strong> — most mutating operations (upgrades, deployments, rotations) return a task ID that must be polled for completion.</p>
+<pre><code>+------------------------------+
+|    VMware Cloud Foundation   |
+|        (VCF Platform)        |
++---------------+--------------+
+                |
+          Exposes REST API
+                |
+                v
++------------------------------+
+|      SDDC Manager API        |
+|     Base Path: /v1/          |
++---------------+--------------+
+                |
+    +-----------+-----------+-----------+-----------+
+    |           |           |           |           |
+    v           v           v           v           v
++--------+ +----------+ +--------+ +----------+ +--------+
+|  Auth  | |  Infra   | |  Tasks | |  Locks   | | Creds  |
+| /v1/   | | /v1/     | | /v1/   | | /v1/     | | /v1/   |
+| tokens | | hosts    | | tasks  | | resource | | creds  |
+|        | | domains  | | {id}   | | -locks   | |        |
++--------+ | clusters | +--------+ +----------+ +--------+
+           | nsxt-    |
+           | clusters |
+           +----------+
+</code></pre>
+<h3 id="api-layers">API Layers</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Endpoints</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Authentication</strong></td>
+<td><code>/v1/tokens</code></td>
+<td>Bearer token issuance and refresh</td>
+</tr>
+<tr>
+<td><strong>Infrastructure</strong></td>
+<td><code>/v1/hosts</code>, <code>/v1/domains</code>, <code>/v1/clusters</code>, <code>/v1/nsxt-clusters</code></td>
+<td>Inventory and health of SDDC components</td>
+</tr>
+<tr>
+<td><strong>Workflow</strong></td>
+<td><code>/v1/tasks/{id}</code></td>
+<td>Status tracking for all async operations</td>
+</tr>
+<tr>
+<td><strong>Concurrency</strong></td>
+<td><code>/v1/resource-locks</code></td>
+<td>Prevents conflicting operations on shared resources</td>
+</tr>
+<tr>
+<td><strong>Credentials</strong></td>
+<td><code>/v1/credentials</code></td>
+<td>Secure storage and lifecycle of platform passwords</td>
+</tr>
+<tr>
+<td><strong>Lifecycle</strong></td>
+<td><code>/v1/bundles</code>, <code>/v1/upgrades</code>, <code>/v1/upgradables</code></td>
+<td>Bundle management and component upgrades</td>
+</tr>
+<tr>
+<td><strong>System</strong></td>
+<td><code>/v1/system</code>, <code>/v1/system/health</code>, <code>/v1/system/notifications</code></td>
+<td>Health checks, notifications, and system info</td>
+</tr>
+</tbody></table>
+<h3 id="key-concepts">Key Concepts</h3>
+<ul>
+<li><strong>Bearer Token Auth</strong> — Every call requires <code>Authorization: Bearer &lt;token&gt;</code> header</li>
+<li><strong>Async Operations</strong> — Mutating calls return a task ID; poll <code>/v1/tasks/{id}</code> for status</li>
+<li><strong>Resource Locks</strong> — SDDC Manager locks resources during operations to prevent conflicts</li>
+<li><strong>JSON Payloads</strong> — All request/response bodies use <code>Content-Type: application/json</code></li>
+<li><strong>TLS Required</strong> — All endpoints are HTTPS only; use <code>-k</code> or <code>--insecure</code> with curl for self-signed certs</li>
+</ul>
+<hr>
+<h2 id="2-authentication--token-management">2. Authentication &amp; Token Management</h2>
+<h3 id="endpoint-post-v1tokens">Endpoint: POST /v1/tokens</h3>
+<p>Authenticates a user and returns a JWT Bearer token for all subsequent API calls.</p>
+<p><strong>Request:</strong></p>
+<pre><code class="hljs bash">curl -sk -X POST https://sddc-manager.lab.local/v1/tokens \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{
+    "username": "administrator@vsphere.local",
+    "password": "&lt;password&gt;"
+  }'</span>
+</code></pre>
+<p><strong>Response:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"accessToken"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"eyJhbGciOi..."</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"refreshToken"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"a1b2c3d4-..."</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="token-details">Token Details</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Access token lifetime</td>
+<td><strong>60 minutes</strong></td>
+</tr>
+<tr>
+<td>Refresh token lifetime</td>
+<td><strong>24 hours</strong></td>
+</tr>
+<tr>
+<td>Token type</td>
+<td>JWT (JSON Web Token)</td>
+</tr>
+<tr>
+<td>Required header</td>
+<td><code>Authorization: Bearer &lt;accessToken&gt;</code></td>
+</tr>
+<tr>
+<td>Supported users</td>
+<td><code>administrator@vsphere.local</code>, <code>admin@local</code></td>
+</tr>
+</tbody></table>
+<h3 id="token-extraction-shell-variable">Token Extraction (Shell Variable)</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># One-liner to extract and store the token</span>
+TOKEN=$(curl -sk -X POST https://sddc-manager.lab.local/v1/tokens \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"administrator@vsphere.local","password":"&lt;password&gt;"}'</span> \
+  | python3 -c <span class="hljs-string">"import sys,json; print(json.load(sys.stdin)['accessToken'])"</span>)
+
+<span class="hljs-comment"># Verify it's set</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Token: <span class="hljs-variable">${TOKEN:0:20}</span>..."</span>
+</code></pre>
+<h3 id="token-refresh">Token Refresh</h3>
+<p>When the access token expires (HTTP 401), use the refresh token to get a new one without re-authenticating:</p>
+<pre><code class="hljs bash">curl -sk -X PATCH https://sddc-manager.lab.local/v1/tokens \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"refreshToken":{"id":"&lt;refresh-token-id&gt;"}}'</span>
+</code></pre>
+<h3 id="token-scope--permissions">Token Scope &amp; Permissions</h3>
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>Scope</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>administrator@vsphere.local</code></td>
+<td>Full admin — all endpoints</td>
+<td>Default VCF admin account</td>
+</tr>
+<tr>
+<td><code>admin@local</code></td>
+<td>Full admin — all endpoints</td>
+<td>SDDC Manager local admin</td>
+</tr>
+<tr>
+<td>Custom SSO users</td>
+<td>Role-based</td>
+<td>Depends on assigned VCF role</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Security Note:</strong> Tokens are not invalidated server-side on logout in all versions. Always use HTTPS and protect token values. If a token is compromised, change the associated password immediately.</p>
+</blockquote>
+<hr>
+<h2 id="3-system-health--information">3. System Health &amp; Information</h2>
+<h3 id="get-v1system">GET /v1/system</h3>
+<p>Returns SDDC Manager system information including version and deployment type.</p>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/system | python3 -m json.tool
+</code></pre>
+<h3 id="get-v1systemhealth">GET /v1/system/health</h3>
+<p>Returns the overall health status of the VCF platform.</p>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/system/health | python3 -m json.tool
+</code></pre>
+<p><strong>Response fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Values</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>overallStatus</code></td>
+<td><code>GREEN</code>, <code>YELLOW</code>, <code>RED</code></td>
+<td>Aggregate health</td>
+</tr>
+<tr>
+<td><code>componentHealth</code></td>
+<td>Array</td>
+<td>Per-component health breakdown</td>
+</tr>
+</tbody></table>
+<h3 id="get-v1systemnotifications">GET /v1/system/notifications</h3>
+<p>Returns active system notifications (warnings, errors, info messages).</p>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/system/notifications | python3 -c \
+  <span class="hljs-string">"import sys,json; [print(f'{n[\"severity\"]}: {n[\"message\"]}') for n in json.load(sys.stdin).get('elements',[])]"</span>
+</code></pre>
+<blockquote>
+<p><strong>Lab Note:</strong> After a credential cascade failure, stale notifications may persist even after the fix. These clear after the operationsmanager service is restarted and the next health check cycle completes.</p>
+</blockquote>
+<hr>
+<h2 id="4-credentials-management">4. Credentials Management</h2>
+<h3 id="overview">Overview</h3>
+<p>The <code>/v1/credentials</code> endpoint manages all credentials stored inside SDDC Manager, including passwords for vCenter, NSX, ESXi hosts, and service accounts. This is a <strong>high-privilege endpoint</strong> that returns sensitive data.</p>
+<h3 id="get-v1credentials">GET /v1/credentials</h3>
+<p>Lists all stored credentials.</p>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/credentials | python3 -c <span class="hljs-string">"
+import sys, json
+data = json.load(sys.stdin)
+for c in data.get('elements', []):
+    print(f'{c[\"credentialType\"]:20s} {c[\"resource\"][\"resourceName\"]:30s} {c[\"resource\"][\"resourceType\"]:15s} {c.get(\"accountType\",\"\")}')
+"</span>
+</code></pre>
+<h3 id="credential-types">Credential Types</h3>
+<table>
+<thead>
+<tr>
+<th>credentialType</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SSH</code></td>
+<td>SSH access credentials</td>
+<td>ESXi root, SDDC Manager vcf</td>
+</tr>
+<tr>
+<td><code>API</code></td>
+<td>API/management credentials</td>
+<td>NSX admin, vCenter admin</td>
+</tr>
+<tr>
+<td><code>SSO</code></td>
+<td>SSO domain credentials</td>
+<td><a href="mailto:administrator@vsphere.local">administrator@vsphere.local</a></td>
+</tr>
+<tr>
+<td><code>SERVICE</code></td>
+<td>Service account credentials</td>
+<td>Internal service accounts</td>
+</tr>
+</tbody></table>
+<h3 id="resource-types">Resource Types</h3>
+<table>
+<thead>
+<tr>
+<th>resourceType</th>
+<th>Component</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ESXI</code></td>
+<td>ESXi host</td>
+</tr>
+<tr>
+<td><code>VCENTER</code></td>
+<td>vCenter Server</td>
+</tr>
+<tr>
+<td><code>NSX_MANAGER</code></td>
+<td>NSX Manager</td>
+</tr>
+<tr>
+<td><code>NSX_CONTROLLER</code></td>
+<td>NSX Controller</td>
+</tr>
+<tr>
+<td><code>SDDC_MANAGER</code></td>
+<td>SDDC Manager</td>
+</tr>
+<tr>
+<td><code>BACKUP</code></td>
+<td>Backup credentials</td>
+</tr>
+</tbody></table>
+<h3 id="put-v1credentials--update-password">PUT /v1/credentials — Update Password</h3>
+<p>Updates a credential to match the current password on the target component (when SDDC Manager's stored password is out of sync).</p>
+<pre><code class="hljs bash">curl -sk -X PUT https://sddc-manager.lab.local/v1/credentials \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{
+    "operationType": "UPDATE",
+    "elements": [{
+      "resourceName": "nsx-vip.lab.local",
+      "resourceType": "NSX_MANAGER",
+      "credentials": [{
+        "credentialType": "API",
+        "username": "admin",
+        "password": "&lt;current-password-on-nsx&gt;"
+      }]
+    }]
+  }'</span>
+</code></pre>
+<blockquote>
+<p><strong>Returns a task ID</strong> — poll <code>/v1/tasks/{id}</code> to monitor progress.</p>
+</blockquote>
+<h3 id="put-v1credentials--rotate-password">PUT /v1/credentials — Rotate Password</h3>
+<p>Generates a new password and pushes it to both SDDC Manager's store and the target component.</p>
+<pre><code class="hljs bash">curl -sk -X PUT https://sddc-manager.lab.local/v1/credentials \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{
+    "operationType": "ROTATE",
+    "elements": [{
+      "resourceName": "nsx-vip.lab.local",
+      "resourceType": "NSX_MANAGER",
+      "credentials": [{
+        "credentialType": "API",
+        "username": "admin"
+      }]
+    }]
+  }'</span>
+</code></pre>
+<div class="danger">
+
+<p><strong>WARNING — Credential Cascade Failure:</strong> If a credential update or rotate fails mid-operation (e.g., NSX unreachable during boot storm), it triggers a cascade: NSX resource stuck in <code>ACTIVATING</code>/<code>ERROR</code> state in <code>platform.nsxt</code> table, stale locks in <code>platform.lock</code>, and unresolved tasks in <code>platform.task_metadata</code>. Each UI retry adds more stuck tasks. The API cannot cancel these tasks (<code>TA_TASK_CAN_NOT_BE_RETRIED</code>). Fix requires 6-step PostgreSQL repair — see the Troubleshooting Handbook Section 10.</p>
+</div>
+
+<hr>
+<h2 id="5-nsx-t-cluster-inventory">5. NSX-T Cluster Inventory</h2>
+<h3 id="overview-1">Overview</h3>
+<p>The <code>/v1/nsxt-clusters</code> endpoint retrieves information about NSX-T clusters managed by VCF, including health state, version, connection status, and cluster members.</p>
+<h3 id="get-v1nsxt-clusters">GET /v1/nsxt-clusters</h3>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/nsxt-clusters | python3 -m json.tool
+</code></pre>
+<p><strong>Key response fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id</code></td>
+<td>NSX cluster UUID</td>
+<td>UUID string</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>Connection status in SDDC Manager</td>
+<td><code>ACTIVE</code>, <code>ACTIVATING</code>, <code>ERROR</code></td>
+</tr>
+<tr>
+<td><code>vipFqdn</code></td>
+<td>NSX VIP FQDN</td>
+<td><code>nsx-vip.lab.local</code></td>
+</tr>
+<tr>
+<td><code>vip</code></td>
+<td>NSX VIP IP address</td>
+<td><code>192.168.1.70</code></td>
+</tr>
+<tr>
+<td><code>nodes</code></td>
+<td>Array of NSX Manager nodes</td>
+<td>Node FQDNs, IPs, status</td>
+</tr>
+</tbody></table>
+<h3 id="checking-nsx-status-one-liner">Checking NSX Status (One-Liner)</h3>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/nsxt-clusters | python3 -c <span class="hljs-string">"
+import sys, json
+data = json.load(sys.stdin)
+for c in data.get('elements', []):
+    print(f'Cluster: {c[\"id\"]}')
+    print(f'  Status: {c[\"status\"]}')
+    print(f'  VIP: {c.get(\"vipFqdn\",\"?\")} ({c.get(\"vip\",\"?\")})')
+    for n in c.get('nodes', []):
+        print(f'  Node: {n.get(\"fqdn\",\"?\")} - {n.get(\"status\",\"?\")}')
+"</span>
+</code></pre>
+<blockquote>
+<p><strong>Lab Insight:</strong> When <code>status</code> shows <code>ACTIVATING</code> or <code>ERROR</code> instead of <code>ACTIVE</code>, credential operations will fail. This is the first thing to check when credential remediation fails. If the status is stuck, direct PostgreSQL repair is required (see Section 7.2.6 of the Master Bible).</p>
+</blockquote>
+<hr>
+<h2 id="6-task-lifecycle--monitoring">6. Task Lifecycle &amp; Monitoring</h2>
+<h3 id="overview-2">Overview</h3>
+<p>SDDC Manager's API is <strong>asynchronous</strong> — most mutating operations (upgrades, credential rotations, deployments, domain creation) return a task ID. You must poll the task endpoint to determine success or failure.</p>
+<h3 id="get-v1tasks">GET /v1/tasks</h3>
+<p>Lists all tasks, optionally filtered by status.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># All tasks</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/tasks | python3 -m json.tool
+
+<span class="hljs-comment"># Only IN_PROGRESS tasks</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks?status=IN_PROGRESS"</span> | python3 -c <span class="hljs-string">"
+import sys, json
+data = json.load(sys.stdin)
+print(f'IN_PROGRESS tasks: {len(data.get(\"elements\",[]))}')
+for t in data.get('elements', []):
+    print(f'  {t[\"id\"][:8]}... {t[\"name\"]} ({t[\"status\"]})')
+"</span>
+
+<span class="hljs-comment"># Failed tasks</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks?status=FAILED"</span>
+</code></pre>
+<h3 id="get-v1tasksid">GET /v1/tasks/{id}</h3>
+<p>Returns detailed status of a specific task, including sub-tasks and error messages.</p>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/tasks/&lt;task-id&gt; | python3 -c <span class="hljs-string">"
+import sys, json
+t = json.load(sys.stdin)
+print(f'Task: {t[\"name\"]}')
+print(f'Status: {t[\"status\"]}')
+print(f'Created: {t.get(\"creationTimestamp\",\"?\")}')
+for sub in t.get('subTasks', []):
+    print(f'  Sub: {sub[\"name\"]} -&gt; {sub[\"status\"]}')
+    if sub.get('errors'):
+        for e in sub['errors']:
+            print(f'    ERROR: {e.get(\"message\",\"\")}')
+"</span>
+</code></pre>
+<h3 id="task-statuses">Task Statuses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>IN_PROGRESS</code></td>
+<td>Task is currently executing</td>
+</tr>
+<tr>
+<td><code>SUCCESSFUL</code></td>
+<td>Task completed successfully</td>
+</tr>
+<tr>
+<td><code>FAILED</code></td>
+<td>Task failed — check sub-tasks for errors</td>
+</tr>
+<tr>
+<td><code>CANCELLED</code></td>
+<td>Task was cancelled (rare — API often refuses cancellation)</td>
+</tr>
+</tbody></table>
+<h3 id="patch-v1tasksid--cancel-a-task">PATCH /v1/tasks/{id} — Cancel a Task</h3>
+<p>Attempts to cancel a running task. <strong>This often fails for stuck tasks.</strong></p>
+<pre><code class="hljs bash">curl -sk -X PATCH https://sddc-manager.lab.local/v1/tasks/&lt;task-id&gt; \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"status":"CANCELLED"}'</span>
+</code></pre>
+<blockquote>
+<p><strong>Lab Discovery:</strong> The API returns <code>TA_TASK_CAN_NOT_BE_RETRIED</code> for stuck tasks. <code>DELETE /v1/tasks/{id}</code> returns HTTP 500. When the API cannot cancel stuck tasks, direct PostgreSQL database repair is the only option — mark <code>task_metadata.resolved = true</code> in the <code>platform</code> database.</p>
+</blockquote>
+<h3 id="task-polling-pattern">Task Polling Pattern</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Poll a task every 30 seconds until completion</span>
+TASK_ID=<span class="hljs-string">"&lt;task-id&gt;"</span>
+<span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>; <span class="hljs-keyword">do</span>
+  STATUS=$(curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+    https://sddc-manager.lab.local/v1/tasks/<span class="hljs-variable">$TASK_ID</span> \
+    | python3 -c <span class="hljs-string">"import sys,json; print(json.load(sys.stdin)['status'])"</span>)
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-subst">$(date +%H:%M:%S)</span> - <span class="hljs-variable">$STATUS</span>"</span>
+  [ <span class="hljs-string">"<span class="hljs-variable">$STATUS</span>"</span> = <span class="hljs-string">"SUCCESSFUL"</span> ] || [ <span class="hljs-string">"<span class="hljs-variable">$STATUS</span>"</span> = <span class="hljs-string">"FAILED"</span> ] &amp;&amp; <span class="hljs-built_in">break</span>
+  <span class="hljs-built_in">sleep</span> 30
+<span class="hljs-keyword">done</span>
+</code></pre>
+<hr>
+<h2 id="7-resource-locks--concurrency">7. Resource Locks &amp; Concurrency</h2>
+<h3 id="overview-3">Overview</h3>
+<p>SDDC Manager uses exclusive resource locks to prevent conflicting operations on the same component. When a workflow starts, it acquires locks on the involved resources. If a workflow fails without releasing its locks, subsequent operations are blocked.</p>
+<h3 id="get-v1resource-locks">GET /v1/resource-locks</h3>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/resource-locks | python3 -m json.tool
+</code></pre>
+<p><strong>Response example:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"elements"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"resource"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"domain-1"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"lockedBy"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"task-12345"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"lockType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EXCLUSIVE"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="lock-types">Lock Types</h3>
+<table>
+<thead>
+<tr>
+<th>lockType</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>EXCLUSIVE</code></td>
+<td>Full exclusive lock — no other operations can touch this resource</td>
+</tr>
+<tr>
+<td><code>SHARED</code></td>
+<td>Read lock — other reads allowed, writes blocked</td>
+</tr>
+</tbody></table>
+<h3 id="lockable-resources">Lockable Resources</h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Workload domains</td>
+<td>Management domain, workload domains</td>
+</tr>
+<tr>
+<td>Clusters</td>
+<td>vSphere clusters</td>
+</tr>
+<tr>
+<td>Hosts</td>
+<td>Individual ESXi hosts</td>
+</tr>
+<tr>
+<td>NSX objects</td>
+<td>NSX Manager clusters, edge nodes</td>
+</tr>
+<tr>
+<td>vCenter</td>
+<td>vCenter Server instances</td>
+</tr>
+</tbody></table>
+<h3 id="diagnosing-lock-issues">Diagnosing Lock Issues</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check if any resources are locked</span>
+LOCKS=$(curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/resource-locks | python3 -c \
+  <span class="hljs-string">"import sys,json; print(len(json.load(sys.stdin).get('elements',[])))"</span>)
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Active locks: <span class="hljs-variable">$LOCKS</span>"</span>
+</code></pre>
+<blockquote>
+<p><strong>Key Insight:</strong> Stale locks from failed operations are stored in the <code>platform.lock</code> PostgreSQL table. The API provides no way to force-release locks. When the API shows locks but no running tasks, direct database cleanup (<code>DELETE FROM lock</code>) is required.</p>
+</blockquote>
+<hr>
+<h2 id="8-hosts-management">8. Hosts Management</h2>
+<h3 id="get-v1hosts">GET /v1/hosts</h3>
+<p>Lists all ESXi hosts managed by SDDC Manager.</p>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/hosts | python3 -c <span class="hljs-string">"
+import sys, json
+for h in json.load(sys.stdin).get('elements', []):
+    print(f'{h[\"fqdn\"]:30s} {h[\"status\"]:12s} {h.get(\"hardwareModel\",\"\")}')
+"</span>
+</code></pre>
+<h3 id="post-v1hosts--commission-a-host">POST /v1/hosts — Commission a Host</h3>
+<p>Adds a new ESXi host to SDDC Manager's inventory.</p>
+<pre><code class="hljs bash">curl -sk -X POST https://sddc-manager.lab.local/v1/hosts \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'[{
+    "fqdn": "esxi05.lab.local",
+    "username": "root",
+    "password": "&lt;password&gt;",
+    "networkPoolId": "&lt;pool-id&gt;",
+    "storageType": "VSAN"
+  }]'</span>
+</code></pre>
+<h3 id="delete-v1hostsid--decommission-a-host">DELETE /v1/hosts/{id} — Decommission a Host</h3>
+<p>Removes an ESXi host from SDDC Manager's inventory.</p>
+<pre><code class="hljs bash">curl -sk -X DELETE -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/hosts/&lt;host-id&gt;
+</code></pre>
+<h3 id="host-statuses">Host Statuses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ASSIGNED</code></td>
+<td>Host is assigned to a domain/cluster</td>
+</tr>
+<tr>
+<td><code>UNASSIGNED_USEABLE</code></td>
+<td>Available for assignment</td>
+</tr>
+<tr>
+<td><code>UNASSIGNED_UNUSEABLE</code></td>
+<td>Needs remediation before use</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="9-domains--clusters">9. Domains &amp; Clusters</h2>
+<h3 id="get-v1domains">GET /v1/domains</h3>
+<p>Lists all workload domains.</p>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/domains | python3 -c <span class="hljs-string">"
+import sys, json
+for d in json.load(sys.stdin).get('elements', []):
+    print(f'{d[\"name\"]:25s} {d[\"type\"]:15s} {d[\"status\"]}')
+"</span>
+</code></pre>
+<h3 id="get-v1clusters">GET /v1/clusters</h3>
+<p>Lists all vSphere clusters across all domains.</p>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/clusters | python3 -c <span class="hljs-string">"
+import sys, json
+for c in json.load(sys.stdin).get('elements', []):
+    print(f'{c[\"name\"]:25s} hosts={len(c.get(\"hosts\",[]))} {c[\"status\"]}')
+"</span>
+</code></pre>
+<h3 id="get-v1vcenters">GET /v1/vcenters</h3>
+<p>Lists all vCenter Server instances managed by VCF.</p>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/vcenters | python3 -m json.tool
+</code></pre>
+<hr>
+<h2 id="10-bundles--lifecycle-updates">10. Bundles &amp; Lifecycle Updates</h2>
+<h3 id="get-v1bundles">GET /v1/bundles</h3>
+<p>Lists all available update bundles (downloaded or available for download).</p>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/bundles | python3 -c <span class="hljs-string">"
+import sys, json
+for b in json.load(sys.stdin).get('elements', []):
+    print(f'{b.get(\"bundleType\",\"?\":15s} {b.get(\"version\",\"?\":12s} {b.get(\"downloadStatus\",\"?\")}')
+"</span>
+</code></pre>
+<h3 id="get-v1upgradables">GET /v1/upgradables</h3>
+<p>Lists components that have available upgrades.</p>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/upgradables | python3 -m json.tool
+</code></pre>
+<h3 id="post-v1upgrades--start-an-upgrade">POST /v1/upgrades — Start an Upgrade</h3>
+<p>Initiates an upgrade for a specific component. Returns a task ID.</p>
+<pre><code class="hljs bash">curl -sk -X POST https://sddc-manager.lab.local/v1/upgrades \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{
+    "bundleId": "&lt;bundle-uuid&gt;",
+    "resourceType": "DOMAIN",
+    "resourceUpgradeSpecs": [{
+      "resourceId": "&lt;domain-id&gt;",
+      "scheduledTimestamp": ""
+    }]
+  }'</span>
+</code></pre>
+<h3 id="upgrade-order-always-follow-this-sequence">Upgrade Order (Always Follow This Sequence)</h3>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Component</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>SDDC Manager</td>
+<td>Orchestrates all other upgrades</td>
+</tr>
+<tr>
+<td>2</td>
+<td>vCenter Server</td>
+<td>Required before ESXi upgrades</td>
+</tr>
+<tr>
+<td>3</td>
+<td>NSX Manager</td>
+<td>Required before host network changes</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ESXi Hosts</td>
+<td>Rolling upgrade, one host at a time</td>
+</tr>
+<tr>
+<td>5</td>
+<td>vSAN</td>
+<td>After all hosts are upgraded</td>
+</tr>
+<tr>
+<td>6</td>
+<td>VCF Operations</td>
+<td>Last — depends on all infrastructure</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="11-notifications--events">11. Notifications &amp; Events</h2>
+<h3 id="get-v1systemnotifications-1">GET /v1/system/notifications</h3>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/system/notifications | python3 -c <span class="hljs-string">"
+import sys, json
+data = json.load(sys.stdin)
+for n in data.get('elements', []):
+    print(f'[{n[\"severity\"]}] {n[\"message\"][:100]}')
+"</span>
+</code></pre>
+<h3 id="notification-severities">Notification Severities</h3>
+<table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>INFO</code></td>
+<td>Informational — no action needed</td>
+</tr>
+<tr>
+<td><code>WARNING</code></td>
+<td>Potential issue — investigate</td>
+</tr>
+<tr>
+<td><code>ERROR</code></td>
+<td>Action required — operation failed or component unhealthy</td>
+</tr>
+<tr>
+<td><code>CRITICAL</code></td>
+<td>Immediate action — system at risk</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="12-vcf-services--depot">12. VCF Services &amp; Depot</h2>
+<h3 id="get-v1services">GET /v1/services</h3>
+<p>Lists VCF services and their status.</p>
+<pre><code class="hljs bash">curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/services | python3 -m json.tool
+</code></pre>
+<h3 id="network-pools">Network Pools</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List network pools</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/network-pools | python3 -m json.tool
+</code></pre>
+<h3 id="personalities-vlcm-images">Personalities (vLCM Images)</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List available personalities</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/personalities | python3 -m json.tool
+</code></pre>
+<hr>
+<h2 id="13-complete-endpoint-reference">13. Complete Endpoint Reference</h2>
+<h3 id="authentication">Authentication</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>POST</code></td>
+<td><code>/v1/tokens</code></td>
+<td>Authenticate and get Bearer token</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><code>/v1/tokens</code></td>
+<td>Refresh an expired access token</td>
+</tr>
+</tbody></table>
+<h3 id="system">System</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GET</code></td>
+<td><code>/v1/system</code></td>
+<td>System information and version</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/system/health</code></td>
+<td>Overall platform health</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/system/notifications</code></td>
+<td>Active notifications</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/system/dns-configuration</code></td>
+<td>DNS configuration</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/system/ntp-configuration</code></td>
+<td>NTP configuration</td>
+</tr>
+</tbody></table>
+<h3 id="infrastructure-inventory">Infrastructure Inventory</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GET</code></td>
+<td><code>/v1/hosts</code></td>
+<td>List all ESXi hosts</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/v1/hosts</code></td>
+<td>Commission new host(s)</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/v1/hosts/{id}</code></td>
+<td>Decommission a host</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/domains</code></td>
+<td>List all workload domains</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/v1/domains</code></td>
+<td>Create a new workload domain</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/v1/domains/{id}</code></td>
+<td>Delete a workload domain</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/clusters</code></td>
+<td>List all clusters</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/v1/clusters</code></td>
+<td>Create a new cluster</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><code>/v1/clusters/{id}</code></td>
+<td>Expand/shrink a cluster</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/vcenters</code></td>
+<td>List all vCenter instances</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/nsxt-clusters</code></td>
+<td>List all NSX-T clusters</td>
+</tr>
+</tbody></table>
+<h3 id="credentials">Credentials</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GET</code></td>
+<td><code>/v1/credentials</code></td>
+<td>List all stored credentials</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><code>/v1/credentials</code></td>
+<td>Update, rotate, or remediate credentials</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/credentials/{id}</code></td>
+<td>Get a specific credential</td>
+</tr>
+</tbody></table>
+<h3 id="tasks--locks">Tasks &amp; Locks</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GET</code></td>
+<td><code>/v1/tasks</code></td>
+<td>List all tasks (filter by <code>?status=</code>)</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/tasks/{id}</code></td>
+<td>Get task details with sub-tasks</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><code>/v1/tasks/{id}</code></td>
+<td>Attempt to cancel a task</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/resource-locks</code></td>
+<td>List active resource locks</td>
+</tr>
+</tbody></table>
+<h3 id="lifecycle--bundles">Lifecycle &amp; Bundles</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GET</code></td>
+<td><code>/v1/bundles</code></td>
+<td>List available update bundles</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/v1/bundles</code></td>
+<td>Download a bundle</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/upgradables</code></td>
+<td>List upgradable components</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/v1/upgrades</code></td>
+<td>Start an upgrade operation</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/upgrades</code></td>
+<td>List upgrade history</td>
+</tr>
+</tbody></table>
+<h3 id="networking--pools">Networking &amp; Pools</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GET</code></td>
+<td><code>/v1/network-pools</code></td>
+<td>List network pools</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/v1/network-pools</code></td>
+<td>Create a network pool</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/sddc-managers</code></td>
+<td>SDDC Manager information</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/v1/personalities</code></td>
+<td>List vLCM personality images</td>
+</tr>
+</tbody></table>
+<h3 id="services">Services</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GET</code></td>
+<td><code>/v1/services</code></td>
+<td>List VCF services</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="14-python-automation-scripts">14. Python Automation Scripts</h2>
+<h3 id="full-api-client-script">Full API Client Script</h3>
+<pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span>
+<span class="hljs-string">"""VCF SDDC Manager API client — query all key endpoints."""</span>
+<span class="hljs-keyword">import</span> requests, json, sys, io, urllib3
+
+urllib3.disable_warnings()
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding=<span class="hljs-string">'utf-8'</span>, errors=<span class="hljs-string">'replace'</span>)
+
+SDDC = <span class="hljs-string">"https://sddc-manager.lab.local"</span>
+USER = <span class="hljs-string">"administrator@vsphere.local"</span>
+PASS = <span class="hljs-string">"Success01!0909!!"</span>
+
+<span class="hljs-comment"># Authenticate</span>
+resp = requests.post(<span class="hljs-string">f"<span class="hljs-subst">{SDDC}</span>/v1/tokens"</span>,
+    json={<span class="hljs-string">"username"</span>: USER, <span class="hljs-string">"password"</span>: PASS}, verify=<span class="hljs-literal">False</span>)
+token = resp.json()[<span class="hljs-string">"accessToken"</span>]
+headers = {<span class="hljs-string">"Authorization"</span>: <span class="hljs-string">f"Bearer <span class="hljs-subst">{token}</span>"</span>, <span class="hljs-string">"Content-Type"</span>: <span class="hljs-string">"application/json"</span>}
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">get</span>(<span class="hljs-params">endpoint, label=<span class="hljs-string">""</span></span>):
+    url = <span class="hljs-string">f"<span class="hljs-subst">{SDDC}</span><span class="hljs-subst">{endpoint}</span>"</span>
+    r = requests.get(url, headers=headers, verify=<span class="hljs-literal">False</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f"\n<span class="hljs-subst">{<span class="hljs-string">'='</span>*<span class="hljs-number">60</span>}</span>"</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f"GET <span class="hljs-subst">{endpoint}</span>  [<span class="hljs-subst">{r.status_code}</span>]  <span class="hljs-subst">{label}</span>"</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'='</span>*<span class="hljs-number">60</span>)
+    <span class="hljs-keyword">if</span> r.status_code == <span class="hljs-number">200</span>:
+        <span class="hljs-built_in">print</span>(json.dumps(r.json(), indent=<span class="hljs-number">2</span>)[:<span class="hljs-number">2000</span>])
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">f"Error: <span class="hljs-subst">{r.text[:<span class="hljs-number">500</span>]}</span>"</span>)
+
+<span class="hljs-comment"># Query all key endpoints</span>
+get(<span class="hljs-string">"/v1/system"</span>, <span class="hljs-string">"System Info"</span>)
+get(<span class="hljs-string">"/v1/system/health"</span>, <span class="hljs-string">"Platform Health"</span>)
+get(<span class="hljs-string">"/v1/credentials"</span>, <span class="hljs-string">"Credential Inventory"</span>)
+get(<span class="hljs-string">"/v1/nsxt-clusters"</span>, <span class="hljs-string">"NSX-T Clusters"</span>)
+get(<span class="hljs-string">"/v1/resource-locks"</span>, <span class="hljs-string">"Resource Locks"</span>)
+get(<span class="hljs-string">"/v1/tasks?status=IN_PROGRESS"</span>, <span class="hljs-string">"In-Progress Tasks"</span>)
+get(<span class="hljs-string">"/v1/hosts"</span>, <span class="hljs-string">"ESXi Hosts"</span>)
+get(<span class="hljs-string">"/v1/domains"</span>, <span class="hljs-string">"Workload Domains"</span>)
+get(<span class="hljs-string">"/v1/clusters"</span>, <span class="hljs-string">"vSphere Clusters"</span>)
+get(<span class="hljs-string">"/v1/system/notifications"</span>, <span class="hljs-string">"Notifications"</span>)
+</code></pre>
+<h3 id="credential-status-checker">Credential Status Checker</h3>
+<pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span>
+<span class="hljs-string">"""Check credential status for all VCF components."""</span>
+<span class="hljs-keyword">import</span> requests, json, sys, io, urllib3
+
+urllib3.disable_warnings()
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding=<span class="hljs-string">'utf-8'</span>, errors=<span class="hljs-string">'replace'</span>)
+
+SDDC = <span class="hljs-string">"https://sddc-manager.lab.local"</span>
+USER = <span class="hljs-string">"administrator@vsphere.local"</span>
+PASS = <span class="hljs-string">"Success01!0909!!"</span>
+
+resp = requests.post(<span class="hljs-string">f"<span class="hljs-subst">{SDDC}</span>/v1/tokens"</span>,
+    json={<span class="hljs-string">"username"</span>: USER, <span class="hljs-string">"password"</span>: PASS}, verify=<span class="hljs-literal">False</span>)
+token = resp.json()[<span class="hljs-string">"accessToken"</span>]
+headers = {<span class="hljs-string">"Authorization"</span>: <span class="hljs-string">f"Bearer <span class="hljs-subst">{token}</span>"</span>}
+
+<span class="hljs-comment"># Get credentials</span>
+r = requests.get(<span class="hljs-string">f"<span class="hljs-subst">{SDDC}</span>/v1/credentials"</span>, headers=headers, verify=<span class="hljs-literal">False</span>)
+creds = r.json().get(<span class="hljs-string">"elements"</span>, [])
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f"<span class="hljs-subst">{<span class="hljs-string">'Type'</span>:&lt;<span class="hljs-number">12</span>}</span> <span class="hljs-subst">{<span class="hljs-string">'Resource'</span>:&lt;<span class="hljs-number">30</span>}</span> <span class="hljs-subst">{<span class="hljs-string">'ResourceType'</span>:&lt;<span class="hljs-number">18</span>}</span> <span class="hljs-subst">{<span class="hljs-string">'Account'</span>:&lt;<span class="hljs-number">25</span>}</span> <span class="hljs-subst">{<span class="hljs-string">'Status'</span>}</span>"</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">"-"</span> * <span class="hljs-number">100</span>)
+<span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> creds:
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f'<span class="hljs-subst">{c[<span class="hljs-string">"credentialType"</span>]:&lt;<span class="hljs-number">12</span>}</span> '</span>
+          <span class="hljs-string">f'<span class="hljs-subst">{c[<span class="hljs-string">"resource"</span>][<span class="hljs-string">"resourceName"</span>]:&lt;<span class="hljs-number">30</span>}</span> '</span>
+          <span class="hljs-string">f'<span class="hljs-subst">{c[<span class="hljs-string">"resource"</span>][<span class="hljs-string">"resourceType"</span>]:&lt;<span class="hljs-number">18</span>}</span> '</span>
+          <span class="hljs-string">f'<span class="hljs-subst">{c.get(<span class="hljs-string">"username"</span>,<span class="hljs-string">""</span>):&lt;<span class="hljs-number">25</span>}</span> '</span>
+          <span class="hljs-string">f'<span class="hljs-subst">{c.get(<span class="hljs-string">"status"</span>,<span class="hljs-string">"?"</span>)}</span>'</span>)
+</code></pre>
+<h3 id="task-monitor">Task Monitor</h3>
+<pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span>
+<span class="hljs-string">"""Monitor a VCF task until completion."""</span>
+<span class="hljs-keyword">import</span> requests, json, sys, io, time, urllib3
+
+urllib3.disable_warnings()
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding=<span class="hljs-string">'utf-8'</span>, errors=<span class="hljs-string">'replace'</span>)
+
+SDDC = <span class="hljs-string">"https://sddc-manager.lab.local"</span>
+USER = <span class="hljs-string">"administrator@vsphere.local"</span>
+PASS = <span class="hljs-string">"Success01!0909!!"</span>
+TASK_ID = sys.argv[<span class="hljs-number">1</span>] <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(sys.argv) &gt; <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-built_in">input</span>(<span class="hljs-string">"Task ID: "</span>)
+
+resp = requests.post(<span class="hljs-string">f"<span class="hljs-subst">{SDDC}</span>/v1/tokens"</span>,
+    json={<span class="hljs-string">"username"</span>: USER, <span class="hljs-string">"password"</span>: PASS}, verify=<span class="hljs-literal">False</span>)
+token = resp.json()[<span class="hljs-string">"accessToken"</span>]
+headers = {<span class="hljs-string">"Authorization"</span>: <span class="hljs-string">f"Bearer <span class="hljs-subst">{token}</span>"</span>}
+
+<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+    r = requests.get(<span class="hljs-string">f"<span class="hljs-subst">{SDDC}</span>/v1/tasks/<span class="hljs-subst">{TASK_ID}</span>"</span>, headers=headers, verify=<span class="hljs-literal">False</span>)
+    task = r.json()
+    status = task[<span class="hljs-string">"status"</span>]
+    name = task.get(<span class="hljs-string">"name"</span>, <span class="hljs-string">"Unknown"</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f"[<span class="hljs-subst">{time.strftime(<span class="hljs-string">'%H:%M:%S'</span>)}</span>] <span class="hljs-subst">{name}</span>: <span class="hljs-subst">{status}</span>"</span>)
+
+    <span class="hljs-keyword">if</span> status <span class="hljs-keyword">in</span> (<span class="hljs-string">"SUCCESSFUL"</span>, <span class="hljs-string">"FAILED"</span>, <span class="hljs-string">"CANCELLED"</span>):
+        <span class="hljs-keyword">if</span> status == <span class="hljs-string">"FAILED"</span>:
+            <span class="hljs-keyword">for</span> sub <span class="hljs-keyword">in</span> task.get(<span class="hljs-string">"subTasks"</span>, []):
+                <span class="hljs-keyword">if</span> sub.get(<span class="hljs-string">"errors"</span>):
+                    <span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> sub[<span class="hljs-string">"errors"</span>]:
+                        <span class="hljs-built_in">print</span>(<span class="hljs-string">f"  ERROR: <span class="hljs-subst">{e.get(<span class="hljs-string">'message'</span>,<span class="hljs-string">''</span>)}</span>"</span>)
+        <span class="hljs-keyword">break</span>
+    time.sleep(<span class="hljs-number">30</span>)
+</code></pre>
+<hr>
+<h2 id="15-postman-collection">15. Postman Collection</h2>
+<p>Save the following as <code>VCF_API_Collection.json</code> and import into Postman:</p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"info"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"VMware Cloud Foundation (VCF) - SDDC Manager API"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"REST API collection for VCF /v1/ endpoints"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"schema"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"item"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1 - Authenticate (Get Token)"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"request"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"POST"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"header"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Content-Type"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"application/json"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"body"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+          <span class="hljs-attr">"mode"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"raw"</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-attr">"raw"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"{\n  \"username\": \"administrator@vsphere.local\",\n  \"password\": \"YOUR_PASSWORD\"\n}"</span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://sddc-manager.lab.local/v1/tokens"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2 - System Health"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"request"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"GET"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"header"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Authorization"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bearer {{token}}"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://sddc-manager.lab.local/v1/system/health"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"3 - Credentials Inventory"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"request"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"GET"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"header"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Authorization"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bearer {{token}}"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://sddc-manager.lab.local/v1/credentials"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4 - NSX-T Clusters"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"request"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"GET"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"header"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Authorization"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bearer {{token}}"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://sddc-manager.lab.local/v1/nsxt-clusters"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"5 - All Tasks"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"request"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"GET"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"header"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Authorization"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bearer {{token}}"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"6 - IN_PROGRESS Tasks"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"request"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"GET"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"header"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Authorization"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bearer {{token}}"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks?status=IN_PROGRESS"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"7 - Resource Locks"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"request"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"GET"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"header"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Authorization"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bearer {{token}}"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://sddc-manager.lab.local/v1/resource-locks"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"8 - Hosts"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"request"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"GET"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"header"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Authorization"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bearer {{token}}"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://sddc-manager.lab.local/v1/hosts"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"9 - Domains"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"request"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"GET"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"header"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Authorization"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bearer {{token}}"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://sddc-manager.lab.local/v1/domains"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"10 - Clusters"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"request"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"GET"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"header"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Authorization"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bearer {{token}}"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://sddc-manager.lab.local/v1/clusters"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"11 - Notifications"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"request"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"GET"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"header"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Authorization"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bearer {{token}}"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://sddc-manager.lab.local/v1/system/notifications"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"12 - Bundles"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"request"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"GET"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"header"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Authorization"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bearer {{token}}"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://sddc-manager.lab.local/v1/bundles"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"variable"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"token"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span><span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"task_id"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span><span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p><strong>How to use:</strong></p>
+<ol>
+<li>Import JSON into Postman</li>
+<li>Run <strong>"1 - Authenticate"</strong> — copy <code>accessToken</code> from response</li>
+<li>Set the <code>token</code> variable in Postman's Collection Variables</li>
+<li>Call all other endpoints</li>
+</ol>
+<hr>
+<h2 id="16-troubleshooting-api-issues">16. Troubleshooting API Issues</h2>
+<h3 id="common-http-status-codes">Common HTTP Status Codes</h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>200</code></td>
+<td>Success</td>
+<td>Request completed</td>
+</tr>
+<tr>
+<td><code>201</code></td>
+<td>Created</td>
+<td>Resource created, check for task ID</td>
+</tr>
+<tr>
+<td><code>202</code></td>
+<td>Accepted</td>
+<td>Async task started, poll <code>/v1/tasks/{id}</code></td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Bad Request</td>
+<td>Check JSON payload syntax</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>Unauthorized</td>
+<td>Token expired — re-authenticate</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>Forbidden</td>
+<td>Insufficient permissions for this endpoint</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Not Found</td>
+<td>Resource ID doesn't exist</td>
+</tr>
+<tr>
+<td><code>409</code></td>
+<td>Conflict</td>
+<td>Resource is locked by another operation</td>
+</tr>
+<tr>
+<td><code>500</code></td>
+<td>Internal Server Error</td>
+<td>SDDC Manager issue — check logs</td>
+</tr>
+</tbody></table>
+<h3 id="common-api-errors">Common API Errors</h3>
+<table>
+<thead>
+<tr>
+<th>Error Message</th>
+<th>Root Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>TA_TASK_CAN_NOT_BE_RETRIED</code></td>
+<td>Stuck task cannot be cancelled via API</td>
+<td>Database repair: <code>UPDATE task_metadata SET resolved = true</code></td>
+</tr>
+<tr>
+<td><code>Unable to acquire resource level lock(s)</code></td>
+<td>Stale locks from failed operation</td>
+<td>Database repair: <code>DELETE FROM lock</code> in platform DB</td>
+</tr>
+<tr>
+<td><code>Resources [X] are not in ACTIVE state</code></td>
+<td>NSX cluster stuck in ACTIVATING/ERROR</td>
+<td>Database repair: <code>UPDATE nsxt SET status = 'ACTIVE'</code></td>
+</tr>
+<tr>
+<td><code>Connection refused</code></td>
+<td>SDDC Manager services not running</td>
+<td>SSH in and run <code>systemctl restart vcf-services</code></td>
+</tr>
+<tr>
+<td><code>SSL certificate problem</code></td>
+<td>Self-signed cert not trusted</td>
+<td>Use <code>-k</code> flag with curl, or import cert</td>
+</tr>
+</tbody></table>
+<h3 id="debugging-api-calls">Debugging API Calls</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Verbose curl output (shows headers and TLS handshake)</span>
+curl -svk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/system/health 2&gt;&amp;1
+
+<span class="hljs-comment"># Check if SDDC Manager is reachable</span>
+curl -sk -o /dev/null -w <span class="hljs-string">"%{http_code}"</span> \
+  https://sddc-manager.lab.local/v1/system
+
+<span class="hljs-comment"># Test token validity</span>
+curl -sk -o /dev/null -w <span class="hljs-string">"%{http_code}"</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/system
+<span class="hljs-comment"># 200 = token valid, 401 = token expired</span>
+</code></pre>
+<h3 id="sddc-manager-api-log-locations">SDDC Manager API Log Locations</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH to SDDC Manager as vcf, su - to root</span>
+/var/log/vmware/vcf/operationsmanager/operationsmanager.log  <span class="hljs-comment"># Credential ops</span>
+/var/log/vmware/vcf/domainmanager/domainmanager.log          <span class="hljs-comment"># Domain/cluster ops</span>
+/var/log/vmware/vcf/lcm/lcm.log                             <span class="hljs-comment"># Lifecycle/upgrade ops</span>
+/var/log/vmware/vcf/commonsvcs/commonsvcs.log                <span class="hljs-comment"># Auth/token issues</span>
+</code></pre>
+<hr>
+<h2 id="17-lab-tested-workflows">17. Lab-Tested Workflows</h2>
+<h3 id="workflow-1-full-health-check">Workflow 1: Full Health Check</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># 1. Authenticate</span>
+TOKEN=$(curl -sk -X POST https://sddc-manager.lab.local/v1/tokens \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"administrator@vsphere.local","password":"&lt;pass&gt;"}'</span> \
+  | python3 -c <span class="hljs-string">"import sys,json; print(json.load(sys.stdin)['accessToken'])"</span>)
+
+<span class="hljs-comment"># 2. System health</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/system/health
+
+<span class="hljs-comment"># 3. NSX status</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/nsxt-clusters
+
+<span class="hljs-comment"># 4. Check for stuck tasks</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks?status=IN_PROGRESS"</span>
+
+<span class="hljs-comment"># 5. Check for stale locks</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/resource-locks
+
+<span class="hljs-comment"># 6. Check notifications</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/system/notifications
+</code></pre>
+<h3 id="workflow-2-credential-update-for-nsx">Workflow 2: Credential Update for NSX</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># 1. Authenticate</span>
+TOKEN=$(curl -sk -X POST https://sddc-manager.lab.local/v1/tokens \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"administrator@vsphere.local","password":"&lt;pass&gt;"}'</span> \
+  | python3 -c <span class="hljs-string">"import sys,json; print(json.load(sys.stdin)['accessToken'])"</span>)
+
+<span class="hljs-comment"># 2. Verify NSX is ACTIVE first</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/nsxt-clusters | python3 -c \
+  <span class="hljs-string">"import sys,json; [print(c['status']) for c in json.load(sys.stdin).get('elements',[])]"</span>
+<span class="hljs-comment"># MUST show ACTIVE before proceeding</span>
+
+<span class="hljs-comment"># 3. Verify no stale locks</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/resource-locks
+
+<span class="hljs-comment"># 4. Submit credential update</span>
+TASK=$(curl -sk -X PUT https://sddc-manager.lab.local/v1/credentials \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{
+    "operationType": "UPDATE",
+    "elements": [{
+      "resourceName": "nsx-vip.lab.local",
+      "resourceType": "NSX_MANAGER",
+      "credentials": [{
+        "credentialType": "API",
+        "username": "admin",
+        "password": "&lt;current-nsx-password&gt;"
+      }]
+    }]
+  }'</span> | python3 -c <span class="hljs-string">"import sys,json; print(json.load(sys.stdin).get('id','?'))"</span>)
+
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Task: <span class="hljs-variable">$TASK</span>"</span>
+
+<span class="hljs-comment"># 5. Poll task status</span>
+<span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>; <span class="hljs-keyword">do</span>
+  S=$(curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+    https://sddc-manager.lab.local/v1/tasks/<span class="hljs-variable">$TASK</span> \
+    | python3 -c <span class="hljs-string">"import sys,json; print(json.load(sys.stdin)['status'])"</span>)
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-subst">$(date +%H:%M:%S)</span> <span class="hljs-variable">$S</span>"</span>
+  [ <span class="hljs-string">"<span class="hljs-variable">$S</span>"</span> = <span class="hljs-string">"SUCCESSFUL"</span> ] || [ <span class="hljs-string">"<span class="hljs-variable">$S</span>"</span> = <span class="hljs-string">"FAILED"</span> ] &amp;&amp; <span class="hljs-built_in">break</span>
+  <span class="hljs-built_in">sleep</span> 15
+<span class="hljs-keyword">done</span>
+</code></pre>
+<h3 id="workflow-3-diagnose-credential-cascade-failure">Workflow 3: Diagnose Credential Cascade Failure</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># 1. Authenticate</span>
+TOKEN=$(curl -sk -X POST https://sddc-manager.lab.local/v1/tokens \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"administrator@vsphere.local","password":"&lt;pass&gt;"}'</span> \
+  | python3 -c <span class="hljs-string">"import sys,json; print(json.load(sys.stdin)['accessToken'])"</span>)
+
+<span class="hljs-comment"># 2. Check NSX status (ACTIVATING/ERROR = problem)</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== NSX Status ==="</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/nsxt-clusters | python3 -c \
+  <span class="hljs-string">"import sys,json; [print(f'  {c[\"id\"][:8]}... status={c[\"status\"]}') for c in json.load(sys.stdin).get('elements',[])]"</span>
+
+<span class="hljs-comment"># 3. Check resource locks (stale locks = problem)</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== Resource Locks ==="</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  https://sddc-manager.lab.local/v1/resource-locks | python3 -c \
+  <span class="hljs-string">"import sys,json; d=json.load(sys.stdin).get('elements',[]); print(f'  Locks: {len(d)}'); [print(f'  {l}') for l in d[:5]]"</span>
+
+<span class="hljs-comment"># 4. Check stuck tasks (dozens = cascade failure)</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== Stuck Tasks ==="</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks?status=IN_PROGRESS"</span> | python3 -c \
+  <span class="hljs-string">"import sys,json; d=json.load(sys.stdin).get('elements',[]); print(f'  IN_PROGRESS: {len(d)}')"</span>
+
+<span class="hljs-comment"># 5. Check latest failed tasks</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== Recent Failed Tasks ==="</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks?status=FAILED"</span> | python3 -c <span class="hljs-string">"
+import sys, json
+tasks = json.load(sys.stdin).get('elements', [])[:3]
+for t in tasks:
+    print(f'  {t[\"name\"]}: {t[\"status\"]}')
+    for sub in t.get('subTasks', []):
+        if sub.get('errors'):
+            for e in sub['errors']:
+                print(f'    ERROR: {e.get(\"message\",\"\")[:100]}')
+"</span>
+
+<span class="hljs-comment"># 6. Verify actual NSX health (bypass SDDC Manager)</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== Direct NSX VIP Check ==="</span>
+curl -sk -u admin:<span class="hljs-string">'&lt;pass&gt;'</span> --connect-timeout 10 \
+  https://nsx-vip.lab.local/api/v1/cluster/status | python3 -c \
+  <span class="hljs-string">"import sys,json; d=json.load(sys.stdin); print(f'  Overall: {d.get(\"detailed_cluster_status\",{}).get(\"overall_status\",\"?\")}')"</span> 2&gt;/dev/null || <span class="hljs-built_in">echo</span> <span class="hljs-string">"  VIP unreachable"</span>
+</code></pre>
+<hr>
+<h2 id="18-references">18. References</h2>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SDDC Manager API Reference</td>
+<td><a href="https://developer.broadcom.com/xapis/sddc-manager-api/latest/">developer.broadcom.com/xapis/sddc-manager-api/latest/</a></td>
+</tr>
+<tr>
+<td>VCF API Reference Guide</td>
+<td><a href="https://developer.broadcom.com/xapis/vmware-cloud-foundation-api/latest/">developer.broadcom.com/xapis/vmware-cloud-foundation-api/latest/</a></td>
+</tr>
+<tr>
+<td>OpenAPI for SDDC Manager</td>
+<td><a href="https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/administration-sdks-cli-and-tools/what-is-the-vsphere-web-services-sdk/setup-for-development-with-openapi/opnapi-for-sddc-manager.html">techdocs.broadcom.com</a></td>
+</tr>
+<tr>
+<td>VCF Troubleshooting Handbook</td>
+<td><code>VCF_Troubleshooting_Handbook.md</code> — Section 10 (Credential Cascade)</td>
+</tr>
+<tr>
+<td>VCF Master Bible</td>
+<td><code>VCF9-Master-Bible.md</code> — Section 7.2.6 (Database Repair), Section 8.7 (API Quick Reference)</td>
+</tr>
+<tr>
+<td>VCF Command Reference</td>
+<td><code>VCF-Command-Reference.md</code> — Sections 24-25 (SDDC Manager API, PostgreSQL)</td>
+</tr>
+<tr>
+<td>Diagnostic Scripts</td>
+<td><code>diagnostic-scripts/</code> — <code>quick_status.py</code>, <code>nsx_cred_update.py</code>, <code>full_remediate_fix.py</code></td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>Document Information</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Document Title</td>
+<td>VCF 9.0.1 SDDC Manager REST API Handbook</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Last Updated</td>
+<td>February 2026</td>
+</tr>
+<tr>
+<td>Source Material</td>
+<td>SDDC API Rest points.docx, Broadcom API Reference, Lab testing</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>Dell Precision 7920, VMware Workstation Nested Lab</td>
+</tr>
+<tr>
+<td>SDDC Manager</td>
+<td>9.0.1.0 build 24962180</td>
+</tr>
+</tbody></table>
+<p><em>This handbook documents the SDDC Manager REST API as tested in a VCF 9.0.1 nested lab environment. API behavior may vary in production deployments. Always consult the official Broadcom API reference for the latest endpoint specifications.</em></p>
+<p><em>(c) 2026 Virtual Control LLC. All rights reserved.</em></p>
+
+	
+
+</body></html>

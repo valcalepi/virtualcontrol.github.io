@@ -1,0 +1,2357 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8"><style>* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	line-height: 1.6;
+	font-size: 0.6875em; /* 11 pt */
+	color: #111;
+	margin: 0;
+}
+
+body > :first-child {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+body > :last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0.5em 0 0.25em;
+}
+
+h5,
+h6 {
+	padding: 0;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h6 {
+	font-size: 0.875em;
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0.25em 0 1em;
+}
+
+blockquote {
+	margin: 0.5em 0 1em;
+	padding-left: 0.5em;
+	padding-right: 1em;
+	border-left: 4px solid gainsboro;
+	font-style: italic;
+}
+
+ul,
+ol {
+	margin: 0;
+	margin-left: 1em;
+	padding: 0 1.5em 0.5em;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+p code,
+li code,
+pre code {
+	background-color: #f8f8f8;
+	padding: 0.1em 0.375em;
+	border: 1px solid #f8f8f8;
+	border-radius: 0.25em;
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+pre code {
+	display: block;
+	padding: 0.5em;
+}
+
+.page-break {
+	page-break-after: always;
+}
+
+img {
+	max-width: 100%;
+	margin: 1em 0;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: block;
+	margin: 0 0 1em;
+	width: 100%;
+	overflow: auto;
+}
+
+table th,
+table td {
+	padding: 0.5em 1em;
+	border: 1px solid gainsboro;
+}
+
+table th {
+	font-weight: 600;
+}
+
+table tr {
+	background-color: white;
+	border-top: 1px solid gainsboro;
+}
+
+table tr:nth-child(2n) {
+	background-color: whitesmoke;
+}
+/*# sourceURL=E:\VCF-Depot\node_modules\md-to-pdf\markdown.css*/</style><style>pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/
+.hljs {
+  color: #24292e;
+  background: #ffffff
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  /* prettylights-syntax-keyword */
+  color: #d73a49
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  /* prettylights-syntax-entity */
+  color: #6f42c1
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  /* prettylights-syntax-constant */
+  color: #005cc5
+}
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  /* prettylights-syntax-string */
+  color: #032f62
+}
+.hljs-built_in,
+.hljs-symbol {
+  /* prettylights-syntax-variable */
+  color: #e36209
+}
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  /* prettylights-syntax-comment */
+  color: #6a737d
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  /* prettylights-syntax-entity-tag */
+  color: #22863a
+}
+.hljs-subst {
+  /* prettylights-syntax-storage-modifier-import */
+  color: #24292e
+}
+.hljs-section {
+  /* prettylights-syntax-markup-heading */
+  color: #005cc5;
+  font-weight: bold
+}
+.hljs-bullet {
+  /* prettylights-syntax-markup-list */
+  color: #735c0f
+}
+.hljs-emphasis {
+  /* prettylights-syntax-markup-italic */
+  color: #24292e;
+  font-style: italic
+}
+.hljs-strong {
+  /* prettylights-syntax-markup-bold */
+  color: #24292e;
+  font-weight: bold
+}
+.hljs-addition {
+  /* prettylights-syntax-markup-inserted */
+  color: #22863a;
+  background-color: #f0fff4
+}
+.hljs-deletion {
+  /* prettylights-syntax-markup-deleted */
+  color: #b31d28;
+  background-color: #ffeef0
+}
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
+  
+}/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #1a1a1a; background: #ffffff; }
+h1 { color: #ffffff; background-color: #922b21; padding: 14px 20px; border-radius: 6px; font-size: 22pt; margin-top: 30px; border: none; }
+h2 { color: #7b241c; border-bottom: 3px solid #c0392b; padding-bottom: 6px; font-size: 17pt; margin-top: 28px; }
+h3 { color: #922b21; font-size: 13pt; margin-top: 20px; border-left: 5px solid #c0392b; padding-left: 12px; background-color: #fdedec; padding: 6px 12px; border-radius: 0 4px 4px 0; }
+h4 { color: #cb4335; font-size: 11.5pt; margin-top: 14px; font-weight: 600; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 10pt; }
+th { background-color: #7b241c; color: #ffffff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 10pt; }
+td { padding: 7px 12px; border: 1px solid #d5dce4; }
+tr:nth-child(even) { background-color: #fdf2f0; }
+tr:nth-child(odd) { background-color: #ffffff; }
+pre { background-color: #fdf2f0; color: #1a1a1a; padding: 14px 16px; border-radius: 6px; font-size: 9pt; line-height: 1.45; border-left: 5px solid #c0392b; }
+code { font-family: 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 9pt; }
+p code, li code, td code { background-color: #fdedec; color: #7b241c; padding: 2px 6px; border-radius: 4px; font-size: 9.5pt; }
+blockquote { border-left: 5px solid #f39c12; background-color: #fef9e7; padding: 10px 16px; margin: 14px 0; color: #7d6608; border-radius: 0 4px 4px 0; }
+a { color: #c0392b; text-decoration: none; }
+hr { border: none; height: 3px; background-color: #c0392b; margin: 28px 0; border-radius: 2px; }
+strong { color: #1a1a1a; }</style></head>
+	<body class="">
+		<h1 id="vmware-cloud-foundation-90-nested-deployment-troubleshooting-handbook">VMware Cloud Foundation 9.0 Nested Deployment Troubleshooting Handbook</h1>
+<p><strong>Version:</strong> 1.5
+<strong>Date:</strong> February 2026
+<strong>Environment:</strong> VCF 9.0.1 Nested in VMware Workstation
+<strong>Author:</strong> Virtual Control LLC</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-executive-summary">Executive Summary</a></li>
+<li><a href="#2-environment-overview">Environment Overview</a></li>
+<li><a href="#3-offline-depot-configuration">Offline Depot Configuration</a><ul>
+<li>3.1 <a href="#31-tlsssl-certificate-issues">TLS/SSL Certificate Issues</a></li>
+<li>3.2 <a href="#32-python-https-server-setup">Python HTTPS Server Setup</a></li>
+<li>3.3 <a href="#33-certificate-generation">Certificate Generation</a></li>
+<li>3.4 <a href="#34-certificate-import-to-vcf">Certificate Import to VCF</a></li>
+</ul>
+</li>
+<li><a href="#4-esxi-host-certificate-issues">ESXi Host Certificate Issues</a><ul>
+<li>4.1 <a href="#41-certificate-hostname-mismatch">Certificate Hostname Mismatch</a></li>
+<li>4.2 <a href="#42-certificate-regeneration">Certificate Regeneration</a></li>
+<li>4.3 <a href="#43-thumbprint-updates">Thumbprint Updates</a></li>
+</ul>
+</li>
+<li><a href="#5-vsan-storage-configuration">vSAN Storage Configuration</a><ul>
+<li>5.1 <a href="#51-ssd-detection-issues">SSD Detection Issues</a></li>
+<li>5.2 <a href="#52-vmx-file-configuration">VMX File Configuration</a></li>
+<li>5.3 <a href="#53-cleaning-up-previous-vsan-configuration">Cleaning Up Previous vSAN Configuration</a></li>
+</ul>
+</li>
+<li><a href="#6-network-configuration-for-nested-vcf">Network Configuration for Nested VCF</a><ul>
+<li>6.1 <a href="#61-vlan-configuration">VLAN Configuration</a></li>
+<li>6.2 <a href="#62-mtu-settings">MTU Settings</a></li>
+<li>6.3 <a href="#63-ip-addressing">IP Addressing</a></li>
+</ul>
+</li>
+<li><a href="#7-vcf-component-configuration">VCF Component Configuration</a><ul>
+<li>7.1 <a href="#71-vcf-automation">VCF Automation</a></li>
+<li>7.2 <a href="#72-nsx-manager">NSX Manager</a><ul>
+<li>7.2.1 <a href="#721-nsx-certificate-san-failure-vdt">NSX Certificate SAN Failure (VDT)</a></li>
+<li>7.2.2 <a href="#722-nsx-certificate-trust-failure-vdt">NSX Certificate Trust Failure (VDT)</a></li>
+</ul>
+</li>
+<li>7.3 <a href="#73-vcenter-server">vCenter Server</a></li>
+<li>7.4 <a href="#74-vcenter-deployment-issues">vCenter Deployment Issues</a></li>
+<li>7.5 <a href="#75-failed-deployment-recovery">Failed Deployment Recovery</a></li>
+</ul>
+</li>
+<li><a href="#8-command-reference">Command Reference</a><ul>
+<li>8.1 <a href="#81-vcf-installer-commands">VCF Installer Commands</a></li>
+<li>8.2 <a href="#82-esxi-host-commands">ESXi Host Commands</a></li>
+<li>8.3 <a href="#83-windows-depot-server-commands">Windows Depot Server Commands</a></li>
+</ul>
+</li>
+<li><a href="#9-troubleshooting-flowcharts">Troubleshooting Flowcharts</a><ul>
+<li>9.1 <a href="#91-offline-depot-connection-failure">Offline Depot Connection Failure</a></li>
+<li>9.2 <a href="#92-esxi-certificate-mismatch">ESXi Certificate Mismatch</a></li>
+<li>9.3 <a href="#93-vsan-ssd-detection-failure">vSAN SSD Detection Failure</a></li>
+<li>9.4 <a href="#94-vcenter-deployment-stuck">vCenter Deployment Stuck</a></li>
+<li>9.5 <a href="#95-vlcm-host-seeding-failure">vLCM Host Seeding Failure</a></li>
+<li>9.6 <a href="#96-nsx-certificate-trustsan-failure-vdt">NSX Certificate Trust/SAN Failure</a></li>
+<li>9.7 <a href="#97-vcf-operations-health-adapter-no-data-receiving-status">VCF Operations Health Adapter "No Data Receiving"</a></li>
+<li>9.8 <a href="#98-vcf-operations-nsx-integration--pkix--connection-failure">VCF Operations NSX Integration — PKIX / Connection Failure</a></li>
+</ul>
+</li>
+<li><a href="#10-sddc-manager-credential-cascade-failure">SDDC Manager Credential Cascade Failure</a></li>
+<li><a href="#11-sddc-manager-storage-migration-local--vsan">SDDC Manager Storage Migration (Local → vSAN)</a></li>
+</ol>
+<hr>
+<h2 id="1-executive-summary">1. Executive Summary</h2>
+<p>This handbook documents the complete troubleshooting process for deploying VMware Cloud Foundation 9.0.1 in a nested VMware Workstation environment. The deployment encountered several challenges including:</p>
+<ul>
+<li><strong>Offline Depot TLS Issues</strong>: BouncyCastle FIPS TLS implementation rejecting self-signed certificates</li>
+<li><strong>ESXi Certificate Mismatches</strong>: Hosts with incorrect hostname in SSL certificates</li>
+<li><strong>vSAN SSD Detection</strong>: Virtual disks not being recognized as SSDs for vSAN cache tier</li>
+<li><strong>Network Configuration</strong>: Proper VLAN and subnet configuration for nested environments</li>
+<li><strong>SSH Requirements</strong>: vLCM host seeding requires SSH enabled on all ESXi hosts</li>
+<li><strong>vCenter Deployment Failures</strong>: Stuck deployments, PostgreSQL initialization issues, service startup failures</li>
+<li><strong>Failed Deployment Recovery</strong>: Complete cleanup procedures when deployments fail without rollback option</li>
+</ul>
+<p>This document provides step-by-step remediation procedures and recovery processes for nested VCF deployments.</p>
+<hr>
+<h2 id="2-environment-overview">2. Environment Overview</h2>
+<h3 id="21-infrastructure-components">2.1 Infrastructure Components</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>FQDN</th>
+<th>IP Address</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VCF Installer/SDDC Manager</td>
+<td>vcf-installer.lab.local</td>
+<td>192.168.1.240</td>
+</tr>
+<tr>
+<td>vCenter Server</td>
+<td>vcenter.lab.local</td>
+<td>192.168.1.69</td>
+</tr>
+<tr>
+<td>NSX Manager VIP</td>
+<td>nsx-vip.lab.local</td>
+<td>192.168.1.70</td>
+</tr>
+<tr>
+<td>NSX Manager Node 1</td>
+<td>nsx-node1.lab.local</td>
+<td>192.168.1.71</td>
+</tr>
+<tr>
+<td>ESXi Host 1</td>
+<td>esxi01.lab.local</td>
+<td>192.168.1.74</td>
+</tr>
+<tr>
+<td>ESXi Host 2</td>
+<td>esxi02.lab.local</td>
+<td>192.168.1.75</td>
+</tr>
+<tr>
+<td>ESXi Host 3</td>
+<td>esxi03.lab.local</td>
+<td>192.168.1.76</td>
+</tr>
+<tr>
+<td>ESXi Host 4</td>
+<td>esxi04.lab.local</td>
+<td>192.168.1.82</td>
+</tr>
+<tr>
+<td>VCF Operations</td>
+<td>vcf-ops.lab.local</td>
+<td>192.168.1.77</td>
+</tr>
+<tr>
+<td>Fleet Management</td>
+<td>fleet.lab.local</td>
+<td>192.168.1.78</td>
+</tr>
+<tr>
+<td>Collector</td>
+<td>collector.lab.local</td>
+<td>192.168.1.79</td>
+</tr>
+<tr>
+<td>VCF Automation</td>
+<td>automation.lab.local</td>
+<td>192.168.1.90</td>
+</tr>
+<tr>
+<td>Automation Node 1</td>
+<td>automation-node1.lab.local</td>
+<td>192.168.1.91</td>
+</tr>
+<tr>
+<td>Offline Depot Server</td>
+<td>(IP only - no DNS)</td>
+<td>192.168.1.160</td>
+</tr>
+<tr>
+<td>DNS/NTP Server</td>
+<td>(Windows Server)</td>
+<td>192.168.1.230</td>
+</tr>
+</tbody></table>
+<h3 id="22-network-configuration">2.2 Network Configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Network</th>
+<th>VLAN ID</th>
+<th>Subnet</th>
+<th>Gateway</th>
+<th>IP Range</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ESX Management</td>
+<td>0</td>
+<td>192.168.1.0/24</td>
+<td>192.168.1.1</td>
+<td>DHCP/Static</td>
+</tr>
+<tr>
+<td>VM Management</td>
+<td>0</td>
+<td>192.168.1.0/24</td>
+<td>192.168.1.1</td>
+<td>Same as ESX Mgmt</td>
+</tr>
+<tr>
+<td>vMotion</td>
+<td>100</td>
+<td>192.168.100.0/24</td>
+<td>192.168.100.1</td>
+<td>192.168.100.10-20</td>
+</tr>
+<tr>
+<td>vSAN</td>
+<td>200</td>
+<td>192.168.200.0/24</td>
+<td>192.168.200.1</td>
+<td>192.168.200.206-216</td>
+</tr>
+<tr>
+<td>NSX TEP</td>
+<td>300</td>
+<td>192.168.250.0/24</td>
+<td>192.168.250.1</td>
+<td>192.168.250.10-25</td>
+</tr>
+</tbody></table>
+<h3 id="23-esxi-vm-specifications-nested">2.3 ESXi VM Specifications (Nested)</h3>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vCPUs</td>
+<td>8 (4 cores x 2 sockets)</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>48 GB</td>
+</tr>
+<tr>
+<td>OS Disk</td>
+<td>32 GB</td>
+</tr>
+<tr>
+<td>vSAN Cache Disk</td>
+<td>100 GB (SSD)</td>
+</tr>
+<tr>
+<td>vSAN Capacity Disk</td>
+<td>800 GB (SSD)</td>
+</tr>
+<tr>
+<td>Network Adapters</td>
+<td>4x vmxnet3</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-offline-depot-configuration">3. Offline Depot Configuration</h2>
+<h3 id="31-tlsssl-certificate-issues">3.1 TLS/SSL Certificate Issues</h3>
+<h4 id="problem-description">Problem Description</h4>
+<p>VCF 9.0.1 uses BouncyCastle FIPS TLS implementation which has strict certificate validation requirements. When connecting to an offline depot with a self-signed certificate, the connection fails with:</p>
+<pre><code>Secure protocol communication error, check logs for more details
+</code></pre>
+<h4 id="symptoms">Symptoms</h4>
+<ul>
+<li>VCF Installer UI shows "Secure protocol communication error"</li>
+<li>LCM debug logs show <code>TlsFatalAlert</code> errors:<pre><code>org.bouncycastle.tls.TlsFatalAlert caught when processing request to {s}-&gt;https://192.168.1.160:8443
+</code></pre>
+</li>
+</ul>
+<h4 id="root-cause">Root Cause</h4>
+<ol>
+<li>Self-signed certificate not trusted by Java keystore</li>
+<li>Certificate may lack proper extensions for FIPS compliance</li>
+<li>Certificate fingerprint mismatch between server and truststore</li>
+</ol>
+<h4 id="diagnostic-commands-vcf-installer">Diagnostic Commands (VCF Installer)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Test SSL connectivity</span>
+openssl s_client -connect 192.168.1.160:8443
+
+<span class="hljs-comment"># Test with TLS 1.2 specifically</span>
+openssl s_client -connect 192.168.1.160:8443 -tls1_2
+
+<span class="hljs-comment"># Check cipher negotiation</span>
+openssl s_client -connect 192.168.1.160:8443 -tls1_2 &lt;/dev/null 2&gt;&amp;1 | grep -E <span class="hljs-string">"Cipher|Protocol|Verify"</span>
+
+<span class="hljs-comment"># View certificate details</span>
+openssl s_client -connect 192.168.1.160:8443 &lt;/dev/null 2&gt;/dev/null | openssl x509 -text -noout
+
+<span class="hljs-comment"># Get certificate fingerprint</span>
+openssl s_client -connect 192.168.1.160:8443 &lt;/dev/null 2&gt;/dev/null | openssl x509 -noout -fingerprint -sha256
+
+<span class="hljs-comment"># Check LCM logs for TLS errors</span>
+grep -i <span class="hljs-string">"tlsfatal\|ssl\|certificate"</span> /var/log/vmware/vcf/lcm/lcm-debug.log | <span class="hljs-built_in">tail</span> -20
+
+<span class="hljs-comment"># Check LCM service status</span>
+systemctl status lcm
+</code></pre>
+<h3 id="32-python-https-server-setup">3.2 Python HTTPS Server Setup</h3>
+<h4 id="server-script-cvcf-depothttps_serverpy">Server Script (C:\VCF-DEPOT\https_server.py)</h4>
+<pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span>
+<span class="hljs-string">"""
+HTTPS server for VCF Offline Depot
+Serves files with TLS 1.2+ for SDDC Manager compatibility
+"""</span>
+<span class="hljs-keyword">import</span> http.server
+<span class="hljs-keyword">import</span> ssl
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> base64
+<span class="hljs-keyword">import</span> socketserver
+<span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> partial
+
+<span class="hljs-comment"># Configuration</span>
+PORT = <span class="hljs-number">8443</span>
+CERT_FILE = <span class="hljs-string">'server.crt'</span>
+KEY_FILE = <span class="hljs-string">'server.key'</span>
+USERNAME = <span class="hljs-string">'admin'</span>
+PASSWORD = <span class="hljs-string">'admin'</span>
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AuthHandler</span>(http.server.SimpleHTTPRequestHandler):
+    protocol_version = <span class="hljs-string">"HTTP/1.1"</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, *args, directory=<span class="hljs-literal">None</span>, **kwargs</span>):
+        <span class="hljs-built_in">super</span>().__init__(*args, directory=directory, **kwargs)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">do_HEAD</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.authenticate():
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-built_in">super</span>().do_HEAD()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">do_GET</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.authenticate():
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-built_in">super</span>().do_GET()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">do_POST</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.authenticate():
+            <span class="hljs-keyword">return</span>
+        content_length = <span class="hljs-built_in">int</span>(<span class="hljs-variable language_">self</span>.headers.get(<span class="hljs-string">'Content-Length'</span>, <span class="hljs-number">0</span>))
+        <span class="hljs-variable language_">self</span>.rfile.read(content_length)
+        <span class="hljs-variable language_">self</span>.send_response(<span class="hljs-number">200</span>)
+        <span class="hljs-variable language_">self</span>.send_header(<span class="hljs-string">'Content-Type'</span>, <span class="hljs-string">'application/json'</span>)
+        <span class="hljs-variable language_">self</span>.send_header(<span class="hljs-string">'Connection'</span>, <span class="hljs-string">'close'</span>)
+        <span class="hljs-variable language_">self</span>.end_headers()
+        <span class="hljs-variable language_">self</span>.wfile.write(<span class="hljs-string">b'{"status": "ok"}'</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">authenticate</span>(<span class="hljs-params">self</span>):
+        auth_header = <span class="hljs-variable language_">self</span>.headers.get(<span class="hljs-string">'Authorization'</span>)
+        <span class="hljs-keyword">if</span> auth_header <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+            <span class="hljs-variable language_">self</span>.send_auth_request()
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+
+        <span class="hljs-keyword">try</span>:
+            auth_type, credentials = auth_header.split(<span class="hljs-string">' '</span>, <span class="hljs-number">1</span>)
+            <span class="hljs-keyword">if</span> auth_type.lower() != <span class="hljs-string">'basic'</span>:
+                <span class="hljs-variable language_">self</span>.send_auth_request()
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+
+            decoded = base64.b64decode(credentials).decode(<span class="hljs-string">'utf-8'</span>)
+            username, password = decoded.split(<span class="hljs-string">':'</span>, <span class="hljs-number">1</span>)
+
+            <span class="hljs-keyword">if</span> username == USERNAME <span class="hljs-keyword">and</span> password == PASSWORD:
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+        <span class="hljs-keyword">except</span> Exception:
+            <span class="hljs-keyword">pass</span>
+
+        <span class="hljs-variable language_">self</span>.send_auth_request()
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">send_auth_request</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-variable language_">self</span>.send_response(<span class="hljs-number">401</span>)
+        <span class="hljs-variable language_">self</span>.send_header(<span class="hljs-string">'WWW-Authenticate'</span>, <span class="hljs-string">'Basic realm="VCF Depot"'</span>)
+        <span class="hljs-variable language_">self</span>.send_header(<span class="hljs-string">'Content-type'</span>, <span class="hljs-string">'text/html'</span>)
+        <span class="hljs-variable language_">self</span>.send_header(<span class="hljs-string">'Content-Length'</span>, <span class="hljs-string">'23'</span>)
+        <span class="hljs-variable language_">self</span>.send_header(<span class="hljs-string">'Connection'</span>, <span class="hljs-string">'close'</span>)
+        <span class="hljs-variable language_">self</span>.end_headers()
+        <span class="hljs-variable language_">self</span>.wfile.write(<span class="hljs-string">b'Authentication required'</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">log_message</span>(<span class="hljs-params">self, <span class="hljs-built_in">format</span>, *args</span>):
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">f"<span class="hljs-subst">{self.client_address[<span class="hljs-number">0</span>]}</span> - <span class="hljs-subst">{<span class="hljs-built_in">format</span> % args}</span>"</span>)
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ThreadedHTTPServer</span>(socketserver.ThreadingMixIn, http.server.HTTPServer):
+    daemon_threads = <span class="hljs-literal">True</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">run_server</span>():
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+    context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+    context.minimum_version = ssl.TLSVersion.TLSv1_2
+    context.maximum_version = ssl.TLSVersion.TLSv1_3
+
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(context, <span class="hljs-string">'post_handshake_auth'</span>):
+        context.post_handshake_auth = <span class="hljs-literal">False</span>
+
+    context.options |= ssl.OP_NO_TICKET
+    context.options |= <span class="hljs-built_in">getattr</span>(ssl, <span class="hljs-string">'OP_NO_RENEGOTIATION'</span>, <span class="hljs-number">0</span>)
+
+    context.load_cert_chain(CERT_FILE, KEY_FILE)
+
+    <span class="hljs-keyword">try</span>:
+        context.set_ciphers(<span class="hljs-string">'DEFAULT:!aNULL:!MD5:!DSS'</span>)
+    <span class="hljs-keyword">except</span> ssl.SSLError:
+        <span class="hljs-keyword">pass</span>
+
+    handler = partial(AuthHandler, directory=os.getcwd())
+    server = ThreadedHTTPServer((<span class="hljs-string">'0.0.0.0'</span>, PORT), handler)
+    server.socket = context.wrap_socket(server.socket, server_side=<span class="hljs-literal">True</span>)
+
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f"VCF Offline Depot Server"</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f"========================"</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f"Serving: <span class="hljs-subst">{os.getcwd()}</span>"</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f"URL: https://192.168.1.160:<span class="hljs-subst">{PORT}</span>/"</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f"Credentials: <span class="hljs-subst">{USERNAME}</span> / <span class="hljs-subst">{PASSWORD}</span>"</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f"TLS: 1.2 - 1.3"</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f"Press Ctrl+C to stop"</span>)
+
+    <span class="hljs-keyword">try</span>:
+        server.serve_forever()
+    <span class="hljs-keyword">except</span> KeyboardInterrupt:
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"\nStopped."</span>)
+        server.shutdown()
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    run_server()
+</code></pre>
+<h3 id="33-certificate-generation">3.3 Certificate Generation</h3>
+<h4 id="certificate-generation-script-cvcf-depotgenerate_certpy">Certificate Generation Script (C:\VCF-DEPOT\generate_cert.py)</h4>
+<pre><code class="hljs python"><span class="hljs-string">"""
+Generate simple self-signed certificate for VCF Offline Depot
+"""</span>
+<span class="hljs-keyword">import</span> subprocess
+<span class="hljs-keyword">import</span> sys
+<span class="hljs-keyword">import</span> os
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">generate_cert</span>():
+    <span class="hljs-keyword">try</span>:
+        <span class="hljs-keyword">from</span> cryptography <span class="hljs-keyword">import</span> x509
+        <span class="hljs-keyword">from</span> cryptography.x509.oid <span class="hljs-keyword">import</span> NameOID
+        <span class="hljs-keyword">from</span> cryptography.hazmat.primitives <span class="hljs-keyword">import</span> hashes
+        <span class="hljs-keyword">from</span> cryptography.hazmat.primitives.asymmetric <span class="hljs-keyword">import</span> rsa
+        <span class="hljs-keyword">from</span> cryptography.hazmat.primitives <span class="hljs-keyword">import</span> serialization
+        <span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime, timedelta, timezone
+        <span class="hljs-keyword">import</span> ipaddress
+
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"Generating RSA 2048-bit private key..."</span>)
+        key = rsa.generate_private_key(
+            public_exponent=<span class="hljs-number">65537</span>,
+            key_size=<span class="hljs-number">2048</span>,
+        )
+
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"Creating self-signed certificate..."</span>)
+        subject = issuer = x509.Name([
+            x509.NameAttribute(NameOID.COMMON_NAME, <span class="hljs-string">"192.168.1.160"</span>),
+        ])
+
+        now = datetime.now(timezone.utc)
+
+        <span class="hljs-comment"># Simple certificate like the original</span>
+        cert = (
+            x509.CertificateBuilder()
+            .subject_name(subject)
+            .issuer_name(issuer)
+            .public_key(key.public_key())
+            .serial_number(x509.random_serial_number())
+            .not_valid_before(now)
+            .not_valid_after(now + timedelta(days=<span class="hljs-number">365</span>))
+            .add_extension(
+                x509.SubjectAlternativeName([
+                    x509.IPAddress(ipaddress.IPv4Address(<span class="hljs-string">"192.168.1.160"</span>)),
+                ]),
+                critical=<span class="hljs-literal">False</span>,
+            )
+            .add_extension(
+                x509.BasicConstraints(ca=<span class="hljs-literal">True</span>, path_length=<span class="hljs-literal">None</span>),
+                critical=<span class="hljs-literal">True</span>,
+            )
+            .sign(key, hashes.SHA256())
+        )
+
+        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">"server.key"</span>, <span class="hljs-string">"wb"</span>) <span class="hljs-keyword">as</span> f:
+            f.write(key.private_bytes(
+                encoding=serialization.Encoding.PEM,
+                <span class="hljs-built_in">format</span>=serialization.PrivateFormat.TraditionalOpenSSL,
+                encryption_algorithm=serialization.NoEncryption()
+            ))
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"Created: server.key"</span>)
+
+        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">"server.crt"</span>, <span class="hljs-string">"wb"</span>) <span class="hljs-keyword">as</span> f:
+            f.write(cert.public_bytes(serialization.Encoding.PEM))
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"Created: server.crt"</span>)
+
+        fingerprint = cert.fingerprint(hashes.SHA256()).<span class="hljs-built_in">hex</span>()
+        formatted = <span class="hljs-string">':'</span>.join(fingerprint[i:i+<span class="hljs-number">2</span>].upper() <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(fingerprint), <span class="hljs-number">2</span>))
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">f"SHA256: <span class="hljs-subst">{formatted}</span>"</span>)
+
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+    <span class="hljs-keyword">except</span> ImportError:
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"Installing cryptography..."</span>)
+        subprocess.check_call([sys.executable, <span class="hljs-string">"-m"</span>, <span class="hljs-string">"pip"</span>, <span class="hljs-string">"install"</span>, <span class="hljs-string">"cryptography"</span>])
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
+    os.chdir(<span class="hljs-string">r"C:\VCF-DEPOT"</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">"Generating certificate..."</span>)
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> generate_cert():
+        generate_cert()
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">"\nDone. Run: python https_server.py"</span>)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    main()
+</code></pre>
+<h4 id="windows-powershell-commands">Windows PowerShell Commands</h4>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Navigate to depot directory</span>
+<span class="hljs-built_in">cd</span> C:\VCF<span class="hljs-literal">-DEPOT</span>
+
+<span class="hljs-comment"># Generate certificate</span>
+python generate_cert.py
+
+<span class="hljs-comment"># Start HTTPS server</span>
+python https_server.py
+</code></pre>
+<h3 id="34-certificate-import-to-vcf">3.4 Certificate Import to VCF</h3>
+<h4 id="complete-certificate-import-procedure-vcf-installer">Complete Certificate Import Procedure (VCF Installer)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Step 1: Download certificate from depot server</span>
+openssl s_client -connect 192.168.1.160:8443 &lt;/dev/null 2&gt;/dev/null | openssl x509 -outform PEM &gt; /tmp/depot.crt
+
+<span class="hljs-comment"># Step 2: Verify certificate was downloaded</span>
+<span class="hljs-built_in">cat</span> /tmp/depot.crt
+
+<span class="hljs-comment"># Step 3: Get certificate fingerprint</span>
+openssl x509 -<span class="hljs-keyword">in</span> /tmp/depot.crt -noout -fingerprint -sha256
+
+<span class="hljs-comment"># Step 4: Find Java truststore location</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-variable">$JAVA_HOME</span>
+<span class="hljs-comment"># Output: /usr/lib/jvm/openjdk-java17-headless.x86_64</span>
+
+<span class="hljs-comment"># Step 5: Delete old certificate if exists</span>
+keytool -delete -<span class="hljs-built_in">alias</span> offline-depot -keystore <span class="hljs-variable">$JAVA_HOME</span>/lib/security/cacerts -storepass changeit
+
+<span class="hljs-comment"># Step 6: Import new certificate</span>
+keytool -import -trustcacerts -<span class="hljs-built_in">alias</span> offline-depot -file /tmp/depot.crt -keystore <span class="hljs-variable">$JAVA_HOME</span>/lib/security/cacerts -storepass changeit -noprompt
+
+<span class="hljs-comment"># Step 7: Verify import</span>
+keytool -list -<span class="hljs-built_in">alias</span> offline-depot -keystore <span class="hljs-variable">$JAVA_HOME</span>/lib/security/cacerts -storepass changeit
+
+<span class="hljs-comment"># Step 8: Restart LCM service</span>
+systemctl restart lcm
+
+<span class="hljs-comment"># Step 9: Wait for LCM to start (2 minutes)</span>
+systemctl status lcm
+
+<span class="hljs-comment"># Step 10: Verify LCM is ready</span>
+<span class="hljs-built_in">tail</span> -f /var/log/vmware/vcf/lcm/lcm-debug.log | grep -i <span class="hljs-string">"started\|ready"</span>
+</code></pre>
+<h4 id="troubleshooting-certificate-issues">Troubleshooting Certificate Issues</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check all cacerts files on system</span>
+find / -name <span class="hljs-string">"cacerts"</span> -<span class="hljs-built_in">type</span> f 2&gt;/dev/null
+
+<span class="hljs-comment"># List all certificates in truststore</span>
+keytool -list -keystore <span class="hljs-variable">$JAVA_HOME</span>/lib/security/cacerts -storepass changeit
+
+<span class="hljs-comment"># View certificate details in truststore</span>
+keytool -list -<span class="hljs-built_in">alias</span> offline-depot -keystore <span class="hljs-variable">$JAVA_HOME</span>/lib/security/cacerts -storepass changeit -v
+
+<span class="hljs-comment"># Check LCM logs for certificate errors</span>
+grep -B5 -A10 <span class="hljs-string">"TlsFatalAlert"</span> /var/log/vmware/vcf/lcm/lcm-debug.log | <span class="hljs-built_in">tail</span> -40
+</code></pre>
+<hr>
+<h2 id="4-esxi-host-certificate-issues">4. ESXi Host Certificate Issues</h2>
+<h3 id="41-certificate-hostname-mismatch">4.1 Certificate Hostname Mismatch</h3>
+<h4 id="problem-description-1">Problem Description</h4>
+<p>ESXi hosts may have certificates with incorrect hostnames (e.g., "localhost.localdomain" instead of the actual FQDN), causing VCF validation to fail.</p>
+<h4 id="symptoms-1">Symptoms</h4>
+<pre><code>javax.net.ssl.SSLPeerUnverifiedException: Certificate for &lt;esxi01.lab.local&gt; doesn't match any of the subject alternative names: [localhost.localdomain]
+</code></pre>
+<h4 id="diagnostic-commands-esxi-host">Diagnostic Commands (ESXi Host)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check current hostname</span>
+esxcli system hostname get
+
+<span class="hljs-comment"># View current certificate SAN</span>
+openssl x509 -<span class="hljs-keyword">in</span> /etc/vmware/ssl/rui.crt -text -noout | grep -A1 <span class="hljs-string">"Subject Alternative Name"</span>
+
+<span class="hljs-comment"># View full certificate details</span>
+openssl x509 -<span class="hljs-keyword">in</span> /etc/vmware/ssl/rui.crt -text -noout
+</code></pre>
+<h3 id="42-certificate-regeneration">4.2 Certificate Regeneration</h3>
+<h4 id="procedure-run-on-each-esxi-host">Procedure (Run on Each ESXi Host)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Step 1: Set correct hostname</span>
+esxcli system hostname <span class="hljs-built_in">set</span> --fqdn=esxi01.lab.local
+
+<span class="hljs-comment"># Step 2: Verify hostname</span>
+esxcli system hostname get
+
+<span class="hljs-comment"># Step 3: Backup existing certificate</span>
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.crt /etc/vmware/ssl/rui.crt.bak
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.key /etc/vmware/ssl/rui.key.bak
+
+<span class="hljs-comment"># Step 4: Generate new certificate</span>
+/sbin/generate-certificates
+
+<span class="hljs-comment"># Step 5: Restart services</span>
+services.sh restart
+
+<span class="hljs-comment"># Step 6: Verify new certificate</span>
+openssl x509 -<span class="hljs-keyword">in</span> /etc/vmware/ssl/rui.crt -text -noout | grep -A1 <span class="hljs-string">"Subject Alternative Name"</span>
+</code></pre>
+<h4 id="host-specific-commands">Host-Specific Commands</h4>
+<p><strong>esxi01.lab.local (192.168.1.74):</strong></p>
+<pre><code class="hljs bash">esxcli system hostname <span class="hljs-built_in">set</span> --fqdn=esxi01.lab.local
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.crt /etc/vmware/ssl/rui.crt.bak
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.key /etc/vmware/ssl/rui.key.bak
+/sbin/generate-certificates
+services.sh restart
+</code></pre>
+<p><strong>esxi02.lab.local (192.168.1.75):</strong></p>
+<pre><code class="hljs bash">esxcli system hostname <span class="hljs-built_in">set</span> --fqdn=esxi02.lab.local
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.crt /etc/vmware/ssl/rui.crt.bak
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.key /etc/vmware/ssl/rui.key.bak
+/sbin/generate-certificates
+services.sh restart
+</code></pre>
+<p><strong>esxi03.lab.local (192.168.1.76):</strong></p>
+<pre><code class="hljs bash">esxcli system hostname <span class="hljs-built_in">set</span> --fqdn=esxi03.lab.local
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.crt /etc/vmware/ssl/rui.crt.bak
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.key /etc/vmware/ssl/rui.key.bak
+/sbin/generate-certificates
+services.sh restart
+</code></pre>
+<p><strong>esxi04.lab.local (192.168.1.82):</strong></p>
+<pre><code class="hljs bash">esxcli system hostname <span class="hljs-built_in">set</span> --fqdn=esxi04.lab.local
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.crt /etc/vmware/ssl/rui.crt.bak
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.key /etc/vmware/ssl/rui.key.bak
+/sbin/generate-certificates
+services.sh restart
+</code></pre>
+<h3 id="43-thumbprint-updates">4.3 Thumbprint Updates</h3>
+<h4 id="get-new-thumbprints-vcf-installer">Get New Thumbprints (VCF Installer)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get thumbprint for each host</span>
+<span class="hljs-built_in">echo</span> | openssl s_client -connect 192.168.1.74:443 2&gt;/dev/null | openssl x509 -noout -fingerprint -sha256
+<span class="hljs-built_in">echo</span> | openssl s_client -connect 192.168.1.75:443 2&gt;/dev/null | openssl x509 -noout -fingerprint -sha256
+<span class="hljs-built_in">echo</span> | openssl s_client -connect 192.168.1.76:443 2&gt;/dev/null | openssl x509 -noout -fingerprint -sha256
+<span class="hljs-built_in">echo</span> | openssl s_client -connect 192.168.1.82:443 2&gt;/dev/null | openssl x509 -noout -fingerprint -sha256
+</code></pre>
+<p>After regenerating certificates, update the thumbprints in VCF Installer UI by re-validating the hosts.</p>
+<hr>
+<h2 id="5-vsan-storage-configuration">5. vSAN Storage Configuration</h2>
+<h3 id="51-ssd-detection-issues">5.1 SSD Detection Issues</h3>
+<h4 id="problem-description-2">Problem Description</h4>
+<p>In nested VMware Workstation environments, virtual disks are not automatically detected as SSDs, causing vSAN cache tier configuration to fail.</p>
+<h4 id="symptoms-2">Symptoms</h4>
+<pre><code>ESX Host esxi01.lab.local found zero SSD devices for SSD cache tier
+</code></pre>
+<h4 id="diagnostic-commands-esxi-host-1">Diagnostic Commands (ESXi Host)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all storage devices with SSD status</span>
+esxcli storage core device list | grep -E <span class="hljs-string">"^t10|Is SSD"</span>
+
+<span class="hljs-comment"># Check vSAN eligible disks</span>
+vdq -q
+
+<span class="hljs-comment"># List vSAN storage</span>
+esxcli vsan storage list
+
+<span class="hljs-comment"># Check disk partitions</span>
+partedUtil getptbl /vmfs/devices/disks/&lt;device-name&gt;
+</code></pre>
+<h3 id="52-vmx-file-configuration">5.2 VMX File Configuration</h3>
+<h4 id="problem-description-3">Problem Description</h4>
+<p>Virtual disks in VMware Workstation need the <code>virtualSSD</code> flag set in the VMX file to be recognized as SSDs by nested ESXi.</p>
+<h4 id="solution-edit-vmx-files">Solution: Edit VMX Files</h4>
+<p><strong>Location:</strong> Edit each ESXi VM's .vmx file in VMware Workstation</p>
+<p><strong>Required Lines to Add:</strong></p>
+<p>For <strong>esxi01.vmx</strong>:</p>
+<pre><code>sata0:0.virtualSSD = 1
+sata0:2.virtualSSD = 1
+sata0:3.virtualSSD = 1
+sata0:4.virtualSSD = 1
+</code></pre>
+<p>For <strong>esxi02.vmx</strong>, <strong>esxi03.vmx</strong>, <strong>esxi04.vmx</strong>:</p>
+<pre><code>sata0:0.virtualSSD = 1
+sata0:3.virtualSSD = 1
+sata0:4.virtualSSD = 1
+</code></pre>
+<h4 id="procedure">Procedure</h4>
+<ol>
+<li>Shut down all ESXi VMs in VMware Workstation</li>
+<li>Navigate to each VM's folder</li>
+<li>Open the .vmx file in a text editor</li>
+<li>Add the virtualSSD lines (location doesn't matter, bottom is fine)</li>
+<li>Save the file</li>
+<li>Power on the ESXi VMs</li>
+<li>Verify SSD detection:<pre><code class="hljs bash">esxcli storage core device list | grep -E <span class="hljs-string">"^t10|Is SSD"</span>
+</code></pre>
+</li>
+</ol>
+<h3 id="53-cleaning-up-previous-vsan-configuration">5.3 Cleaning Up Previous vSAN Configuration</h3>
+<h4 id="problem-description-4">Problem Description</h4>
+<p>Disks with existing vSAN partitions from previous deployments are marked as "Ineligible for use by VSAN" with reason "Has partitions" or "Disk in use by disk group".</p>
+<h4 id="diagnostic-commands">Diagnostic Commands</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check vSAN eligibility</span>
+vdq -q
+
+<span class="hljs-comment"># Check existing vSAN storage</span>
+esxcli vsan storage list
+
+<span class="hljs-comment"># Check partition table</span>
+partedUtil getptbl /vmfs/devices/disks/t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________03000000000000000001
+</code></pre>
+<h4 id="cleanup-procedure-run-on-each-esxi-host">Cleanup Procedure (Run on Each ESXi Host)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Step 1: Remove existing vSAN disk group (if exists)</span>
+esxcli vsan storage remove -d t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________03000000000000000001
+
+<span class="hljs-comment"># Step 2: Delete partitions from vSAN cache disk</span>
+partedUtil delete /vmfs/devices/disks/t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________03000000000000000001 1
+partedUtil delete /vmfs/devices/disks/t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________03000000000000000001 2
+
+<span class="hljs-comment"># Step 3: Delete partitions from vSAN capacity disk</span>
+partedUtil delete /vmfs/devices/disks/t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________04000000000000000001 1
+partedUtil delete /vmfs/devices/disks/t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________04000000000000000001 2
+
+<span class="hljs-comment"># Step 4: Verify disks are now eligible</span>
+vdq -q
+</code></pre>
+<h4 id="expected-output-after-cleanup">Expected Output After Cleanup</h4>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"Name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________03000000000000000001"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"State"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Eligible for use by VSAN"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"Reason"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"None"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"IsSSD"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<hr>
+<h2 id="6-network-configuration-for-nested-vcf">6. Network Configuration for Nested VCF</h2>
+<h3 id="61-vlan-configuration">6.1 VLAN Configuration</h3>
+<h4 id="problem-description-5">Problem Description</h4>
+<p>VCF requires separate subnets for different network types. Using the same subnet/gateway for multiple networks causes validation errors:</p>
+<pre><code>Gateway 192.168.1.1 is duplicated across networks
+Subnet 192.168.1.0/24 is duplicated across networks
+</code></pre>
+<h4 id="solution-use-vlans-with-separate-subnets">Solution: Use VLANs with Separate Subnets</h4>
+<table>
+<thead>
+<tr>
+<th>Network</th>
+<th>VLAN ID</th>
+<th>Subnet</th>
+<th>Gateway</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Management</td>
+<td>0</td>
+<td>192.168.1.0/24</td>
+<td>192.168.1.1</td>
+</tr>
+<tr>
+<td>vMotion</td>
+<td>100</td>
+<td>192.168.100.0/24</td>
+<td>192.168.100.1</td>
+</tr>
+<tr>
+<td>vSAN</td>
+<td>200</td>
+<td>192.168.200.0/24</td>
+<td>192.168.200.1</td>
+</tr>
+<tr>
+<td>NSX TEP</td>
+<td>300</td>
+<td>192.168.250.0/24</td>
+<td>192.168.250.1</td>
+</tr>
+</tbody></table>
+<p><strong>Note:</strong> For vMotion, vSAN, and TEP networks in nested environments, the gateway IPs don't need to exist - they're isolated networks. VCF requires the gateway field to be populated.</p>
+<h3 id="62-mtu-settings">6.2 MTU Settings</h3>
+<h4 id="critical-for-nested-environments">Critical for Nested Environments</h4>
+<p><strong>Do NOT use jumbo frames (MTU 9000) in nested VMware Workstation environments.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Recommended MTU</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Distributed Switch</td>
+<td>1500-1600</td>
+</tr>
+<tr>
+<td>ESX Management</td>
+<td>1500</td>
+</tr>
+<tr>
+<td>vMotion</td>
+<td>1500</td>
+</tr>
+<tr>
+<td>vSAN</td>
+<td>1500</td>
+</tr>
+<tr>
+<td>NSX TEP</td>
+<td>1500</td>
+</tr>
+</tbody></table>
+<h3 id="63-ip-addressing">6.3 IP Addressing</h3>
+<h4 id="vcf-network-ip-ranges">VCF Network IP Ranges</h4>
+<table>
+<thead>
+<tr>
+<th>Network</th>
+<th>IP Range</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Management</td>
+<td>192.168.1.x</td>
+<td>Static assignments per hosts file</td>
+</tr>
+<tr>
+<td>vMotion</td>
+<td>192.168.100.10-20</td>
+<td>Automatic assignment by VCF</td>
+</tr>
+<tr>
+<td>vSAN</td>
+<td>192.168.200.206-216</td>
+<td>Automatic assignment by VCF</td>
+</tr>
+<tr>
+<td>NSX TEP</td>
+<td>192.168.250.10-25</td>
+<td>TEP IP Pool</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="7-vcf-component-configuration">7. VCF Component Configuration</h2>
+<h3 id="71-vcf-automation">7.1 VCF Automation</h3>
+<h4 id="ip-address-configuration-issue">IP Address Configuration Issue</h4>
+<p><strong>Problem:</strong> VCF detects duplicate IP when cluster FQDN resolves to same IP as Node IP.</p>
+<p><strong>Error:</strong></p>
+<pre><code>IP address 192.168.1.90 for product VCF Automation is already resolved from an FQDN in the input specification
+</code></pre>
+<p><strong>Solution:</strong> Use different IPs for cluster FQDN and node IP:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cluster hostname/FQDN</td>
+<td>automation.lab.local (192.168.1.90)</td>
+</tr>
+<tr>
+<td>Node IP 1</td>
+<td>192.168.1.91 (automation-node1.lab.local)</td>
+</tr>
+<tr>
+<td>Additional IP for upgrades</td>
+<td>192.168.1.81</td>
+</tr>
+<tr>
+<td>Node name prefix</td>
+<td>automation</td>
+</tr>
+<tr>
+<td>Internal Cluster CIDR</td>
+<td>198.18.0.0/15</td>
+</tr>
+</tbody></table>
+<h3 id="72-nsx-manager">7.2 NSX Manager</h3>
+<h4 id="configuration">Configuration</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Appliance Size</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Appliance FQDN</td>
+<td>nsx-node1.lab.local</td>
+</tr>
+<tr>
+<td>Virtual IP (VIP) FQDN</td>
+<td>nsx-vip.lab.local</td>
+</tr>
+</tbody></table>
+<h4 id="721-nsx-certificate-san-failure-vdt">7.2.1 NSX Certificate SAN Failure (VDT)</h4>
+<p><strong>Problem:</strong> VDT reports "SAN contains neither hostname nor IP" for NSX VIP and NSX Manager certificates. The default NSX self-signed certificate uses a wildcard SAN (<code>*.lab.local</code>) without specific hostnames or IPs.</p>
+<p><strong>Solution:</strong> Generate a new self-signed certificate with explicit SAN entries and apply via NSX API.</p>
+<p><strong>Step 1: Create OpenSSL config on NSX Manager (SSH as root):</strong></p>
+<pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &gt; /tmp/nsx-cert.conf &lt;&lt; <span class="hljs-string">'EOF'</span>
+[ req ]
+default_bits = 2048
+distinguished_name = req_distinguished_name
+req_extensions = req_ext
+x509_extensions = req_ext
+prompt = no
+
+[ req_distinguished_name ]
+countryName = US
+stateOrProvinceName = Lab
+localityName = Lab
+organizationName = lab.local
+commonName = nsx-vip.lab.local
+
+[ req_ext ]
+basicConstraints = CA:FALSE
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = nsx-vip.lab.local
+DNS.2 = nsx-node1.lab.local
+DNS.3 = nsx-manager.lab.local
+IP.1 = 192.168.1.70
+IP.2 = 192.168.1.71
+EOF
+</code></pre>
+<p><strong>Important:</strong> <code>DNS.3 = nsx-manager.lab.local</code> is required because SDDC Manager registers NSX using this FQDN. Without it, VDT reports "SAN contains IP but not hostname".</p>
+<p><strong>Step 2: Generate cert, build JSON, import, and apply:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Generate cert</span>
+openssl req -x509 -nodes -days 825 -newkey rsa:2048 -keyout /tmp/nsx.key -out /tmp/nsx.crt -config /tmp/nsx-cert.conf -sha256
+
+<span class="hljs-comment"># Build JSON payload (avoids shell escaping issues with PEM newlines)</span>
+python -c <span class="hljs-string">"
+import json
+cert = open('/tmp/nsx.crt').read()
+key = open('/tmp/nsx.key').read()
+print(json.dumps({'pem_encoded': cert, 'private_key': key}))
+"</span> &gt; /tmp/nsx-import.json
+
+<span class="hljs-comment"># Import cert (single-line — NSX shell doesn't support backslash continuation)</span>
+curl -k -u admin:<span class="hljs-string">'&lt;password&gt;'</span> -X POST <span class="hljs-string">"https://192.168.1.71/api/v1/trust-management/certificates?action=import"</span> -H <span class="hljs-string">"Content-Type: application/json"</span> -d @/tmp/nsx-import.json
+<span class="hljs-comment"># Note the certificate ID from the response</span>
+
+<span class="hljs-comment"># Get node UUID</span>
+curl -k -u admin:<span class="hljs-string">'&lt;password&gt;'</span> https://192.168.1.71/api/v1/cluster
+<span class="hljs-comment"># Note the node UUID</span>
+
+<span class="hljs-comment"># Apply to node (API service)</span>
+curl -k -u admin:<span class="hljs-string">'&lt;password&gt;'</span> -X POST <span class="hljs-string">"https://192.168.1.71/api/v1/trust-management/certificates/&lt;cert-id&gt;?action=apply_certificate&amp;service_type=API&amp;node_id=&lt;node-uuid&gt;"</span>
+
+<span class="hljs-comment"># Apply to VIP (MGMT_CLUSTER)</span>
+curl -k -u admin:<span class="hljs-string">'&lt;password&gt;'</span> -X POST <span class="hljs-string">"https://192.168.1.71/api/v1/trust-management/certificates/&lt;cert-id&gt;?action=apply_certificate&amp;service_type=MGMT_CLUSTER"</span>
+</code></pre>
+<p><strong>Prerequisite:</strong> All NSX services must be healthy (MANAGER, SEARCH, UI, NODE_MGMT all UP). If services are DOWN, the API returns error 101. Wait 10-15 minutes after NSX restart in nested environments.</p>
+<h4 id="722-nsx-certificate-trust-failure-vdt">7.2.2 NSX Certificate Trust Failure (VDT)</h4>
+<p><strong>Problem:</strong> After replacing the NSX self-signed certificate, VDT reports "NSX VIP Cert Trust: FAIL" and "NSX Manager Cert Trust: FAIL". The new self-signed cert's root is not in SDDC Manager's keystores (the original cert was pre-trusted during bringup).</p>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>VDT shows FAIL for NSX VIP Cert Trust and NSX Manager Cert Trust</li>
+<li>NSX cert SAN checks may PASS but trust checks FAIL</li>
+<li>Occurs after any NSX certificate replacement with a new self-signed cert</li>
+</ul>
+<p><strong>Solution:</strong> Import the NSX certificate into both SDDC Manager trust stores.</p>
+<p><strong>Step 1: Pull the NSX certificate (SSH to SDDC Manager as root):</strong></p>
+<pre><code class="hljs bash">openssl s_client -showcerts -connect 192.168.1.71:443 &lt; /dev/null 2&gt;/dev/null | openssl x509 -outform PEM &gt; /tmp/nsx-root.crt
+
+<span class="hljs-comment"># Verify it's the correct cert</span>
+openssl x509 -<span class="hljs-keyword">in</span> /tmp/nsx-root.crt -noout -text | grep -A2 <span class="hljs-string">"Subject Alternative Name"</span>
+</code></pre>
+<p><strong>Step 2: Import into VCF trust store:</strong></p>
+<pre><code class="hljs bash">KEY=$(<span class="hljs-built_in">cat</span> /etc/vmware/vcf/commonsvcs/trusted_certificates.key)
+keytool -importcert -<span class="hljs-built_in">alias</span> nsx-selfsigned -file /tmp/nsx-root.crt \
+  -keystore /etc/vmware/vcf/commonsvcs/trusted_certificates.store \
+  -storepass <span class="hljs-string">"<span class="hljs-variable">$KEY</span>"</span> -noprompt
+</code></pre>
+<p><strong>Step 3: Import into Java cacerts:</strong></p>
+<pre><code class="hljs bash">keytool -importcert -<span class="hljs-built_in">alias</span> nsx-selfsigned -file /tmp/nsx-root.crt \
+  -keystore /etc/alternatives/jre/lib/security/cacerts \
+  -storepass changeit -noprompt
+</code></pre>
+<p><strong>Step 4: Restart SDDC Manager services (~5 minutes):</strong></p>
+<pre><code class="hljs bash">/opt/vmware/vcf/operationsmanager/scripts/cli/sddcmanager_restart_services.sh
+</code></pre>
+<p><strong>Key paths:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Path/Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VCF trust store</td>
+<td><code>/etc/vmware/vcf/commonsvcs/trusted_certificates.store</code></td>
+</tr>
+<tr>
+<td>VCF trust store password</td>
+<td>Contents of <code>/etc/vmware/vcf/commonsvcs/trusted_certificates.key</code></td>
+</tr>
+<tr>
+<td>Java cacerts</td>
+<td><code>/etc/alternatives/jre/lib/security/cacerts</code></td>
+</tr>
+<tr>
+<td>Java cacerts password</td>
+<td><code>changeit</code></td>
+</tr>
+<tr>
+<td>Service restart script</td>
+<td><code>/opt/vmware/vcf/operationsmanager/scripts/cli/sddcmanager_restart_services.sh</code></td>
+</tr>
+</tbody></table>
+<p><strong>Reference:</strong> <a href="https://knowledge.broadcom.com/external/article/316056">https://knowledge.broadcom.com/external/article/316056</a></p>
+<p><strong>Note on SDDC Manager SSH:</strong> Only the <code>vcf</code> user can SSH in (root and admin are rejected). Use <code>su -</code> from the vcf session to get root access. SCP does not work due to the restricted shell; use <code>ssh vcf@host "cat &gt; file" &lt; localfile</code> for file transfers.</p>
+<h3 id="73-vcenter-server">7.3 vCenter Server</h3>
+<h4 id="configuration-1">Configuration</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Appliance FQDN</td>
+<td>vcenter.lab.local</td>
+</tr>
+<tr>
+<td>Appliance Size</td>
+<td>Tiny</td>
+</tr>
+<tr>
+<td>Datacenter Name</td>
+<td>mgmt-dc01</td>
+</tr>
+<tr>
+<td>Cluster Name</td>
+<td>mgmt-cl01</td>
+</tr>
+<tr>
+<td>SSO Domain Name</td>
+<td>vsphere.local</td>
+</tr>
+</tbody></table>
+<h3 id="74-vcenter-deployment-issues">7.4 vCenter Deployment Issues</h3>
+<h4 id="741-ssh-requirement-for-vlcm-host-seeding">7.4.1 SSH Requirement for vLCM Host Seeding</h4>
+<p><strong>Problem Description</strong>
+VCF vLCM (vSphere Lifecycle Manager) requires SSH access to ESXi hosts during vCenter deployment for host seeding. If SSH is disabled, the deployment fails with:</p>
+<pre><code>vCenter installation failed. Check logs under /var/log/vmware/vcf/domainmanager/ci-installer-XX-XX-XX-XX-XX-XXX for more details
+</code></pre>
+<p><strong>Symptoms in Logs</strong></p>
+<pre><code>Extraction of image from host esxi01.lab.local failed
+</code></pre>
+<p><strong>Root Cause</strong>
+SSH service is stopped or disabled on ESXi hosts. VCF needs SSH to extract ESXi image metadata for vLCM host seeding.</p>
+<p><strong>Solution: Enable SSH on All ESXi Hosts</strong></p>
+<p>Run on each ESXi host BEFORE starting VCF deployment:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Enable SSH service</span>
+vim-cmd hostsvc/enable_ssh
+
+<span class="hljs-comment"># Start SSH service</span>
+vim-cmd hostsvc/start_ssh
+
+<span class="hljs-comment"># Verify SSH is running</span>
+vim-cmd hostsvc/runtimeinfo | grep ssh
+</code></pre>
+<p><strong>Alternative Method (from ESXi Shell)</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Enable and start SSH</span>
+esxcli system ssh <span class="hljs-built_in">set</span> --<span class="hljs-built_in">enable</span>=<span class="hljs-literal">true</span>
+
+<span class="hljs-comment"># Verify SSH status</span>
+esxcli system ssh get
+</code></pre>
+<p><strong>Note:</strong> SSH can be disabled after successful VCF deployment for security.</p>
+<h4 id="742-monitoring-vcenter-deployment-progress">7.4.2 Monitoring vCenter Deployment Progress</h4>
+<p><strong>VCF Installer Log Monitoring</strong></p>
+<p>Watch deployment progress from VCF Installer:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Find the latest ci-installer log directory</span>
+<span class="hljs-built_in">ls</span> -lt /var/log/vmware/vcf/domainmanager/ | <span class="hljs-built_in">head</span> -5
+
+<span class="hljs-comment"># Watch the installation log</span>
+<span class="hljs-built_in">tail</span> -f /var/log/vmware/vcf/domainmanager/ci-installer-XX-XX-XX-XX-XX-XXX/ci-installer.log
+
+<span class="hljs-comment"># Search for errors</span>
+grep -i <span class="hljs-string">"error\|failed\|exception"</span> /var/log/vmware/vcf/domainmanager/ci-installer-XX-XX-XX-XX-XX-XXX/ci-installer.log
+</code></pre>
+<p><strong>vCenter VM Direct Monitoring</strong></p>
+<p>SSH to the vCenter VM during deployment (default password: vmware):</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Watch firstboot progress</span>
+<span class="hljs-built_in">tail</span> -f /var/log/firstboot/firstbootStatus.json
+
+<span class="hljs-comment"># Watch detailed installation</span>
+<span class="hljs-built_in">tail</span> -f /var/log/vmware/firstboot/installer.log
+
+<span class="hljs-comment"># Check VMware services</span>
+vmon-cli --list
+
+<span class="hljs-comment"># Check specific service status</span>
+vmon-cli --status &lt;service-name&gt;
+</code></pre>
+<p><strong>Expected Deployment Stages</strong></p>
+<ol>
+<li>vCenter VM deployment (OVA extraction)</li>
+<li>First boot - basic configuration</li>
+<li>Installing containers (60% mark)</li>
+<li>Database initialization</li>
+<li>Service startup</li>
+<li>vCenter registration with VCF</li>
+</ol>
+<h4 id="743-diagnosing-stuck-deployments">7.4.3 Diagnosing Stuck Deployments</h4>
+<p><strong>Symptoms</strong></p>
+<ul>
+<li>Deployment stuck at a percentage (commonly 60%) for more than 30 minutes</li>
+<li>No progress in firstboot logs</li>
+<li>VCF UI shows no timeout error</li>
+</ul>
+<p><strong>Diagnostic Commands (SSH to vCenter VM)</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check current deployment status</span>
+<span class="hljs-built_in">cat</span> /var/log/firstboot/firstbootStatus.json
+
+<span class="hljs-comment"># Check for running processes</span>
+ps aux | grep -E <span class="hljs-string">"install|firstboot|postgres|vpxd"</span>
+
+<span class="hljs-comment"># Check disk I/O (should show activity)</span>
+vmstat 1 5
+
+<span class="hljs-comment"># Check memory usage</span>
+free -h
+
+<span class="hljs-comment"># Check for error logs</span>
+<span class="hljs-built_in">tail</span> -50 /var/log/vmware/firstboot/installer.log
+grep -i <span class="hljs-string">"error\|fail\|exception"</span> /var/log/vmware/firstboot/*.<span class="hljs-built_in">log</span>
+</code></pre>
+<p><strong>PostgreSQL Database Issues</strong></p>
+<p>If deployment is stuck at "Installing Containers" (60%), check postgres:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check if postgres service exists</span>
+<span class="hljs-built_in">ls</span> -la /storage/db/vpostgres/
+
+<span class="hljs-comment"># Check for postgres config file</span>
+<span class="hljs-built_in">ls</span> -la /storage/db/vpostgres/postgresql.conf
+
+<span class="hljs-comment"># Check postgres user/group</span>
+grep postgres /etc/passwd
+grep postgres /etc/group
+
+<span class="hljs-comment"># Check postgres logs</span>
+<span class="hljs-built_in">tail</span> -50 /var/log/vmware/vpostgres/*.<span class="hljs-built_in">log</span>
+</code></pre>
+<p><strong>If PostgreSQL Never Initialized</strong>
+Missing <code>/storage/db/vpostgres/postgresql.conf</code> and missing postgres user indicates the database initialization failed. This is typically unrecoverable and requires full redeployment.</p>
+<p><strong>Service Startup Issues</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all VMware services and status</span>
+vmon-cli --list
+
+<span class="hljs-comment"># Check rhttpproxy (reverse proxy)</span>
+systemctl status rhttpproxy
+<span class="hljs-built_in">tail</span> -50 /var/log/vmware/rhttpproxy/rhttpproxy.log
+
+<span class="hljs-comment"># Check vpostgres</span>
+systemctl status vmware-vpostgres
+<span class="hljs-built_in">tail</span> -50 /var/log/vmware/vpostgres/postgresql*.<span class="hljs-built_in">log</span>
+</code></pre>
+<h4 id="744-vcenter-deployment-failure-reference-tokens">7.4.4 vCenter Deployment Failure Reference Tokens</h4>
+<p>When vCenter deployment fails, VCF provides a reference token. To find detailed errors:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Search for reference token in logs</span>
+grep -r <span class="hljs-string">"REFERENCE_TOKEN"</span> /var/log/vmware/vcf/
+
+<span class="hljs-comment"># Example: Reference Token 3OHCKD</span>
+grep -r <span class="hljs-string">"3OHCKD"</span> /var/log/vmware/vcf/
+grep -B20 -A20 <span class="hljs-string">"3OHCKD"</span> /var/log/vmware/vcf/domainmanager/*.<span class="hljs-built_in">log</span>
+</code></pre>
+<h3 id="75-failed-deployment-recovery">7.5 Failed Deployment Recovery</h3>
+<h4 id="751-overview">7.5.1 Overview</h4>
+<p>VCF does not provide a rollback mechanism for failed management domain deployments. A failed deployment requires manual cleanup of:</p>
+<ol>
+<li>vCenter VM (delete from ESXi)</li>
+<li>vSAN disk groups and partitions</li>
+<li>VDS (Virtual Distributed Switch) configuration</li>
+<li>Depot connection in VCF UI</li>
+</ol>
+<h4 id="752-complete-cleanup-procedure">7.5.2 Complete Cleanup Procedure</h4>
+<p><strong>Step 1: Delete Failed vCenter VM</strong></p>
+<p>From any ESXi host (or the one hosting the failed vCenter):</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all VMs</span>
+vim-cmd vmsvc/getallvms
+
+<span class="hljs-comment"># Find the vCenter VM ID (look for vcenter.lab.local or similar)</span>
+<span class="hljs-comment"># Power off the VM if running</span>
+vim-cmd vmsvc/power.off &lt;vmid&gt;
+
+<span class="hljs-comment"># Unregister the VM</span>
+vim-cmd vmsvc/unregister &lt;vmid&gt;
+
+<span class="hljs-comment"># Delete the VM files from datastore (if needed)</span>
+<span class="hljs-built_in">rm</span> -rf /vmfs/volumes/&lt;datastore&gt;/vcenter.lab.local/
+</code></pre>
+<p><strong>Step 2: Clean Up VDS (Distributed Switch)</strong></p>
+<p>From ESXi hosts, remove VDS configuration:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># List current virtual switches</span>
+esxcli network vswitch dvs vmware list
+
+<span class="hljs-comment"># Remove host from VDS (if configured)</span>
+<span class="hljs-comment"># This is typically done from vCenter, but if vCenter is gone:</span>
+<span class="hljs-comment"># Remove vmkernel ports from VDS</span>
+esxcli network ip interface remove -i vmk1  <span class="hljs-comment"># vMotion</span>
+esxcli network ip interface remove -i vmk2  <span class="hljs-comment"># vSAN</span>
+
+<span class="hljs-comment"># Remove VDS uplink</span>
+esxcli network vswitch dvs vmware list
+</code></pre>
+<p><strong>Step 3: Clean Up vSAN Configuration</strong></p>
+<p>Run on EACH ESXi host:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># List current vSAN storage</span>
+esxcli vsan storage list
+
+<span class="hljs-comment"># Remove vSAN disk groups</span>
+esxcli vsan storage remove -d t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________03000000000000000001
+esxcli vsan storage remove -d t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________04000000000000000001
+
+<span class="hljs-comment"># If remove fails, check disk state</span>
+vdq -q
+
+<span class="hljs-comment"># Delete partitions from cache disk (example device name)</span>
+partedUtil getptbl /vmfs/devices/disks/t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________03000000000000000001
+partedUtil delete /vmfs/devices/disks/t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________03000000000000000001 1
+partedUtil delete /vmfs/devices/disks/t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________03000000000000000001 2
+
+<span class="hljs-comment"># Delete partitions from capacity disk</span>
+partedUtil getptbl /vmfs/devices/disks/t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________04000000000000000001
+partedUtil delete /vmfs/devices/disks/t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________04000000000000000001 1
+partedUtil delete /vmfs/devices/disks/t10.ATA_____VMware_Virtual_SATA_Hard_Drive__________04000000000000000001 2
+
+<span class="hljs-comment"># Verify disks are now eligible</span>
+vdq -q
+</code></pre>
+<p><strong>Common vSAN Cleanup Error</strong>
+If you see: <code>cache disk/s are in an invalid state...available size is 0.0 GB</code></p>
+<p>This means disks still have partitions. Use partedUtil to delete them.</p>
+<p><strong>Step 4: Remove Depot Connection (VCF UI)</strong></p>
+<ol>
+<li>Log into VCF Installer UI (<a href="https://192.168.1.240:8443">https://192.168.1.240:8443</a>)</li>
+<li>Navigate to Settings or Configuration</li>
+<li>Remove the existing offline depot connection</li>
+<li>Re-add the depot connection with certificate</li>
+</ol>
+<p><strong>Step 5: Verify Hosts Are Ready</strong></p>
+<p>On each ESXi host, verify:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check hostname is correct</span>
+esxcli system hostname get
+
+<span class="hljs-comment"># Check certificate is valid</span>
+openssl x509 -<span class="hljs-keyword">in</span> /etc/vmware/ssl/rui.crt -text -noout | grep -A1 <span class="hljs-string">"Subject Alternative Name"</span>
+
+<span class="hljs-comment"># Check SSH is enabled</span>
+vim-cmd hostsvc/runtimeinfo | grep ssh
+
+<span class="hljs-comment"># Check vSAN disks are eligible</span>
+vdq -q
+
+<span class="hljs-comment"># Check no VDS remnants</span>
+esxcli network vswitch dvs vmware list
+</code></pre>
+<p><strong>Step 6: Restart VCF Services (Optional)</strong></p>
+<p>On VCF Installer, restart services for clean state:</p>
+<pre><code class="hljs bash">systemctl restart lcm
+systemctl restart domainmanager
+
+<span class="hljs-comment"># Wait for services to start</span>
+<span class="hljs-built_in">sleep</span> 120
+
+<span class="hljs-comment"># Verify services are running</span>
+systemctl status lcm
+systemctl status domainmanager
+</code></pre>
+<h4 id="753-troubleshooting-flowchart-failed-deployment-recovery">7.5.3 Troubleshooting Flowchart: Failed Deployment Recovery</h4>
+<pre><code>START: VCF Deployment Failed
+  │
+  ├─→ Note reference token from error message
+  │     └─→ Search logs: grep -r "TOKEN" /var/log/vmware/vcf/
+  │
+  ├─→ Delete failed vCenter VM
+  │     ├─→ vim-cmd vmsvc/getallvms
+  │     ├─→ vim-cmd vmsvc/power.off &lt;vmid&gt;
+  │     └─→ vim-cmd vmsvc/unregister &lt;vmid&gt;
+  │
+  ├─→ Clean up vSAN on EACH host
+  │     ├─→ esxcli vsan storage remove -d &lt;device&gt;
+  │     ├─→ partedUtil delete ... (both partitions)
+  │     └─→ vdq -q (verify eligible)
+  │
+  ├─→ Clean up VDS (if configured)
+  │     └─→ esxcli network ip interface remove ...
+  │
+  ├─→ Remove depot connection in VCF UI
+  │     └─→ Re-add with certificate
+  │
+  ├─→ Verify SSH enabled on all hosts
+  │     └─→ vim-cmd hostsvc/enable_ssh
+  │
+  └─→ Retry deployment
+</code></pre>
+<hr>
+<h2 id="8-command-reference">8. Command Reference</h2>
+<h3 id="81-vcf-installer-commands">8.1 VCF Installer Commands</h3>
+<h4 id="service-management">Service Management</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check LCM service status</span>
+systemctl status lcm
+
+<span class="hljs-comment"># Restart LCM service</span>
+systemctl restart lcm
+
+<span class="hljs-comment"># Check Domain Manager status</span>
+systemctl status domainmanager
+
+<span class="hljs-comment"># Restart Domain Manager</span>
+systemctl restart domainmanager
+
+<span class="hljs-comment"># View LCM logs</span>
+<span class="hljs-built_in">tail</span> -f /var/log/vmware/vcf/lcm/lcm-debug.log
+
+<span class="hljs-comment"># Search LCM logs for errors</span>
+grep -i <span class="hljs-string">"error\|fatal\|exception"</span> /var/log/vmware/vcf/lcm/lcm-debug.log | <span class="hljs-built_in">tail</span> -20
+</code></pre>
+<h4 id="certificate-management">Certificate Management</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Download certificate from remote server</span>
+openssl s_client -connect &lt;IP&gt;:&lt;PORT&gt; &lt;/dev/null 2&gt;/dev/null | openssl x509 -outform PEM &gt; /tmp/cert.crt
+
+<span class="hljs-comment"># View certificate details</span>
+openssl x509 -<span class="hljs-keyword">in</span> /tmp/cert.crt -text -noout
+
+<span class="hljs-comment"># Get certificate fingerprint</span>
+openssl x509 -<span class="hljs-keyword">in</span> /tmp/cert.crt -noout -fingerprint -sha256
+
+<span class="hljs-comment"># Import certificate to Java truststore</span>
+keytool -import -trustcacerts -<span class="hljs-built_in">alias</span> &lt;<span class="hljs-built_in">alias</span>&gt; -file /tmp/cert.crt -keystore <span class="hljs-variable">$JAVA_HOME</span>/lib/security/cacerts -storepass changeit -noprompt
+
+<span class="hljs-comment"># Delete certificate from truststore</span>
+keytool -delete -<span class="hljs-built_in">alias</span> &lt;<span class="hljs-built_in">alias</span>&gt; -keystore <span class="hljs-variable">$JAVA_HOME</span>/lib/security/cacerts -storepass changeit
+
+<span class="hljs-comment"># List certificates in truststore</span>
+keytool -list -keystore <span class="hljs-variable">$JAVA_HOME</span>/lib/security/cacerts -storepass changeit
+
+<span class="hljs-comment"># View specific certificate in truststore</span>
+keytool -list -<span class="hljs-built_in">alias</span> &lt;<span class="hljs-built_in">alias</span>&gt; -keystore <span class="hljs-variable">$JAVA_HOME</span>/lib/security/cacerts -storepass changeit -v
+</code></pre>
+<h4 id="network-diagnostics">Network Diagnostics</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Test connectivity</span>
+ping &lt;IP&gt;
+
+<span class="hljs-comment"># Test SSL connection</span>
+openssl s_client -connect &lt;IP&gt;:&lt;PORT&gt;
+
+<span class="hljs-comment"># Test with specific TLS version</span>
+openssl s_client -connect &lt;IP&gt;:&lt;PORT&gt; -tls1_2
+
+<span class="hljs-comment"># Test HTTP endpoint</span>
+curl -v -k -u admin:admin https://&lt;IP&gt;:&lt;PORT&gt;/path
+</code></pre>
+<h3 id="82-esxi-host-commands">8.2 ESXi Host Commands</h3>
+<h4 id="system-information">System Information</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get hostname</span>
+esxcli system hostname get
+
+<span class="hljs-comment"># Set hostname</span>
+esxcli system hostname <span class="hljs-built_in">set</span> --fqdn=&lt;FQDN&gt;
+
+<span class="hljs-comment"># Get system version</span>
+esxcli system version get
+</code></pre>
+<h4 id="certificate-management-1">Certificate Management</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># View current certificate</span>
+openssl x509 -<span class="hljs-keyword">in</span> /etc/vmware/ssl/rui.crt -text -noout
+
+<span class="hljs-comment"># View certificate SAN</span>
+openssl x509 -<span class="hljs-keyword">in</span> /etc/vmware/ssl/rui.crt -text -noout | grep -A1 <span class="hljs-string">"Subject Alternative Name"</span>
+
+<span class="hljs-comment"># Backup certificates</span>
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.crt /etc/vmware/ssl/rui.crt.bak
+<span class="hljs-built_in">mv</span> /etc/vmware/ssl/rui.key /etc/vmware/ssl/rui.key.bak
+
+<span class="hljs-comment"># Regenerate certificates</span>
+/sbin/generate-certificates
+
+<span class="hljs-comment"># Restart services after certificate change</span>
+services.sh restart
+</code></pre>
+<h4 id="storage-management">Storage Management</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all storage devices</span>
+esxcli storage core device list
+
+<span class="hljs-comment"># List devices with SSD status</span>
+esxcli storage core device list | grep -E <span class="hljs-string">"^t10|^naa|Is SSD"</span>
+
+<span class="hljs-comment"># Check vSAN eligible disks</span>
+vdq -q
+
+<span class="hljs-comment"># List vSAN storage</span>
+esxcli vsan storage list
+
+<span class="hljs-comment"># Get partition table</span>
+partedUtil getptbl /vmfs/devices/disks/&lt;device&gt;
+
+<span class="hljs-comment"># Delete partition</span>
+partedUtil delete /vmfs/devices/disks/&lt;device&gt; &lt;partition-number&gt;
+
+<span class="hljs-comment"># Remove vSAN disk group</span>
+esxcli vsan storage remove -d &lt;device&gt;
+
+<span class="hljs-comment"># Add SATP rule for SSD</span>
+esxcli storage nmp satp rule add -s VMW_SATP_LOCAL -d &lt;device&gt; -o enable_ssd
+
+<span class="hljs-comment"># Reclaim device after SATP rule</span>
+esxcli storage core claiming reclaim -d &lt;device&gt;
+
+<span class="hljs-comment"># List SATP rules</span>
+esxcli storage nmp satp rule list | grep enable_ssd
+</code></pre>
+<h4 id="maintenance-mode">Maintenance Mode</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Enter maintenance mode</span>
+esxcli system maintenanceMode <span class="hljs-built_in">set</span> -e <span class="hljs-literal">true</span> -m noAction
+
+<span class="hljs-comment"># Exit maintenance mode</span>
+esxcli system maintenanceMode <span class="hljs-built_in">set</span> -e <span class="hljs-literal">false</span>
+
+<span class="hljs-comment"># Check maintenance mode status</span>
+esxcli system maintenanceMode get
+</code></pre>
+<h3 id="83-windows-depot-server-commands">8.3 Windows Depot Server Commands</h3>
+<h4 id="powershell-commands">PowerShell Commands</h4>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Navigate to depot directory</span>
+<span class="hljs-built_in">cd</span> C:\VCF<span class="hljs-literal">-DEPOT</span>
+
+<span class="hljs-comment"># Generate certificate</span>
+python generate_cert.py
+
+<span class="hljs-comment"># Start HTTPS server</span>
+python https_server.py
+
+<span class="hljs-comment"># Install Python cryptography library</span>
+pip install cryptography
+</code></pre>
+<hr>
+<h2 id="9-troubleshooting-flowcharts">9. Troubleshooting Flowcharts</h2>
+<h3 id="91-offline-depot-connection-failure">9.1 Offline Depot Connection Failure</h3>
+<pre><code>START: "Secure protocol communication error"
+  │
+  ├─→ Test connectivity: ping &lt;depot-ip&gt;
+  │     └─→ FAIL: Check network/firewall
+  │
+  ├─→ Test SSL: openssl s_client -connect &lt;ip&gt;:8443
+  │     └─→ FAIL: Check depot server is running
+  │
+  ├─→ Check certificate: View cert details
+  │     └─→ Wrong hostname: Regenerate certificate
+  │
+  ├─→ Import certificate to Java truststore
+  │     └─→ keytool -import ...
+  │
+  ├─→ Verify fingerprints match
+  │     └─→ MISMATCH: Re-import correct certificate
+  │
+  └─→ Restart LCM service
+        └─→ Wait 2 minutes, retry connection
+</code></pre>
+<h3 id="92-esxi-certificate-mismatch">9.2 ESXi Certificate Mismatch</h3>
+<pre><code>START: "Certificate doesn't match subject alternative names"
+  │
+  ├─→ Check current cert SAN
+  │     └─→ openssl x509 -in /etc/vmware/ssl/rui.crt ...
+  │
+  ├─→ Set correct hostname
+  │     └─→ esxcli system hostname set --fqdn=&lt;FQDN&gt;
+  │
+  ├─→ Backup old certificates
+  │     └─→ mv /etc/vmware/ssl/rui.* /etc/vmware/ssl/rui.*.bak
+  │
+  ├─→ Generate new certificates
+  │     └─→ /sbin/generate-certificates
+  │
+  ├─→ Restart services
+  │     └─→ services.sh restart
+  │
+  └─→ Update thumbprints in VCF
+        └─→ Re-validate hosts in UI
+</code></pre>
+<h3 id="93-vsan-ssd-detection-failure">9.3 vSAN SSD Detection Failure</h3>
+<pre><code>START: "Found zero SSD devices for SSD cache tier"
+  │
+  ├─→ Check SSD status: esxcli storage core device list
+  │     └─→ "Is SSD: false" → Continue
+  │
+  ├─→ Shut down ESXi VM in Workstation
+  │
+  ├─→ Edit VMX file
+  │     └─→ Add: sata0:X.virtualSSD = 1
+  │
+  ├─→ Power on ESXi VM
+  │
+  ├─→ Verify SSD status
+  │     └─→ Still false: Check VMX syntax
+  │
+  ├─→ Check vSAN eligibility: vdq -q
+  │     └─→ "Has partitions" → Clean up partitions
+  │
+  └─→ Clean up old vSAN config
+        ├─→ esxcli vsan storage remove -d &lt;device&gt;
+        └─→ partedUtil delete ...
+</code></pre>
+<h3 id="94-vcenter-deployment-stuck">9.4 vCenter Deployment Stuck</h3>
+<pre><code>START: vCenter deployment stuck at percentage
+  │
+  ├─→ Wait 30 minutes (large downloads may be slow)
+  │
+  ├─→ SSH to vCenter VM (ssh root@&lt;vcenter-ip&gt;)
+  │     └─→ Default password: vmware
+  │
+  ├─→ Check firstboot status
+  │     └─→ cat /var/log/firstboot/firstbootStatus.json
+  │
+  ├─→ Check for activity
+  │     ├─→ vmstat 1 5 (disk I/O)
+  │     └─→ tail -f /var/log/vmware/firstboot/installer.log
+  │
+  ├─→ If stuck at 60% "Installing Containers"
+  │     ├─→ Check postgres: ls /storage/db/vpostgres/
+  │     ├─→ Missing postgresql.conf → Database failed to init
+  │     └─→ UNRECOVERABLE: Must redeploy
+  │
+  ├─→ Check services: vmon-cli --list
+  │     └─→ Services not started → Check individual logs
+  │
+  └─→ If unrecoverable:
+        ├─→ Delete vCenter VM
+        ├─→ Clean up vSAN on all hosts
+        ├─→ Reset depot connection
+        └─→ Retry deployment
+</code></pre>
+<h3 id="95-vlcm-host-seeding-failure">9.5 vLCM Host Seeding Failure</h3>
+<pre><code>START: "Extraction of image from host failed"
+  │
+  ├─→ Check SSH status on ESXi host
+  │     └─→ vim-cmd hostsvc/runtimeinfo | grep ssh
+  │
+  ├─→ SSH Disabled?
+  │     ├─→ vim-cmd hostsvc/enable_ssh
+  │     └─→ vim-cmd hostsvc/start_ssh
+  │
+  ├─→ Verify SSH on ALL hosts
+  │     └─→ Repeat for esxi01, esxi02, esxi03, esxi04
+  │
+  └─→ Retry vCenter deployment
+</code></pre>
+<h3 id="96-nsx-certificate-trustsan-failure-vdt">9.6 NSX Certificate Trust/SAN Failure (VDT)</h3>
+<pre><code>START: VDT reports NSX cert FAIL (Trust or SAN)
+  │
+  ├─→ Check which check failed
+  │     ├─→ SAN FAIL: Certificate missing hostnames/IPs
+  │     └─→ Trust FAIL: Certificate root not in SDDC Manager keystores
+  │
+  ├─→ If SAN FAIL:
+  │     ├─→ SSH to NSX Manager as root
+  │     ├─→ Create OpenSSL config with all SANs:
+  │     │     DNS.1 = nsx-vip.lab.local
+  │     │     DNS.2 = nsx-node1.lab.local
+  │     │     DNS.3 = nsx-manager.lab.local  ← SDDC Manager's registered FQDN
+  │     │     IP.1 = 192.168.1.70 (VIP)
+  │     │     IP.2 = 192.168.1.71 (node)
+  │     ├─→ Generate cert: openssl req -x509 ...
+  │     ├─→ Build JSON: python (avoid shell PEM escaping)
+  │     ├─→ Import via API: POST /api/v1/trust-management/certificates?action=import
+  │     ├─→ Apply to node: ?action=apply_certificate&amp;service_type=API&amp;node_id=&lt;uuid&gt;
+  │     └─→ Apply to VIP: ?action=apply_certificate&amp;service_type=MGMT_CLUSTER
+  │
+  ├─→ If Trust FAIL (after cert replacement):
+  │     ├─→ SSH to SDDC Manager as vcf, then su - to root
+  │     ├─→ Pull cert: openssl s_client ... &gt; /tmp/nsx-root.crt
+  │     ├─→ Import to VCF store: keytool -importcert ... trusted_certificates.store
+  │     ├─→ Import to Java cacerts: keytool -importcert ... cacerts
+  │     └─→ Restart services: sddcmanager_restart_services.sh
+  │
+  └─→ Re-run VDT after ~5 minutes
+        └─→ Expected: NSX cert checks all PASS
+</code></pre>
+<h3 id="97-vcf-operations-health-adapter-no-data-receiving-status">9.7 VCF Operations Health Adapter "No Data Receiving" Status</h3>
+<pre><code>START: Infrastructure Health Adapter shows "no data receiving"
+  │
+  ├─→ Check adapter log (VCF Ops 9.x path):
+  │     tail -100 /storage/log/vcops/log/adapters/
+  │       VMwareInfraHealthAdapter/VMwareInfraHealthAdapter_55.log
+  │
+  ├─→ If "Unable to fetch access token for the SDDC manager":
+  │     ├─→ Test SDDC Manager auth from VCF Ops node:
+  │     │     curl -sk -X POST https://sddc-manager.lab.local/v1/tokens \
+  │     │       -H "Content-Type: application/json" \
+  │     │       -d '{"username":"administrator@vsphere.local","password":"..."}'
+  │     ├─→ If token returned: credential issue in adapter
+  │     │     ├─→ UI → Administration → Integrations → SDDC Manager
+  │     │     ├─→ If System Managed Credential enabled → click ROTATE
+  │     │     ├─→ If Credential dropdown empty → uncheck System Managed,
+  │     │     │     click +, create credential, select it
+  │     │     ├─→ Click VALIDATE CONNECTION → confirm "valid"
+  │     │     ├─→ Click SAVE
+  │     │     └─→ Reboot VCF Ops appliance (adapter may not pick up
+  │     │           new credential without full restart)
+  │     └─→ If connection refused: check DNS/network/cert trust
+  │
+  ├─→ If "PKIX path building failed" for NSX:
+  │     ├─→ If NSX is powered off → expected, ignore
+  │     └─→ If NSX is running → See flowchart 9.8 below
+  │
+  ├─→ If "vROPs is not configured with NTP server":
+  │     └─→ Configure NTP on VCF Ops appliance (cosmetic warning,
+  │           does not block data collection)
+  │
+  └─→ After fix: wait 10 min for 2 collection cycles
+        └─→ Verify: adapter status changes to "Collecting" (green)
+</code></pre>
+<h4 id="key-paths-on-vcf-operations-9x">Key paths on VCF Operations 9.x</h4>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Adapter logs</td>
+<td><code>/storage/log/vcops/log/adapters/&lt;AdapterName&gt;/</code></td>
+</tr>
+<tr>
+<td>Main vcops logs</td>
+<td><code>/storage/log/vcops/log/</code></td>
+</tr>
+<tr>
+<td>Collector GC log</td>
+<td><code>/storage/log/vcops/log/collector-gc-*.log</code></td>
+</tr>
+<tr>
+<td>VCF Adapter log</td>
+<td><code>/storage/log/vcops/log/adapters/VcfAdapter/VcfAdapter_254.log</code></td>
+</tr>
+<tr>
+<td>VMware Adapter log</td>
+<td><code>/storage/log/vcops/log/adapters/VMwareAdapter/VMwareAdapter_63.log</code></td>
+</tr>
+<tr>
+<td>vSAN Adapter log</td>
+<td><code>/storage/log/vcops/log/adapters/VsanStorageAdapter/VsanStorageAdapter_257.log</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> VCF Operations 9.x does NOT use <code>/var/log/vmware/vcops/adapters/</code> — that path from older Aria Operations versions no longer exists. All adapter logs are under <code>/storage/log/vcops/log/adapters/</code>.</p>
+</blockquote>
+<h3 id="98-vcf-operations-nsx-integration--pkix--connection-failure">9.8 VCF Operations NSX Integration — PKIX / Connection Failure</h3>
+<pre><code>START: NSX adapter shows Warning, logs show "PKIX path building failed"
+  │
+  ├─→ Verify NSX is actually reachable from VCF Ops node:
+  │     curl -sk https://nsx-vip.lab.local/api/v1/node/status | head -5
+  │     ├─→ "No route to host" → NSX not ready (check load avg below)
+  │     └─→ Returns JSON → NSX is up, proceed to cert fix
+  │
+  ├─→ If VIP (.70) unreachable but node (.71) responds:
+  │     ├─→ NSX cluster VIP not online yet
+  │     ├─→ Check load: curl -sk -u admin:'&lt;pass&gt;'
+  │     │     https://&lt;node&gt;:443/api/v1/node/status | grep load_average
+  │     ├─→ Load &gt; 20 on 6 cores = still booting (normal in nested,
+  │     │     can take 30-60 min after power-on)
+  │     └─→ Wait for load &lt; 20, VIP will come online automatically
+  │
+  ├─→ Import NSX cert into VCF Ops Java truststore:
+  │     ├─→ openssl s_client -connect nsx-vip.lab.local:443 \
+  │     │     -showcerts &lt;/dev/null 2&gt;/dev/null \
+  │     │     | openssl x509 -outform PEM &gt; /tmp/nsx-cert.pem
+  │     ├─→ Find truststore: java -XshowSettings:properties 2&gt;&amp;1
+  │     │     | grep java.home
+  │     │     → /usr/java/jre-vmware-17
+  │     ├─→ keytool -importcert -alias nsx-vip \
+  │     │     -file /tmp/nsx-cert.pem \
+  │     │     -keystore /usr/java/jre-vmware-17/lib/security/cacerts \
+  │     │     -storepass changeit -noprompt
+  │     └─→ Reboot VCF Ops appliance
+  │
+  ├─→ Fix NSX credential (two adapters to check):
+  │     │
+  │     ├─→ VCF section → nsx-vip.lab.local adapter:
+  │     │     ├─→ System Managed Credential ROTATE rarely works for NSX
+  │     │     ├─→ Uncheck System Managed Credential
+  │     │     ├─→ Click + → create credential (admin / password)
+  │     │     ├─→ Select credential, VALIDATE CONNECTION, SAVE
+  │     │     └─→ If VIP still unreachable, wait for NSX load to settle
+  │     │
+  │     └─→ NSX section → Aria Admin adapter:
+  │           ├─→ Points to nsx-manager.lab.local (node FQDN)
+  │           ├─→ May connect even when VIP is down
+  │           ├─→ Set credential (admin / password)
+  │           ├─→ VALIDATE CONNECTION → SAVE
+  │           └─→ This can start collecting before VIP comes online
+  │
+  └─→ Verify: All adapters show "Collecting" (green) in
+        Administration → Integrations
+</code></pre>
+<blockquote>
+<p><strong>Key insight:</strong> VCF Operations has TWO separate NSX adapters — one under the VCF Cloud Foundation account (uses VIP) and one under the standalone NSX section called "Aria Admin" (uses node FQDN). Both need valid credentials. The Aria Admin adapter can connect via the node FQDN even when the VIP is still offline after a fresh NSX boot.</p>
+</blockquote>
+<blockquote>
+<p><strong>Java truststore path on VCF Ops 9.x:</strong> <code>/usr/java/jre-vmware-17/lib/security/cacerts</code> (password: <code>changeit</code>). The legacy <code>/usr/java/jre-vmware/</code> path does not exist.</p>
+</blockquote>
+<hr>
+<h2 id="10-sddc-manager-credential-cascade-failure">10. SDDC Manager Credential Cascade Failure</h2>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Password Management → Update Password, Rotate, or Remediate fails for NSX (or other component)</li>
+<li>Task history shows: <code>"Resources [nsx-vip.lab.local] are not available/ready"</code> or <code>"not in ACTIVE state"</code></li>
+<li>Subsequent attempts fail with: <code>"Unable to acquire resource level lock(s)"</code></li>
+<li>VCF Operations Fleet Management shows <code>"[2] account(s) has been disconnected"</code></li>
+<li>SDDC Manager API <code>/v1/nsxt-clusters</code> shows empty or non-ACTIVE status</li>
+<li>Dozens of stuck IN_PROGRESS tasks accumulate (visible via <code>/v1/tasks?status=IN_PROGRESS</code>)</li>
+</ul>
+<p><strong>Root Cause Chain:</strong>
+A failed credential operation (often due to NSX being temporarily unreachable during a boot storm or maintenance) triggers a cascade:</p>
+<ol>
+<li>NSX cluster resource gets stuck in <code>ACTIVATING</code> or <code>ERROR</code> state in <code>platform.nsxt</code> table</li>
+<li>Stale exclusive locks remain in <code>platform.lock</code> table, blocking all new operations</li>
+<li>Failed tasks remain as <code>IN_PROGRESS</code> in <code>platform.task_metadata</code> (resolved=false), piling up</li>
+<li>Each retry from the UI creates more stuck tasks and locks</li>
+<li>Even after NSX recovers, SDDC Manager won't attempt the operation because the status check fails prevalidation</li>
+</ol>
+<p><strong>Diagnosis:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># 1. Get auth token from SDDC Manager</span>
+TOKEN=$(curl -sk -X POST https://sddc-manager.lab.local/v1/tokens \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"administrator@vsphere.local","password":"&lt;password&gt;"}'</span> \
+  | python3 -c <span class="hljs-string">"import sys,json; print(json.load(sys.stdin)['accessToken'])"</span>)
+
+<span class="hljs-comment"># 2. Check NSX cluster resource state (look for status field)</span>
+curl -sk <span class="hljs-string">"https://sddc-manager.lab.local/v1/nsxt-clusters"</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> | python3 -m json.tool
+<span class="hljs-comment"># If status is "ACTIVATING" or "ERROR" instead of "ACTIVE" → this is the problem</span>
+
+<span class="hljs-comment"># 3. Check for stale resource locks</span>
+curl -sk <span class="hljs-string">"https://sddc-manager.lab.local/v1/resource-locks"</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> | python3 -m json.tool
+<span class="hljs-comment"># Stale locks from failed operations will block all new operations</span>
+
+<span class="hljs-comment"># 4. Check for stuck IN_PROGRESS tasks</span>
+curl -sk <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks?status=IN_PROGRESS"</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> | python3 -c \
+  <span class="hljs-string">"import sys,json; d=json.load(sys.stdin); print(f'Stuck tasks: {len(d.get(\"elements\",[]))}')"</span>
+
+<span class="hljs-comment"># 5. Verify NSX is actually healthy (from SDDC Manager)</span>
+curl -sk -u admin:<span class="hljs-string">'&lt;password&gt;'</span> --connect-timeout 10 \
+  https://nsx-vip.lab.local/api/v1/cluster/status
+<span class="hljs-comment"># overall_status should be "STABLE"</span>
+</code></pre>
+<p><strong>Fix — Full Database Repair:</strong></p>
+<blockquote>
+<p><strong>WARNING:</strong> Direct database manipulation is unsupported and should only be done in lab environments. Always back up before modifying.</p>
+</blockquote>
+<p><strong>Step 1: Access PostgreSQL on SDDC Manager</strong></p>
+<p>SSH to SDDC Manager as <code>vcf</code>, then <code>su -</code> to root. PostgreSQL uses TCP on 127.0.0.1 (not Unix sockets), and the password may not be easily discoverable. Disable the psql pager to prevent <code>--More--</code> prompts from corrupting interactive shell sessions:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Back up pg_hba.conf</span>
+<span class="hljs-built_in">cp</span> /data/pgdata/pg_hba.conf /data/pgdata/pg_hba.conf.bak
+
+<span class="hljs-comment"># Temporarily allow passwordless local connections</span>
+sed -i <span class="hljs-string">'s/scram-sha-256/trust/g'</span> /data/pgdata/pg_hba.conf
+
+<span class="hljs-comment"># Reload postgres (no restart needed)</span>
+su - postgres -c <span class="hljs-string">"/usr/pgsql/15/bin/pg_ctl reload -D /data/pgdata"</span>
+
+<span class="hljs-comment"># Disable psql pager (CRITICAL for scripted/remote sessions)</span>
+<span class="hljs-built_in">export</span> PAGER=<span class="hljs-built_in">cat</span>
+<span class="hljs-built_in">export</span> PGPAGER=<span class="hljs-built_in">cat</span>
+</code></pre>
+<p><strong>Step 2: Fix the stuck resource status</strong></p>
+<p>The <code>nsxt</code> table status can be <code>ACTIVATING</code>, <code>ERROR</code>, or other non-ACTIVE values:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check current NSX resource status</span>
+su - postgres -c <span class="hljs-string">"PAGER=cat psql -h 127.0.0.1 -d platform -t -c \"SELECT id, status FROM nsxt;\""</span>
+
+<span class="hljs-comment"># Fix ANY non-ACTIVE status</span>
+su - postgres -c <span class="hljs-string">"PAGER=cat psql -h 127.0.0.1 -d platform -c \"UPDATE nsxt SET status = 'ACTIVE' WHERE status != 'ACTIVE';\""</span>
+</code></pre>
+<p><strong>Step 3: Clear stale resource locks</strong></p>
+<pre><code class="hljs bash">su - postgres -c <span class="hljs-string">"PAGER=cat psql -h 127.0.0.1 -d platform -c \"SELECT count(*) FROM lock;\""</span>
+su - postgres -c <span class="hljs-string">"PAGER=cat psql -h 127.0.0.1 -d platform -c \"DELETE FROM lock;\""</span>
+</code></pre>
+<p><strong>Step 4: Mark stuck tasks as resolved</strong></p>
+<p>The <code>task_metadata</code> table in the platform DB tracks task resolution state. Unresolved tasks (resolved=false) from failed operations accumulate and can interfere with new operations:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check unresolved task count</span>
+su - postgres -c <span class="hljs-string">"PAGER=cat psql -h 127.0.0.1 -d platform -c \"SELECT resolved, count(*) FROM task_metadata GROUP BY resolved;\""</span>
+
+<span class="hljs-comment"># Mark all unresolved tasks as resolved</span>
+su - postgres -c <span class="hljs-string">"PAGER=cat psql -h 127.0.0.1 -d platform -c \"UPDATE task_metadata SET resolved = true WHERE resolved = false;\""</span>
+
+<span class="hljs-comment"># Clear task_lock table if any entries exist</span>
+su - postgres -c <span class="hljs-string">"PAGER=cat psql -h 127.0.0.1 -d platform -c \"DELETE FROM task_lock;\""</span>
+</code></pre>
+<p><strong>Step 5: Restore pg_hba.conf (CRITICAL — do not skip)</strong></p>
+<pre><code class="hljs bash"><span class="hljs-built_in">cp</span> /data/pgdata/pg_hba.conf.bak /data/pgdata/pg_hba.conf
+su - postgres -c <span class="hljs-string">"/usr/pgsql/15/bin/pg_ctl reload -D /data/pgdata"</span>
+
+<span class="hljs-comment"># Verify it's back to scram-sha-256</span>
+grep -c <span class="hljs-string">'scram-sha-256'</span> /data/pgdata/pg_hba.conf
+<span class="hljs-comment"># Should return 4 or more</span>
+</code></pre>
+<p><strong>Step 6: Restart operationsmanager service</strong></p>
+<pre><code class="hljs bash">systemctl restart operationsmanager
+<span class="hljs-comment"># Wait 2-3 minutes for it to fully start</span>
+systemctl is-active operationsmanager
+</code></pre>
+<p><strong>Verification:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># NSX cluster should now show ACTIVE</span>
+curl -sk <span class="hljs-string">"https://sddc-manager.lab.local/v1/nsxt-clusters"</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> | python3 -c \
+  <span class="hljs-string">"import sys,json; [print(f'{c[\"id\"]}: {c[\"status\"]}') for c in json.load(sys.stdin).get('elements',[])]"</span>
+
+<span class="hljs-comment"># Resource locks should be empty</span>
+curl -sk <span class="hljs-string">"https://sddc-manager.lab.local/v1/resource-locks"</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span>
+
+<span class="hljs-comment"># IN_PROGRESS tasks should be zero or minimal</span>
+curl -sk <span class="hljs-string">"https://sddc-manager.lab.local/v1/tasks?status=IN_PROGRESS"</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> | python3 -c \
+  <span class="hljs-string">"import sys,json; print(f'IN_PROGRESS: {len(json.load(sys.stdin).get(\"elements\",[]))}')"</span>
+
+<span class="hljs-comment"># Credential remediate should now succeed via VCF Operations Fleet Management UI</span>
+</code></pre>
+<pre><code>Credential Cascade Failure Flowchart:
+┌──────────────────────────────────────────────┐
+│ Credential Update/Rotate/Remediate fails     │
+│ in SDDC Manager or VCF Operations UI         │
+└──────────────────┬───────────────────────────┘
+                   │
+          ┌────────▼────────┐
+          │ Check task error │
+          └────────┬────────┘
+                   │
+    ┌──────────────┼──────────────┐
+    │              │              │
+    ▼              ▼              ▼
+"not in        "Unable to     "503 Service
+ACTIVE state"  acquire lock"  Unavailable"
+    │              │              │
+    ▼              ▼              ▼
+Fix nsxt       Delete from    NSX still
+table status   lock table     booting/
+(ACTIVATING/   in platform    unstable
+ERROR→ACTIVE)  DB             │
+    │              │           ▼
+    │              │        Wait for
+    │              │        NSX load
+    │              │        to settle
+    │              │        (&lt; 20)
+    └──────┬───────┘          │
+           ▼                  │
+    Mark task_metadata        │
+    resolved = true    ◄──────┘
+           │
+           ▼
+    Clear task_lock
+           │
+           ▼
+    Restart
+    operationsmanager
+           │
+           ▼
+    Retry credential
+    operation
+</code></pre>
+<blockquote>
+<p><strong>Key insight:</strong> Three tables in the <code>platform</code> database must be cleaned: (1) <code>nsxt</code> — resource status, (2) <code>lock</code> — operation locks, (3) <code>task_metadata</code> — task resolution tracking. The <code>operationsmanager</code> database has separate <code>task</code> and <code>execution</code> tables (columns: <code>task.state</code>, <code>execution.execution_status</code> — not <code>status</code>). The API won't let you cancel or delete stuck tasks — database repair is required.</p>
+</blockquote>
+<blockquote>
+<p><strong>psql pager trap:</strong> When running psql queries via Paramiko or remote shell, the default pager (<code>less</code>/<code>more</code>) captures output and waits for interactive input, corrupting the session. Always set <code>PAGER=cat</code> before running psql commands, or pass it inline: <code>PAGER=cat psql -h 127.0.0.1 -d platform -c "..."</code>. For Paramiko <code>invoke_shell()</code>, also set <code>height=1000</code> to prevent terminal-based paging.</p>
+</blockquote>
+<blockquote>
+<p><strong>PostgreSQL on SDDC Manager:</strong> Uses TCP on <code>127.0.0.1</code> (not Unix sockets — you'll get "No such file or directory" without <code>-h 127.0.0.1</code>). Data directory is <code>/data/pgdata</code>. Key databases: <code>platform</code> (nsxt, lock, task_metadata tables), <code>operationsmanager</code> (task, execution, processing_task tables). The <code>pg_hba.conf</code> trust workaround is a last resort — always restore the original immediately after.</p>
+</blockquote>
+<blockquote>
+<p><strong>vcf account lockout:</strong> Failed SSH attempts (including from automated scripts) can lock the <code>vcf</code> account. SDDC Manager uses <code>faillock</code> (not <code>pam_tally2</code>). Unlock from console as root: <code>faillock --user vcf --reset</code></p>
+</blockquote>
+<h3 id="discovery-process--how-the-schema-was-mapped">Discovery Process — How the Schema Was Mapped</h3>
+<p>None of the database repair procedure is documented by Broadcom. The schema was mapped through the following investigation:</p>
+<p><strong>Why the API wasn't enough:</strong></p>
+<ul>
+<li><code>PATCH /v1/tasks/{id}</code> with <code>{"status":"CANCELLED"}</code> returned <code>TA_TASK_CAN_NOT_BE_RETRIED</code> for every stuck task</li>
+<li><code>DELETE /v1/tasks/{id}</code> returned HTTP 500</li>
+<li>The API has no mechanism to force-cancel stuck tasks or clear stale locks — database repair is the only path</li>
+</ul>
+<p><strong>How the database was explored:</strong></p>
+<ol>
+<li>Accessed PostgreSQL using the trust auth workaround (password not discoverable in config files)</li>
+<li>Listed all databases with <code>\l</code>: <code>platform</code>, <code>operationsmanager</code>, <code>domainmanager</code>, <code>lcm</code>, <code>sddc_manager_ui</code>, <code>postgres</code></li>
+<li>Listed tables in <code>platform</code> DB with <code>\dt</code>: found <code>nsxt</code>, <code>lock</code>, <code>task_metadata</code>, <code>task_lock</code> (plus vcenter, host, etc.)</li>
+<li>Queried column definitions via <code>SELECT column_name, data_type FROM information_schema.columns WHERE table_name = '&lt;table&gt;'</code></li>
+<li>Discovered that <code>task_metadata</code> uses a <code>resolved</code> boolean (not a <code>status</code> field like you'd expect)</li>
+<li>Discovered that <code>operationsmanager.task</code> uses column <code>state</code> (not <code>status</code>) and <code>execution</code> uses <code>execution_status</code> (not <code>status</code>)</li>
+<li>Early script versions failed because they referenced <code>task</code> in the platform DB (wrong — it's <code>task_metadata</code>) and used <code>status</code> column on operationsmanager tables (wrong — it's <code>state</code> and <code>execution_status</code>)</li>
+</ol>
+<p><strong>Why each repair step is needed:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Table</th>
+<th>Action</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td><code>nsxt</code></td>
+<td>Set status to ACTIVE</td>
+<td>The stuck ACTIVATING/ERROR status makes every new credential operation fail at prevalidation — SDDC Manager checks this before even attempting the operation</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>lock</code></td>
+<td>Delete all rows</td>
+<td>Stale exclusive locks from the failed operation block all new operations from acquiring their own locks — they'll fail with "Unable to acquire resource level lock(s)"</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>task_metadata</code></td>
+<td>Set resolved=true</td>
+<td>Unresolved tasks (resolved=false) accumulate with each UI retry. 47 were found during the initial diagnosis. These can interfere with new task scheduling</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>task_lock</code></td>
+<td>Delete all rows</td>
+<td>Links tasks to locks — clearing this ensures no orphaned task-lock relationships remain</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>pg_hba.conf</code></td>
+<td>Restore backup</td>
+<td>Leaving trust auth enabled means any local process can access PostgreSQL without a password — security risk</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>operationsmanager</code></td>
+<td>Restart service</td>
+<td>The service caches database state in memory. A restart forces it to re-read the cleaned tables and reset its internal state machine</td>
+</tr>
+</tbody></table>
+<p><strong>Why each step matters in sequence:</strong></p>
+<ul>
+<li>Steps 2-4 must all be done in one session — fixing just the status without clearing locks still fails, and clearing locks without fixing the status still fails. All three tables participate in the prevalidation check.</li>
+<li>Step 5 (restore pg_hba.conf) must happen before step 6 (restart service) because the service restart may trigger new database connections that should use proper authentication.</li>
+<li>The trust auth window should be as short as possible — do all queries, restore immediately, then restart.</li>
+</ul>
+<p><strong>Automated scripts built from this knowledge:</strong></p>
+<ul>
+<li><code>clear_locks.py</code> — fixes nsxt status + clears lock table (quick fix for simple cases)</li>
+<li><code>fix_stuck_tasks.py</code> — marks task_metadata resolved + clears task_lock (for accumulated stuck tasks)</li>
+<li><code>full_remediate_fix.py</code> — combines NSX health check + all DB fixes + service restart (all-in-one cascade repair)</li>
+</ul>
+<p>All scripts automate the pg_hba.conf backup/trust/restore cycle and use <code>PAGER=cat</code> to prevent pager traps in remote sessions.</p>
+<hr>
+<h2 id="11-sddc-manager-storage-migration-local-→-vsan">11. SDDC Manager Storage Migration (Local → vSAN)</h2>
+<p><em>Phase 7 — Feb 10–11, 2026</em></p>
+<h3 id="why-sddc-manager-starts-on-local-storage">Why SDDC Manager Starts on Local Storage</h3>
+<p>This is a <strong>chicken-and-egg bootstrap constraint</strong> in every VCF deployment:</p>
+<ol>
+<li>The VCF Installer OVA (which <em>is</em> the SDDC Manager appliance — same OVA, dual purpose) must be deployed <strong>before</strong> the bringup process runs</li>
+<li>vSAN does not exist yet at this point — vSAN is created <em>during</em> the bringup process when the VCF Installer orchestrates the deployment of vCenter, vSAN, and VDS across the ESXi hosts</li>
+<li>The only storage available before bringup is the <strong>local datastore</strong> on the ESXi host where you deploy the installer (<code>esxi01-local</code> in the lab)</li>
+<li>After bringup completes, the VCF Installer <strong>transforms into SDDC Manager</strong> — still sitting on local storage where it was originally deployed</li>
+</ol>
+<p>This means SDDC Manager is always initially deployed to local storage and must be manually migrated to shared storage (vSAN) afterward.</p>
+<h3 id="the-problem">The Problem</h3>
+<ul>
+<li>SDDC Manager was on <code>esxi01-local</code> with <strong>914GB thick-provisioned</strong> disks (only ~108GB actually used)</li>
+<li>Could not vMotion to other hosts — VM is on local storage, not shared</li>
+<li>esxi01 was overloaded — also running NSX Manager (32GB RAM) on the same host</li>
+<li>vCenter storage migration wizard <strong>failed after 8+ hours</strong> — it cannot thin-provision when migrating to vSAN</li>
+</ul>
+<p><strong>Disk analysis:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Disk</th>
+<th>Allocated</th>
+<th>Actual Used</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sddc-manager.vmdk</td>
+<td>32GB</td>
+<td>2.6GB</td>
+</tr>
+<tr>
+<td>sddc-manager_1.vmdk</td>
+<td>16GB</td>
+<td>2.6GB</td>
+</tr>
+<tr>
+<td>sddc-manager_2.vmdk</td>
+<td>240GB</td>
+<td>3.0GB</td>
+</tr>
+<tr>
+<td>sddc-manager_3.vmdk</td>
+<td>512GB</td>
+<td>99.5GB</td>
+</tr>
+<tr>
+<td>sddc-manager_4.vmdk</td>
+<td>26GB</td>
+<td>30MB</td>
+</tr>
+<tr>
+<td>sddc-manager_5.vmdk</td>
+<td>88GB</td>
+<td>64MB</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>914GB</strong></td>
+<td><strong>~108GB</strong></td>
+</tr>
+</tbody></table>
+<h3 id="solution-vmkfstools-thin-clone">Solution: vmkfstools Thin Clone</h3>
+<p>The vCenter migration wizard cannot thin-provision to vSAN. The workaround is to clone each disk individually as thin using <code>vmkfstools</code> directly on the ESXi host:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH to esxi01 as root</span>
+<span class="hljs-comment"># Clone each disk from local to vSAN as thin-provisioned</span>
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager.vmdk -d thin
+
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager_1.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_1.vmdk -d thin
+
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager_2.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_2.vmdk -d thin
+
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager_3.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_3.vmdk -d thin
+
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager_4.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_4.vmdk -d thin
+
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager_5.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_5.vmdk -d thin
+</code></pre>
+<p><strong>After cloning:</strong></p>
+<ol>
+<li>Power off SDDC Manager</li>
+<li>Remove from vCenter inventory</li>
+<li>Browse vSAN datastore → navigate to the <code>sddc-manager</code> folder → right-click the <code>.vmx</code> → <strong>Register VM</strong></li>
+<li>Power on and verify all services start (<code>systemctl status vcf-services</code>)</li>
+</ol>
+<h3 id="recovery-from-mid-clone-failure">Recovery from Mid-Clone Failure</h3>
+<p>The 512GB disk clone failed partway through (ESXi connection timeout on nested storage). Fix:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Delete the partial clone</span>
+vmkfstools -U /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_3.vmdk
+
+<span class="hljs-comment"># Retry the clone</span>
+vmkfstools -i /vmfs/volumes/esxi01-<span class="hljs-built_in">local</span>/sddc-manager/sddc-manager_3.vmdk \
+  /vmfs/volumes/vcenter-cl01-ds-vsan01/sddc-manager/sddc-manager_3.vmdk -d thin
+</code></pre>
+<blockquote>
+<p><strong>Key lesson:</strong> vCenter's migration wizard cannot thin-provision to vSAN. Always use <code>vmkfstools -i &lt;src&gt; &lt;dst&gt; -d thin</code> per disk. This is also the only way to reclaim wasted space from thick-provisioned VCF appliances — SDDC Manager went from 914GB allocated to ~108GB actual on vSAN.</p>
+</blockquote>
+<hr>
+<p><strong>Document Information</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Document Title</td>
+<td>VCF 9.0.1 Nested Deployment Troubleshooting Handbook</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>Last Updated</td>
+<td>February 2026</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>VMware Workstation 17.x Nested Lab</td>
+</tr>
+<tr>
+<td>VCF Version</td>
+<td>9.0.1</td>
+</tr>
+</tbody></table>
+<p><em>This handbook is intended for lab and educational purposes. Always consult official VMware documentation for production deployments.</em></p>
+<p><em>(c) 2026 Virtual Control LLC. All rights reserved.</em></p>
+
+	
+
+</body></html>
