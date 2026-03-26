@@ -1,0 +1,2428 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8"><style>* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	line-height: 1.6;
+	font-size: 0.6875em; /* 11 pt */
+	color: #111;
+	margin: 0;
+}
+
+body > :first-child {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+body > :last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0.5em 0 0.25em;
+}
+
+h5,
+h6 {
+	padding: 0;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h6 {
+	font-size: 0.875em;
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0.25em 0 1em;
+}
+
+blockquote {
+	margin: 0.5em 0 1em;
+	padding-left: 0.5em;
+	padding-right: 1em;
+	border-left: 4px solid gainsboro;
+	font-style: italic;
+}
+
+ul,
+ol {
+	margin: 0;
+	margin-left: 1em;
+	padding: 0 1.5em 0.5em;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+p code,
+li code,
+pre code {
+	background-color: #f8f8f8;
+	padding: 0.1em 0.375em;
+	border: 1px solid #f8f8f8;
+	border-radius: 0.25em;
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+pre code {
+	display: block;
+	padding: 0.5em;
+}
+
+.page-break {
+	page-break-after: always;
+}
+
+img {
+	max-width: 100%;
+	margin: 1em 0;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: block;
+	margin: 0 0 1em;
+	width: 100%;
+	overflow: auto;
+}
+
+table th,
+table td {
+	padding: 0.5em 1em;
+	border: 1px solid gainsboro;
+}
+
+table th {
+	font-weight: 600;
+}
+
+table tr {
+	background-color: white;
+	border-top: 1px solid gainsboro;
+}
+
+table tr:nth-child(2n) {
+	background-color: whitesmoke;
+}
+/*# sourceURL=E:\VCF-Depot\node_modules\md-to-pdf\markdown.css*/</style><style>pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/
+.hljs {
+  color: #24292e;
+  background: #ffffff
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  /* prettylights-syntax-keyword */
+  color: #d73a49
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  /* prettylights-syntax-entity */
+  color: #6f42c1
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  /* prettylights-syntax-constant */
+  color: #005cc5
+}
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  /* prettylights-syntax-string */
+  color: #032f62
+}
+.hljs-built_in,
+.hljs-symbol {
+  /* prettylights-syntax-variable */
+  color: #e36209
+}
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  /* prettylights-syntax-comment */
+  color: #6a737d
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  /* prettylights-syntax-entity-tag */
+  color: #22863a
+}
+.hljs-subst {
+  /* prettylights-syntax-storage-modifier-import */
+  color: #24292e
+}
+.hljs-section {
+  /* prettylights-syntax-markup-heading */
+  color: #005cc5;
+  font-weight: bold
+}
+.hljs-bullet {
+  /* prettylights-syntax-markup-list */
+  color: #735c0f
+}
+.hljs-emphasis {
+  /* prettylights-syntax-markup-italic */
+  color: #24292e;
+  font-style: italic
+}
+.hljs-strong {
+  /* prettylights-syntax-markup-bold */
+  color: #24292e;
+  font-weight: bold
+}
+.hljs-addition {
+  /* prettylights-syntax-markup-inserted */
+  color: #22863a;
+  background-color: #f0fff4
+}
+.hljs-deletion {
+  /* prettylights-syntax-markup-deleted */
+  color: #b31d28;
+  background-color: #ffeef0
+}
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
+  
+}/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
+h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
+h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
+h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
+th { background-color: #0b3d6b; color: white; padding: 7px 10px; text-align: left; }
+td { border: 1px solid #cfd8dc; padding: 6px 10px; }
+tr:nth-child(even) { background-color: #e3f2fd; }
+code { background-color: #e3f2fd; padding: 2px 5px; border-radius: 3px; font-size: 9pt; font-family: 'Cascadia Code', Consolas, monospace; color: #0b3d6b; }
+pre { background-color: #f5f5f5; padding: 12px; border-radius: 5px; border-left: 4px solid #1565c0; font-size: 9pt; line-height: 1.4; overflow-x: auto; }
+pre code { background: none; padding: 0; color: #1a1a1a; }
+a { color: #1565c0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 14px; margin: 10px 0; font-size: 9pt; }
+.toc { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px 30px; margin: 20px 0; }
+.toc ul { list-style: none; padding-left: 0; }
+.toc > ul > li { margin-bottom: 6px; }
+.toc > ul > li > a { font-weight: bold; font-size: 11pt; color: #0b3d6b; }
+.toc ul ul { padding-left: 22px; margin-top: 3px; }
+.toc ul ul li { margin-bottom: 2px; }
+.toc ul ul li a { font-size: 9.5pt; color: #333; }
+.info-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.warn-box { background: #fff3e0; border-left: 4px solid #f57c00; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.fix-box { background: #e8f5e9; border-left: 4px solid #43a047; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.danger { background: #ffebee; border-left: 4px solid #e53935; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.badge-pass { background: #43a047; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.badge-warn { background: #f57c00; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.badge-fail { background: #e53935; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.cover-page { text-align: center; padding: 80px 20px; page-break-after: always; }
+.cover-page h1 { font-size: 28pt; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 30px; border-radius: 10px; }
+.cover-page .subtitle { font-size: 14pt; color: #1565c0; margin-top: 20px; }
+.cover-page .meta { font-size: 10pt; color: #666; margin-top: 40px; line-height: 2; }
+.page-break { page-break-before: always; }</style></head>
+	<body class="">
+		<div class="cover-page">
+
+<h1 id="esxi-hosts-health-check-handbook">ESXi Hosts Health Check Handbook</h1>
+<div class="subtitle">Comprehensive Health Verification for ESXi Hosts in VCF 9</div>
+
+<div class="meta">
+
+<p><strong>Author:</strong> Virtual Control LLC
+<strong>Date:</strong> March 2026
+<strong>Version:</strong> 1.0
+<strong>Classification:</strong> Internal Use
+<strong>Platform:</strong> VMware Cloud Foundation 9.0 / ESXi 8.0 U3+</p>
+</div>
+</div>
+
+<hr>
+<div class="toc">
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#overview">1. Overview &amp; Purpose</a></li>
+<li><a href="#prerequisites">2. Prerequisites</a></li>
+<li><a href="#quick-reference">3. Quick Reference — All Checks Summary</a></li>
+<li><a href="#hardware">4. Hardware Health</a>
+  <ul>
+  <li><a href="#hw-sensors">4.1 Hardware Sensors (IPMI)</a></li>
+  <li><a href="#hw-memory">4.2 Memory Hardware Errors</a></li>
+  <li><a href="#hw-cpu">4.3 CPU Health</a></li>
+  <li><a href="#hw-pci">4.4 PCI Devices</a></li>
+  <li><a href="#hw-firmware">4.5 Firmware Versions</a></li>
+  </ul>
+</li>
+<li><a href="#storage">5. Storage Health</a>
+  <ul>
+  <li><a href="#stor-vmfs">5.1 VMFS Datastores</a></li>
+  <li><a href="#stor-scsi">5.2 SCSI Device Status</a></li>
+  <li><a href="#stor-hba">5.3 HBA Health &amp; Multipathing</a></li>
+  <li><a href="#stor-nfs">5.4 NFS Mounts</a></li>
+  <li><a href="#stor-latency">5.5 Disk Latency &amp; SMART</a></li>
+  </ul>
+</li>
+<li><a href="#networking">6. Networking Health</a>
+  <ul>
+  <li><a href="#net-vmknics">6.1 VMkernel Adapters</a></li>
+  <li><a href="#net-vswitches">6.2 vSwitch / vDS Configuration</a></li>
+  <li><a href="#net-uplinks">6.3 Physical Uplink Status</a></li>
+  <li><a href="#net-drivers">6.4 NIC Driver &amp; Firmware</a></li>
+  <li><a href="#net-cdp">6.5 CDP / LLDP Neighbor Info</a></li>
+  <li><a href="#net-vmkping">6.6 vmkping Connectivity Tests</a></li>
+  </ul>
+</li>
+<li><a href="#services">7. Services Health</a>
+  <ul>
+  <li><a href="#svc-list">7.1 Service Listing</a></li>
+  <li><a href="#svc-critical">7.2 Critical Services</a></li>
+  </ul>
+</li>
+<li><a href="#ntp">8. NTP Configuration</a></li>
+<li><a href="#syslog">9. Syslog Configuration</a></li>
+<li><a href="#scratch">10. Scratch Partition</a></li>
+<li><a href="#coredump">11. Core Dump Configuration</a></li>
+<li><a href="#security">12. Security Health</a>
+  <ul>
+  <li><a href="#sec-ssh">12.1 SSH Status</a></li>
+  <li><a href="#sec-lockdown">12.2 Lockdown Mode</a></li>
+  <li><a href="#sec-firewall">12.3 ESXi Firewall Rules</a></li>
+  <li><a href="#sec-certs">12.4 Certificate Validity</a></li>
+  <li><a href="#sec-accounts">12.5 Account Lockout Policy</a></li>
+  </ul>
+</li>
+<li><a href="#performance">13. Performance Health</a>
+  <ul>
+  <li><a href="#perf-cpu">13.1 CPU Ready &amp; Co-Stop</a></li>
+  <li><a href="#perf-mem">13.2 Memory Ballooning &amp; Swap</a></li>
+  <li><a href="#perf-overcommit">13.3 Host Overcommit Ratio</a></li>
+  </ul>
+</li>
+<li><a href="#boot">14. Boot Configuration</a></li>
+<li><a href="#patches">15. Patch / VIB Level</a></li>
+<li><a href="#ports">16. Port Reference Table</a></li>
+<li><a href="#common-issues">17. Common Issues &amp; Remediation</a></li>
+<li><a href="#cli-reference">18. CLI Quick Reference Card</a></li>
+</ul>
+
+</div>
+
+<div class="page-break"></div>
+
+<h2 id="1-overview--purpose"><span id="overview"></span>1. Overview &amp; Purpose</h2>
+<p>This handbook provides a <strong>complete, step-by-step health check procedure</strong> for ESXi 8.0 hosts deployed within a VCF 9.0 environment. Use this during:</p>
+<ul>
+<li><strong>Routine maintenance</strong> — Weekly/monthly proactive host verification</li>
+<li><strong>Pre/post-upgrade</strong> — Before and after ESXi patches or VCF lifecycle operations</li>
+<li><strong>Incident response</strong> — When VMs are experiencing performance or connectivity issues</li>
+<li><strong>Capacity planning</strong> — Evaluating host resource utilization and VM density</li>
+</ul>
+<h3 id="scope">Scope</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Checks Performed</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Hardware</td>
+<td>Sensors, IPMI, memory errors, CPU, PCI, firmware</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>VMFS, SCSI, HBA, multipathing, NFS, latency, SMART</td>
+</tr>
+<tr>
+<td>Networking</td>
+<td>VMkernel, vSwitches, uplinks, drivers, CDP/LLDP, connectivity</td>
+</tr>
+<tr>
+<td>Services</td>
+<td>All ESXi services, hostd, vpxa, NTP, syslog</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>SSH, lockdown mode, firewall, certificates, account lockout</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>CPU ready, co-stop, memory balloon/swap, overcommit</td>
+</tr>
+<tr>
+<td>Boot/Patch</td>
+<td>Boot device, boot banks, image profile, VIB compliance</td>
+</tr>
+</tbody></table>
+<div class="info-box">
+<strong>Notation:</strong> All commands in this document are run via SSH as <code>root</code> on the ESXi host unless otherwise specified. Replace <code>&lt;esxi-host&gt;</code> with your actual hostname or IP.
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="2-prerequisites"><span id="prerequisites"></span>2. Prerequisites</h2>
+<h3 id="required-access">Required Access</h3>
+<table>
+<thead>
+<tr>
+<th>Access Type</th>
+<th>Target</th>
+<th>Credentials</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SSH (22)</td>
+<td>Each ESXi host</td>
+<td>root / password</td>
+</tr>
+<tr>
+<td>HTTPS (443)</td>
+<td>Each ESXi host</td>
+<td>root / password</td>
+</tr>
+<tr>
+<td>vCenter API</td>
+<td>vCenter Server</td>
+<td><a href="mailto:administrator@vsphere.local">administrator@vsphere.local</a></td>
+</tr>
+</tbody></table>
+<h3 id="enable-ssh-on-esxi-if-disabled">Enable SSH on ESXi (if disabled)</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Via DCUI: F2 → Troubleshooting Options → Enable SSH</span>
+<span class="hljs-comment"># Via PowerCLI:</span>
+Get-VMHost -Name &lt;esxi-host&gt; | Get-VMHostService | Where {<span class="hljs-variable">$_</span>.Key -eq <span class="hljs-string">"TSM-SSH"</span>} | Start-VMHostService
+<span class="hljs-comment"># Via esxcli (from vCenter or DCUI):</span>
+vim-cmd hostsvc/enable_ssh
+vim-cmd hostsvc/start_ssh
+</code></pre>
+<h3 id="environment-variables">Environment Variables</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Set per-host or iterate across all hosts</span>
+<span class="hljs-built_in">export</span> ESXI_HOSTS=<span class="hljs-string">"192.168.1.201 192.168.1.202 192.168.1.203 192.168.1.204"</span>
+<span class="hljs-built_in">export</span> ESXI_USER=<span class="hljs-string">"root"</span>
+<span class="hljs-built_in">export</span> ESXI_PASS=<span class="hljs-string">"YourPassword123!"</span>
+
+<span class="hljs-comment"># Loop template for multi-host checks</span>
+<span class="hljs-keyword">for</span> HOST <span class="hljs-keyword">in</span> <span class="hljs-variable">$ESXI_HOSTS</span>; <span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"======== <span class="hljs-variable">$HOST</span> ========"</span>
+  ssh root@<span class="hljs-variable">$HOST</span> <span class="hljs-string">'&lt;command&gt;'</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="3-quick-reference--all-checks-summary"><span id="quick-reference"></span>3. Quick Reference — All Checks Summary</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Check</th>
+<th>Command</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4.1</td>
+<td>Hardware Sensors</td>
+<td><code>esxcli hardware ipmi sdr list</code></td>
+<td>All <code>0x01</code> (Normal)</td>
+<td>Any <code>0x02</code> (Warning)</td>
+<td>Any <code>0x04</code> (Critical)</td>
+</tr>
+<tr>
+<td>4.2</td>
+<td>Memory Errors</td>
+<td><code>esxcli hardware memory get</code></td>
+<td>0 uncorrectable</td>
+<td>Correctable ECC errors</td>
+<td>Uncorrectable ECC errors</td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>VMFS Datastores</td>
+<td><code>esxcli storage vmfs extent list</code></td>
+<td>All mounted</td>
+<td>Snapshot consolidation needed</td>
+<td>Datastore unmounted</td>
+</tr>
+<tr>
+<td>5.3</td>
+<td>Multipathing</td>
+<td><code>esxcli storage nmp path list</code></td>
+<td>All paths <code>active</code></td>
+<td>Any path <code>standby</code> unexpected</td>
+<td>Any path <code>dead</code></td>
+</tr>
+<tr>
+<td>5.5</td>
+<td>Disk Latency</td>
+<td><code>esxtop</code> (d for disk)</td>
+<td>&lt; 20ms avg</td>
+<td>20-50ms avg</td>
+<td>&gt; 50ms avg</td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>VMkernel NICs</td>
+<td><code>esxcli network ip interface list</code></td>
+<td>All enabled, IPs assigned</td>
+<td>MTU mismatch</td>
+<td>VMkernel missing/down</td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>Uplinks</td>
+<td><code>esxcli network nic list</code></td>
+<td>All <code>Up</code></td>
+<td>Any NIC not at expected speed</td>
+<td>Any NIC <code>Down</code></td>
+</tr>
+<tr>
+<td>7.2</td>
+<td>Critical Services</td>
+<td><code>esxcli system process list</code></td>
+<td>hostd, vpxa running</td>
+<td>Non-critical service stopped</td>
+<td>hostd or vpxa not running</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NTP</td>
+<td><code>esxcli system ntp get</code></td>
+<td>Synchronized, drift &lt; 1s</td>
+<td>Drift 1-5s</td>
+<td>NTP not configured or drift &gt; 5s</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Syslog</td>
+<td><code>esxcli system syslog config get</code></td>
+<td>Remote target configured</td>
+<td>Local-only logging</td>
+<td>Syslog service not running</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Scratch</td>
+<td><code>vim-cmd hostsvc/advopt/get ScratchConfig.ConfiguredScratchLocation</code></td>
+<td>Persistent storage</td>
+<td>Ramdisk (non-persistent)</td>
+<td>Not configured</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Core Dump</td>
+<td><code>esxcli system coredump partition get</code></td>
+<td>Partition configured, active</td>
+<td>Network dump only</td>
+<td>No dump configured</td>
+</tr>
+<tr>
+<td>12.1</td>
+<td>SSH</td>
+<td><code>esxcli system process list | grep SSH</code></td>
+<td>Disabled (production)</td>
+<td>Enabled with timeout</td>
+<td>Enabled, no timeout</td>
+</tr>
+<tr>
+<td>12.2</td>
+<td>Lockdown Mode</td>
+<td><code>vim-cmd hostsvc/hostsummary | grep lockdownMode</code></td>
+<td><code>lockdownNormal</code> or <code>lockdownStrict</code></td>
+<td><code>lockdownDisabled</code> (lab OK)</td>
+<td><code>lockdownDisabled</code> (production)</td>
+</tr>
+<tr>
+<td>13.1</td>
+<td>CPU Ready</td>
+<td><code>esxtop</code> (c for CPU)</td>
+<td>&lt; 5% %RDY</td>
+<td>5-10% %RDY</td>
+<td>&gt; 10% %RDY</td>
+</tr>
+<tr>
+<td>13.2</td>
+<td>Balloon/Swap</td>
+<td><code>esxcli hardware memory get</code></td>
+<td>0 balloon, 0 swap</td>
+<td>Balloon active</td>
+<td>Swap active</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Boot Banks</td>
+<td><code>bootbank-util status</code></td>
+<td>Both banks healthy</td>
+<td>Alt bank outdated</td>
+<td>Primary bank corrupt</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Patch Level</td>
+<td><code>esxcli software profile get</code></td>
+<td>Matches VCF BOM</td>
+<td>1 patch behind</td>
+<td>2+ patches behind</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="4-hardware-health"><span id="hardware"></span>4. Hardware Health</h2>
+<h3 id="41-hardware-sensors-ipmi"><span id="hw-sensors"></span>4.1 Hardware Sensors (IPMI)</h3>
+<p><strong>What:</strong> Read IPMI sensor data to verify temperatures, voltages, fan speeds, and power supply status.</p>
+<p><strong>Why:</strong> Hardware sensor warnings precede failures. Catching them early prevents unplanned outages.</p>
+<h4 id="cli-method">CLI Method</h4>
+<pre><code class="hljs bash">esxcli hardware ipmi sdr list
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>Name                    Entity ID  Sensor Type     Reading  Units    Status
+---------------------------------------------------------------------------
+Inlet Temp              0x01.0x01  Temperature     22       C        0x01
+Exhaust Temp            0x01.0x02  Temperature     35       C        0x01
+CPU1 Temp               0x03.0x01  Temperature     48       C        0x01
+CPU2 Temp               0x03.0x02  Temperature     45       C        0x01
+FAN1                    0x1d.0x01  Fan             6200     RPM      0x01
+FAN2                    0x1d.0x02  Fan             6100     RPM      0x01
+P1-DIMMA1 Temp          0x20.0x01  Temperature     32       C        0x01
+PSU1 Status             0x0a.0x01  Power Supply    —        —        0x01
+PSU2 Status             0x0a.0x02  Power Supply    —        —        0x01
+</code></pre>
+<h4 id="status-codes">Status Codes</h4>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0x01</code></td>
+<td>Normal</td>
+<td>No action</td>
+</tr>
+<tr>
+<td><code>0x02</code></td>
+<td>Warning</td>
+<td>Monitor closely</td>
+</tr>
+<tr>
+<td><code>0x04</code></td>
+<td>Critical</td>
+<td>Immediate attention</td>
+</tr>
+<tr>
+<td><code>0x08</code></td>
+<td>Non-recoverable</td>
+<td>Hardware replacement</td>
+</tr>
+</tbody></table>
+<h4 id="pass--warn--fail">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All sensors <code>0x01</code> (Normal)</td>
+<td>Hardware healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Any sensor <code>0x02</code> (Warning)</td>
+<td>Monitor / schedule maintenance</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any sensor <code>0x04</code> or <code>0x08</code></td>
+<td>Replace hardware component</td>
+</tr>
+</tbody></table>
+<h4 id="additional-sensor-commands">Additional Sensor Commands</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Detailed hardware platform info</span>
+esxcli hardware platform get
+
+<span class="hljs-comment"># BMC/IPMI firmware info</span>
+esxcli hardware ipmi bmc get
+</code></pre>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. High temps: Check datacenter cooling, airflow, dust<br>
+2. Fan failure: Replace fan module; most servers continue with N-1 fans<br>
+3. PSU warning: Check power cables; replace PSU under warranty<br>
+4. Always cross-reference with vendor BMC (iDRAC, iLO, IPMI web UI)
+</div>
+
+<hr>
+<h3 id="42-memory-hardware-errors"><span id="hw-memory"></span>4.2 Memory Hardware Errors</h3>
+<p><strong>What:</strong> Check for correctable (CE) and uncorrectable (UE) memory errors.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Memory overview</span>
+esxcli hardware memory get
+
+<span class="hljs-comment"># Check DIMM status</span>
+esxcli hardware memory dimm list
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Physical Memory: 549,755,813,888 Bytes (512 GB)
+Reliable Memory: 549,755,813,888 Bytes
+
+DIMM Locator     Bank     Type   Speed   Size      Status
+----------------------------------------------------------
+P1-DIMMA1        Bank 0   DDR5   4800    32768 MB  ok
+P1-DIMMB1        Bank 1   DDR5   4800    32768 MB  ok
+P1-DIMMC1        Bank 2   DDR5   4800    32768 MB  ok
+...
+</code></pre>
+<h4 id="check-vmkernel-log-for-memory-errors">Check VMkernel Log for Memory Errors</h4>
+<pre><code class="hljs bash">grep -i <span class="hljs-string">"machine check\|memory error\|ECC\|CECC\|UECC"</span> /var/log/vmkernel.log | <span class="hljs-built_in">tail</span> -20
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All DIMMs <code>ok</code>, no errors in vmkernel log</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Correctable ECC errors (CE) present</td>
+<td>Schedule DIMM replacement</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Uncorrectable errors (UE) or DIMM status not <code>ok</code></td>
+<td>Immediate replacement</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="43-cpu-health"><span id="hw-cpu"></span>4.3 CPU Health</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># CPU info</span>
+esxcli hardware cpu list | <span class="hljs-built_in">head</span> -30
+
+<span class="hljs-comment"># CPU global stats</span>
+esxcli hardware cpu global get
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>CPU Packages: 2
+CPU Cores: 32
+CPU Threads: 64
+Hyperthreading Active: true
+Hyperthreading Supported: true
+</code></pre>
+<hr>
+<h3 id="44-pci-devices"><span id="hw-pci"></span>4.4 PCI Devices</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all PCI devices</span>
+esxcli hardware pci list | grep -E <span class="hljs-string">"Device Name|Vendor Name|Address"</span>
+</code></pre>
+<hr>
+<h3 id="45-firmware-versions"><span id="hw-firmware"></span>4.5 Firmware Versions</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># BIOS info</span>
+esxcli hardware platform get
+
+<span class="hljs-comment"># Storage controller firmware</span>
+esxcli storage core adapter list
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="5-storage-health"><span id="storage"></span>5. Storage Health</h2>
+<h3 id="51-vmfs-datastores"><span id="stor-vmfs"></span>5.1 VMFS Datastores</h3>
+<p><strong>What:</strong> Verify all VMFS datastores are mounted, accessible, and have adequate free space.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># List VMFS extents</span>
+esxcli storage vmfs extent list
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Volume Name  VMFS UUID                             Extent #  Device Name                           Partition
+-----------------------------------------------------------------------------------------------------------------
+datastore1   61234567-abcdef01-2345-001122334455   0         naa.600508b4001234567890abcdef012345   3
+vsanDatastore 71234567-abcdef01-2345-001122334455  0         —                                     —
+</code></pre>
+<h4 id="check-datastore-free-space">Check Datastore Free Space</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Datastore capacity (via df equivalent)</span>
+esxcli storage filesystem list
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Mount Point              Volume Name    UUID                                  Mounted  Type  Size            Free
+------------------------------------------------------------------------------------------------------------------
+/vmfs/volumes/ds1        datastore1     61234567-abcdef01...                  true     VMFS-6  1099511627776  549755813888
+/vmfs/volumes/vsanDs     vsanDatastore  71234567-abcdef01...                  true     vsan    4398046511104  2199023255552
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All datastores mounted, &gt; 20% free</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Any datastore 10-20% free</td>
+<td>Plan capacity expansion</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any datastore &lt; 10% free or unmounted</td>
+<td>Critical — VMs may not power on</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="52-scsi-device-status"><span id="stor-scsi"></span>5.2 SCSI Device Status</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all SCSI devices</span>
+esxcli storage core device list
+
+<span class="hljs-comment"># Check for devices in APD/PDL state</span>
+esxcli storage core device list | grep -E <span class="hljs-string">"Display Name|Status|Is Perennially Reserved"</span>
+</code></pre>
+<p><strong>Key Indicators:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>on</code></td>
+<td>Device is online and accessible</td>
+</tr>
+<tr>
+<td><code>off</code></td>
+<td>Device is offline — APD or PDL</td>
+</tr>
+<tr>
+<td><code>APD</code></td>
+<td>All Paths Down — temporary, may recover</td>
+</tr>
+<tr>
+<td><code>PDL</code></td>
+<td>Permanent Device Loss — device is gone</td>
+</tr>
+</tbody></table>
+<div class="danger">
+<strong>APD / PDL Warning:</strong> If any device shows APD or PDL, VMs on that storage may be inaccessible. APD triggers automatic VM termination after 140 seconds by default. Check <code>Misc.APDHandlingEnable</code> and <code>Misc.APDTimeout</code>.
+</div>
+
+<hr>
+<h3 id="53-hba-health--multipathing"><span id="stor-hba"></span>5.3 HBA Health &amp; Multipathing</h3>
+<p><strong>What:</strong> Verify all storage paths are active and HBAs are functioning.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># List HBAs</span>
+esxcli storage core adapter list
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>HBA Name  Driver       Link State  UID                            Description
+------------------------------------------------------------------------------
+vmhba0    lsi_mr3      link-up     sas.5001636001234567           LSI Logic SAS3108
+vmhba1    lsi_mr3      link-up     sas.5001636001234568           LSI Logic SAS3108
+vmhba32   iscsi_vmk    online      iqn.1998-01.com.vmware:esxi01  VMware iSCSI
+</code></pre>
+<h4 id="multipathing-status">Multipathing Status</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all paths and their state</span>
+esxcli storage nmp path list
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Runtime Name: vmhba0:C0:T0:L0
+  Device: naa.600508b400123456...
+  Adapter: vmhba0
+  LUN: 0
+  State: active
+  Transport: sas
+
+Runtime Name: vmhba1:C0:T0:L0
+  Device: naa.600508b400123456...
+  Adapter: vmhba1
+  LUN: 0
+  State: active
+  Transport: sas
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All paths <code>active</code>, multiple paths per device</td>
+<td>Fully redundant</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Any path <code>standby</code> when should be <code>active</code></td>
+<td>Check path policy</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any path <code>dead</code> or single path per device</td>
+<td>Path failure — no redundancy</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. Dead path: Check physical cables, HBA, switch ports<br>
+2. Re-scan storage: <code>esxcli storage core adapter rescan --all</code><br>
+3. Reclaim dead paths: <code>esxcli storage core claiming reclaim -d naa.xxx</code><br>
+4. Check multipath policy: <code>esxcli storage nmp device list</code>
+</div>
+
+<hr>
+<h3 id="54-nfs-mounts"><span id="stor-nfs"></span>5.4 NFS Mounts</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List NFS datastores</span>
+esxcli storage nfs list
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Volume Name  Host            Share       Accessible  Mounted  Read-Only  Hardware Acceleration
+----------------------------------------------------------------------------------------------
+nfs-backup   192.168.1.100   /exports   true        true     false      Supported
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All NFS shares <code>Accessible: true</code>, <code>Mounted: true</code></td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any NFS share <code>Accessible: false</code></td>
+<td>NFS server unreachable</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="55-disk-latency--smart"><span id="stor-latency"></span>5.5 Disk Latency &amp; SMART</h3>
+<p><strong>What:</strong> Check real-time disk latency and SMART health data.</p>
+<h4 id="check-latency-via-esxtop">Check Latency via esxtop</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Interactive mode — press 'd' for disk view</span>
+esxtop
+
+<span class="hljs-comment"># Batch mode (3 samples, 5-second intervals)</span>
+esxtop -b -d 5 -n 3 | grep -E <span class="hljs-string">"DAVG|KAVG|GAVG"</span>
+</code></pre>
+<p><strong>Key Metrics:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Description</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DAVG/cmd</td>
+<td>Device latency (physical disk)</td>
+<td>&lt; 20ms</td>
+<td>20-50ms</td>
+<td>&gt; 50ms</td>
+</tr>
+<tr>
+<td>KAVG/cmd</td>
+<td>Kernel latency (VMkernel queue)</td>
+<td>&lt; 2ms</td>
+<td>2-5ms</td>
+<td>&gt; 5ms</td>
+</tr>
+<tr>
+<td>GAVG/cmd</td>
+<td>Guest OS observed latency</td>
+<td>&lt; 25ms</td>
+<td>25-50ms</td>
+<td>&gt; 50ms</td>
+</tr>
+</tbody></table>
+<h4 id="smart-data-local-disks">SMART Data (Local Disks)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check SMART status for local disks</span>
+esxcli storage core device smart get -d &lt;device-naa-id&gt;
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="6-networking-health"><span id="networking"></span>6. Networking Health</h2>
+<h3 id="61-vmkernel-adapters"><span id="net-vmknics"></span>6.1 VMkernel Adapters</h3>
+<p><strong>What:</strong> Verify all VMkernel adapters have correct IPs, MTU, and enabled services.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># List VMkernel interfaces</span>
+esxcli network ip interface list
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Name   MAC Address        Enabled  MTU   Portgroup/DVPort    Stack       IPv4 Address
+---------------------------------------------------------------------------------------
+vmk0   00:50:56:01:aa:01  true     1500  Management Network  defaultTcpipStack  192.168.1.201
+vmk1   00:50:56:01:aa:02  true     9000  vMotion             vmotion     192.168.10.201
+vmk2   00:50:56:01:aa:03  true     9000  vSAN                defaultTcpipStack  192.168.12.74
+vmk10  00:50:56:01:aa:04  true     1600  nsx-overlay         defaultTcpipStack  192.168.14.201
+</code></pre>
+<h4 id="check-vmkernel-tagged-services">Check VMkernel Tagged Services</h4>
+<pre><code class="hljs bash">esxcli network ip interface tag get -i vmk0
+esxcli network ip interface tag get -i vmk1
+esxcli network ip interface tag get -i vmk2
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>VMkernel</th>
+<th>Expected Service Tags</th>
+<th>MTU</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vmk0</td>
+<td>Management</td>
+<td>1500</td>
+</tr>
+<tr>
+<td>vmk1</td>
+<td>vMotion</td>
+<td>9000</td>
+</tr>
+<tr>
+<td>vmk2</td>
+<td>vSAN</td>
+<td>9000</td>
+</tr>
+<tr>
+<td>vmk10</td>
+<td>NSX TEP (no tag — NSX managed)</td>
+<td>1600+</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All vmknics enabled, correct IPs, correct MTU</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>MTU mismatch or wrong service tag</td>
+<td>Reconfigure</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>VMkernel adapter missing or no IP</td>
+<td>Connectivity loss</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="62-vswitch--vds-configuration"><span id="net-vswitches"></span>6.2 vSwitch / vDS Configuration</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List standard vSwitches</span>
+esxcli network vswitch standard list
+
+<span class="hljs-comment"># List Distributed vSwitches</span>
+esxcli network vswitch dvs vmware list
+</code></pre>
+<p><strong>Expected Output (DVS):</strong></p>
+<pre><code>Name: DSwitch-Management
+  Configured Ports: 2048
+  Max Ports: 2048
+  MTU: 9000
+  CDP Status: both
+  Uplinks: vmnic0, vmnic1
+
+Name: DSwitch-Compute
+  Configured Ports: 2048
+  Max Ports: 2048
+  MTU: 9000
+  Uplinks: vmnic2, vmnic3
+</code></pre>
+<hr>
+<h3 id="63-physical-uplink-status"><span id="net-uplinks"></span>6.3 Physical Uplink Status</h3>
+<p><strong>What:</strong> Verify all physical NICs are connected, at expected speed, and link is up.</p>
+<pre><code class="hljs bash">esxcli network nic list
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Name    PCI Device  Driver  Admin Status  Link Status  Speed  Duplex  MTU    MAC Address
+-------------------------------------------------------------------------------------------
+vmnic0  0000:3b:00  i40en   Up            Up           25000  Full    9000   00:50:56:01:aa:10
+vmnic1  0000:3b:01  i40en   Up            Up           25000  Full    9000   00:50:56:01:aa:11
+vmnic2  0000:5e:00  i40en   Up            Up           25000  Full    9000   00:50:56:01:aa:12
+vmnic3  0000:5e:01  i40en   Up            Up           25000  Full    9000   00:50:56:01:aa:13
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All NICs <code>Link Status: Up</code>, expected speed</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>NIC at lower speed than expected (e.g., 10G vs 25G)</td>
+<td>Check cables/switch</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any NIC <code>Link Status: Down</code></td>
+<td>Cable/switch/NIC failure</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. NIC down: Check cable, switch port, SFP/transceiver<br>
+2. Speed mismatch: Check auto-negotiation, cable category, switch config<br>
+3. Replace NIC driver: <code>esxcli software vib install -v /path/to/driver.vib</code>
+</div>
+
+<hr>
+<h3 id="64-nic-driver--firmware"><span id="net-drivers"></span>6.4 NIC Driver &amp; Firmware</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Driver details per NIC</span>
+esxcli network nic get -n vmnic0
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Advertised Auto Negotiation: true
+Auto Negotiation: true
+Driver Info:
+  Bus Info: 0000:3b:00.0
+  Driver: i40en
+  Firmware Version: 9.20
+  Version: 2.5.3.0
+Link Detected: true
+Link Status: Up
+</code></pre>
+<hr>
+<h3 id="65-cdp--lldp-neighbor-info"><span id="net-cdp"></span>6.5 CDP / LLDP Neighbor Info</h3>
+<p><strong>What:</strong> Discover the physical switch port each ESXi NIC is connected to.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># CDP (Cisco Discovery Protocol)</span>
+esxcli network vswitch dvs vmware lacp config get
+<span class="hljs-comment"># or via vim-cmd:</span>
+vim-cmd hostsvc/net/query_networkhint --pnic-name=vmnic0
+</code></pre>
+<h4 id="using-python-for-cdplldp">Using Python for CDP/LLDP</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Python one-liner to get CDP info</span>
+python3 -c <span class="hljs-string">"
+from pyVim.connect import SmartConnect
+import ssl
+# ... (connect to host and query PhysicalNicHintInfo)
+"</span>
+</code></pre>
+<hr>
+<h3 id="66-vmkping-connectivity-tests"><span id="net-vmkping"></span>6.6 vmkping Connectivity Tests</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Management network</span>
+vmkping -I vmk0 &lt;vcenter-ip&gt;
+
+<span class="hljs-comment"># vMotion network (jumbo frame test)</span>
+vmkping -I vmk1 -d -s 8972 &lt;other-host-vmotion-ip&gt;
+
+<span class="hljs-comment"># vSAN network (jumbo frame test)</span>
+vmkping -I vmk2 -d -s 8972 &lt;other-host-vsan-ip&gt;
+
+<span class="hljs-comment"># NSX TEP (MTU 1600)</span>
+vmkping -I vmk10 -d -s 1572 &lt;other-host-tep-ip&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Management</td>
+<td>0% loss</td>
+<td>Any loss</td>
+</tr>
+<tr>
+<td>vMotion jumbo</td>
+<td>0% loss with -s 8972</td>
+<td>Loss or "packet too big"</td>
+</tr>
+<tr>
+<td>vSAN jumbo</td>
+<td>0% loss with -s 8972</td>
+<td>Loss or MTU error</td>
+</tr>
+<tr>
+<td>NSX TEP</td>
+<td>0% loss with -s 1572</td>
+<td>Loss or MTU error</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="7-services-health"><span id="services"></span>7. Services Health</h2>
+<h3 id="71-service-listing"><span id="svc-list"></span>7.1 Service Listing</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all services and their status</span>
+esxcli system process list | <span class="hljs-built_in">head</span> -60
+
+<span class="hljs-comment"># Alternative — list via chkconfig</span>
+chkconfig --list | <span class="hljs-built_in">sort</span>
+</code></pre>
+<h3 id="72-critical-services"><span id="svc-critical"></span>7.2 Critical Services</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Process</th>
+<th>Function</th>
+<th>Impact if Down</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hostd</td>
+<td><code>hostd</code></td>
+<td>ESXi host agent</td>
+<td>Host unreachable from vCenter</td>
+</tr>
+<tr>
+<td>vpxa</td>
+<td><code>vpxa</code></td>
+<td>vCenter agent</td>
+<td>Host disconnects from vCenter</td>
+</tr>
+<tr>
+<td>vobd</td>
+<td><code>vobd</code></td>
+<td>VMware Observability</td>
+<td>Events/alarms not generated</td>
+</tr>
+<tr>
+<td>fdm</td>
+<td><code>fdm</code></td>
+<td>HA agent</td>
+<td>HA not functional on host</td>
+</tr>
+<tr>
+<td>ntpd</td>
+<td><code>ntpd</code></td>
+<td>Time sync</td>
+<td>Time drift, cert issues</td>
+</tr>
+<tr>
+<td>sfcbd</td>
+<td><code>sfcbd</code></td>
+<td>CIM broker</td>
+<td>Hardware monitoring unavailable</td>
+</tr>
+<tr>
+<td>lbtd</td>
+<td><code>lbtd</code></td>
+<td>Load-based teaming</td>
+<td>NIC load balancing inactive</td>
+</tr>
+<tr>
+<td>nsx-mpa</td>
+<td><code>nsx-mpa</code></td>
+<td>NSX management plane agent</td>
+<td>NSX connectivity loss</td>
+</tr>
+<tr>
+<td>nsx-proxy</td>
+<td><code>nsx-proxy</code></td>
+<td>NSX proxy</td>
+<td>NSX data plane issues</td>
+</tr>
+</tbody></table>
+<h4 id="verify-critical-services">Verify Critical Services</h4>
+<pre><code class="hljs bash">/etc/init.d/hostd status
+/etc/init.d/vpxa status
+/etc/init.d/fdm status
+/etc/init.d/ntpd status
+/etc/init.d/nsx-mpa status
+/etc/init.d/nsx-proxy status
+</code></pre>
+<p><strong>Expected Output for each:</strong></p>
+<pre><code>hostd is running.
+</code></pre>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. Restart hostd: <code>/etc/init.d/hostd restart</code><br>
+2. Restart vpxa: <code>/etc/init.d/vpxa restart</code><br>
+3. Restart all management agents: <code>/sbin/services.sh restart</code><br>
+4. Check logs: <code>/var/log/hostd.log</code>, <code>/var/log/vpxa.log</code>
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="8-ntp-configuration"><span id="ntp"></span>8. NTP Configuration</h2>
+<p><strong>What:</strong> Verify NTP is configured, running, and the host clock is synchronized.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check NTP configuration</span>
+esxcli system ntp get
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Enabled: true
+Loglevel: warning
+Server:
+  - 192.168.1.1
+  - 192.168.1.2
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check NTP service status</span>
+/etc/init.d/ntpd status
+
+<span class="hljs-comment"># Check time offset</span>
+esxcli system <span class="hljs-keyword">time</span> get
+ntpq -p
+</code></pre>
+<p><strong>Expected ntpq Output:</strong></p>
+<pre><code>     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+*192.168.1.1     .GPS.            1 u   64  128  377    0.543    0.125   0.043
++192.168.1.2     .GPS.            1 u   32  128  377    0.621    0.213   0.051
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>NTP enabled, offset &lt; 1000ms, <code>reach</code> &gt; 0</td>
+<td>Synchronized</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Offset 1-5 seconds</td>
+<td>Drifting</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>NTP not configured, offset &gt; 5s, or <code>reach</code> = 0</td>
+<td>Unsynchronized</td>
+</tr>
+</tbody></table>
+<div class="danger">
+<strong>Time Sync Critical:</strong> ESXi hosts with &gt; 5 seconds clock drift can cause vSAN issues, certificate validation failures, and cluster partition events.
+</div>
+
+<hr>
+<h2 id="9-syslog-configuration"><span id="syslog"></span>9. Syslog Configuration</h2>
+<p><strong>What:</strong> Verify syslog is forwarding to a remote collector.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get syslog config</span>
+esxcli system syslog config get
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Default Network Retry Timeout: 180
+Dropped Log File Rotation Size: 100
+Dropped Log File Rotations: 10
+Log Output: /scratch/log
+Log To Unique Subdirectory: false
+Remote Host: udp://loginsight.lab.local:514
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check syslog service</span>
+esxcli system syslog mark --message=<span class="hljs-string">"Health Check Test <span class="hljs-subst">$(date)</span>"</span>
+<span class="hljs-comment"># Then verify it appears on remote collector</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Remote host configured, syslog service running</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Local logging only (no remote)</td>
+<td>Logs may be lost on failure</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Syslog service not running</td>
+<td>No logging</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="10-scratch-partition"><span id="scratch"></span>10. Scratch Partition</h2>
+<p><strong>What:</strong> Verify the scratch partition points to persistent storage (not ramdisk).</p>
+<pre><code class="hljs bash">vim-cmd hostsvc/advopt/get ScratchConfig.ConfiguredScratchLocation
+vim-cmd hostsvc/advopt/get ScratchConfig.CurrentScratchLocation
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>ConfiguredScratchLocation: /vmfs/volumes/datastore1/.locker-&lt;hostname&gt;
+CurrentScratchLocation: /vmfs/volumes/datastore1/.locker-&lt;hostname&gt;
+</code></pre>
+<div class="warn-box">
+<strong>Warning:</strong> If the scratch location is <code>/tmp/scratch</code> or empty, it's using ramdisk. Logs and coredumps will be lost on reboot. Set it to persistent storage.
+</div>
+
+<hr>
+<h2 id="11-core-dump-configuration"><span id="coredump"></span>11. Core Dump Configuration</h2>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check core dump partition</span>
+esxcli system coredump partition get
+
+<span class="hljs-comment"># Check network core dump</span>
+esxcli system coredump network get
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Active: true
+Configured: true
+Partition: naa.xxx:7
+
+# Network dump:
+Enabled: true
+Host VmkNic: vmk0
+Network Server IP: 192.168.1.50
+Network Server Port: 6500
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Partition configured and active, or network dump enabled</td>
+<td>Can capture PSOD</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Only network dump (no local partition)</td>
+<td>Depends on network availability</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>No dump target configured</td>
+<td>PSOD data will be lost</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="12-security-health"><span id="security"></span>12. Security Health</h2>
+<h3 id="121-ssh-status"><span id="sec-ssh"></span>12.1 SSH Status</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check if SSH is running</span>
+/etc/init.d/SSH status
+
+<span class="hljs-comment"># Check SSH timeout</span>
+esxcli system settings advanced list -o /UserVars/ESXiShellInteractiveTimeOut
+esxcli system settings advanced list -o /UserVars/ESXiShellTimeOut
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>Expected SSH State</th>
+<th>Timeout</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Production</td>
+<td>Disabled (enable only for maintenance)</td>
+<td>300-900 seconds</td>
+</tr>
+<tr>
+<td>Lab</td>
+<td>Enabled acceptable</td>
+<td>900 seconds</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="122-lockdown-mode"><span id="sec-lockdown"></span>12.2 Lockdown Mode</h3>
+<pre><code class="hljs bash">vim-cmd hostsvc/hostsummary | grep lockdownMode
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>lockdownMode = "lockdownNormal"
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Description</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>lockdownDisabled</code></td>
+<td>No lockdown</td>
+<td>Lab only</td>
+</tr>
+<tr>
+<td><code>lockdownNormal</code></td>
+<td>Only vCenter can manage host</td>
+<td>Production recommended</td>
+</tr>
+<tr>
+<td><code>lockdownStrict</code></td>
+<td>vCenter only, no DCUI</td>
+<td>High-security environments</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="123-esxi-firewall-rules"><span id="sec-firewall"></span>12.3 ESXi Firewall Rules</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all firewall rulesets</span>
+esxcli network firewall ruleset list
+
+<span class="hljs-comment"># Check specific rules</span>
+esxcli network firewall ruleset rule list --ruleset-id=sshServer
+</code></pre>
+<h4 id="key-rulesets-to-verify">Key Rulesets to Verify</h4>
+<table>
+<thead>
+<tr>
+<th>Ruleset</th>
+<th>Expected State</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sshServer</code></td>
+<td>Enabled (maintenance) / Disabled (production)</td>
+<td>SSH access</td>
+</tr>
+<tr>
+<td><code>webAccess</code></td>
+<td>Enabled</td>
+<td>Host client UI</td>
+</tr>
+<tr>
+<td><code>vSphereClient</code></td>
+<td>Enabled</td>
+<td>vCenter connectivity</td>
+</tr>
+<tr>
+<td><code>nsx</code></td>
+<td>Enabled</td>
+<td>NSX communication</td>
+</tr>
+<tr>
+<td><code>ntpClient</code></td>
+<td>Enabled</td>
+<td>NTP synchronization</td>
+</tr>
+<tr>
+<td><code>syslog</code></td>
+<td>Enabled</td>
+<td>Log forwarding</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="124-certificate-validity"><span id="sec-certs"></span>12.4 Certificate Validity</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check the ESXi host certificate</span>
+openssl x509 -<span class="hljs-keyword">in</span> /etc/vmware/ssl/rui.crt -noout -dates -subject
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>notBefore=Jan 15 00:00:00 2026 GMT
+notAfter=Jan 15 00:00:00 2028 GMT
+subject=CN = esxi-01.lab.local, ...
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Certificate &gt; 30 days from expiry</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Certificate 7-30 days from expiry</td>
+<td>Plan renewal</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Certificate expired or &lt; 7 days</td>
+<td>Renew immediately</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="125-account-lockout-policy"><span id="sec-accounts"></span>12.5 Account Lockout Policy</h3>
+<pre><code class="hljs bash">esxcli system account policy get
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Maximum Failed Login Attempts: 5
+Unlock Time (seconds): 900
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="13-performance-health"><span id="performance"></span>13. Performance Health</h2>
+<h3 id="131-cpu-ready--co-stop"><span id="perf-cpu"></span>13.1 CPU Ready &amp; Co-Stop</h3>
+<p><strong>What:</strong> Check if VMs are experiencing CPU scheduling delays (CPU ready time) or NUMA/co-stop issues.</p>
+<h4 id="esxtop-method">esxtop Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Interactive — press 'c' for CPU view</span>
+esxtop
+
+<span class="hljs-comment"># Batch mode</span>
+esxtop -b -d 5 -n 3 &gt; /tmp/esxtop-cpu.csv
+</code></pre>
+<p><strong>Key Columns in CPU View:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%RDY</td>
+<td>CPU Ready %</td>
+<td>&lt; 5%</td>
+<td>5-10%</td>
+<td>&gt; 10%</td>
+</tr>
+<tr>
+<td>%CSTP</td>
+<td>Co-Stop %</td>
+<td>&lt; 3%</td>
+<td>3-5%</td>
+<td>&gt; 5%</td>
+</tr>
+<tr>
+<td>%USED</td>
+<td>CPU Used %</td>
+<td>&lt; 80%</td>
+<td>80-90%</td>
+<td>&gt; 90%</td>
+</tr>
+</tbody></table>
+<div class="info-box">
+<strong>CPU Ready Explained:</strong> %RDY shows the percentage of time a vCPU wanted to run but had to wait for a physical CPU. High values indicate host CPU overcommitment. Reduce VM vCPU count or migrate VMs to balance load.
+</div>
+
+<hr>
+<h3 id="132-memory-ballooning--swap"><span id="perf-mem"></span>13.2 Memory Ballooning &amp; Swap</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Host memory summary</span>
+esxcli hardware memory get
+
+<span class="hljs-comment"># Check ballooning and swap via esxtop ('m' for memory view)</span>
+esxtop
+</code></pre>
+<p><strong>Key Memory Metrics:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Description</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MCTL (Balloon)</td>
+<td>Memory reclaimed by balloon driver</td>
+<td>0 MB</td>
+<td>&gt; 0 but &lt; 10% of VM memory</td>
+<td>&gt; 10% of VM memory</td>
+</tr>
+<tr>
+<td>SWCUR (Swap used)</td>
+<td>Memory swapped to disk</td>
+<td>0 MB</td>
+<td>Any swap used</td>
+<td>Swap actively in use (SWR/s &gt; 0)</td>
+</tr>
+<tr>
+<td>ZIP/s (Compression)</td>
+<td>Memory compression rate</td>
+<td>0</td>
+<td>Low compression</td>
+<td>High compression</td>
+</tr>
+<tr>
+<td>CACHEUSD</td>
+<td>Host cache used</td>
+<td>—</td>
+<td>—</td>
+<td>&gt; 80% of cache</td>
+</tr>
+</tbody></table>
+<div class="danger">
+<strong>Swap Warning:</strong> Active swapping (SWR/s &gt; 0) causes severe VM performance degradation. Add physical memory or reduce VM count.
+</div>
+
+<hr>
+<h3 id="133-host-overcommit-ratio"><span id="perf-overcommit"></span>13.3 Host Overcommit Ratio</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Calculate overcommit ratio</span>
+<span class="hljs-comment"># Total VM vCPUs / Physical threads</span>
+esxcli hardware cpu global get
+vim-cmd vmsvc/getallvms | <span class="hljs-built_in">wc</span> -l
+
+<span class="hljs-comment"># Total configured VM memory vs physical memory</span>
+esxcli hardware memory get
+</code></pre>
+<h4 id="recommended-ratios">Recommended Ratios</h4>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vCPU : pCPU</td>
+<td>&lt; 3:1</td>
+<td>3:1 - 5:1</td>
+<td>&gt; 5:1</td>
+</tr>
+<tr>
+<td>vRAM : pRAM</td>
+<td>&lt; 1.2:1</td>
+<td>1.2:1 - 1.5:1</td>
+<td>&gt; 1.5:1</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="14-boot-configuration"><span id="boot"></span>14. Boot Configuration</h2>
+<p><strong>What:</strong> Verify the boot device, boot banks, and acceptance level.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Boot device</span>
+esxcli system boot device get
+
+<span class="hljs-comment"># Boot bank status</span>
+/bin/bootbank-util status
+
+<span class="hljs-comment"># Acceptance level</span>
+esxcli software acceptance get
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Boot Device: mpx.vmhba0:C0:T0:L0
+Boot Filesystem UUID: 61234567-abcdef01...
+Boot bank: /bootbank (valid)
+Alt boot bank: /altbootbank (valid)
+Acceptance Level: VMwareCertified
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Both boot banks valid, acceptance <code>VMwareCertified</code> or <code>VMwareAccepted</code></td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Alt boot bank outdated</td>
+<td>Update after next patch</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Primary boot bank corrupt or <code>CommunitySupported</code> acceptance</td>
+<td>Remediation needed</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="15-patch--vib-level"><span id="patches"></span>15. Patch / VIB Level</h2>
+<p><strong>What:</strong> Verify the installed ESXi image profile matches the VCF BOM.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Installed image profile</span>
+esxcli software profile get
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Name: (Updated) ESXi-8.0U3-12345678-standard
+Vendor: VMware, Inc.
+Creation Time: 2026-01-15T00:00:00
+Modification Time: 2026-01-15T00:00:00
+Stateless Ready: True
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all installed VIBs</span>
+esxcli software vib list | <span class="hljs-built_in">head</span> -30
+
+<span class="hljs-comment"># Check for specific VIB</span>
+esxcli software vib list | grep -i nsx
+</code></pre>
+<h4 id="vcf-90-expected-versions-check-bom">VCF 9.0 Expected Versions (check BOM)</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Expected Version</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ESXi</td>
+<td>8.0 U3 (build 12345678+)</td>
+</tr>
+<tr>
+<td>NSX VIBs</td>
+<td>4.2.x</td>
+</tr>
+<tr>
+<td>vSAN</td>
+<td>Included in ESXi</td>
+</tr>
+<tr>
+<td>Drivers</td>
+<td>Per HCL</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="16-port-reference-table"><span id="ports"></span>16. Port Reference Table</h2>
+<h3 id="inbound-ports-to-esxi">Inbound Ports (to ESXi)</h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Port</th>
+<th>Protocol</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vCenter</td>
+<td>443</td>
+<td>TCP</td>
+<td>Host management</td>
+</tr>
+<tr>
+<td>vCenter</td>
+<td>902</td>
+<td>TCP</td>
+<td>VM console (MKS)</td>
+</tr>
+<tr>
+<td>vCenter</td>
+<td>8080</td>
+<td>TCP</td>
+<td>vSphere Update Manager</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>22</td>
+<td>TCP</td>
+<td>SSH (when enabled)</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>443</td>
+<td>TCP</td>
+<td>Host Client UI</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>5989</td>
+<td>TCP</td>
+<td>CIM/WBEM</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>443</td>
+<td>TCP</td>
+<td>Host preparation</td>
+</tr>
+<tr>
+<td>Syslog Collector</td>
+<td>514</td>
+<td>UDP/TCP</td>
+<td>Syslog (if push)</td>
+</tr>
+<tr>
+<td>SNMP Manager</td>
+<td>161</td>
+<td>UDP</td>
+<td>SNMP queries</td>
+</tr>
+</tbody></table>
+<h3 id="outbound-ports-from-esxi">Outbound Ports (from ESXi)</h3>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Port</th>
+<th>Protocol</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vCenter</td>
+<td>443</td>
+<td>TCP</td>
+<td>vpxa → VPXD</td>
+</tr>
+<tr>
+<td>vCenter</td>
+<td>80</td>
+<td>TCP</td>
+<td>Reverse proxy</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>1234</td>
+<td>TCP</td>
+<td>MPA</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>1235</td>
+<td>TCP</td>
+<td>Central CLI</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>5671</td>
+<td>TCP</td>
+<td>Message bus</td>
+</tr>
+<tr>
+<td>ESXi (other)</td>
+<td>8000</td>
+<td>TCP</td>
+<td>vMotion</td>
+</tr>
+<tr>
+<td>ESXi (other)</td>
+<td>902</td>
+<td>TCP</td>
+<td>NFC (provisioning)</td>
+</tr>
+<tr>
+<td>ESXi (other)</td>
+<td>2233</td>
+<td>TCP</td>
+<td>vSAN transport</td>
+</tr>
+<tr>
+<td>ESXi (other)</td>
+<td>4789</td>
+<td>UDP</td>
+<td>Geneve overlay</td>
+</tr>
+<tr>
+<td>NTP Server</td>
+<td>123</td>
+<td>UDP</td>
+<td>Time sync</td>
+</tr>
+<tr>
+<td>DNS Server</td>
+<td>53</td>
+<td>TCP/UDP</td>
+<td>Name resolution</td>
+</tr>
+<tr>
+<td>Syslog</td>
+<td>514/6514</td>
+<td>UDP/TCP</td>
+<td>Log forwarding</td>
+</tr>
+<tr>
+<td>Dump Collector</td>
+<td>6500</td>
+<td>TCP</td>
+<td>Network core dump</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="17-common-issues--remediation"><span id="common-issues"></span>17. Common Issues &amp; Remediation</h2>
+<h3 id="171-psod-purple-screen-of-death">17.1 PSOD (Purple Screen of Death)</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely Cause</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Purple screen on console</td>
+<td>Kernel panic — driver/firmware bug, hardware failure, memory corruption</td>
+<td>Collect core dump; check <code>/var/core/</code>; contact VMware support with dump</td>
+</tr>
+<tr>
+<td>Recurring PSOD</td>
+<td>Driver bug</td>
+<td>Update driver/firmware per HCL; check VMware KB</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Collect PSOD info:</strong><br>
+1. Note the error message on purple screen<br>
+2. Core dump location: <code>esxcli system coredump partition get</code><br>
+3. Extract: <code>vm-support --performance --output /vmfs/volumes/datastore1/</code><br>
+4. File SR with VMware including the vm-support bundle
+</div>
+
+<h3 id="172-storage-apd--pdl">17.2 Storage APD / PDL</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Type</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VMs frozen, "APD timeout" in logs</td>
+<td>All Paths Down</td>
+<td>Check SAN fabric, zoning, HBA; paths auto-recover</td>
+</tr>
+<tr>
+<td>VMs terminated, "PDL" in logs</td>
+<td>Permanent Device Loss</td>
+<td>Storage LUN is permanently gone; restore from backup</td>
+</tr>
+</tbody></table>
+<h3 id="173-network-partition">17.3 Network Partition</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely Cause</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Host shows disconnected in vCenter</td>
+<td>Management network issue</td>
+<td>Check vmk0 IP, switch port, VLAN; restart management agents</td>
+</tr>
+<tr>
+<td>vSAN partition event</td>
+<td>vSAN network failure</td>
+<td>Check vmk2, switch MTU, VLAN trunking</td>
+</tr>
+<tr>
+<td>vMotion failures</td>
+<td>vMotion network</td>
+<td>Check vmk1, MTU 9000, IP routing</td>
+</tr>
+</tbody></table>
+<h3 id="174-host-disconnection-from-vcenter">17.4 Host Disconnection from vCenter</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># On ESXi host — restart management agents</span>
+/sbin/services.sh restart
+
+<span class="hljs-comment"># If that doesn't work, restart only vpxa</span>
+/etc/init.d/vpxa restart
+
+<span class="hljs-comment"># Check hostd logs for errors</span>
+<span class="hljs-built_in">tail</span> -100 /var/log/hostd.log | grep -i error
+<span class="hljs-built_in">tail</span> -100 /var/log/vpxa.log | grep -i error
+</code></pre>
+<h3 id="175-performance-degradation">17.5 Performance Degradation</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Check</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>High CPU Ready</td>
+<td><code>esxtop</code> %RDY &gt; 10%</td>
+<td>Right-size VMs (reduce vCPUs), DRS rebalance</td>
+</tr>
+<tr>
+<td>Memory ballooning</td>
+<td><code>esxtop</code> MCTLSZ &gt; 0</td>
+<td>Add RAM or migrate VMs</td>
+</tr>
+<tr>
+<td>Storage latency</td>
+<td><code>esxtop</code> DAVG &gt; 50ms</td>
+<td>Check SAN, move VM to faster storage</td>
+</tr>
+<tr>
+<td>Network drops</td>
+<td><code>esxcli network nic stats get -n vmnicX</code></td>
+<td>Check NIC errors, replace cable/NIC</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="18-cli-quick-reference-card"><span id="cli-reference"></span>18. CLI Quick Reference Card</h2>
+<h3 id="system-information">System Information</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>esxcli system version get</code></td>
+<td>ESXi version and build</td>
+</tr>
+<tr>
+<td><code>esxcli system hostname get</code></td>
+<td>Hostname and domain</td>
+</tr>
+<tr>
+<td><code>esxcli system uuid get</code></td>
+<td>System UUID</td>
+</tr>
+<tr>
+<td><code>esxcli system boot device get</code></td>
+<td>Boot device info</td>
+</tr>
+<tr>
+<td><code>esxcli system time get</code></td>
+<td>Current system time</td>
+</tr>
+<tr>
+<td><code>esxcli system stats uptime get</code></td>
+<td>Uptime in seconds</td>
+</tr>
+<tr>
+<td><code>esxcli hardware platform get</code></td>
+<td>Hardware platform info</td>
+</tr>
+<tr>
+<td><code>esxcli hardware cpu global get</code></td>
+<td>CPU count/threads</td>
+</tr>
+<tr>
+<td><code>esxcli hardware memory get</code></td>
+<td>Total physical memory</td>
+</tr>
+</tbody></table>
+<h3 id="storage-commands">Storage Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>esxcli storage filesystem list</code></td>
+<td>Datastores and capacity</td>
+</tr>
+<tr>
+<td><code>esxcli storage vmfs extent list</code></td>
+<td>VMFS extents</td>
+</tr>
+<tr>
+<td><code>esxcli storage core device list</code></td>
+<td>SCSI devices</td>
+</tr>
+<tr>
+<td><code>esxcli storage core adapter list</code></td>
+<td>HBA adapters</td>
+</tr>
+<tr>
+<td><code>esxcli storage nmp path list</code></td>
+<td>Multipath status</td>
+</tr>
+<tr>
+<td><code>esxcli storage nmp device list</code></td>
+<td>Path policy per device</td>
+</tr>
+<tr>
+<td><code>esxcli storage core adapter rescan --all</code></td>
+<td>Rescan all storage</td>
+</tr>
+<tr>
+<td><code>esxcli storage nfs list</code></td>
+<td>NFS datastores</td>
+</tr>
+</tbody></table>
+<h3 id="networking-commands">Networking Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>esxcli network nic list</code></td>
+<td>Physical NICs</td>
+</tr>
+<tr>
+<td><code>esxcli network nic get -n vmnicX</code></td>
+<td>NIC detail/driver</td>
+</tr>
+<tr>
+<td><code>esxcli network nic stats get -n vmnicX</code></td>
+<td>NIC statistics</td>
+</tr>
+<tr>
+<td><code>esxcli network ip interface list</code></td>
+<td>VMkernel adapters</td>
+</tr>
+<tr>
+<td><code>esxcli network ip interface ipv4 get</code></td>
+<td>VMkernel IPv4</td>
+</tr>
+<tr>
+<td><code>esxcli network ip route ipv4 list</code></td>
+<td>Routing table</td>
+</tr>
+<tr>
+<td><code>esxcli network ip dns server list</code></td>
+<td>DNS servers</td>
+</tr>
+<tr>
+<td><code>esxcli network vswitch standard list</code></td>
+<td>Standard vSwitches</td>
+</tr>
+<tr>
+<td><code>esxcli network vswitch dvs vmware list</code></td>
+<td>Distributed vSwitches</td>
+</tr>
+<tr>
+<td><code>esxcli network firewall ruleset list</code></td>
+<td>Firewall rules</td>
+</tr>
+<tr>
+<td><code>vmkping -I vmkX &lt;target&gt;</code></td>
+<td>Ping from VMkernel</td>
+</tr>
+</tbody></table>
+<h3 id="service-commands">Service Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/etc/init.d/hostd status</code></td>
+<td>Host agent status</td>
+</tr>
+<tr>
+<td><code>/etc/init.d/vpxa status</code></td>
+<td>vCenter agent status</td>
+</tr>
+<tr>
+<td><code>/etc/init.d/ntpd status</code></td>
+<td>NTP daemon status</td>
+</tr>
+<tr>
+<td><code>/etc/init.d/SSH status</code></td>
+<td>SSH service status</td>
+</tr>
+<tr>
+<td><code>/sbin/services.sh restart</code></td>
+<td>Restart all mgmt agents</td>
+</tr>
+<tr>
+<td><code>esxcli system process list</code></td>
+<td>Running processes</td>
+</tr>
+<tr>
+<td><code>chkconfig --list</code></td>
+<td>Service startup config</td>
+</tr>
+</tbody></table>
+<h3 id="security-commands">Security Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>esxcli software acceptance get</code></td>
+<td>Acceptance level</td>
+</tr>
+<tr>
+<td><code>esxcli system account policy get</code></td>
+<td>Lockout policy</td>
+</tr>
+<tr>
+<td><code>vim-cmd hostsvc/hostsummary | grep lockdown</code></td>
+<td>Lockdown mode</td>
+</tr>
+<tr>
+<td><code>esxcli network firewall get</code></td>
+<td>Firewall status</td>
+</tr>
+<tr>
+<td><code>openssl x509 -in /etc/vmware/ssl/rui.crt -noout -dates</code></td>
+<td>Cert expiry</td>
+</tr>
+</tbody></table>
+<h3 id="software--patch-commands">Software / Patch Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>esxcli software profile get</code></td>
+<td>Current image profile</td>
+</tr>
+<tr>
+<td><code>esxcli software vib list</code></td>
+<td>All installed VIBs</td>
+</tr>
+<tr>
+<td><code>esxcli software vib install -v &lt;path&gt;</code></td>
+<td>Install VIB</td>
+</tr>
+<tr>
+<td><code>esxcli software sources profile list -d &lt;depot&gt;</code></td>
+<td>Available profiles</td>
+</tr>
+</tbody></table>
+<h3 id="performance--diagnostic-commands">Performance / Diagnostic Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>esxtop</code></td>
+<td>Real-time performance</td>
+</tr>
+<tr>
+<td><code>esxtop -b -d 5 -n 3 &gt; /tmp/out.csv</code></td>
+<td>Batch performance capture</td>
+</tr>
+<tr>
+<td><code>vm-support --performance</code></td>
+<td>Generate support bundle</td>
+</tr>
+<tr>
+<td><code>vmkbacktrace</code></td>
+<td>Stack trace</td>
+</tr>
+<tr>
+<td><code>vobd -e</code></td>
+<td>Event logging</td>
+</tr>
+<tr>
+<td><code>tail -f /var/log/vmkernel.log</code></td>
+<td>Kernel log (live)</td>
+</tr>
+<tr>
+<td><code>tail -f /var/log/hostd.log</code></td>
+<td>Host agent log</td>
+</tr>
+<tr>
+<td><code>tail -f /var/log/vpxa.log</code></td>
+<td>vCenter agent log</td>
+</tr>
+</tbody></table>
+<hr>
+<div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #1565c0; color: #666; font-size: 9pt;">
+
+<p><strong>ESXi Hosts Health Check Handbook</strong>
+Version 1.0 | March 2026
+© 2026 Virtual Control LLC — All Rights Reserved</p>
+</div>
+
+	
+
+</body></html>

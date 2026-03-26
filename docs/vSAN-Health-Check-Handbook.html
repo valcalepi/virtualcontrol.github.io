@@ -1,0 +1,3547 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8"><style>* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	line-height: 1.6;
+	font-size: 0.6875em; /* 11 pt */
+	color: #111;
+	margin: 0;
+}
+
+body > :first-child {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+body > :last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0.5em 0 0.25em;
+}
+
+h5,
+h6 {
+	padding: 0;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h6 {
+	font-size: 0.875em;
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0.25em 0 1em;
+}
+
+blockquote {
+	margin: 0.5em 0 1em;
+	padding-left: 0.5em;
+	padding-right: 1em;
+	border-left: 4px solid gainsboro;
+	font-style: italic;
+}
+
+ul,
+ol {
+	margin: 0;
+	margin-left: 1em;
+	padding: 0 1.5em 0.5em;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+p code,
+li code,
+pre code {
+	background-color: #f8f8f8;
+	padding: 0.1em 0.375em;
+	border: 1px solid #f8f8f8;
+	border-radius: 0.25em;
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+pre code {
+	display: block;
+	padding: 0.5em;
+}
+
+.page-break {
+	page-break-after: always;
+}
+
+img {
+	max-width: 100%;
+	margin: 1em 0;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: block;
+	margin: 0 0 1em;
+	width: 100%;
+	overflow: auto;
+}
+
+table th,
+table td {
+	padding: 0.5em 1em;
+	border: 1px solid gainsboro;
+}
+
+table th {
+	font-weight: 600;
+}
+
+table tr {
+	background-color: white;
+	border-top: 1px solid gainsboro;
+}
+
+table tr:nth-child(2n) {
+	background-color: whitesmoke;
+}
+/*# sourceURL=E:\VCF-Depot\node_modules\md-to-pdf\markdown.css*/</style><style>pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/
+.hljs {
+  color: #24292e;
+  background: #ffffff
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  /* prettylights-syntax-keyword */
+  color: #d73a49
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  /* prettylights-syntax-entity */
+  color: #6f42c1
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  /* prettylights-syntax-constant */
+  color: #005cc5
+}
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  /* prettylights-syntax-string */
+  color: #032f62
+}
+.hljs-built_in,
+.hljs-symbol {
+  /* prettylights-syntax-variable */
+  color: #e36209
+}
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  /* prettylights-syntax-comment */
+  color: #6a737d
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  /* prettylights-syntax-entity-tag */
+  color: #22863a
+}
+.hljs-subst {
+  /* prettylights-syntax-storage-modifier-import */
+  color: #24292e
+}
+.hljs-section {
+  /* prettylights-syntax-markup-heading */
+  color: #005cc5;
+  font-weight: bold
+}
+.hljs-bullet {
+  /* prettylights-syntax-markup-list */
+  color: #735c0f
+}
+.hljs-emphasis {
+  /* prettylights-syntax-markup-italic */
+  color: #24292e;
+  font-style: italic
+}
+.hljs-strong {
+  /* prettylights-syntax-markup-bold */
+  color: #24292e;
+  font-weight: bold
+}
+.hljs-addition {
+  /* prettylights-syntax-markup-inserted */
+  color: #22863a;
+  background-color: #f0fff4
+}
+.hljs-deletion {
+  /* prettylights-syntax-markup-deleted */
+  color: #b31d28;
+  background-color: #ffeef0
+}
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
+  
+}/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
+h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
+h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
+h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
+th { background-color: #0b3d6b; color: white; padding: 7px 10px; text-align: left; }
+td { border: 1px solid #cfd8dc; padding: 6px 10px; }
+tr:nth-child(even) { background-color: #e3f2fd; }
+code { background-color: #e3f2fd; padding: 2px 5px; border-radius: 3px; font-size: 9pt; font-family: 'Cascadia Code', Consolas, monospace; color: #0b3d6b; }
+pre { background-color: #f5f5f5; padding: 12px; border-radius: 5px; border-left: 4px solid #1565c0; font-size: 9pt; line-height: 1.4; overflow-x: auto; }
+pre code { background: none; padding: 0; color: #1a1a1a; }
+a { color: #1565c0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 14px; margin: 10px 0; font-size: 9pt; }
+.toc { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px 30px; margin: 20px 0; }
+.toc ul { list-style: none; padding-left: 0; }
+.toc > ul > li { margin-bottom: 6px; }
+.toc > ul > li > a { font-weight: bold; font-size: 11pt; color: #0b3d6b; }
+.toc ul ul { padding-left: 22px; margin-top: 3px; }
+.toc ul ul li { margin-bottom: 2px; }
+.toc ul ul li a { font-size: 9.5pt; color: #333; }
+.info-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.warn-box { background: #fff3e0; border-left: 4px solid #f57c00; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.fix-box { background: #e8f5e9; border-left: 4px solid #43a047; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.danger { background: #ffebee; border-left: 4px solid #e53935; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.badge-pass { background: #43a047; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.badge-warn { background: #f57c00; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.badge-fail { background: #e53935; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.cover-page { text-align: center; padding: 80px 20px; page-break-after: always; }
+.cover-page h1 { font-size: 28pt; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 30px; border-radius: 10px; }
+.cover-page .subtitle { font-size: 14pt; color: #1565c0; margin-top: 20px; }
+.cover-page .meta { font-size: 10pt; color: #666; margin-top: 40px; line-height: 2; }
+.page-break { page-break-before: always; }</style></head>
+	<body class="">
+		<div class="cover-page">
+
+<h1 id="vsan-health-check-handbook">vSAN Health Check Handbook</h1>
+<div class="subtitle">Comprehensive Health Verification for vSAN in VMware Cloud Foundation 9</div>
+
+<div class="meta">
+<strong>Prepared by:</strong> Virtual Control LLC<br>
+<strong>Date:</strong> March 2026<br>
+<strong>Version:</strong> 1.0<br>
+<strong>Classification:</strong> Internal Use<br>
+<strong>Platform:</strong> VMware Cloud Foundation 9.x / vSAN 8.x ESA &amp; OSA
+</div>
+
+</div>
+
+<hr>
+<div class="toc">
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+  <li><a href="#overview-and-purpose">1. Overview &amp; Purpose</a>
+    <ul>
+      <li><a href="#scope">1.1 Scope</a></li>
+      <li><a href="#when-to-run">1.2 When to Run Health Checks</a></li>
+      <li><a href="#audience">1.3 Target Audience</a></li>
+    </ul>
+  </li>
+  <li><a href="#prerequisites">2. Prerequisites</a>
+    <ul>
+      <li><a href="#access-requirements">2.1 Access Requirements</a></li>
+      <li><a href="#tools-and-utilities">2.2 Tools &amp; Utilities</a></li>
+      <li><a href="#rvc-setup">2.3 RVC Setup</a></li>
+      <li><a href="#powercli-setup">2.4 PowerCLI Setup</a></li>
+    </ul>
+  </li>
+  <li><a href="#quick-reference-summary">3. Quick Reference Summary Table</a></li>
+  <li><a href="#vsan-cluster-health">4. vSAN Cluster Health</a>
+    <ul>
+      <li><a href="#cluster-health-list">4.1 Cluster Health List</a></li>
+      <li><a href="#proactive-health-tests">4.2 Proactive Health Tests</a></li>
+      <li><a href="#vsan-health-service">4.3 vSAN Health Service</a></li>
+      <li><a href="#cluster-membership">4.4 Cluster Membership</a></li>
+    </ul>
+  </li>
+  <li><a href="#disk-group-status">5. Disk Group Status</a>
+    <ul>
+      <li><a href="#disk-group-listing">5.1 Disk Group Listing</a></li>
+      <li><a href="#cache-capacity-tier">5.2 Cache &amp; Capacity Tier Status</a></li>
+      <li><a href="#smart-data">5.3 SMART Data Analysis</a></li>
+      <li><a href="#vsan-storage-list">5.4 vSAN Storage List</a></li>
+    </ul>
+  </li>
+  <li><a href="#capacity-analysis">6. Capacity Analysis</a>
+    <ul>
+      <li><a href="#capacity-overview">6.1 Capacity Overview</a></li>
+      <li><a href="#dedup-compression">6.2 Dedup &amp; Compression Savings</a></li>
+      <li><a href="#thin-provisioning">6.3 Thin Provisioning</a></li>
+      <li><a href="#slack-space">6.4 Slack Space Calculation</a></li>
+      <li><a href="#capacity-thresholds">6.5 Capacity Thresholds</a></li>
+    </ul>
+  </li>
+  <li><a href="#resync-status">7. Resync Status</a>
+    <ul>
+      <li><a href="#active-resyncs">7.1 Active Resyncs</a></li>
+      <li><a href="#resync-eta">7.2 Resync ETA</a></li>
+      <li><a href="#resync-performance-impact">7.3 Performance Impact</a></li>
+    </ul>
+  </li>
+  <li><a href="#vsan-network-health">8. vSAN Network Health</a>
+    <ul>
+      <li><a href="#vmkernel-adapters">8.1 vSAN VMkernel Adapters</a></li>
+      <li><a href="#multicast-unicast">8.2 Multicast &amp; Unicast Check</a></li>
+      <li><a href="#jumbo-frames">8.3 Jumbo Frame Validation</a></li>
+      <li><a href="#network-partition">8.4 Network Partition Detection</a></li>
+      <li><a href="#witness-connectivity">8.5 Witness Host Connectivity</a></li>
+    </ul>
+  </li>
+  <li><a href="#performance-health">9. Performance Health</a>
+    <ul>
+      <li><a href="#iops-latency">9.1 IOPS &amp; Latency</a></li>
+      <li><a href="#congestion">9.2 Congestion</a></li>
+      <li><a href="#outstanding-io">9.3 Outstanding IO</a></li>
+      <li><a href="#vscsistats">9.4 vscsiStats</a></li>
+      <li><a href="#performance-service">9.5 Performance Service</a></li>
+    </ul>
+  </li>
+  <li><a href="#object-health-compliance">10. Object Health &amp; Compliance</a>
+    <ul>
+      <li><a href="#object-count">10.1 Object Count</a></li>
+      <li><a href="#compliance-state">10.2 Compliance State</a></li>
+      <li><a href="#inaccessible-objects">10.3 Inaccessible Objects</a></li>
+      <li><a href="#reduced-redundancy">10.4 Reduced Redundancy Objects</a></li>
+    </ul>
+  </li>
+  <li><a href="#stretched-cluster-health">11. Stretched Cluster Health</a>
+    <ul>
+      <li><a href="#preferred-secondary-site">11.1 Preferred &amp; Secondary Site</a></li>
+      <li><a href="#witness-host">11.2 Witness Host</a></li>
+      <li><a href="#site-affinity-rules">11.3 Site Affinity Rules</a></li>
+      <li><a href="#inter-site-latency">11.4 Inter-Site Latency</a></li>
+    </ul>
+  </li>
+  <li><a href="#fault-domains">12. Fault Domains</a>
+    <ul>
+      <li><a href="#fd-configuration">12.1 Fault Domain Configuration</a></li>
+      <li><a href="#fd-host-distribution">12.2 Host Distribution</a></li>
+      <li><a href="#fd-policy-compliance">12.3 Policy Compliance with Fault Domains</a></li>
+    </ul>
+  </li>
+  <li><a href="#vsan-health-service-detail">13. vSAN Health Service Detail</a>
+    <ul>
+      <li><a href="#health-service-status">13.1 Health Service Status</a></li>
+      <li><a href="#test-categories">13.2 Test Categories</a></li>
+      <li><a href="#silenced-alarms">13.3 Silenced Alarms</a></li>
+    </ul>
+  </li>
+  <li><a href="#hcl-compliance">14. HCL Compliance</a>
+    <ul>
+      <li><a href="#controller-driver-firmware">14.1 Controller, Driver &amp; Firmware</a></li>
+      <li><a href="#hcl-database-update">14.2 HCL Database Update</a></li>
+    </ul>
+  </li>
+  <li><a href="#port-reference-table">15. Port Reference Table</a></li>
+  <li><a href="#common-issues-remediation">16. Common Issues &amp; Remediation</a>
+    <ul>
+      <li><a href="#disk-failures">16.1 Disk Failures</a></li>
+      <li><a href="#network-partition-issues">16.2 Network Partition</a></li>
+      <li><a href="#resync-storms">16.3 Resync Storms</a></li>
+      <li><a href="#performance-degradation">16.4 Performance Degradation</a></li>
+      <li><a href="#clom-errors">16.5 CLOM Errors</a></li>
+    </ul>
+  </li>
+  <li><a href="#cli-quick-reference-card">17. CLI Quick Reference Card</a></li>
+  <li><a href="#powercli-quick-reference">18. PowerCLI Quick Reference</a></li>
+</ul>
+
+</div>
+
+<div class="page-break"></div>
+
+<p><a id="overview-and-purpose"></a></p>
+<h1 id="1-overview--purpose">1. Overview &amp; Purpose</h1>
+<p>This handbook provides a systematic, step-by-step approach to verifying the health and operational readiness of vSAN clusters running within VMware Cloud Foundation (VCF) 9 environments. It covers both vSAN Original Storage Architecture (OSA) and the vSAN Express Storage Architecture (ESA), which is the recommended configuration in VCF 9.</p>
+<p><a id="scope"></a></p>
+<h2 id="11-scope">1.1 Scope</h2>
+<p>This document covers the following health check domains:</p>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Cluster Health</strong></td>
+<td>Overall cluster status, membership, and health service results</td>
+</tr>
+<tr>
+<td><strong>Disk Group Status</strong></td>
+<td>Physical disk health, SMART data, cache and capacity tiers</td>
+</tr>
+<tr>
+<td><strong>Capacity Analysis</strong></td>
+<td>Space utilization, deduplication, compression, slack space</td>
+</tr>
+<tr>
+<td><strong>Resync Operations</strong></td>
+<td>Active resyncs, component movement, ETA, and impact</td>
+</tr>
+<tr>
+<td><strong>Network Health</strong></td>
+<td>VMkernel configuration, connectivity, jumbo frames, partitions</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>IOPS, latency, congestion, outstanding IO metrics</td>
+</tr>
+<tr>
+<td><strong>Object Health</strong></td>
+<td>Object compliance, accessibility, redundancy state</td>
+</tr>
+<tr>
+<td><strong>Stretched Cluster</strong></td>
+<td>Site configuration, witness host, inter-site latency</td>
+</tr>
+<tr>
+<td><strong>Fault Domains</strong></td>
+<td>Domain layout, host distribution, policy interaction</td>
+</tr>
+<tr>
+<td><strong>HCL Compliance</strong></td>
+<td>Controller, driver, and firmware compatibility verification</td>
+</tr>
+</tbody></table>
+<div class="info-box">
+<strong>VCF 9 Context:</strong> In VCF 9, vSAN is the default and only supported principal storage for the management domain. Workload domains may use vSAN, NFS, VMFS on FC, or vVols. This handbook focuses on the vSAN principal storage layer but applies to any vSAN-backed workload domain as well.
+</div>
+
+<p><a id="when-to-run"></a></p>
+<h2 id="12-when-to-run-health-checks">1.2 When to Run Health Checks</h2>
+<p>Health checks should be executed at these critical intervals:</p>
+<table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Frequency</th>
+<th>Checks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Routine maintenance</td>
+<td>Weekly</td>
+<td>Full suite</td>
+</tr>
+<tr>
+<td>Pre-upgrade (VCF lifecycle)</td>
+<td>Before each LCM bundle</td>
+<td>Full suite</td>
+</tr>
+<tr>
+<td>Post-upgrade</td>
+<td>Immediately after LCM completes</td>
+<td>Full suite</td>
+</tr>
+<tr>
+<td>Host addition/removal</td>
+<td>After cluster change</td>
+<td>Cluster, disk, network, capacity</td>
+</tr>
+<tr>
+<td>Disk replacement</td>
+<td>After replacement completes</td>
+<td>Disk group, resync, object health</td>
+</tr>
+<tr>
+<td>Network change</td>
+<td>After vDS/vmkernel modification</td>
+<td>Network health, connectivity</td>
+</tr>
+<tr>
+<td>Performance complaint</td>
+<td>On demand</td>
+<td>Performance, congestion, resync</td>
+</tr>
+<tr>
+<td>After power event</td>
+<td>After datacenter power restoration</td>
+<td>Full suite</td>
+</tr>
+<tr>
+<td>Pre-expansion</td>
+<td>Before adding workload domains</td>
+<td>Capacity, performance baseline</td>
+</tr>
+</tbody></table>
+<p><a id="audience"></a></p>
+<h2 id="13-target-audience">1.3 Target Audience</h2>
+<p>This handbook is intended for:</p>
+<ul>
+<li><strong>VCF Administrators</strong> managing day-to-day operations</li>
+<li><strong>Storage Engineers</strong> responsible for vSAN health and capacity</li>
+<li><strong>Network Engineers</strong> validating vSAN transport configuration</li>
+<li><strong>Operations Teams</strong> performing routine maintenance windows</li>
+<li><strong>Escalation Engineers</strong> troubleshooting vSAN issues</li>
+</ul>
+<div class="page-break"></div>
+
+<p><a id="prerequisites"></a></p>
+<h1 id="2-prerequisites">2. Prerequisites</h1>
+<p><a id="access-requirements"></a></p>
+<h2 id="21-access-requirements">2.1 Access Requirements</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>vCenter SSO Admin</strong></td>
+<td><code>administrator@vsphere.local</code> or equivalent role</td>
+</tr>
+<tr>
+<td><strong>ESXi Root Access</strong></td>
+<td>SSH enabled on target hosts (temporarily, disable after)</td>
+</tr>
+<tr>
+<td><strong>SDDC Manager Access</strong></td>
+<td>Admin-level access for LCM and inventory queries</td>
+</tr>
+<tr>
+<td><strong>vSAN Witness Host</strong></td>
+<td>Root access if stretched cluster is deployed</td>
+</tr>
+<tr>
+<td><strong>Network Access</strong></td>
+<td>Ability to reach vSAN VMkernel IPs on port 2233</td>
+</tr>
+</tbody></table>
+<div class="warn-box">
+<strong>Security Note:</strong> SSH access to ESXi hosts should be enabled only for the duration of the health check. In VCF 9, SSH is disabled by default and locked down via the Security Configuration Guide. Always disable SSH and re-enable lockdown mode after completing CLI-based checks.
+</div>
+
+<p><a id="tools-and-utilities"></a></p>
+<h2 id="22-tools--utilities">2.2 Tools &amp; Utilities</h2>
+<h4 id="required-tools">Required Tools</h4>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>esxcli</code></td>
+<td>Built into ESXi 8.x</td>
+<td>Primary CLI for vSAN health checks</td>
+</tr>
+<tr>
+<td><code>vSAN Health Service</code></td>
+<td>Built into vCenter 8.x</td>
+<td>Automated health test framework</td>
+</tr>
+<tr>
+<td>PowerCLI</td>
+<td>13.3+</td>
+<td>Scripted health checks and reporting</td>
+</tr>
+<tr>
+<td>RVC (Ruby vSphere Console)</td>
+<td>Built into vCenter appliance</td>
+<td>Deep vSAN diagnostics</td>
+</tr>
+<tr>
+<td><code>vmkping</code></td>
+<td>Built into ESXi</td>
+<td>vSAN network validation</td>
+</tr>
+<tr>
+<td><code>vsanDiskMgmt</code></td>
+<td>Built into ESXi</td>
+<td>Disk management and SMART queries</td>
+</tr>
+<tr>
+<td>Python (<code>pyVmomi</code>)</td>
+<td>8.0+</td>
+<td>API-driven automation</td>
+</tr>
+</tbody></table>
+<h4 id="optional-tools">Optional Tools</h4>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vSAN Observer</td>
+<td>Real-time performance monitoring (HTML5 dashboard)</td>
+</tr>
+<tr>
+<td>vRealize Operations / Aria Operations</td>
+<td>Trending, capacity forecasting</td>
+</tr>
+<tr>
+<td>VDT (VMware Diagnostic Tool)</td>
+<td>Automated diagnostic collection</td>
+</tr>
+<tr>
+<td>SOS Report</td>
+<td>Support bundle generation</td>
+</tr>
+</tbody></table>
+<p><a id="rvc-setup"></a></p>
+<h2 id="23-rvc-setup">2.3 RVC Setup</h2>
+<p>The Ruby vSphere Console is accessed directly from the vCenter Server Appliance (VCSA).</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH to VCSA</span>
+ssh root@vcsa-01.vcf.local
+
+<span class="hljs-comment"># Launch RVC</span>
+rvc administrator@vsphere.local@localhost
+
+<span class="hljs-comment"># Navigate to the vSAN cluster</span>
+<span class="hljs-built_in">cd</span> /localhost/SDDC-Datacenter/computers/SDDC-Cluster1
+
+<span class="hljs-comment"># Run the vSAN health check</span>
+vsan.health.health_summary .
+</code></pre>
+<h4 id="key-rvc-commands-for-vsan">Key RVC Commands for vSAN</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Full cluster health summary</span>
+vsan.health.health_summary /localhost/datacenter/computers/cluster
+
+<span class="hljs-comment"># Disk balance check</span>
+vsan.disks_stats /localhost/datacenter/computers/cluster
+
+<span class="hljs-comment"># Object placement info</span>
+vsan.object_info /localhost/datacenter/computers/cluster
+
+<span class="hljs-comment"># Network partition check</span>
+vsan.cluster_info /localhost/datacenter/computers/cluster
+
+<span class="hljs-comment"># Resync dashboard</span>
+vsan.resync_dashboard /localhost/datacenter/computers/cluster
+
+<span class="hljs-comment"># Performance diagnostics</span>
+vsan.perf.stats_object_list /localhost/datacenter/computers/cluster
+</code></pre>
+<p><a id="powercli-setup"></a></p>
+<h2 id="24-powercli-setup">2.4 PowerCLI Setup</h2>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Install or update PowerCLI</span>
+<span class="hljs-built_in">Install-Module</span> <span class="hljs-literal">-Name</span> VMware.PowerCLI <span class="hljs-literal">-Scope</span> CurrentUser <span class="hljs-literal">-Force</span>
+
+<span class="hljs-comment"># Configure certificate handling for lab/internal environments</span>
+<span class="hljs-built_in">Set-PowerCLIConfiguration</span> <span class="hljs-literal">-InvalidCertificateAction</span> Ignore <span class="hljs-literal">-Confirm</span>:<span class="hljs-variable">$false</span>
+
+<span class="hljs-comment"># Connect to vCenter</span>
+<span class="hljs-built_in">Connect-VIServer</span> <span class="hljs-literal">-Server</span> vcsa<span class="hljs-literal">-01</span>.vcf.local <span class="hljs-literal">-User</span> administrator@vsphere.local <span class="hljs-literal">-Password</span> <span class="hljs-string">'&lt;password&gt;'</span>
+
+<span class="hljs-comment"># Verify vSAN module is loaded</span>
+<span class="hljs-built_in">Get-Module</span> VMware.VimAutomation.Storage <span class="hljs-literal">-ListAvailable</span>
+</code></pre>
+<div class="info-box">
+<strong>PowerCLI 13.3+:</strong> VCF 9 ships with vCenter 8.x which requires PowerCLI 13.3 or later for full vSAN ESA cmdlet support. Ensure you are running the latest version before executing vSAN commands.
+</div>
+
+<div class="page-break"></div>
+
+<p><a id="quick-reference-summary"></a></p>
+<h1 id="3-quick-reference-summary-table">3. Quick Reference Summary Table</h1>
+<p>The following table provides a consolidated view of every health check in this handbook with pass/warn/fail criteria.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Check</th>
+<th>CLI / Method</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Cluster Health Status</td>
+<td><code>esxcli vsan health cluster list</code></td>
+<td>All tests green</td>
+<td>Any test yellow</td>
+<td>Any test red</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Cluster Membership</td>
+<td><code>esxcli vsan cluster get</code></td>
+<td>All hosts in cluster</td>
+<td>Host count mismatch</td>
+<td>Partitioned cluster</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Disk Group Status</td>
+<td><code>esxcli vsan storage list</code></td>
+<td>All disks healthy</td>
+<td>Disk degraded</td>
+<td>Disk absent/failed</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SMART Health</td>
+<td><code>esxcli vsan debug disk smart get</code></td>
+<td>All attributes OK</td>
+<td>Wear leveling &gt; 80%</td>
+<td>Reallocated sectors &gt; 0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Capacity Used %</td>
+<td>vSAN UI / PowerCLI</td>
+<td>&lt; 70%</td>
+<td>70-80%</td>
+<td>&gt; 80%</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Slack Space</td>
+<td>Calculated</td>
+<td>&gt;= 25% of raw</td>
+<td>15-25% of raw</td>
+<td>&lt; 15% of raw</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Dedup/Compression Ratio</td>
+<td>vSAN UI</td>
+<td>&gt; 1.5x</td>
+<td>1.0-1.5x</td>
+<td>&lt; 1.0x (overhead)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Active Resyncs</td>
+<td><code>esxcli vsan debug resync summary</code></td>
+<td>0 active</td>
+<td>&lt; 100 components</td>
+<td>&gt; 100 components</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Resync ETA</td>
+<td>vSAN UI</td>
+<td>&lt; 1 hour</td>
+<td>1-8 hours</td>
+<td>&gt; 8 hours</td>
+</tr>
+<tr>
+<td>10</td>
+<td>vSAN VMkernel Config</td>
+<td><code>esxcli network ip interface list</code></td>
+<td>vSAN vmk on each host</td>
+<td>MTU mismatch</td>
+<td>vmk missing</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Jumbo Frame Test</td>
+<td><code>vmkping -s 8972 -d</code></td>
+<td>0% packet loss</td>
+<td>Intermittent loss</td>
+<td>Complete failure</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Network Partition</td>
+<td>Health service</td>
+<td>No partition</td>
+<td>N/A</td>
+<td>Partition detected</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Read Latency</td>
+<td>vSAN perf service</td>
+<td>&lt; 1 ms</td>
+<td>1-5 ms</td>
+<td>&gt; 5 ms</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Write Latency</td>
+<td>vSAN perf service</td>
+<td>&lt; 2 ms</td>
+<td>2-10 ms</td>
+<td>&gt; 10 ms</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Congestion</td>
+<td><code>esxcli vsan debug controller list</code></td>
+<td>0</td>
+<td>1-40</td>
+<td>&gt; 40</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Outstanding IO</td>
+<td><code>vsish</code></td>
+<td>&lt; 32</td>
+<td>32-64</td>
+<td>&gt; 64</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Object Health</td>
+<td><code>esxcli vsan debug object health summary</code></td>
+<td>All healthy</td>
+<td>Reduced redundancy</td>
+<td>Inaccessible objects</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Policy Compliance</td>
+<td>vSAN UI / PowerCLI</td>
+<td>All compliant</td>
+<td>Non-compliant (rebuilding)</td>
+<td>Non-compliant (stuck)</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Witness Host</td>
+<td><code>esxcli vsan cluster get</code></td>
+<td>Connected</td>
+<td>High latency</td>
+<td>Disconnected</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Inter-Site Latency</td>
+<td><code>vmkping</code></td>
+<td>&lt; 5 ms RTT</td>
+<td>5-100 ms</td>
+<td>&gt; 200 ms / timeout</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Fault Domain Count</td>
+<td>vSAN UI</td>
+<td>&gt;= 3 FDs</td>
+<td>2 FDs</td>
+<td>1 FD (no protection)</td>
+</tr>
+<tr>
+<td>22</td>
+<td>HCL Controller</td>
+<td>Health service</td>
+<td>Certified</td>
+<td>DB outdated &gt; 90 days</td>
+<td>Not on HCL</td>
+</tr>
+<tr>
+<td>23</td>
+<td>HCL Driver/Firmware</td>
+<td>Health service</td>
+<td>Matched</td>
+<td>Minor mismatch</td>
+<td>Critical mismatch</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Health Service Status</td>
+<td>vCenter UI</td>
+<td>Running, recent test</td>
+<td>Last test &gt; 24h ago</td>
+<td>Service not running</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Silenced Alarms</td>
+<td>Health service</td>
+<td>0 silenced</td>
+<td>1-3 silenced</td>
+<td>&gt; 3 silenced</td>
+</tr>
+</tbody></table>
+<div class="page-break"></div>
+
+<p><a id="vsan-cluster-health"></a></p>
+<h1 id="4-vsan-cluster-health">4. vSAN Cluster Health</h1>
+<p><a id="cluster-health-list"></a></p>
+<h2 id="41-cluster-health-list">4.1 Cluster Health List</h2>
+<p>The primary entry point for vSAN health is the <code>esxcli vsan health cluster list</code> command. This queries the vSAN health service and returns the state of every registered health test.</p>
+<h4 id="command">Command</h4>
+<pre><code class="hljs bash">esxcli vsan health cluster list
+</code></pre>
+<h4 id="expected-output-healthy">Expected Output (Healthy)</h4>
+<pre><code>Group: Cluster
+   Overall Health: green
+   Tests:
+      vSAN Health Service Up-To-Date:                green
+      vSAN Build Recommendation Engine Health:       green
+      vSAN CLOMD Liveness:                           green
+      vSAN Disk Balance:                             green
+      vSAN Object Health:                            green
+      vSAN Cluster Partition:                        green
+
+Group: Network
+   Overall Health: green
+   Tests:
+      All Hosts Have a vSAN VMkernel Adapter:        green
+      All Hosts Have Matching Subnets:               green
+      vSAN: Basic (Unicast) Connectivity Check:      green
+      vSAN: MTU Check (Ping with Large Packet Size): green
+      vMotion: Basic Connectivity Check:             green
+
+Group: Physical Disk
+   Overall Health: green
+   Tests:
+      vSAN Disk Health:                              green
+      Metadata Health:                               green
+      Component Metadata Health:                     green
+      Congestion:                                    green
+      Disk Space Usage:                              green
+
+Group: Data
+   Overall Health: green
+   Tests:
+      vSAN Object Health:                            green
+      vSAN VM Health:                                green
+
+Group: Limits
+   Overall Health: green
+   Tests:
+      Current Cluster Situation:                     green
+      After 1 Additional Host Failure:               green
+      Host Component Limit:                          green
+</code></pre>
+<h4 id="pass--warn--fail-criteria">Pass / Warn / Fail Criteria</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All groups show <code>green</code></td>
+<td>No action required</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>One or more tests show <code>yellow</code></td>
+<td>Investigate the specific test; see relevant section of this handbook</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any test shows <code>red</code></td>
+<td>Immediate investigation required; do NOT proceed with maintenance</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation:</strong> If any test returns red, drill into the specific group. Run <code>esxcli vsan health cluster list -t "test name"</code> to get details on the specific failing test. Cross-reference with the relevant section of this handbook for targeted remediation steps.
+</div>
+
+<p><a id="proactive-health-tests"></a></p>
+<h2 id="42-proactive-health-tests">4.2 Proactive Health Tests</h2>
+<p>vSAN proactive tests simulate failure scenarios to predict cluster behavior under stress.</p>
+<h4 id="proactive-rebalance-test">Proactive Rebalance Test</h4>
+<pre><code class="hljs bash">esxcli vsan health cluster list -t <span class="hljs-string">"vSAN Disk Balance"</span>
+</code></pre>
+<h4 id="what-it-checks">What It Checks</h4>
+<ul>
+<li>Disk usage variance across all capacity disks</li>
+<li>Whether any single disk has &gt; 30% more usage than the average</li>
+<li>Recommendations for proactive rebalancing</li>
+</ul>
+<h4 id="expected-output-healthy-1">Expected Output (Healthy)</h4>
+<pre><code>Health Test: vSAN Disk Balance
+   Status: green
+   Description: Disks are well balanced. Max variance: 8%
+</code></pre>
+<h4 id="triggering-a-manual-rebalance">Triggering a Manual Rebalance</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># From RVC</span>
+vsan.proactive_rebalance /localhost/datacenter/computers/cluster --start
+</code></pre>
+<div class="warn-box">
+<strong>Caution:</strong> Proactive rebalance generates resync traffic. Only run during maintenance windows or periods of low IO activity. The rebalance operation can be throttled or stopped at any time.
+</div>
+
+<p><a id="vsan-health-service"></a></p>
+<h2 id="43-vsan-health-service">4.3 vSAN Health Service</h2>
+<p>The vSAN Health Service runs within vCenter and executes periodic health tests.</p>
+<h4 id="verify-health-service-status">Verify Health Service Status</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># On any ESXi host in the cluster</span>
+esxcli vsan health cluster list -t <span class="hljs-string">"vSAN Health Service Up-To-Date"</span>
+</code></pre>
+<h4 id="force-a-health-check-run-via-powercli">Force a Health Check Run via PowerCLI</h4>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Get the vSAN cluster</span>
+<span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-literal">-Name</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+
+<span class="hljs-comment"># Get vSAN view</span>
+<span class="hljs-variable">$vsanClusterHealthSystem</span> = <span class="hljs-built_in">Get-VsanView</span> <span class="hljs-literal">-Id</span> <span class="hljs-string">"VsanVcClusterHealthSystem-vsan-cluster-health-system"</span>
+
+<span class="hljs-comment"># Run health check</span>
+<span class="hljs-variable">$vsanClusterHealthSystem</span>.VsanQueryVcClusterHealthSummary(
+    <span class="hljs-variable">$cluster</span>.ExtensionData.MoRef,
+    <span class="hljs-variable">$null</span>, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$true</span>, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$null</span>, <span class="hljs-string">"defaultView"</span>
+)
+</code></pre>
+<h4 id="expected-behavior">Expected Behavior</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Expected</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Service Running</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Last Test Time</td>
+<td>Within 60 minutes</td>
+</tr>
+<tr>
+<td>Test Result Format</td>
+<td>Per-group green/yellow/red</td>
+</tr>
+<tr>
+<td>Auto-Run Interval</td>
+<td>Every 60 minutes (configurable)</td>
+</tr>
+</tbody></table>
+<p><a id="cluster-membership"></a></p>
+<h2 id="44-cluster-membership">4.4 Cluster Membership</h2>
+<p>Every host in a vSAN cluster must be an active member. Use <code>esxcli vsan cluster get</code> to verify.</p>
+<h4 id="command-1">Command</h4>
+<pre><code class="hljs bash">esxcli vsan cluster get
+</code></pre>
+<h4 id="expected-output-healthy-2">Expected Output (Healthy)</h4>
+<pre><code>Cluster Information
+   Enabled: true
+   Current Local Time: 2026-03-26T14:30:00Z
+   Local Node UUID: 5f3e8c7a-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+   Local Node Type: NORMAL
+   Local Node State: MASTER
+   Member Count: 4
+   Sub-Cluster Member UUIDs: 5f3e8c7a-..., 6a4f9d8b-..., 7b5a0e9c-..., 8c6b1fad-...
+   Sub-Cluster Membership Entry Revision: 12
+   Sub-Cluster Member Count: 4
+   Maintenance Mode State: OFF
+</code></pre>
+<h4 id="verify-from-all-hosts">Verify From All Hosts</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Run on each ESXi host to ensure consistent membership</span>
+<span class="hljs-keyword">for</span> host <span class="hljs-keyword">in</span> esx01 esx02 esx03 esx04; <span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"=== <span class="hljs-variable">$host</span> ==="</span>
+  ssh root@<span class="hljs-variable">$host</span> <span class="hljs-string">'esxcli vsan cluster get | grep "Member Count"'</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Member Count matches expected host count on ALL hosts</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>A host shows <code>BACKUP</code> instead of <code>MASTER</code>/<code>AGENT</code></td>
+<td>Verify roles; may be transitional</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Member count differs between hosts (split-brain)</td>
+<td>Network partition detected -- see Section 8.4</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Split-Brain):</strong><br>
+1. Check vSAN network connectivity between all hosts: <code>vmkping -I vmk1 &lt;target_ip&gt;</code><br>
+2. Verify the vSAN portgroup is consistent across all hosts<br>
+3. Check for physical switch issues on the vSAN VLAN<br>
+4. If a host is isolated, restart the vSAN CLOMD service: <code>/etc/init.d/clomd restart</code><br>
+5. As a last resort, remove and re-add the host to the vSAN cluster
+</div>
+
+<div class="page-break"></div>
+
+<p><a id="disk-group-status"></a></p>
+<h1 id="5-disk-group-status">5. Disk Group Status</h1>
+<p><a id="disk-group-listing"></a></p>
+<h2 id="51-disk-group-listing">5.1 Disk Group Listing</h2>
+<p>In vSAN OSA, storage is organized into disk groups (1 cache SSD + 1-7 capacity disks). In vSAN ESA (VCF 9 default), all NVMe devices participate in a single storage pool without a separate cache tier.</p>
+<h4 id="command-osa">Command (OSA)</h4>
+<pre><code class="hljs bash">esxcli vsan storage list
+</code></pre>
+<h4 id="expected-output-osa-healthy">Expected Output (OSA Healthy)</h4>
+<pre><code>Device: naa.55cd2e414f5356c0
+   Display Name: naa.55cd2e414f5356c0
+   Is SSD: true
+   In CMMDS: true
+   On-disk Format Version: 15
+   Is Capacity Tier: false
+   Is Cache Tier: true
+   RAID Level: NA
+   vSAN UUID: 52e9a1f4-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+   vSAN Disk Group UUID: 52e9a1f4-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+   vSAN Disk Group Name: naa.55cd2e414f5356c0
+   Health Status: Healthy
+
+Device: naa.55cd2e414f53789a
+   Display Name: naa.55cd2e414f53789a
+   Is SSD: true
+   In CMMDS: true
+   On-disk Format Version: 15
+   Is Capacity Tier: true
+   Is Cache Tier: false
+   RAID Level: NA
+   vSAN UUID: 63fa2b05-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+   Health Status: Healthy
+</code></pre>
+<h4 id="command-esa">Command (ESA)</h4>
+<pre><code class="hljs bash">esxcli vsan storage list
+</code></pre>
+<h4 id="expected-output-esa-healthy">Expected Output (ESA Healthy)</h4>
+<pre><code>Device: t10.NVMe____Dell_Ent_NVMe_v2_AGN_RI_U.2_1.6TB
+   Display Name: Dell Ent NVMe AGN RI U.2 1.6TB
+   Is SSD: true
+   In CMMDS: true
+   On-disk Format Version: 19
+   Is Capacity Tier: true
+   Is Cache Tier: false
+   ESA Eligible: true
+   Storage Pool UUID: 74ab3c16-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+   Health Status: Healthy
+</code></pre>
+<p><a id="cache-capacity-tier"></a></p>
+<h2 id="52-cache--capacity-tier-status">5.2 Cache &amp; Capacity Tier Status</h2>
+<h4 id="check-individual-disk-status">Check Individual Disk Status</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all vSAN disks with health</span>
+esxcli vsan storage list | grep -E <span class="hljs-string">"Display Name|Health Status|Is Cache|Is Capacity"</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All disks: <code>Health Status: Healthy</code></td>
+<td>No action</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Any disk: <code>Health Status: Degraded</code></td>
+<td>Schedule replacement at next window</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any disk: <code>Health Status: Failed</code> or missing</td>
+<td>Immediate replacement required</td>
+</tr>
+</tbody></table>
+<div class="danger">
+<strong>Critical:</strong> If a cache tier disk fails in OSA, the ENTIRE disk group goes offline. All components on capacity disks in that group become unavailable until the cache disk is replaced and the disk group is recreated. In ESA, single disk failures are tolerated without disk group loss.
+</div>
+
+<p><a id="smart-data"></a></p>
+<h2 id="53-smart-data-analysis">5.3 SMART Data Analysis</h2>
+<p>Self-Monitoring, Analysis, and Reporting Technology (SMART) provides early warning of disk failure.</p>
+<h4 id="command-2">Command</h4>
+<pre><code class="hljs bash">esxcli vsan debug disk smart get -d naa.55cd2e414f5356c0
+</code></pre>
+<h4 id="expected-output-healthy-3">Expected Output (Healthy)</h4>
+<pre><code>Parameter                     Value  Threshold  Worst  Status
+----------------------------  -----  ---------  -----  ------
+Health Status                 OK     N/A        N/A    OK
+Media Wearout Indicator       98     0          98     OK
+Write Error Count             0      0          0      OK
+Read Error Count              0      0          0      OK
+Power-on Hours                14820  0          14820  OK
+Power Cycle Count             12     0          12     OK
+Reallocated Sector Count      0      0          0      OK
+Uncorrectable Error Count     0      0          0      OK
+Temperature Celsius           34     0          42     OK
+</code></pre>
+<h4 id="critical-smart-attributes-to-monitor">Critical SMART Attributes to Monitor</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Media Wearout Indicator</td>
+<td>&gt; 20% remaining</td>
+<td>5-20% remaining</td>
+<td>&lt; 5% remaining</td>
+</tr>
+<tr>
+<td>Reallocated Sector Count</td>
+<td>0</td>
+<td>1-10</td>
+<td>&gt; 10</td>
+</tr>
+<tr>
+<td>Uncorrectable Error Count</td>
+<td>0</td>
+<td>1-5</td>
+<td>&gt; 5</td>
+</tr>
+<tr>
+<td>Temperature Celsius</td>
+<td>&lt; 50C</td>
+<td>50-70C</td>
+<td>&gt; 70C</td>
+</tr>
+<tr>
+<td>Write Error Count</td>
+<td>0</td>
+<td>1-10</td>
+<td>&gt; 10</td>
+</tr>
+<tr>
+<td>Read Error Count</td>
+<td>0</td>
+<td>1-10</td>
+<td>&gt; 10</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Failing SMART):</strong><br>
+1. Open a VMware SR or OEM hardware support case for disk replacement<br>
+2. Place the host in maintenance mode (ensure evacuate data): <code>esxcli system maintenanceMode set -e true -m ensureAccessibility</code><br>
+3. Remove the disk from the disk group: <code>esxcli vsan storage remove -d naa.xxxx</code><br>
+4. Physically replace the disk<br>
+5. Add the new disk: <code>esxcli vsan storage add -d naa.xxxx -s naa.cache_disk</code><br>
+6. Exit maintenance mode: <code>esxcli system maintenanceMode set -e false</code>
+</div>
+
+<p><a id="vsan-storage-list"></a></p>
+<h2 id="54-vsan-storage-list----complete-output">5.4 vSAN Storage List -- Complete Output</h2>
+<h4 id="full-storage-inventory-command">Full Storage Inventory Command</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Comprehensive disk listing with all properties</span>
+esxcli vsan storage list --format=xml
+</code></pre>
+<h4 id="powercli-alternative">PowerCLI Alternative</h4>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Get all vSAN disk information</span>
+<span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$vsanDisks</span> = <span class="hljs-built_in">Get-VsanDisk</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$disk</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$vsanDisks</span>) {
+    [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+        Host          = <span class="hljs-variable">$disk</span>.VsanDiskGroup.VMHost.Name
+        DiskGroup     = <span class="hljs-variable">$disk</span>.VsanDiskGroup.Name
+        CanonicalName = <span class="hljs-variable">$disk</span>.CanonicalName
+        IsSSD         = <span class="hljs-variable">$disk</span>.IsSsd
+        IsCacheDisk   = <span class="hljs-variable">$disk</span>.IsCacheDisk
+        CapacityGB    = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$disk</span>.CapacityGB, <span class="hljs-number">2</span>)
+    }
+} | <span class="hljs-built_in">Format-Table</span> <span class="hljs-literal">-AutoSize</span>
+</code></pre>
+<div class="page-break"></div>
+
+<p><a id="capacity-analysis"></a></p>
+<h1 id="6-capacity-analysis">6. Capacity Analysis</h1>
+<p><a id="capacity-overview"></a></p>
+<h2 id="61-capacity-overview">6.1 Capacity Overview</h2>
+<h4 id="command-3">Command</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># From any ESXi host in the cluster</span>
+esxcli vsan debug object health summary get
+</code></pre>
+<h4 id="powercli-method-recommended">PowerCLI Method (Recommended)</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$spaceReport</span> = <span class="hljs-built_in">Get-VsanSpaceUsage</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+
+<span class="hljs-comment"># Display capacity summary</span>
+[<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+    <span class="hljs-string">"Total Capacity (TB)"</span>     = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$spaceReport</span>.TotalCapacityGB / <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>)
+    <span class="hljs-string">"Used Capacity (TB)"</span>      = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$spaceReport</span>.UsedCapacityGB / <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>)
+    <span class="hljs-string">"Free Capacity (TB)"</span>      = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$spaceReport</span>.FreeCapacityGB / <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>)
+    <span class="hljs-string">"Used %"</span>                  = [<span class="hljs-type">math</span>]::Round((<span class="hljs-variable">$spaceReport</span>.UsedCapacityGB / <span class="hljs-variable">$spaceReport</span>.TotalCapacityGB) * <span class="hljs-number">100</span>, <span class="hljs-number">1</span>)
+}
+</code></pre>
+<h4 id="expected-output">Expected Output</h4>
+<pre><code>Total Capacity (TB)    : 23.64
+Used Capacity (TB)     :  9.82
+Free Capacity (TB)     : 13.82
+Used %                 : 41.5
+</code></pre>
+<p><a id="dedup-compression"></a></p>
+<h2 id="62-dedup--compression-savings">6.2 Dedup &amp; Compression Savings</h2>
+<p>When deduplication and compression are enabled (common in vSAN ESA and optional in OSA all-flash), significant space savings are expected.</p>
+<h4 id="command-4">Command</h4>
+<pre><code class="hljs bash">esxcli vsan debug space show
+</code></pre>
+<h4 id="powercli-method">PowerCLI Method</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$spaceReport</span> = <span class="hljs-built_in">Get-VsanSpaceUsage</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+
+[<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+    <span class="hljs-string">"Before Dedup &amp; Compression (TB)"</span> = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$spaceReport</span>.PhysicalUsedCapacityGB / <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>)
+    <span class="hljs-string">"After Dedup &amp; Compression (TB)"</span>  = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$spaceReport</span>.UsedCapacityGB / <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>)
+    <span class="hljs-string">"Dedup Ratio"</span>                     = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$spaceReport</span>.DedupRatio, <span class="hljs-number">2</span>)
+    <span class="hljs-string">"Compression Ratio"</span>               = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$spaceReport</span>.CompressionRatio, <span class="hljs-number">2</span>)
+    <span class="hljs-string">"Overall Savings Ratio"</span>           = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$spaceReport</span>.DedupCompressionRatio, <span class="hljs-number">2</span>)
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Savings ratio &gt; 1.5x</td>
+<td>Good efficiency</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Savings ratio 1.0-1.5x</td>
+<td>Review workload data characteristics</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Savings ratio &lt; 1.0x</td>
+<td>Dedup/compression overhead exceeds savings; consider disabling</td>
+</tr>
+</tbody></table>
+<p><a id="thin-provisioning"></a></p>
+<h2 id="63-thin-provisioning">6.3 Thin Provisioning</h2>
+<p>vSAN uses thin provisioning by default for object storage. The logical provisioned space can far exceed physical capacity.</p>
+<h4 id="check-provisioned-vs-used-space">Check Provisioned vs. Used Space</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$vms</span> = <span class="hljs-built_in">Get-VM</span> <span class="hljs-literal">-Location</span> <span class="hljs-variable">$cluster</span>
+
+<span class="hljs-variable">$report</span> = <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$vm</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$vms</span>) {
+    <span class="hljs-variable">$disks</span> = <span class="hljs-built_in">Get-HardDisk</span> <span class="hljs-literal">-VM</span> <span class="hljs-variable">$vm</span>
+    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$disk</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$disks</span>) {
+        [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+            VM             = <span class="hljs-variable">$vm</span>.Name
+            Disk           = <span class="hljs-variable">$disk</span>.Name
+            ProvisionedGB  = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$disk</span>.CapacityGB, <span class="hljs-number">2</span>)
+            UsedGB         = [<span class="hljs-type">math</span>]::Round((<span class="hljs-variable">$disk</span>.CapacityGB - <span class="hljs-variable">$disk</span>.FreeSpaceGB), <span class="hljs-number">2</span>) <span class="hljs-comment"># Approximate</span>
+            ThinProvisioned = <span class="hljs-variable">$disk</span>.StorageFormat <span class="hljs-operator">-eq</span> <span class="hljs-string">"Thin"</span>
+        }
+    }
+}
+
+<span class="hljs-variable">$report</span> | <span class="hljs-built_in">Format-Table</span> <span class="hljs-literal">-AutoSize</span>
+<span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"Total Provisioned: <span class="hljs-variable">$</span>([math]::Round((<span class="hljs-variable">$report</span> | Measure-Object -Property ProvisionedGB -Sum).Sum, 2)) GB"</span>
+<span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"Total Used:        <span class="hljs-variable">$</span>([math]::Round((<span class="hljs-variable">$report</span> | Measure-Object -Property UsedGB -Sum).Sum, 2)) GB"</span>
+</code></pre>
+<p><a id="slack-space"></a></p>
+<h2 id="64-slack-space-calculation">6.4 Slack Space Calculation</h2>
+<p>vSAN reserves slack space for resyncs, maintenance operations, and failure recovery. The formula depends on the cluster size and policy.</p>
+<h4 id="slack-space-formula">Slack Space Formula</h4>
+<pre><code>Slack Space = Max(HostCapacity, 25% of RawCapacity)
+
+Where:
+  HostCapacity = Total raw capacity / Number of hosts
+  (i.e., the capacity of the largest single host)
+</code></pre>
+<h4 id="example-calculation">Example Calculation</h4>
+<pre><code>Cluster: 4 hosts x 10 TB raw each = 40 TB total raw
+HostCapacity = 40 TB / 4 = 10 TB
+25% of Raw = 40 TB x 0.25 = 10 TB
+Slack Space = Max(10 TB, 10 TB) = 10 TB
+
+Usable Capacity = 40 TB - 10 TB = 30 TB
+(Before policy overhead)
+
+With FTT=1, RAID-1 mirroring:
+  Effective Usable = 30 TB / 2 = 15 TB
+</code></pre>
+<p><a id="capacity-thresholds"></a></p>
+<h2 id="65-capacity-thresholds">6.5 Capacity Thresholds</h2>
+<table>
+<thead>
+<tr>
+<th>Used %</th>
+<th>Status</th>
+<th>Description</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0-70%</td>
+<td><span class="badge-pass">PASS</span></td>
+<td>Healthy capacity headroom</td>
+<td>Normal operations</td>
+</tr>
+<tr>
+<td>70-75%</td>
+<td><span class="badge-warn">WARN</span></td>
+<td>Approaching capacity limits</td>
+<td>Plan expansion or cleanup</td>
+</tr>
+<tr>
+<td>75-80%</td>
+<td><span class="badge-warn">WARN</span></td>
+<td>vSAN generates a warning alarm</td>
+<td>Active capacity management needed</td>
+</tr>
+<tr>
+<td>80-90%</td>
+<td><span class="badge-fail">FAIL</span></td>
+<td>vSAN throttles new writes</td>
+<td>Immediate expansion or VM migration</td>
+</tr>
+<tr>
+<td>90-95%</td>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Severe performance impact</td>
+<td>Emergency capacity action</td>
+</tr>
+<tr>
+<td>&gt;95%</td>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Risk of data inaccessibility</td>
+<td>Emergency: free space immediately</td>
+</tr>
+</tbody></table>
+<div class="danger">
+<strong>Critical Threshold - 80%:</strong> When vSAN capacity reaches 80%, the CLOM (Cluster Level Object Manager) stops performing automatic rebalancing and repairs. New VM deployments may fail. This is a hard operational limit that must never be sustained.
+</div>
+
+<div class="fix-box">
+<strong>Remediation (High Capacity):</strong><br>
+1. Identify largest consumers: <code>Get-VsanSpaceUsage -Cluster $cluster | Select -ExpandProperty SpaceDetail</code><br>
+2. Remove orphaned snapshots and stale VM files<br>
+3. Storage vMotion cold VMs to alternative datastores (NFS, VMFS)<br>
+4. Enable or verify deduplication and compression<br>
+5. Plan cluster expansion (add hosts or disks)<br>
+6. Review and right-size VMDK allocations
+</div>
+
+<div class="page-break"></div>
+
+<p><a id="resync-status"></a></p>
+<h1 id="7-resync-status">7. Resync Status</h1>
+<p><a id="active-resyncs"></a></p>
+<h2 id="71-active-resyncs">7.1 Active Resyncs</h2>
+<p>Resyncs occur when vSAN needs to rebuild or move components. They can be triggered by host maintenance, disk failures, policy changes, or rebalancing.</p>
+<h4 id="command-5">Command</h4>
+<pre><code class="hljs bash">esxcli vsan debug resync summary
+</code></pre>
+<h4 id="expected-output-no-active-resyncs">Expected Output (No Active Resyncs)</h4>
+<pre><code>Resync Summary:
+   Total Objects Resyncing: 0
+   Total Bytes To Resync: 0 B
+   Total Bytes Resynced: 0 B
+   Total Recoveries: 0
+   Total Rebalance: 0
+   Total Policy Change: 0
+   Total Evacuating: 0
+</code></pre>
+<h4 id="expected-output-active-resyncs">Expected Output (Active Resyncs)</h4>
+<pre><code>Resync Summary:
+   Total Objects Resyncing: 42
+   Total Bytes To Resync: 287.35 GB
+   Total Bytes Resynced: 143.67 GB
+   Total Recoveries: 38
+   Total Rebalance: 4
+   Total Policy Change: 0
+   Total Evacuating: 0
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>0 objects resyncing</td>
+<td>Cluster fully converged</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>&lt; 100 objects, progress advancing</td>
+<td>Monitor progress; expected after maintenance</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>&gt; 100 objects or resync stalled</td>
+<td>Investigate root cause; check for disk or network issues</td>
+</tr>
+</tbody></table>
+<p><a id="resync-eta"></a></p>
+<h2 id="72-resync-eta">7.2 Resync ETA</h2>
+<h4 id="monitoring-resync-progress">Monitoring Resync Progress</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Real-time resync monitoring</span>
+watch -n 10 <span class="hljs-string">'esxcli vsan debug resync summary'</span>
+</code></pre>
+<h4 id="powercli-resync-details">PowerCLI Resync Details</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$vsanHealthSystem</span> = <span class="hljs-built_in">Get-VsanView</span> <span class="hljs-literal">-Id</span> <span class="hljs-string">"VsanVcClusterHealthSystem-vsan-cluster-health-system"</span>
+<span class="hljs-variable">$resyncStatus</span> = <span class="hljs-variable">$vsanHealthSystem</span>.VsanQuerySyncingVsanObjects(
+    <span class="hljs-variable">$cluster</span>.ExtensionData.MoRef
+)
+
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$obj</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$resyncStatus</span>) {
+    [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+        UUID           = <span class="hljs-variable">$obj</span>.Uuid
+        BytesToSync    = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$obj</span>.BytesToSync / <span class="hljs-number">1</span>GB, <span class="hljs-number">2</span>)
+        BytesSynced    = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$obj</span>.RecoveryETA, <span class="hljs-number">0</span>)
+        Reason         = <span class="hljs-variable">$obj</span>.Reason
+    }
+} | <span class="hljs-built_in">Format-Table</span> <span class="hljs-literal">-AutoSize</span>
+</code></pre>
+<h4 id="rvc-resync-dashboard">RVC Resync Dashboard</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Provides a continuously updating view of resync progress</span>
+vsan.resync_dashboard /localhost/datacenter/computers/cluster
+</code></pre>
+<p><a id="resync-performance-impact"></a></p>
+<h2 id="73-performance-impact">7.3 Performance Impact</h2>
+<p>Active resyncs consume disk IO and network bandwidth. vSAN uses a throttling mechanism to limit impact on production workloads.</p>
+<h4 id="check-resync-throttle-configuration">Check Resync Throttle Configuration</h4>
+<pre><code class="hljs bash">esxcli system settings advanced list -o /LSOM/lsomResyncThrottleEnabled
+esxcli system settings advanced list -o /VSAN/ResyncThrottleAdaptive
+</code></pre>
+<h4 id="resync-traffic-limits">Resync Traffic Limits</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ResyncThrottleAdaptive</code></td>
+<td>1 (enabled)</td>
+<td>vSAN automatically reduces resync bandwidth when VM IO is detected</td>
+</tr>
+<tr>
+<td><code>ResyncBandwidthCap</code></td>
+<td>0 (unlimited)</td>
+<td>Maximum MB/s for resync traffic per host</td>
+</tr>
+<tr>
+<td><code>lsomResyncThrottleEnabled</code></td>
+<td>1</td>
+<td>Enables disk-level resync throttling</td>
+</tr>
+</tbody></table>
+<div class="warn-box">
+<strong>Performance Impact:</strong> During large-scale resyncs (e.g., after host failure), expect 10-30% reduction in VM IO performance. Avoid scheduling additional maintenance operations or large deployments until resyncs complete.
+</div>
+
+<div class="page-break"></div>
+
+<p><a id="vsan-network-health"></a></p>
+<h1 id="8-vsan-network-health">8. vSAN Network Health</h1>
+<p><a id="vmkernel-adapters"></a></p>
+<h2 id="81-vsan-vmkernel-adapters">8.1 vSAN VMkernel Adapters</h2>
+<p>Every host in the vSAN cluster must have a dedicated VMkernel adapter tagged for vSAN traffic.</p>
+<h4 id="command-6">Command</h4>
+<pre><code class="hljs bash">esxcli network ip interface list | grep -A5 <span class="hljs-string">"vsan"</span>
+</code></pre>
+<h4 id="alternative-full-vmkernel-listing">Alternative: Full VMkernel Listing</h4>
+<pre><code class="hljs bash">esxcli network ip interface list
+</code></pre>
+<h4 id="expected-output-1">Expected Output</h4>
+<pre><code>vmk1
+   Name: vmk1
+   MAC Address: 00:50:56:6a:xx:xx
+   Enabled: true
+   Portset: DvsPortset-0
+   Portgroup: SDDC-DPortGroup-vSAN
+   VDS Name: SDDC-Dswitch-Private
+   MTU: 9000
+   TSO MSS: 65535
+   Port ID: 33554435
+   Netstack Instance: defaultTcpipStack
+   IPv4 Address: 172.16.10.101
+   IPv4 Netmask: 255.255.255.0
+   IPv4 Broadcast: 172.16.10.255
+   IPv6 Enabled: false
+   Tags: VSAN
+</code></pre>
+<h4 id="verify-vsan-tag-on-vmkernel">Verify vSAN Tag on VMkernel</h4>
+<pre><code class="hljs bash">esxcli vsan network list
+</code></pre>
+<h4 id="expected-output-2">Expected Output</h4>
+<pre><code>Interface
+   VmkNic Name: vmk1
+   IP Protocol: IP
+   Interface UUID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+   Agent Group Multicast Address: 224.2.3.4
+   Agent Group IPv6 Multicast Address: ff19::2:3:4
+   Agent Group Multicast Port: 23451
+   Master Group Multicast Address: 224.1.2.3
+   Master Group IPv6 Multicast Address: ff19::1:2:3
+   Master Group Multicast Port: 12345
+   Host Unicast Channel Bound Port: 12321
+   Multicast Enabled: true
+   Traffic Type: vsan
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All hosts have vmk with <code>Tags: VSAN</code>, MTU 9000</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>MTU mismatch across hosts</td>
+<td>Standardize MTU to 9000</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Host missing vSAN-tagged vmk adapter</td>
+<td>Add vSAN VMkernel adapter immediately</td>
+</tr>
+</tbody></table>
+<p><a id="multicast-unicast"></a></p>
+<h2 id="82-multicast--unicast-check">8.2 Multicast &amp; Unicast Check</h2>
+<p>vSAN can operate in multicast mode (legacy) or unicast mode (default in vSAN 7+/VCF 5+). VCF 9 clusters should use unicast.</p>
+<h4 id="check-current-mode">Check Current Mode</h4>
+<pre><code class="hljs bash">esxcli vsan network list | grep <span class="hljs-string">"Multicast Enabled"</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>VCF 9 Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Unicast (<code>Multicast Enabled: false</code>)</td>
+<td>Recommended</td>
+<td>Default for new VCF 9 clusters</td>
+</tr>
+<tr>
+<td>Multicast (<code>Multicast Enabled: true</code>)</td>
+<td>Legacy</td>
+<td>Requires IGMP snooping on physical switches</td>
+</tr>
+</tbody></table>
+<h4 id="verify-unicast-connectivity">Verify Unicast Connectivity</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># From each host, test connectivity to every other host on vSAN network</span>
+vmkping -I vmk1 172.16.10.102
+vmkping -I vmk1 172.16.10.103
+vmkping -I vmk1 172.16.10.104
+</code></pre>
+<p><a id="jumbo-frames"></a></p>
+<h2 id="83-jumbo-frame-validation">8.3 Jumbo Frame Validation</h2>
+<p>Jumbo frames (MTU 9000) are required for optimal vSAN performance. End-to-end validation is critical.</p>
+<h4 id="test-jumbo-frames-between-hosts">Test Jumbo Frames Between Hosts</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># From ESXi host, test jumbo frame path to each peer</span>
+<span class="hljs-comment"># -s 8972 = 9000 - 20 (IP header) - 8 (ICMP header) = 8972</span>
+<span class="hljs-comment"># -d = set DF (Don't Fragment) bit</span>
+
+vmkping -I vmk1 -s 8972 -d 172.16.10.102
+vmkping -I vmk1 -s 8972 -d 172.16.10.103
+vmkping -I vmk1 -s 8972 -d 172.16.10.104
+</code></pre>
+<h4 id="expected-output-healthy-4">Expected Output (Healthy)</h4>
+<pre><code>PING 172.16.10.102 (172.16.10.102): 8972 data bytes
+8980 bytes from 172.16.10.102: icmp_seq=0 ttl=64 time=0.254 ms
+8980 bytes from 172.16.10.102: icmp_seq=1 ttl=64 time=0.198 ms
+8980 bytes from 172.16.10.102: icmp_seq=2 ttl=64 time=0.211 ms
+
+--- 172.16.10.102 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 0.198/0.221/0.254 ms
+</code></pre>
+<h4 id="expected-output-failure">Expected Output (FAILURE)</h4>
+<pre><code>PING 172.16.10.102 (172.16.10.102): 8972 data bytes
+sendto() failed (Message too long)
+--- 172.16.10.102 ping statistics ---
+3 packets transmitted, 0 packets received, 100% packet loss
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>0% packet loss on all hosts with 8972 byte payload</td>
+<td>Jumbo frames working end-to-end</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Intermittent packet loss</td>
+<td>Check physical switch MTU, NIC firmware</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>100% loss or "Message too long"</td>
+<td>MTU mismatch in path -- check vmk, vDS, physical switch</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Jumbo Frame Failure):</strong><br>
+1. Verify VMkernel MTU: <code>esxcli network ip interface list | grep MTU</code><br>
+2. Verify vDS MTU: vCenter &gt; Networking &gt; vDS &gt; Settings &gt; MTU = 9000<br>
+3. Verify physical switch port MTU: interface-level <code>mtu 9216</code> (allows for overhead)<br>
+4. Verify physical NIC MTU: <code>esxcli network nic list</code><br>
+5. Check for any intermediate firewalls or routers that may reduce MTU<br>
+6. After fixing, retest: <code>vmkping -I vmk1 -s 8972 -d &lt;target_ip&gt;</code>
+</div>
+
+<p><a id="network-partition"></a></p>
+<h2 id="84-network-partition-detection">8.4 Network Partition Detection</h2>
+<p>A vSAN network partition occurs when hosts lose connectivity to each other, causing the cluster to split into sub-clusters.</p>
+<h4 id="check-via-health-service">Check via Health Service</h4>
+<pre><code class="hljs bash">esxcli vsan health cluster list -t <span class="hljs-string">"vSAN Cluster Partition"</span>
+</code></pre>
+<h4 id="check-via-cluster-membership">Check via Cluster Membership</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Run on EVERY host and compare Sub-Cluster Member UUIDs</span>
+esxcli vsan cluster get
+</code></pre>
+<h4 id="detecting-partition-via-cmmds">Detecting Partition via CMMDS</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check CMMDS master node</span>
+esxcli vsan cluster get | grep <span class="hljs-string">"Local Node State"</span>
+</code></pre>
+<p>If multiple hosts report <code>MASTER</code>, a partition exists -- only one host should be MASTER.</p>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Single MASTER, all hosts in same sub-cluster</td>
+<td>No partition</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Multiple MASTERs or mismatched sub-cluster membership</td>
+<td>Active partition -- URGENT</td>
+</tr>
+</tbody></table>
+<div class="danger">
+<strong>Network Partition Emergency:</strong> A vSAN network partition can cause data inaccessibility, VM failures, and split-brain conditions. This is a P1 severity event.
+</div>
+
+<div class="fix-box">
+<strong>Remediation (Network Partition):</strong><br>
+1. Identify which hosts can communicate with each other<br>
+2. Check physical network: <code>esxcli network nic stats get -n vmnic0</code> for errors/drops<br>
+3. Verify VLAN tagging consistency across all hosts<br>
+4. Check physical switch logs for spanning tree topology changes or port flapping<br>
+5. Test L2 connectivity: <code>vmkping -I vmk1 &lt;peer_vsan_ip&gt;</code> from each host<br>
+6. If a single host is isolated, restart its networking: <code>esxcli network ip interface set -i vmk1 -e false &amp;&amp; esxcli network ip interface set -i vmk1 -e true</code><br>
+7. Monitor CLOMD log for partition events: <code>tail -f /var/log/clomd.log | grep -i partition</code>
+</div>
+
+<p><a id="witness-connectivity"></a></p>
+<h2 id="85-witness-host-connectivity-stretched-cluster">8.5 Witness Host Connectivity (Stretched Cluster)</h2>
+<p>If a stretched cluster is deployed, the witness host must be reachable from both sites.</p>
+<h4 id="test-witness-connectivity">Test Witness Connectivity</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># From preferred site host</span>
+vmkping -I vmk1 &lt;witness_vsan_ip&gt;
+
+<span class="hljs-comment"># From secondary site host</span>
+vmkping -I vmk1 &lt;witness_vsan_ip&gt;
+</code></pre>
+<h4 id="verify-witness-in-cluster">Verify Witness in Cluster</h4>
+<pre><code class="hljs bash">esxcli vsan cluster get | grep -A2 <span class="hljs-string">"Witness"</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Witness reachable from both sites, &lt; 200ms RTT</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Witness reachable but RTT &gt; 100ms</td>
+<td>Investigate WAN link quality</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Witness unreachable from either site</td>
+<td>Immediate investigation -- quorum at risk</td>
+</tr>
+</tbody></table>
+<div class="page-break"></div>
+
+<p><a id="performance-health"></a></p>
+<h1 id="9-performance-health">9. Performance Health</h1>
+<p><a id="iops-latency"></a></p>
+<h2 id="91-iops--latency">9.1 IOPS &amp; Latency</h2>
+<h4 id="vsan-performance-service-vcenter-ui">vSAN Performance Service (vCenter UI)</h4>
+<p>Navigate to: <strong>Cluster &gt; Monitor &gt; vSAN &gt; Performance &gt; Virtual Machine Consumption</strong></p>
+<h4 id="cli-check-per-host-io-statistics">CLI: Check Per-Host IO Statistics</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Real-time IOPS and latency from ESXi</span>
+vsish -e get /vmkModules/lsom/disks/&lt;disk_uuid&gt;/info
+</code></pre>
+<h4 id="powercli-query-vsan-performance-data">PowerCLI: Query vSAN Performance Data</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$vsanPerfSystem</span> = <span class="hljs-built_in">Get-VsanView</span> <span class="hljs-literal">-Id</span> <span class="hljs-string">"VsanPerformanceManager-vsan-performance-manager"</span>
+
+<span class="hljs-comment"># Define time range (last 1 hour)</span>
+<span class="hljs-variable">$endTime</span> = <span class="hljs-built_in">Get-Date</span>
+<span class="hljs-variable">$startTime</span> = <span class="hljs-variable">$endTime</span>.AddHours(<span class="hljs-literal">-1</span>)
+
+<span class="hljs-comment"># Query cluster performance</span>
+<span class="hljs-variable">$spec</span> = <span class="hljs-built_in">New-Object</span> VMware.Vsan.Views.VsanPerfQuerySpec
+<span class="hljs-variable">$spec</span>.EntityRefId = <span class="hljs-string">"cluster-domclient:*"</span>
+<span class="hljs-variable">$spec</span>.StartTime = <span class="hljs-variable">$startTime</span>
+<span class="hljs-variable">$spec</span>.EndTime = <span class="hljs-variable">$endTime</span>
+
+<span class="hljs-variable">$perfData</span> = <span class="hljs-variable">$vsanPerfSystem</span>.VsanPerfQueryPerf(<span class="hljs-selector-tag">@</span>(<span class="hljs-variable">$spec</span>), <span class="hljs-variable">$cluster</span>.ExtensionData.MoRef)
+</code></pre>
+<h4 id="latency-thresholds">Latency Thresholds</h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Read Latency (average)</td>
+<td>&lt; 1 ms</td>
+<td>1-5 ms</td>
+<td>&gt; 5 ms</td>
+</tr>
+<tr>
+<td>Write Latency (average)</td>
+<td>&lt; 2 ms</td>
+<td>2-10 ms</td>
+<td>&gt; 10 ms</td>
+</tr>
+<tr>
+<td>Read IOPS</td>
+<td>Per baseline</td>
+<td>&gt; 20% below baseline</td>
+<td>&gt; 50% below baseline</td>
+</tr>
+<tr>
+<td>Write IOPS</td>
+<td>Per baseline</td>
+<td>&gt; 20% below baseline</td>
+<td>&gt; 50% below baseline</td>
+</tr>
+<tr>
+<td>Read Cache Hit Ratio (OSA)</td>
+<td>&gt; 90%</td>
+<td>70-90%</td>
+<td>&lt; 70%</td>
+</tr>
+</tbody></table>
+<p><a id="congestion"></a></p>
+<h2 id="92-congestion">9.2 Congestion</h2>
+<p>vSAN congestion values indicate back-pressure in the IO stack. A non-zero congestion value means vSAN is throttling IO.</p>
+<h4 id="command-7">Command</h4>
+<pre><code class="hljs bash">esxcli vsan debug controller list
+</code></pre>
+<h4 id="expected-output-healthy-5">Expected Output (Healthy)</h4>
+<pre><code>Controller: naa.55cd2e414f5356c0
+   State: HEALTHY
+   Congestion Value: 0
+   Congestion Type: None
+   Outstanding IO: 0
+</code></pre>
+<h4 id="alternative-vsish-congestion-query">Alternative: VSISH Congestion Query</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get per-disk congestion</span>
+vsish -e get /vmkModules/lsom/disks/&lt;disk_uuid&gt;/info | grep -i congestion
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Congestion Value</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td><span class="badge-pass">PASS</span></td>
+<td>No congestion</td>
+</tr>
+<tr>
+<td>1-20</td>
+<td><span class="badge-warn">WARN</span></td>
+<td>Mild congestion -- transient during bursts</td>
+</tr>
+<tr>
+<td>21-40</td>
+<td><span class="badge-warn">WARN</span></td>
+<td>Moderate congestion -- sustained IO pressure</td>
+</tr>
+<tr>
+<td>41-60</td>
+<td><span class="badge-fail">FAIL</span></td>
+<td>High congestion -- significant IO throttling</td>
+</tr>
+<tr>
+<td>61-100</td>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Severe congestion -- critical performance impact</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (High Congestion):</strong><br>
+1. Identify top IO consumers: vCenter &gt; Cluster &gt; Monitor &gt; vSAN &gt; Performance &gt; VM Consumption<br>
+2. Check for active resyncs: <code>esxcli vsan debug resync summary</code><br>
+3. Verify no runaway processes: <code>esxtop</code> (press <code>u</code> for disk view)<br>
+4. Check disk health -- degraded disks cause elevated congestion<br>
+5. Consider distributing workloads across more hosts<br>
+6. If persistent, add capacity disks or hosts to reduce per-disk load
+</div>
+
+<p><a id="outstanding-io"></a></p>
+<h2 id="93-outstanding-io">9.3 Outstanding IO</h2>
+<p>Outstanding IO counts indicate the number of IO operations queued but not yet completed.</p>
+<h4 id="command-8">Command</h4>
+<pre><code class="hljs bash">esxcli vsan debug controller list | grep <span class="hljs-string">"Outstanding IO"</span>
+</code></pre>
+<h4 id="vsish-deep-inspection">VSISH Deep Inspection</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Per-device outstanding IO</span>
+vsish -e get /vmkModules/lsom/disks/&lt;disk_uuid&gt;/info | grep outstanding
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Outstanding IO</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0-16</td>
+<td><span class="badge-pass">PASS</span></td>
+<td>Normal queue depth</td>
+</tr>
+<tr>
+<td>17-32</td>
+<td><span class="badge-pass">PASS</span></td>
+<td>Moderate load, acceptable</td>
+</tr>
+<tr>
+<td>33-64</td>
+<td><span class="badge-warn">WARN</span></td>
+<td>Elevated queue depth</td>
+</tr>
+<tr>
+<td>&gt; 64</td>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Queue saturation -- investigate</td>
+</tr>
+</tbody></table>
+<p><a id="vscsistats"></a></p>
+<h2 id="94-vscsistats">9.4 vscsiStats</h2>
+<p><code>vscsiStats</code> provides detailed IO profiling for individual VMs and virtual disks.</p>
+<h4 id="enable-vscsistats-collection">Enable vscsiStats Collection</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all virtual SCSI handles</span>
+vscsiStats -l
+
+<span class="hljs-comment"># Start collection for a specific handle</span>
+vscsiStats -s -w &lt;world_id&gt; -i &lt;handle_id&gt;
+
+<span class="hljs-comment"># Wait for collection period (e.g., 60 seconds)</span>
+<span class="hljs-built_in">sleep</span> 60
+
+<span class="hljs-comment"># Retrieve statistics</span>
+vscsiStats -p all -w &lt;world_id&gt; -i &lt;handle_id&gt;
+
+<span class="hljs-comment"># Stop collection</span>
+vscsiStats -x -w &lt;world_id&gt; -i &lt;handle_id&gt;
+</code></pre>
+<h4 id="output-metrics">Output Metrics</h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IO Size Histogram</td>
+<td>Distribution of IO sizes (4K, 8K, 16K, etc.)</td>
+</tr>
+<tr>
+<td>Seek Distance</td>
+<td>Sequential vs. random IO pattern</td>
+</tr>
+<tr>
+<td>Outstanding IO</td>
+<td>Per-VMDK queue depth</td>
+</tr>
+<tr>
+<td>Latency Histogram</td>
+<td>Distribution of latency values</td>
+</tr>
+<tr>
+<td>IO Type</td>
+<td>Read/write ratio</td>
+</tr>
+</tbody></table>
+<div class="info-box">
+<strong>Best Practice:</strong> Use <code>vscsiStats</code> sparingly in production. It adds minor overhead during collection. Collect for 60-120 seconds to get a representative sample, then stop immediately.
+</div>
+
+<p><a id="performance-service"></a></p>
+<h2 id="95-performance-service">9.5 Performance Service</h2>
+<p>The vSAN Performance Service must be enabled for historical performance data.</p>
+<h4 id="verify-performance-service-status">Verify Performance Service Status</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$vsanConfig</span> = <span class="hljs-built_in">Get-VsanClusterConfiguration</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+<span class="hljs-variable">$vsanConfig</span>.PerformanceServiceEnabled
+</code></pre>
+<h4 id="enable-performance-service">Enable Performance Service</h4>
+<pre><code class="hljs powershell"><span class="hljs-built_in">Set-VsanClusterConfiguration</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span> <span class="hljs-literal">-PerformanceServiceEnabled</span> <span class="hljs-variable">$true</span>
+</code></pre>
+<h4 id="performance-service-health-check">Performance Service Health Check</h4>
+<pre><code class="hljs bash">esxcli vsan health cluster list -t <span class="hljs-string">"Performance Service"</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Performance service enabled and collecting data</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Service enabled but stats database &gt; 80% full</td>
+<td>Archive or increase stats DB size</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Performance service disabled or not functioning</td>
+<td>Enable via PowerCLI or vCenter UI</td>
+</tr>
+</tbody></table>
+<div class="page-break"></div>
+
+<p><a id="object-health-compliance"></a></p>
+<h1 id="10-object-health--compliance">10. Object Health &amp; Compliance</h1>
+<p><a id="object-count"></a></p>
+<h2 id="101-object-count">10.1 Object Count</h2>
+<h4 id="command-9">Command</h4>
+<pre><code class="hljs bash">esxcli vsan debug object health summary get
+</code></pre>
+<h4 id="expected-output-healthy-6">Expected Output (Healthy)</h4>
+<pre><code>Object Health Summary:
+   Total Objects: 2847
+   Healthy: 2847
+   Objects with Reduced Redundancy: 0
+   Inaccessible Objects: 0
+   Non-Compliant Objects: 0
+   Quorum Not Satisfied: 0
+</code></pre>
+<h4 id="powercli-object-count">PowerCLI Object Count</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$vsanHealth</span> = <span class="hljs-built_in">Get-VsanView</span> <span class="hljs-literal">-Id</span> <span class="hljs-string">"VsanVcClusterHealthSystem-vsan-cluster-health-system"</span>
+<span class="hljs-variable">$objHealth</span> = <span class="hljs-variable">$vsanHealth</span>.VsanQueryVcClusterHealthSummary(
+    <span class="hljs-variable">$cluster</span>.ExtensionData.MoRef, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$true</span>, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$null</span>, <span class="hljs-string">"objectHealth"</span>
+)
+
+<span class="hljs-variable">$objHealth</span>.ObjectHealth.ObjectHealthDetail | <span class="hljs-built_in">ForEach-Object</span> {
+    [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+        Category      = <span class="hljs-variable">$_</span>.NumObjects
+        ObjectCount   = <span class="hljs-variable">$_</span>.ObjHealthState
+    }
+}
+</code></pre>
+<p><a id="compliance-state"></a></p>
+<h2 id="102-compliance-state">10.2 Compliance State</h2>
+<p>vSAN object compliance verifies that every object meets its assigned storage policy (FTT, stripe width, etc.).</p>
+<h4 id="check-compliance-via-powercli">Check Compliance via PowerCLI</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$vms</span> = <span class="hljs-built_in">Get-VM</span> <span class="hljs-literal">-Location</span> <span class="hljs-variable">$cluster</span>
+
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$vm</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$vms</span>) {
+    <span class="hljs-variable">$spPolicy</span> = <span class="hljs-built_in">Get-SpbmEntityConfiguration</span> <span class="hljs-literal">-VM</span> <span class="hljs-variable">$vm</span>
+    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$policy</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$spPolicy</span>) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$policy</span>.ComplianceStatus <span class="hljs-operator">-ne</span> <span class="hljs-string">"compliant"</span>) {
+            [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+                VM         = <span class="hljs-variable">$vm</span>.Name
+                Entity     = <span class="hljs-variable">$policy</span>.Entity
+                Policy     = <span class="hljs-variable">$policy</span>.StoragePolicy.Name
+                Status     = <span class="hljs-variable">$policy</span>.ComplianceStatus
+            }
+        }
+    }
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All objects compliant</td>
+<td>No action</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Objects non-compliant but actively rebuilding</td>
+<td>Monitor resync progress</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Objects persistently non-compliant</td>
+<td>Investigate capacity or host availability</td>
+</tr>
+</tbody></table>
+<p><a id="inaccessible-objects"></a></p>
+<h2 id="103-inaccessible-objects">10.3 Inaccessible Objects</h2>
+<p>Inaccessible objects have lost quorum -- they cannot be read or written. This is the most critical vSAN health state.</p>
+<h4 id="command-10">Command</h4>
+<pre><code class="hljs bash">esxcli vsan debug object health summary get | grep <span class="hljs-string">"Inaccessible"</span>
+</code></pre>
+<h4 id="list-inaccessible-objects">List Inaccessible Objects</h4>
+<pre><code class="hljs bash">esxcli vsan debug object list --<span class="hljs-built_in">type</span>=inaccessible
+</code></pre>
+<h4 id="trace-object-to-vm">Trace Object to VM</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get the object UUID from the inaccessible list, then:</span>
+esxcli vsan debug object list -u &lt;object_uuid&gt;
+</code></pre>
+<div class="danger">
+<strong>CRITICAL -- Inaccessible Objects:</strong> Any inaccessible object represents potential data loss. This is a P1 severity event requiring immediate action. Do NOT perform any maintenance operations until all objects are accessible.
+</div>
+
+<div class="fix-box">
+<strong>Remediation (Inaccessible Objects):</strong><br>
+1. Identify which hosts own the components: <code>esxcli vsan debug object list -u &lt;uuid&gt;</code><br>
+2. Check if hosts are offline or partitioned<br>
+3. Verify vSAN network connectivity between all hosts<br>
+4. If a host is down, restore it immediately<br>
+5. If a disk has failed, initiate replacement<br>
+6. Check CLOMD logs: <code>grep -i "inaccessible" /var/log/clomd.log</code><br>
+7. If persistent, contact VMware Support with object UUIDs and CLOMD logs
+</div>
+
+<p><a id="reduced-redundancy"></a></p>
+<h2 id="104-reduced-redundancy-objects">10.4 Reduced Redundancy Objects</h2>
+<p>Objects with reduced redundancy are accessible but have fewer copies than specified by their policy.</p>
+<h4 id="command-11">Command</h4>
+<pre><code class="hljs bash">esxcli vsan debug object health summary get | grep <span class="hljs-string">"Reduced Redundancy"</span>
+</code></pre>
+<h4 id="detailed-listing">Detailed Listing</h4>
+<pre><code class="hljs bash">esxcli vsan debug object list --<span class="hljs-built_in">type</span>=reducedRedundancy
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>0 objects with reduced redundancy</td>
+<td>Full policy compliance</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Objects in reduced redundancy during resync</td>
+<td>Expected after host/disk event; monitor resync</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Persistent reduced redundancy (no active resync)</td>
+<td>Investigate CLOM; check capacity/host availability</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Persistent Reduced Redundancy):</strong><br>
+1. Verify resyncs are not stalled: <code>esxcli vsan debug resync summary</code><br>
+2. Check available capacity -- CLOM cannot rebuild if &lt; 20% free<br>
+3. Check for component limit violations: <code>esxcli vsan health cluster list -t "Host Component Limit"</code><br>
+4. Force a repair on the object: from RVC, <code>vsan.fix_renamed_objects /path/to/cluster</code><br>
+5. Restart CLOMD if the service is stuck: <code>/etc/init.d/clomd restart</code>
+</div>
+
+<div class="page-break"></div>
+
+<p><a id="stretched-cluster-health"></a></p>
+<h1 id="11-stretched-cluster-health">11. Stretched Cluster Health</h1>
+<div class="info-box">
+<strong>Applicability:</strong> This section applies only to environments with vSAN stretched clusters. If your VCF 9 deployment uses standard (non-stretched) clusters, skip to Section 12.
+</div>
+
+<p><a id="preferred-secondary-site"></a></p>
+<h2 id="111-preferred--secondary-site">11.1 Preferred &amp; Secondary Site</h2>
+<p>In a vSAN stretched cluster, hosts are divided into two fault domains (sites) plus a witness host.</p>
+<h4 id="check-site-configuration">Check Site Configuration</h4>
+<pre><code class="hljs bash">esxcli vsan cluster get
+</code></pre>
+<p>Look for:</p>
+<pre><code>Preferred Fault Domain: site-a
+Secondary Fault Domain: site-b
+</code></pre>
+<h4 id="powercli-site-verification">PowerCLI Site Verification</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$vsanConfig</span> = <span class="hljs-built_in">Get-VsanClusterConfiguration</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+
+[<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+    StretchedCluster  = <span class="hljs-variable">$vsanConfig</span>.StretchedClusterEnabled
+    PreferredSite     = <span class="hljs-variable">$vsanConfig</span>.PreferredFaultDomain.Name
+    SecondarySite     = (<span class="hljs-variable">$vsanConfig</span>.FaultDomains | <span class="hljs-built_in">Where-Object</span> { <span class="hljs-variable">$_</span>.Name <span class="hljs-operator">-ne</span> <span class="hljs-variable">$vsanConfig</span>.PreferredFaultDomain.Name }).Name
+    WitnessHost       = <span class="hljs-variable">$vsanConfig</span>.WitnessHost.Name
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Both sites have equal host counts, preferred site set correctly</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Uneven host distribution between sites</td>
+<td>Rebalance hosts if possible</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>One site has no hosts or stretched cluster misconfigured</td>
+<td>Reconfigure stretched cluster</td>
+</tr>
+</tbody></table>
+<p><a id="witness-host"></a></p>
+<h2 id="112-witness-host">11.2 Witness Host</h2>
+<p>The witness host provides the tiebreaker vote in a stretched cluster. It must be in a third fault domain.</p>
+<h4 id="verify-witness-host">Verify Witness Host</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># From any cluster host</span>
+esxcli vsan cluster get | grep -i witness
+</code></pre>
+<h4 id="witness-host-health-checks">Witness Host Health Checks</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH to witness host</span>
+ssh root@witness-host.vcf.local
+
+<span class="hljs-comment"># Verify vSAN is running</span>
+esxcli vsan cluster get
+
+<span class="hljs-comment"># Check witness disk status</span>
+esxcli vsan storage list
+
+<span class="hljs-comment"># Verify network connectivity to both sites</span>
+vmkping -I vmk0 &lt;site-a-host-vsan-ip&gt;
+vmkping -I vmk0 &lt;site-b-host-vsan-ip&gt;
+</code></pre>
+<h4 id="witness-appliance-resources">Witness Appliance Resources</h4>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Minimum</th>
+<th>Recommended</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vCPUs</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>16 GB (&lt; 750 components)</td>
+<td>32 GB (&gt; 750 components)</td>
+</tr>
+<tr>
+<td>Witness disk cache</td>
+<td>5 GB SSD</td>
+<td>10 GB SSD</td>
+</tr>
+<tr>
+<td>Witness disk capacity</td>
+<td>15 GB</td>
+<td>30 GB</td>
+</tr>
+</tbody></table>
+<p><a id="site-affinity-rules"></a></p>
+<h2 id="113-site-affinity-rules">11.3 Site Affinity Rules</h2>
+<p>Site affinity rules ensure that specific VMs prefer to run at a particular site during normal operations.</p>
+<h4 id="check-site-affinity-via-powercli">Check Site Affinity via PowerCLI</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$rules</span> = <span class="hljs-built_in">Get-DrsRule</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span> | <span class="hljs-built_in">Where-Object</span> { <span class="hljs-variable">$_</span>.Type <span class="hljs-operator">-eq</span> <span class="hljs-string">"VMAffinity"</span> }
+<span class="hljs-variable">$rules</span> | <span class="hljs-built_in">Format-Table</span> Name, <span class="hljs-built_in">Type</span>, Enabled, VMIds <span class="hljs-literal">-AutoSize</span>
+</code></pre>
+<h4 id="vsan-storage-policy-site-affinity">vSAN Storage Policy Site Affinity</h4>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Check vSAN storage policies with site affinity</span>
+<span class="hljs-built_in">Get-SpbmStoragePolicy</span> | <span class="hljs-built_in">Where-Object</span> {
+    <span class="hljs-variable">$_</span>.AnyOfRuleSets.AnyOfRules.Capability.Name <span class="hljs-operator">-match</span> <span class="hljs-string">"locality"</span>
+} | <span class="hljs-built_in">ForEach-Object</span> {
+    [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+        PolicyName  = <span class="hljs-variable">$_</span>.Name
+        Locality    = (<span class="hljs-variable">$_</span>.AnyOfRuleSets.AnyOfRules | <span class="hljs-built_in">Where-Object</span> {
+            <span class="hljs-variable">$_</span>.Capability.Name <span class="hljs-operator">-match</span> <span class="hljs-string">"locality"</span>
+        }).Value
+    }
+}
+</code></pre>
+<p><a id="inter-site-latency"></a></p>
+<h2 id="114-inter-site-latency">11.4 Inter-Site Latency</h2>
+<h4 id="test-inter-site-latency">Test Inter-Site Latency</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># From a host at Site A to a host at Site B</span>
+vmkping -I vmk1 -c 100 &lt;site-b-host-vsan-ip&gt;
+</code></pre>
+<h4 id="latency-requirements">Latency Requirements</h4>
+<table>
+<thead>
+<tr>
+<th>Link</th>
+<th>Maximum RTT</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Site A to Site B</td>
+<td>5 ms (data)</td>
+<td>&lt; 5 ms</td>
+<td>5-100 ms</td>
+<td>&gt; 100 ms</td>
+</tr>
+<tr>
+<td>Either Site to Witness</td>
+<td>200 ms</td>
+<td>&lt; 100 ms</td>
+<td>100-200 ms</td>
+<td>&gt; 200 ms</td>
+</tr>
+<tr>
+<td>Bandwidth (data sites)</td>
+<td>10 Gbps</td>
+<td>&gt;= 10 Gbps</td>
+<td>1-10 Gbps</td>
+<td>&lt; 1 Gbps</td>
+</tr>
+</tbody></table>
+<div class="warn-box">
+<strong>Latency Note:</strong> vSAN stretched clusters in VCF 9 support up to 5ms RTT between data sites for write operations (synchronous replication). The witness host can tolerate up to 200ms RTT. Exceeding these limits will cause write performance degradation or cluster instability.
+</div>
+
+<div class="page-break"></div>
+
+<p><a id="fault-domains"></a></p>
+<h1 id="12-fault-domains">12. Fault Domains</h1>
+<p><a id="fd-configuration"></a></p>
+<h2 id="121-fault-domain-configuration">12.1 Fault Domain Configuration</h2>
+<p>Fault domains define failure boundaries. vSAN places components across fault domains to ensure that a single domain failure does not cause data loss.</p>
+<h4 id="view-fault-domains">View Fault Domains</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$faultDomains</span> = <span class="hljs-built_in">Get-VsanFaultDomain</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$fd</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$faultDomains</span>) {
+    [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+        Name       = <span class="hljs-variable">$fd</span>.Name
+        HostCount  = (<span class="hljs-variable">$fd</span>.VMHost | <span class="hljs-built_in">Measure-Object</span>).Count
+        Hosts      = (<span class="hljs-variable">$fd</span>.VMHost.Name <span class="hljs-operator">-join</span> <span class="hljs-string">", "</span>)
+    }
+} | <span class="hljs-built_in">Format-Table</span> <span class="hljs-literal">-AutoSize</span>
+</code></pre>
+<h4 id="esxcli-fault-domain-check">esxcli Fault Domain Check</h4>
+<pre><code class="hljs bash">esxcli vsan cluster get | grep <span class="hljs-string">"Fault Domain"</span>
+</code></pre>
+<p><a id="fd-host-distribution"></a></p>
+<h2 id="122-host-distribution">12.2 Host Distribution</h2>
+<p>For optimal fault tolerance, hosts should be evenly distributed across fault domains.</p>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fault Domain Count</td>
+<td>&gt;= 3 FDs</td>
+<td>2 FDs</td>
+<td>1 FD or none configured</td>
+</tr>
+<tr>
+<td>Hosts per FD</td>
+<td>Equal distribution</td>
+<td>+/- 1 host variance</td>
+<td>Severe imbalance</td>
+</tr>
+<tr>
+<td>FTT=1 compliance</td>
+<td>&gt;= 3 FDs</td>
+<td>2 FDs (works but no FD-level protection)</td>
+<td>1 FD</td>
+</tr>
+<tr>
+<td>FTT=2 compliance</td>
+<td>&gt;= 5 FDs</td>
+<td>3-4 FDs</td>
+<td>&lt; 3 FDs</td>
+</tr>
+</tbody></table>
+<h4 id="example-optimal-4-host-4-fd-configuration">Example: Optimal 4-Host, 4-FD Configuration</h4>
+<pre><code>Fault Domain: rack-01 -&gt; esx-01.vcf.local
+Fault Domain: rack-02 -&gt; esx-02.vcf.local
+Fault Domain: rack-03 -&gt; esx-03.vcf.local
+Fault Domain: rack-04 -&gt; esx-04.vcf.local
+</code></pre>
+<p><a id="fd-policy-compliance"></a></p>
+<h2 id="123-policy-compliance-with-fault-domains">12.3 Policy Compliance with Fault Domains</h2>
+<p>When fault domains are configured, vSAN places mirrors/parity components in different fault domains. The policy must be compatible with the number of fault domains.</p>
+<h4 id="validate-policy-vs-fault-domain-count">Validate Policy vs. Fault Domain Count</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$fds</span> = <span class="hljs-built_in">Get-VsanFaultDomain</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+<span class="hljs-variable">$fdCount</span> = (<span class="hljs-variable">$fds</span> | <span class="hljs-built_in">Measure-Object</span>).Count
+
+<span class="hljs-variable">$policies</span> = <span class="hljs-built_in">Get-SpbmStoragePolicy</span> | <span class="hljs-built_in">Where-Object</span> { <span class="hljs-variable">$_</span>.Name <span class="hljs-operator">-like</span> <span class="hljs-string">"*vSAN*"</span> }
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$pol</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$policies</span>) {
+    <span class="hljs-variable">$ftt</span> = (<span class="hljs-variable">$pol</span>.AnyOfRuleSets.AnyOfRules | <span class="hljs-built_in">Where-Object</span> {
+        <span class="hljs-variable">$_</span>.Capability.Name <span class="hljs-operator">-eq</span> <span class="hljs-string">"VSAN.hostFailuresToTolerate"</span>
+    }).Value
+
+    <span class="hljs-variable">$requiredFDs</span> = (<span class="hljs-number">2</span> * <span class="hljs-variable">$ftt</span>) + <span class="hljs-number">1</span>  <span class="hljs-comment"># For RAID-1</span>
+
+    [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+        Policy        = <span class="hljs-variable">$pol</span>.Name
+        FTT           = <span class="hljs-variable">$ftt</span>
+        RequiredFDs   = <span class="hljs-variable">$requiredFDs</span>
+        AvailableFDs  = <span class="hljs-variable">$fdCount</span>
+        Compliant     = <span class="hljs-variable">$fdCount</span> <span class="hljs-operator">-ge</span> <span class="hljs-variable">$requiredFDs</span>
+    }
+} | <span class="hljs-built_in">Format-Table</span> <span class="hljs-literal">-AutoSize</span>
+</code></pre>
+<div class="fix-box">
+<strong>Remediation (Insufficient Fault Domains):</strong><br>
+1. If the cluster has fewer fault domains than required, either:<br>
+   a. Add more hosts in new fault domains<br>
+   b. Reduce the FTT level in the storage policy<br>
+2. To create a new fault domain: vCenter &gt; Cluster &gt; Configure &gt; vSAN &gt; Fault Domains &gt; Add<br>
+3. To move a host to a fault domain via PowerCLI:<br>
+<code>New-VsanFaultDomain -Name "rack-05" -VMHost (Get-VMHost "esx-05.vcf.local")</code>
+</div>
+
+<div class="page-break"></div>
+
+<p><a id="vsan-health-service-detail"></a></p>
+<h1 id="13-vsan-health-service-detail">13. vSAN Health Service Detail</h1>
+<p><a id="health-service-status"></a></p>
+<h2 id="131-health-service-status">13.1 Health Service Status</h2>
+<h4 id="verify-health-service-is-running">Verify Health Service is Running</h4>
+<pre><code class="hljs bash">esxcli vsan health cluster list -t <span class="hljs-string">"vSAN Health Service Up-To-Date"</span>
+</code></pre>
+<h4 id="expected-output-3">Expected Output</h4>
+<pre><code>Health Test: vSAN Health Service Up-To-Date
+   Status: green
+   Description: vSAN Health Service is up-to-date.
+   Last Run: 2026-03-26T14:00:00Z
+</code></pre>
+<h4 id="check-health-service-database">Check Health Service Database</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># On VCSA, check health service status</span>
+vmon-cli --status vsanhealth
+</code></pre>
+<h4 id="force-health-check-refresh">Force Health Check Refresh</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$healthSystem</span> = <span class="hljs-built_in">Get-VsanView</span> <span class="hljs-literal">-Id</span> <span class="hljs-string">"VsanVcClusterHealthSystem-vsan-cluster-health-system"</span>
+<span class="hljs-variable">$healthSystem</span>.VsanQueryVcClusterHealthSummary(
+    <span class="hljs-variable">$cluster</span>.ExtensionData.MoRef,
+    <span class="hljs-variable">$null</span>, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$true</span>, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$null</span>, <span class="hljs-string">"defaultView"</span>
+)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Service running, last test &lt; 1 hour ago</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Service running but last test &gt; 24 hours ago</td>
+<td>Force a refresh</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Service not running</td>
+<td>Restart: <code>vmon-cli --restart vsanhealth</code> on VCSA</td>
+</tr>
+</tbody></table>
+<p><a id="test-categories"></a></p>
+<h2 id="132-test-categories">13.2 Test Categories</h2>
+<p>The vSAN Health Service organizes tests into the following categories:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Tests Included</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Cluster</strong></td>
+<td>Partition, CLOMD liveness, disk balance, member health</td>
+<td>Every 60 min</td>
+</tr>
+<tr>
+<td><strong>Network</strong></td>
+<td>VMkernel config, connectivity, MTU, multicast</td>
+<td>Every 60 min</td>
+</tr>
+<tr>
+<td><strong>Physical Disk</strong></td>
+<td>Disk health, metadata, congestion, capacity</td>
+<td>Every 60 min</td>
+</tr>
+<tr>
+<td><strong>Data</strong></td>
+<td>Object health, VM health, compliance</td>
+<td>Every 60 min</td>
+</tr>
+<tr>
+<td><strong>Limits</strong></td>
+<td>Component limits, host failure simulation</td>
+<td>Every 60 min</td>
+</tr>
+<tr>
+<td><strong>HCL</strong></td>
+<td>Controller, driver, firmware, HCL DB age</td>
+<td>Every 24 hours</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Performance service status, stats integrity</td>
+<td>Every 60 min</td>
+</tr>
+<tr>
+<td><strong>Stretched Cluster</strong></td>
+<td>Witness, site configuration, inter-site latency</td>
+<td>Every 60 min</td>
+</tr>
+<tr>
+<td><strong>Encryption</strong></td>
+<td>KMS connectivity, key status, rekey status</td>
+<td>Every 60 min</td>
+</tr>
+</tbody></table>
+<p><a id="silenced-alarms"></a></p>
+<h2 id="133-silenced-alarms">13.3 Silenced Alarms</h2>
+<p>Silenced alarms are health tests that have been muted by an administrator. Excessive silencing can mask real problems.</p>
+<h4 id="check-silenced-alarms">Check Silenced Alarms</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$healthSystem</span> = <span class="hljs-built_in">Get-VsanView</span> <span class="hljs-literal">-Id</span> <span class="hljs-string">"VsanVcClusterHealthSystem-vsan-cluster-health-system"</span>
+<span class="hljs-variable">$silenced</span> = <span class="hljs-variable">$healthSystem</span>.VsanHealthGetVsanClusterSilentChecks(<span class="hljs-variable">$cluster</span>.ExtensionData.MoRef)
+
+<span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"Silenced checks count: <span class="hljs-variable">$</span>(<span class="hljs-variable">$silenced</span>.Count)"</span>
+<span class="hljs-variable">$silenced</span> | <span class="hljs-built_in">ForEach-Object</span> { <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  - <span class="hljs-variable">$_</span>"</span> }
+</code></pre>
+<h4 id="unsilence-all-alarms">Unsilence All Alarms</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$healthSystem</span>.VsanHealthSetVsanClusterSilentChecks(
+    <span class="hljs-variable">$cluster</span>.ExtensionData.MoRef,
+    <span class="hljs-variable">$null</span>  <span class="hljs-comment"># Pass null to clear all silenced checks</span>
+)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>0 silenced alarms</td>
+<td>Full visibility into health</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>1-3 silenced alarms</td>
+<td>Review each; unsilence if no longer needed</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>&gt; 3 silenced alarms</td>
+<td>Audit all silenced checks; likely masking real issues</td>
+</tr>
+</tbody></table>
+<div class="page-break"></div>
+
+<p><a id="hcl-compliance"></a></p>
+<h1 id="14-hcl-compliance">14. HCL Compliance</h1>
+<p><a id="controller-driver-firmware"></a></p>
+<h2 id="141-controller-driver--firmware">14.1 Controller, Driver &amp; Firmware</h2>
+<p>HCL (Hardware Compatibility List) compliance ensures that storage controllers, drivers, and firmware are certified for vSAN.</p>
+<h4 id="check-hcl-status-via-health-service">Check HCL Status via Health Service</h4>
+<pre><code class="hljs bash">esxcli vsan health cluster list -t <span class="hljs-string">"vSAN HCL Health"</span>
+</code></pre>
+<h4 id="detailed-hcl-query">Detailed HCL Query</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Controller model</span>
+esxcli storage core adapter list
+
+<span class="hljs-comment"># Driver version</span>
+esxcli storage core adapter stats get -a vmhba0
+
+<span class="hljs-comment"># Firmware version</span>
+esxcli storage core adapter list | grep -i firmware
+</code></pre>
+<h4 id="powercli-hcl-check">PowerCLI HCL Check</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$healthSystem</span> = <span class="hljs-built_in">Get-VsanView</span> <span class="hljs-literal">-Id</span> <span class="hljs-string">"VsanVcClusterHealthSystem-vsan-cluster-health-system"</span>
+<span class="hljs-variable">$hclResult</span> = <span class="hljs-variable">$healthSystem</span>.VsanQueryVcClusterHealthSummary(
+    <span class="hljs-variable">$cluster</span>.ExtensionData.MoRef, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$true</span>, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$null</span>, <span class="hljs-string">"hclInfo"</span>
+)
+
+<span class="hljs-variable">$hclResult</span>.HclInfo | <span class="hljs-built_in">ForEach-Object</span> {
+    [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+        Host       = <span class="hljs-variable">$_</span>.Hostname
+        Controller = <span class="hljs-variable">$_</span>.ControllerName
+        Driver     = <span class="hljs-variable">$_</span>.DriverVersion
+        Firmware   = <span class="hljs-variable">$_</span>.FirmwareVersion
+        HCLStatus  = <span class="hljs-variable">$_</span>.HclStatus
+    }
+} | <span class="hljs-built_in">Format-Table</span> <span class="hljs-literal">-AutoSize</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All controllers/drivers/firmware on HCL</td>
+<td>Fully certified</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>HCL database outdated (&gt; 90 days)</td>
+<td>Update HCL DB</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Controller, driver, or firmware NOT on HCL</td>
+<td>Update driver/firmware to certified version</td>
+</tr>
+</tbody></table>
+<div class="danger">
+<strong>Non-HCL Hardware:</strong> Running vSAN on non-HCL certified hardware voids VMware support coverage. Disk failures, data loss, and performance issues on non-HCL configurations will not receive VMware engineering assistance. Always maintain HCL compliance.
+</div>
+
+<p><a id="hcl-database-update"></a></p>
+<h2 id="142-hcl-database-update">14.2 HCL Database Update</h2>
+<p>The HCL database is bundled with vCenter and should be updated regularly.</p>
+<h4 id="check-hcl-db-age">Check HCL DB Age</h4>
+<pre><code class="hljs bash">esxcli vsan health cluster list -t <span class="hljs-string">"vSAN HCL DB Up-To-Date"</span>
+</code></pre>
+<h4 id="update-hcl-db-online">Update HCL DB Online</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$healthSystem</span> = <span class="hljs-built_in">Get-VsanView</span> <span class="hljs-literal">-Id</span> <span class="hljs-string">"VsanVcClusterHealthSystem-vsan-cluster-health-system"</span>
+<span class="hljs-variable">$healthSystem</span>.VsanVcUploadHclDb(<span class="hljs-variable">$null</span>)  <span class="hljs-comment"># Downloads latest from VMware</span>
+</code></pre>
+<h4 id="update-hcl-db-offline-air-gapped-environments">Update HCL DB Offline (Air-Gapped Environments)</h4>
+<ol>
+<li>Download the latest HCL JSON from <a href="https://partnerweb.vmware.com/service/vsan/all.json">VMware Partner Connect</a></li>
+<li>Upload via vCenter UI: <strong>Cluster &gt; Monitor &gt; vSAN &gt; Health &gt; HCL Database &gt; Upload from file</strong></li>
+</ol>
+<h4 id="or-via-powercli">Or via PowerCLI:</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$jsonContent</span> = <span class="hljs-built_in">Get-Content</span> <span class="hljs-literal">-Path</span> <span class="hljs-string">"C:\path\to\all.json"</span> <span class="hljs-literal">-Raw</span>
+<span class="hljs-variable">$healthSystem</span>.VsanVcUploadHclDb(<span class="hljs-variable">$jsonContent</span>)
+</code></pre>
+<div class="fix-box">
+<strong>Remediation (Outdated HCL):</strong><br>
+1. For internet-connected vCenter: update is automatic; force via PowerCLI if needed<br>
+2. For air-gapped environments: download JSON from VMware, upload via UI or PowerCLI<br>
+3. Schedule HCL DB updates quarterly at minimum<br>
+4. After updating, re-run health checks to verify compliance
+</div>
+
+<div class="page-break"></div>
+
+<p><a id="port-reference-table"></a></p>
+<h1 id="15-port-reference-table">15. Port Reference Table</h1>
+<p>The following ports must be open for vSAN communication between all participating hosts and vCenter.</p>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Protocol</th>
+<th>Direction</th>
+<th>Service</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>2233</strong></td>
+<td>TCP/UDP</td>
+<td>Host &lt;-&gt; Host</td>
+<td>vSAN Transport</td>
+<td>Primary vSAN data transport (IO traffic)</td>
+</tr>
+<tr>
+<td><strong>12321</strong></td>
+<td>UDP</td>
+<td>Host &lt;-&gt; Host</td>
+<td>vSAN Clustering (Unicast)</td>
+<td>Unicast agent-to-agent communication</td>
+</tr>
+<tr>
+<td><strong>12345</strong></td>
+<td>UDP</td>
+<td>Host &lt;-&gt; Host</td>
+<td>vSAN Clustering (Multicast)</td>
+<td>Multicast master group (legacy)</td>
+</tr>
+<tr>
+<td><strong>23451</strong></td>
+<td>UDP</td>
+<td>Host &lt;-&gt; Host</td>
+<td>vSAN Clustering (Multicast)</td>
+<td>Multicast agent group (legacy)</td>
+</tr>
+<tr>
+<td><strong>8080</strong></td>
+<td>TCP</td>
+<td>Host -&gt; vCenter</td>
+<td>vSAN Health</td>
+<td>Health check data upload</td>
+</tr>
+<tr>
+<td><strong>6500</strong></td>
+<td>TCP</td>
+<td>Host -&gt; vCenter</td>
+<td>vSAN VASA</td>
+<td>VASA provider for storage policies</td>
+</tr>
+<tr>
+<td><strong>8006</strong></td>
+<td>TCP</td>
+<td>vCenter -&gt; Host</td>
+<td>vSAN VASA</td>
+<td>VASA provider callback</td>
+</tr>
+<tr>
+<td><strong>443</strong></td>
+<td>TCP</td>
+<td>Host &lt;-&gt; vCenter</td>
+<td>HTTPS</td>
+<td>vSphere API, management</td>
+</tr>
+<tr>
+<td><strong>902</strong></td>
+<td>TCP/UDP</td>
+<td>Host &lt;-&gt; vCenter</td>
+<td>NFC/Heartbeat</td>
+<td>Network file copy, host heartbeat</td>
+</tr>
+<tr>
+<td><strong>8010</strong></td>
+<td>TCP</td>
+<td>Host -&gt; vCenter</td>
+<td>vSAN Performance</td>
+<td>Performance data upload</td>
+</tr>
+<tr>
+<td><strong>2233</strong></td>
+<td>TCP</td>
+<td>Host &lt;-&gt; Witness</td>
+<td>vSAN Transport</td>
+<td>Witness traffic (stretched cluster)</td>
+</tr>
+<tr>
+<td><strong>12321</strong></td>
+<td>UDP</td>
+<td>Host &lt;-&gt; Witness</td>
+<td>vSAN Clustering</td>
+<td>Witness cluster communication</td>
+</tr>
+<tr>
+<td><strong>514</strong></td>
+<td>UDP</td>
+<td>Host -&gt; Syslog</td>
+<td>Syslog</td>
+<td>vSAN log forwarding</td>
+</tr>
+<tr>
+<td><strong>8100</strong></td>
+<td>TCP</td>
+<td>Host &lt;-&gt; Host</td>
+<td>vSAN RDMA</td>
+<td>RDMA transport (ESA with RDMA NICs)</td>
+</tr>
+<tr>
+<td><strong>8200</strong></td>
+<td>TCP</td>
+<td>Host &lt;-&gt; Host</td>
+<td>vSAN RDMA</td>
+<td>RDMA transport secondary</td>
+</tr>
+</tbody></table>
+<h4 id="firewall-validation-script">Firewall Validation Script</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Verify vSAN firewall rules on ESXi host</span>
+esxcli network firewall ruleset list | grep -i vsan
+
+<span class="hljs-comment"># Check if vSAN ports are open</span>
+esxcli network firewall ruleset rule list -r vsanvp
+esxcli network firewall ruleset rule list -r vsanEncryption
+esxcli network firewall ruleset rule list -r vsanhealth
+</code></pre>
+<h4 id="port-connectivity-test">Port Connectivity Test</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># From each ESXi host, test TCP 2233 to peers</span>
+nc -z -w3 172.16.10.102 2233 &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">"OK"</span> || <span class="hljs-built_in">echo</span> <span class="hljs-string">"FAIL"</span>
+nc -z -w3 172.16.10.103 2233 &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">"OK"</span> || <span class="hljs-built_in">echo</span> <span class="hljs-string">"FAIL"</span>
+nc -z -w3 172.16.10.104 2233 &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">"OK"</span> || <span class="hljs-built_in">echo</span> <span class="hljs-string">"FAIL"</span>
+</code></pre>
+<div class="info-box">
+<strong>VCF 9 Note:</strong> In VCF 9, vSAN ESA may use RDMA transport on ports 8100/8200 when supported NICs are present. Ensure these ports are open if RDMA is enabled in your environment.
+</div>
+
+<div class="page-break"></div>
+
+<p><a id="common-issues-remediation"></a></p>
+<h1 id="16-common-issues--remediation">16. Common Issues &amp; Remediation</h1>
+<p><a id="disk-failures"></a></p>
+<h2 id="161-disk-failures">16.1 Disk Failures</h2>
+<h4 id="symptoms">Symptoms</h4>
+<ul>
+<li>Health service shows red for "vSAN Disk Health"</li>
+<li><code>esxcli vsan storage list</code> shows <code>Health Status: Failed</code> or disk is missing</li>
+<li>SMART errors in <code>/var/log/vmkernel.log</code></li>
+<li>Components become absent or degraded</li>
+</ul>
+<h4 id="diagnostic-commands">Diagnostic Commands</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check disk status</span>
+esxcli vsan storage list | grep -E <span class="hljs-string">"Display Name|Health Status"</span>
+
+<span class="hljs-comment"># Check SMART data</span>
+esxcli vsan debug disk smart get -d naa.&lt;disk_id&gt;
+
+<span class="hljs-comment"># Check kernel log for disk errors</span>
+grep -i <span class="hljs-string">"disk error\|I/O error\|medium error"</span> /var/log/vmkernel.log | <span class="hljs-built_in">tail</span> -20
+
+<span class="hljs-comment"># Check vSAN trace for disk events</span>
+grep -i <span class="hljs-string">"disk"</span> /var/log/vsantraced.log | <span class="hljs-built_in">tail</span> -20
+</code></pre>
+<div class="fix-box">
+<strong>Remediation (Disk Failure - OSA):</strong><br>
+<strong>Cache Disk Failure (Entire Disk Group Lost):</strong><br>
+1. Identify the failed disk and its disk group UUID<br>
+2. All capacity disks in the group are now offline<br>
+3. Replace the cache disk physically<br>
+4. Recreate the disk group: <code>esxcli vsan storage add -s naa.new_cache -d naa.cap1 -d naa.cap2</code><br>
+5. vSAN will automatically rebuild components from surviving copies<br>
+<br>
+<strong>Capacity Disk Failure:</strong><br>
+1. Remove the failed disk from the disk group: <code>esxcli vsan storage remove -d naa.failed_disk</code><br>
+2. Physically replace the disk<br>
+3. Add the new disk: <code>esxcli vsan storage add -d naa.new_disk -s naa.cache_disk</code><br>
+4. Monitor resync: <code>esxcli vsan debug resync summary</code>
+</div>
+
+<div class="fix-box">
+<strong>Remediation (Disk Failure - ESA):</strong><br>
+1. In ESA, individual NVMe disk failure does not cause disk group loss<br>
+2. Remove the failed disk: <code>esxcli vsan storage remove -d naa.failed_nvme</code><br>
+3. Physically replace the disk<br>
+4. Add the new disk to the storage pool: <code>esxcli vsan storage add -d naa.new_nvme</code><br>
+5. Monitor resync: <code>esxcli vsan debug resync summary</code>
+</div>
+
+<p><a id="network-partition-issues"></a></p>
+<h2 id="162-network-partition">16.2 Network Partition</h2>
+<h4 id="symptoms-1">Symptoms</h4>
+<ul>
+<li>Health service shows red for "vSAN Cluster Partition"</li>
+<li>Multiple hosts claim MASTER role</li>
+<li>VMs on isolated hosts may become unresponsive</li>
+<li><code>esxcli vsan cluster get</code> shows different Member Counts on different hosts</li>
+</ul>
+<h4 id="diagnostic-commands-1">Diagnostic Commands</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check cluster membership on each host</span>
+esxcli vsan cluster get
+
+<span class="hljs-comment"># Check network connectivity</span>
+vmkping -I vmk1 &lt;peer_vsan_ip&gt;
+
+<span class="hljs-comment"># Check physical NIC status</span>
+esxcli network nic stats get -n vmnic2
+
+<span class="hljs-comment"># Check for CRC errors, drops, overruns</span>
+esxcli network nic stats get -n vmnic2 | grep -i <span class="hljs-string">"error\|drop\|overrun"</span>
+
+<span class="hljs-comment"># Check switch port channel status</span>
+esxcli network vswitch dvs vmware lacp status get
+</code></pre>
+<div class="fix-box">
+<strong>Remediation (Network Partition):</strong><br>
+1. Identify the partition boundary -- which hosts can talk to which<br>
+2. Check physical connectivity: cables, switch ports, SFP modules<br>
+3. Verify VLAN tags: <code>esxcli network vswitch dvs vmware list</code><br>
+4. Check for spanning tree issues on physical switches<br>
+5. If LACP is in use, verify LACP negotiation: <code>esxcli network vswitch dvs vmware lacp status get</code><br>
+6. Test connectivity: <code>vmkping -I vmk1 -s 8972 -d &lt;peer&gt;</code><br>
+7. Restart vSAN networking on the isolated host (last resort):<br>
+   <code>esxcli vsan network remove -i vmk1</code><br>
+   <code>esxcli vsan network ip add -i vmk1</code><br>
+8. If spanning tree is blocking, enable PortFast on access ports
+</div>
+
+<p><a id="resync-storms"></a></p>
+<h2 id="163-resync-storms">16.3 Resync Storms</h2>
+<h4 id="symptoms-2">Symptoms</h4>
+<ul>
+<li>Hundreds or thousands of components resyncing simultaneously</li>
+<li>Severe performance degradation during resync</li>
+<li>High network utilization on vSAN VMkernel interfaces</li>
+<li>VM IO latency spikes</li>
+</ul>
+<h4 id="diagnostic-commands-2">Diagnostic Commands</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check resync volume</span>
+esxcli vsan debug resync summary
+
+<span class="hljs-comment"># Check network utilization</span>
+esxtop  <span class="hljs-comment"># Press 'n' for network view, look at vmk1 throughput</span>
+
+<span class="hljs-comment"># Check throttle settings</span>
+esxcli system settings advanced list -o /VSAN/ResyncThrottleAdaptive
+</code></pre>
+<div class="fix-box">
+<strong>Remediation (Resync Storm):</strong><br>
+1. Verify adaptive throttle is enabled:<br>
+   <code>esxcli system settings advanced set -o /VSAN/ResyncThrottleAdaptive -i 1</code><br>
+2. If needed, manually cap resync bandwidth (MB/s per host):<br>
+   <code>esxcli system settings advanced set -o /VSAN/ResyncBandwidthCap -i 500</code><br>
+3. Avoid performing multiple maintenance operations simultaneously<br>
+4. If a single disk failure triggered the storm, it will self-resolve -- monitor progress<br>
+5. After the storm subsides, remove any manual bandwidth cap:<br>
+   <code>esxcli system settings advanced set -o /VSAN/ResyncBandwidthCap -i 0</code>
+</div>
+
+<p><a id="performance-degradation"></a></p>
+<h2 id="164-performance-degradation">16.4 Performance Degradation</h2>
+<h4 id="symptoms-3">Symptoms</h4>
+<ul>
+<li>High latency (&gt; 5ms read, &gt; 10ms write)</li>
+<li>Non-zero congestion values</li>
+<li>Elevated outstanding IO</li>
+<li>User complaints about slow VMs</li>
+</ul>
+<h4 id="diagnostic-commands-3">Diagnostic Commands</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check congestion</span>
+esxcli vsan debug controller list
+
+<span class="hljs-comment"># Check disk latency</span>
+esxcli vsan debug disk latency get
+
+<span class="hljs-comment"># Check for noisy neighbor VMs</span>
+esxtop  <span class="hljs-comment"># Press 'v' for VM disk view, sort by DAVG (device average latency)</span>
+
+<span class="hljs-comment"># Check if resyncs are causing pressure</span>
+esxcli vsan debug resync summary
+
+<span class="hljs-comment"># Check cache tier utilization (OSA only)</span>
+vsish -e get /vmkModules/lsom/disks/&lt;cache_uuid&gt;/info | grep -i cache
+</code></pre>
+<div class="fix-box">
+<strong>Remediation (Performance Degradation):</strong><br>
+1. Identify the bottleneck: disk, network, or compute<br>
+2. <strong>Disk bottleneck:</strong> Check SMART, replace aging disks, add capacity<br>
+3. <strong>Network bottleneck:</strong> Verify jumbo frames, check for errors/drops, upgrade to 25GbE<br>
+4. <strong>Compute bottleneck:</strong> Check CPU ready time on hosts, redistribute VMs with DRS<br>
+5. <strong>Noisy neighbor:</strong> Identify high-IO VMs with esxtop, apply IO shares/limits via SIOC<br>
+6. <strong>Cache saturation (OSA):</strong> Increase cache tier size or migrate to ESA<br>
+7. Review storage policies -- RAID-5/6 has lower write performance than RAID-1<br>
+8. Enable vSAN performance service to establish baselines for trending
+</div>
+
+<p><a id="clom-errors"></a></p>
+<h2 id="165-clom-errors">16.5 CLOM Errors</h2>
+<p>CLOM (Cluster Level Object Manager) is the vSAN component responsible for object placement and repair. CLOM errors indicate placement failures.</p>
+<h4 id="symptoms-4">Symptoms</h4>
+<ul>
+<li>Objects stuck in non-compliant state</li>
+<li>New VM provisioning fails with "insufficient resources"</li>
+<li>CLOM log shows placement errors</li>
+</ul>
+<h4 id="diagnostic-commands-4">Diagnostic Commands</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check CLOM log for errors</span>
+grep -i <span class="hljs-string">"error\|fail\|cannot place"</span> /var/log/clomd.log | <span class="hljs-built_in">tail</span> -30
+
+<span class="hljs-comment"># Check component limits</span>
+esxcli vsan health cluster list -t <span class="hljs-string">"Host Component Limit"</span>
+
+<span class="hljs-comment"># Check CLOM status</span>
+/etc/init.d/clomd status
+
+<span class="hljs-comment"># List objects with placement issues</span>
+esxcli vsan debug object list --<span class="hljs-built_in">type</span>=nonCompliant
+</code></pre>
+<h4 id="common-clom-error-messages">Common CLOM Error Messages</h4>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Not enough fault domains</code></td>
+<td>FTT &gt; available FDs</td>
+<td>Add hosts/FDs or reduce FTT</td>
+</tr>
+<tr>
+<td><code>Not enough disk space</code></td>
+<td>Capacity &gt; 80%</td>
+<td>Free space or add capacity</td>
+</tr>
+<tr>
+<td><code>Component limit reached</code></td>
+<td>&gt; 9000 components/host</td>
+<td>Reduce FTT, consolidate VMs, or add hosts</td>
+</tr>
+<tr>
+<td><code>Cannot place</code></td>
+<td>Combination of above</td>
+<td>Analyze specific constraint from log</td>
+</tr>
+<tr>
+<td><code>Disk group offline</code></td>
+<td>Cache disk failure (OSA)</td>
+<td>Replace cache disk, recreate DG</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (CLOM Errors):</strong><br>
+1. Restart CLOM if hung: <code>/etc/init.d/clomd restart</code><br>
+2. Verify sufficient resources: capacity &gt; 20% free, components &lt; 9000/host<br>
+3. Check fault domain count meets policy requirements<br>
+4. If component limit is reached, reduce FTT on low-priority VMs<br>
+5. Review and consolidate storage policies to reduce component count<br>
+6. After resolving constraints, CLOM will automatically retry placement
+</div>
+
+<div class="page-break"></div>
+
+<p><a id="cli-quick-reference-card"></a></p>
+<h1 id="17-cli-quick-reference-card">17. CLI Quick Reference Card</h1>
+<h3 id="cluster-operations">Cluster Operations</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get cluster status</span>
+esxcli vsan cluster get
+
+<span class="hljs-comment"># Join a vSAN cluster</span>
+esxcli vsan cluster <span class="hljs-built_in">join</span> -c &lt;cluster-uuid&gt;
+
+<span class="hljs-comment"># Leave a vSAN cluster</span>
+esxcli vsan cluster leave
+
+<span class="hljs-comment"># Restore cluster from backup</span>
+esxcli vsan cluster restore -c &lt;cluster-uuid&gt;
+</code></pre>
+<h3 id="health-commands">Health Commands</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all health checks</span>
+esxcli vsan health cluster list
+
+<span class="hljs-comment"># Run a specific health test</span>
+esxcli vsan health cluster list -t <span class="hljs-string">"&lt;test name&gt;"</span>
+
+<span class="hljs-comment"># Get health summary</span>
+esxcli vsan health cluster get
+</code></pre>
+<h3 id="storage-commands">Storage Commands</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all vSAN disks</span>
+esxcli vsan storage list
+
+<span class="hljs-comment"># Add a disk to vSAN (OSA - with cache disk)</span>
+esxcli vsan storage add -d naa.&lt;capacity_disk&gt; -s naa.&lt;cache_disk&gt;
+
+<span class="hljs-comment"># Add a disk to vSAN (ESA)</span>
+esxcli vsan storage add -d naa.&lt;nvme_disk&gt;
+
+<span class="hljs-comment"># Remove a disk from vSAN</span>
+esxcli vsan storage remove -d naa.&lt;disk_id&gt;
+
+<span class="hljs-comment"># Auto-claim disks</span>
+esxcli vsan storage automode <span class="hljs-built_in">set</span> -e <span class="hljs-literal">true</span>
+</code></pre>
+<h3 id="network-commands">Network Commands</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List vSAN network interfaces</span>
+esxcli vsan network list
+
+<span class="hljs-comment"># Add a VMkernel interface to vSAN</span>
+esxcli vsan network ip add -i vmk1
+
+<span class="hljs-comment"># Remove a VMkernel interface from vSAN</span>
+esxcli vsan network remove -i vmk1
+
+<span class="hljs-comment"># Test connectivity with jumbo frames</span>
+vmkping -I vmk1 -s 8972 -d &lt;target_ip&gt;
+
+<span class="hljs-comment"># Test standard connectivity</span>
+vmkping -I vmk1 &lt;target_ip&gt;
+</code></pre>
+<h3 id="debug-commands">Debug Commands</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Resync summary</span>
+esxcli vsan debug resync summary
+
+<span class="hljs-comment"># Object health summary</span>
+esxcli vsan debug object health summary get
+
+<span class="hljs-comment"># List objects by type</span>
+esxcli vsan debug object list --<span class="hljs-built_in">type</span>=inaccessible
+esxcli vsan debug object list --<span class="hljs-built_in">type</span>=reducedRedundancy
+esxcli vsan debug object list --<span class="hljs-built_in">type</span>=nonCompliant
+
+<span class="hljs-comment"># Disk SMART data</span>
+esxcli vsan debug disk smart get -d naa.&lt;disk_id&gt;
+
+<span class="hljs-comment"># Controller info (congestion, outstanding IO)</span>
+esxcli vsan debug controller list
+
+<span class="hljs-comment"># Space usage details</span>
+esxcli vsan debug space show
+
+<span class="hljs-comment"># Disk latency</span>
+esxcli vsan debug disk latency get
+</code></pre>
+<h3 id="policy-commands">Policy Commands</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List vSAN storage policies applied to a VM's namespace</span>
+esxcli vsan policy getdefault
+
+<span class="hljs-comment"># Set the default vSAN policy</span>
+esxcli vsan policy setdefault -c <span class="hljs-string">"proportionalCapacity=0"</span> -p <span class="hljs-string">"hostFailuresToTolerate=1"</span>
+</code></pre>
+<h3 id="maintenance-mode">Maintenance Mode</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Enter maintenance mode (ensure accessibility)</span>
+esxcli system maintenanceMode <span class="hljs-built_in">set</span> -e <span class="hljs-literal">true</span> -m ensureAccessibility
+
+<span class="hljs-comment"># Enter maintenance mode (full data migration)</span>
+esxcli system maintenanceMode <span class="hljs-built_in">set</span> -e <span class="hljs-literal">true</span> -m evacuateAllData
+
+<span class="hljs-comment"># Enter maintenance mode (no data migration)</span>
+esxcli system maintenanceMode <span class="hljs-built_in">set</span> -e <span class="hljs-literal">true</span> -m noAction
+
+<span class="hljs-comment"># Exit maintenance mode</span>
+esxcli system maintenanceMode <span class="hljs-built_in">set</span> -e <span class="hljs-literal">false</span>
+</code></pre>
+<h3 id="advanced-settings">Advanced Settings</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all vSAN advanced settings</span>
+esxcli system settings advanced list -o /VSAN
+
+<span class="hljs-comment"># Common performance-related settings</span>
+esxcli system settings advanced list -o /VSAN/ResyncThrottleAdaptive
+esxcli system settings advanced list -o /VSAN/ResyncBandwidthCap
+esxcli system settings advanced list -o /LSOM/lsomResyncThrottleEnabled
+
+<span class="hljs-comment"># Set a vSAN advanced parameter</span>
+esxcli system settings advanced <span class="hljs-built_in">set</span> -o /VSAN/ResyncThrottleAdaptive -i 1
+</code></pre>
+<h3 id="log-locations">Log Locations</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># vSAN trace log</span>
+/var/log/vsantraced.log
+
+<span class="hljs-comment"># CLOMD (object placement) log</span>
+/var/log/clomd.log
+
+<span class="hljs-comment"># vSAN management log (on VCSA)</span>
+/var/log/vmware/vpxd/vpxd.log   <span class="hljs-comment"># (vSAN operations logged here)</span>
+
+<span class="hljs-comment"># vSAN health log (on VCSA)</span>
+/var/log/vmware/vsanHealth/vsanhealth.log
+
+<span class="hljs-comment"># VMkernel log (disk errors, IO errors)</span>
+/var/log/vmkernel.log
+
+<span class="hljs-comment"># Syslog (general ESXi system log)</span>
+/var/log/syslog.log
+
+<span class="hljs-comment"># vSAN observer data (if enabled)</span>
+/var/log/vsan/observer/
+</code></pre>
+<div class="page-break"></div>
+
+<p><a id="powercli-quick-reference"></a></p>
+<h1 id="18-powercli-quick-reference">18. PowerCLI Quick Reference</h1>
+<h3 id="connection--setup">Connection &amp; Setup</h3>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Install PowerCLI</span>
+<span class="hljs-built_in">Install-Module</span> <span class="hljs-literal">-Name</span> VMware.PowerCLI <span class="hljs-literal">-Scope</span> CurrentUser <span class="hljs-literal">-Force</span>
+
+<span class="hljs-comment"># Connect to vCenter</span>
+<span class="hljs-built_in">Connect-VIServer</span> <span class="hljs-literal">-Server</span> vcsa<span class="hljs-literal">-01</span>.vcf.local <span class="hljs-literal">-User</span> administrator@vsphere.local
+
+<span class="hljs-comment"># Ignore certificate errors (lab only)</span>
+<span class="hljs-built_in">Set-PowerCLIConfiguration</span> <span class="hljs-literal">-InvalidCertificateAction</span> Ignore <span class="hljs-literal">-Confirm</span>:<span class="hljs-variable">$false</span>
+</code></pre>
+<h3 id="cluster-information">Cluster Information</h3>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Get vSAN cluster configuration</span>
+<span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-built_in">Get-VsanClusterConfiguration</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+
+<span class="hljs-comment"># Get cluster hosts</span>
+<span class="hljs-built_in">Get-VMHost</span> <span class="hljs-literal">-Location</span> <span class="hljs-variable">$cluster</span> | <span class="hljs-built_in">Select</span> Name, ConnectionState, PowerState
+
+<span class="hljs-comment"># Get vSAN datastore</span>
+<span class="hljs-built_in">Get-Datastore</span> <span class="hljs-literal">-RelatedObject</span> <span class="hljs-variable">$cluster</span> | <span class="hljs-built_in">Where-Object</span> { <span class="hljs-variable">$_</span>.Type <span class="hljs-operator">-eq</span> <span class="hljs-string">"vsan"</span> }
+</code></pre>
+<h3 id="health-checks">Health Checks</h3>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Get vSAN health summary</span>
+<span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$healthSystem</span> = <span class="hljs-built_in">Get-VsanView</span> <span class="hljs-literal">-Id</span> <span class="hljs-string">"VsanVcClusterHealthSystem-vsan-cluster-health-system"</span>
+<span class="hljs-variable">$summary</span> = <span class="hljs-variable">$healthSystem</span>.VsanQueryVcClusterHealthSummary(
+    <span class="hljs-variable">$cluster</span>.ExtensionData.MoRef,
+    <span class="hljs-variable">$null</span>, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$true</span>, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$null</span>, <span class="hljs-string">"defaultView"</span>
+)
+
+<span class="hljs-comment"># Display overall health</span>
+<span class="hljs-variable">$summary</span>.OverallHealth
+<span class="hljs-variable">$summary</span>.OverallHealthDescription
+
+<span class="hljs-comment"># Display per-group health</span>
+<span class="hljs-variable">$summary</span>.Groups | <span class="hljs-built_in">ForEach-Object</span> {
+    [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+        <span class="hljs-built_in">Group</span>  = <span class="hljs-variable">$_</span>.GroupName
+        Health = <span class="hljs-variable">$_</span>.GroupHealth
+    }
+} | <span class="hljs-built_in">Format-Table</span> <span class="hljs-literal">-AutoSize</span>
+</code></pre>
+<h3 id="capacity--space">Capacity &amp; Space</h3>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Get vSAN space usage</span>
+<span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-built_in">Get-VsanSpaceUsage</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+
+<span class="hljs-comment"># Detailed space breakdown</span>
+<span class="hljs-variable">$space</span> = <span class="hljs-built_in">Get-VsanSpaceUsage</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+[<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+    <span class="hljs-string">"Total (TB)"</span>       = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$space</span>.TotalCapacityGB / <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>)
+    <span class="hljs-string">"Used (TB)"</span>        = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$space</span>.UsedCapacityGB / <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>)
+    <span class="hljs-string">"Free (TB)"</span>        = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$space</span>.FreeCapacityGB / <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>)
+    <span class="hljs-string">"Used %"</span>           = [<span class="hljs-type">math</span>]::Round((<span class="hljs-variable">$space</span>.UsedCapacityGB / <span class="hljs-variable">$space</span>.TotalCapacityGB) * <span class="hljs-number">100</span>, <span class="hljs-number">1</span>)
+    <span class="hljs-string">"Dedup Ratio"</span>      = [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$space</span>.DedupRatio, <span class="hljs-number">2</span>)
+    <span class="hljs-string">"Compression Ratio"</span>= [<span class="hljs-type">math</span>]::Round(<span class="hljs-variable">$space</span>.CompressionRatio, <span class="hljs-number">2</span>)
+}
+</code></pre>
+<h3 id="disk-management">Disk Management</h3>
+<pre><code class="hljs powershell"><span class="hljs-comment"># List all vSAN disks</span>
+<span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-built_in">Get-VsanDisk</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span> | <span class="hljs-built_in">Select</span> VsanDiskGroup, CanonicalName, IsCacheDisk, CapacityGB
+
+<span class="hljs-comment"># Get disk groups per host</span>
+<span class="hljs-variable">$hosts</span> = <span class="hljs-built_in">Get-VMHost</span> <span class="hljs-literal">-Location</span> <span class="hljs-variable">$cluster</span>
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$vmHost</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$hosts</span>) {
+    <span class="hljs-variable">$dgs</span> = <span class="hljs-built_in">Get-VsanDiskGroup</span> <span class="hljs-literal">-VMHost</span> <span class="hljs-variable">$vmHost</span>
+    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$dg</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$dgs</span>) {
+        [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+            Host      = <span class="hljs-variable">$vmHost</span>.Name
+            DiskGroup = <span class="hljs-variable">$dg</span>.Name
+            DiskCount = (<span class="hljs-variable">$dg</span> | <span class="hljs-built_in">Get-VsanDisk</span>).Count
+        }
+    }
+} | <span class="hljs-built_in">Format-Table</span> <span class="hljs-literal">-AutoSize</span>
+</code></pre>
+<h3 id="storage-policies">Storage Policies</h3>
+<pre><code class="hljs powershell"><span class="hljs-comment"># List all vSAN storage policies</span>
+<span class="hljs-built_in">Get-SpbmStoragePolicy</span> | <span class="hljs-built_in">Where-Object</span> { <span class="hljs-variable">$_</span>.Name <span class="hljs-operator">-like</span> <span class="hljs-string">"*vSAN*"</span> } |
+    <span class="hljs-built_in">Select</span> Name, Description
+
+<span class="hljs-comment"># Check VM compliance</span>
+<span class="hljs-variable">$vms</span> = <span class="hljs-built_in">Get-VM</span> <span class="hljs-literal">-Location</span> (<span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>)
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$vm</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$vms</span>) {
+    <span class="hljs-variable">$compliance</span> = <span class="hljs-built_in">Get-SpbmEntityConfiguration</span> <span class="hljs-literal">-VM</span> <span class="hljs-variable">$vm</span>
+    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$c</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$compliance</span>) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$c</span>.ComplianceStatus <span class="hljs-operator">-ne</span> <span class="hljs-string">"compliant"</span>) {
+            [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+                VM     = <span class="hljs-variable">$vm</span>.Name
+                Entity = <span class="hljs-variable">$c</span>.Entity
+                Status = <span class="hljs-variable">$c</span>.ComplianceStatus
+                Policy = <span class="hljs-variable">$c</span>.StoragePolicy.Name
+            }
+        }
+    }
+} | <span class="hljs-built_in">Format-Table</span> <span class="hljs-literal">-AutoSize</span>
+
+<span class="hljs-comment"># Create a new vSAN storage policy</span>
+<span class="hljs-built_in">New-SpbmStoragePolicy</span> <span class="hljs-literal">-Name</span> <span class="hljs-string">"vSAN-FTT1-RAID1"</span> <span class="hljs-literal">-Description</span> <span class="hljs-string">"FTT=1 RAID-1 Mirroring"</span> <span class="hljs-literal">-RuleSet</span> (
+    <span class="hljs-built_in">New-SpbmRuleSet</span> <span class="hljs-literal">-Name</span> <span class="hljs-string">"vSAN"</span> <span class="hljs-literal">-AllOfRules</span> <span class="hljs-selector-tag">@</span>(
+        <span class="hljs-built_in">New-SpbmRule</span> <span class="hljs-literal">-Capability</span> (<span class="hljs-built_in">Get-SpbmCapability</span> <span class="hljs-literal">-Name</span> <span class="hljs-string">"VSAN.hostFailuresToTolerate"</span>) <span class="hljs-literal">-Value</span> <span class="hljs-number">1</span>,
+        <span class="hljs-built_in">New-SpbmRule</span> <span class="hljs-literal">-Capability</span> (<span class="hljs-built_in">Get-SpbmCapability</span> <span class="hljs-literal">-Name</span> <span class="hljs-string">"VSAN.replicaPreference"</span>) <span class="hljs-literal">-Value</span> <span class="hljs-string">"RAID-1 (Mirroring) - Performance"</span>
+    )
+)
+</code></pre>
+<h3 id="fault-domains">Fault Domains</h3>
+<pre><code class="hljs powershell"><span class="hljs-comment"># List fault domains</span>
+<span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-built_in">Get-VsanFaultDomain</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span> | <span class="hljs-built_in">ForEach-Object</span> {
+    [<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+        Name  = <span class="hljs-variable">$_</span>.Name
+        Hosts = (<span class="hljs-variable">$_</span>.VMHost.Name <span class="hljs-operator">-join</span> <span class="hljs-string">", "</span>)
+    }
+} | <span class="hljs-built_in">Format-Table</span> <span class="hljs-literal">-AutoSize</span>
+
+<span class="hljs-comment"># Create a new fault domain</span>
+<span class="hljs-built_in">New-VsanFaultDomain</span> <span class="hljs-literal">-Name</span> <span class="hljs-string">"rack-05"</span> <span class="hljs-literal">-VMHost</span> (<span class="hljs-built_in">Get-VMHost</span> <span class="hljs-string">"esx-05.vcf.local"</span>)
+
+<span class="hljs-comment"># Remove a fault domain</span>
+<span class="hljs-built_in">Remove-VsanFaultDomain</span> <span class="hljs-literal">-VsanFaultDomain</span> (<span class="hljs-built_in">Get-VsanFaultDomain</span> <span class="hljs-literal">-Name</span> <span class="hljs-string">"rack-05"</span>)
+</code></pre>
+<h3 id="stretched-cluster">Stretched Cluster</h3>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Get stretched cluster configuration</span>
+<span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-variable">$config</span> = <span class="hljs-built_in">Get-VsanClusterConfiguration</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+[<span class="hljs-type">PSCustomObject</span>]<span class="hljs-selector-tag">@</span>{
+    StretchedCluster = <span class="hljs-variable">$config</span>.StretchedClusterEnabled
+    PreferredSite    = <span class="hljs-variable">$config</span>.PreferredFaultDomain.Name
+    WitnessHost      = <span class="hljs-variable">$config</span>.WitnessHost.Name
+}
+
+<span class="hljs-comment"># Set preferred fault domain</span>
+<span class="hljs-built_in">Set-VsanClusterConfiguration</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span> <span class="hljs-literal">-PreferredFaultDomain</span> (
+    <span class="hljs-built_in">Get-VsanFaultDomain</span> <span class="hljs-literal">-Name</span> <span class="hljs-string">"site-a"</span>
+)
+</code></pre>
+<h3 id="performance-service">Performance Service</h3>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Enable performance service</span>
+<span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+<span class="hljs-built_in">Set-VsanClusterConfiguration</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span> <span class="hljs-literal">-PerformanceServiceEnabled</span> <span class="hljs-variable">$true</span>
+
+<span class="hljs-comment"># Check performance service status</span>
+(<span class="hljs-built_in">Get-VsanClusterConfiguration</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>).PerformanceServiceEnabled
+
+<span class="hljs-comment"># Query performance data</span>
+<span class="hljs-variable">$vsanPerfMgr</span> = <span class="hljs-built_in">Get-VsanView</span> <span class="hljs-literal">-Id</span> <span class="hljs-string">"VsanPerformanceManager-vsan-performance-manager"</span>
+<span class="hljs-variable">$spec</span> = <span class="hljs-built_in">New-Object</span> VMware.Vsan.Views.VsanPerfQuerySpec
+<span class="hljs-variable">$spec</span>.EntityRefId = <span class="hljs-string">"cluster-domclient:*"</span>
+<span class="hljs-variable">$spec</span>.StartTime = (<span class="hljs-built_in">Get-Date</span>).AddHours(<span class="hljs-literal">-1</span>)
+<span class="hljs-variable">$spec</span>.EndTime = <span class="hljs-built_in">Get-Date</span>
+<span class="hljs-variable">$vsanPerfMgr</span>.VsanPerfQueryPerf(<span class="hljs-selector-tag">@</span>(<span class="hljs-variable">$spec</span>), <span class="hljs-variable">$cluster</span>.ExtensionData.MoRef)
+</code></pre>
+<h3 id="maintenance--operations">Maintenance &amp; Operations</h3>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Enter maintenance mode (ensure accessibility)</span>
+<span class="hljs-variable">$vmHost</span> = <span class="hljs-built_in">Get-VMHost</span> <span class="hljs-string">"esx-01.vcf.local"</span>
+<span class="hljs-built_in">Set-VMHost</span> <span class="hljs-literal">-VMHost</span> <span class="hljs-variable">$vmHost</span> <span class="hljs-literal">-State</span> Maintenance <span class="hljs-literal">-VsanDataMigrationMode</span> EnsureAccessibility
+
+<span class="hljs-comment"># Enter maintenance mode (full evacuation)</span>
+<span class="hljs-built_in">Set-VMHost</span> <span class="hljs-literal">-VMHost</span> <span class="hljs-variable">$vmHost</span> <span class="hljs-literal">-State</span> Maintenance <span class="hljs-literal">-VsanDataMigrationMode</span> Full
+
+<span class="hljs-comment"># Exit maintenance mode</span>
+<span class="hljs-built_in">Set-VMHost</span> <span class="hljs-literal">-VMHost</span> <span class="hljs-variable">$vmHost</span> <span class="hljs-literal">-State</span> Connected
+
+<span class="hljs-comment"># Pre-check maintenance mode (dry run)</span>
+<span class="hljs-variable">$vsanHealthSystem</span> = <span class="hljs-built_in">Get-VsanView</span> <span class="hljs-literal">-Id</span> <span class="hljs-string">"VsanVcClusterHealthSystem-vsan-cluster-health-system"</span>
+<span class="hljs-variable">$vsanHealthSystem</span>.VsanQueryVcClusterHealthSummary(
+    (<span class="hljs-built_in">Get-Cluster</span> <span class="hljs-string">"SDDC-Cluster1"</span>).ExtensionData.MoRef,
+    <span class="hljs-variable">$null</span>, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$true</span>, <span class="hljs-variable">$null</span>, <span class="hljs-variable">$null</span>, <span class="hljs-string">"maintenanceMode"</span>
+)
+</code></pre>
+<h3 id="comprehensive-health-report-script">Comprehensive Health Report Script</h3>
+<pre><code class="hljs powershell"><span class="hljs-comment"># Full vSAN Health Report</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Get-VsanHealthReport</span></span> {
+    <span class="hljs-keyword">param</span>(
+        [<span class="hljs-built_in">string</span>]<span class="hljs-variable">$ClusterName</span> = <span class="hljs-string">"SDDC-Cluster1"</span>
+    )
+
+    <span class="hljs-variable">$cluster</span> = <span class="hljs-built_in">Get-Cluster</span> <span class="hljs-variable">$ClusterName</span>
+    <span class="hljs-variable">$config</span> = <span class="hljs-built_in">Get-VsanClusterConfiguration</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+    <span class="hljs-variable">$space</span> = <span class="hljs-built_in">Get-VsanSpaceUsage</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+    <span class="hljs-variable">$hosts</span> = <span class="hljs-built_in">Get-VMHost</span> <span class="hljs-literal">-Location</span> <span class="hljs-variable">$cluster</span>
+
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"========================================"</span> <span class="hljs-literal">-ForegroundColor</span> Cyan
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">" vSAN Health Report: <span class="hljs-variable">$ClusterName</span>"</span>       <span class="hljs-literal">-ForegroundColor</span> Cyan
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">" Generated: <span class="hljs-variable">$</span>(Get-Date)"</span>                 <span class="hljs-literal">-ForegroundColor</span> Cyan
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"========================================"</span> <span class="hljs-literal">-ForegroundColor</span> Cyan
+
+    <span class="hljs-comment"># Cluster Config</span>
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"`n--- Cluster Configuration ---"</span> <span class="hljs-literal">-ForegroundColor</span> Yellow
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  Hosts:           <span class="hljs-variable">$</span>(<span class="hljs-variable">$hosts</span>.Count)"</span>
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  vSAN Enabled:    <span class="hljs-variable">$</span>(<span class="hljs-variable">$config</span>.VsanEnabled)"</span>
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  Stretched:       <span class="hljs-variable">$</span>(<span class="hljs-variable">$config</span>.StretchedClusterEnabled)"</span>
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  Perf Service:    <span class="hljs-variable">$</span>(<span class="hljs-variable">$config</span>.PerformanceServiceEnabled)"</span>
+
+    <span class="hljs-comment"># Capacity</span>
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"`n--- Capacity ---"</span> <span class="hljs-literal">-ForegroundColor</span> Yellow
+    <span class="hljs-variable">$usedPct</span> = [<span class="hljs-type">math</span>]::Round((<span class="hljs-variable">$space</span>.UsedCapacityGB / <span class="hljs-variable">$space</span>.TotalCapacityGB) * <span class="hljs-number">100</span>, <span class="hljs-number">1</span>)
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  Total:  <span class="hljs-variable">$</span>([math]::Round(<span class="hljs-variable">$space</span>.TotalCapacityGB / 1024, 2)) TB"</span>
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  Used:   <span class="hljs-variable">$</span>([math]::Round(<span class="hljs-variable">$space</span>.UsedCapacityGB / 1024, 2)) TB (<span class="hljs-variable">$usedPct</span>%)"</span>
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  Free:   <span class="hljs-variable">$</span>([math]::Round(<span class="hljs-variable">$space</span>.FreeCapacityGB / 1024, 2)) TB"</span>
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$usedPct</span> <span class="hljs-operator">-gt</span> <span class="hljs-number">80</span>) {
+        <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  STATUS: CRITICAL"</span> <span class="hljs-literal">-ForegroundColor</span> Red
+    } <span class="hljs-keyword">elseif</span> (<span class="hljs-variable">$usedPct</span> <span class="hljs-operator">-gt</span> <span class="hljs-number">70</span>) {
+        <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  STATUS: WARNING"</span> <span class="hljs-literal">-ForegroundColor</span> Yellow
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  STATUS: HEALTHY"</span> <span class="hljs-literal">-ForegroundColor</span> Green
+    }
+
+    <span class="hljs-comment"># Host Status</span>
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"`n--- Host Status ---"</span> <span class="hljs-literal">-ForegroundColor</span> Yellow
+    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$h</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$hosts</span>) {
+        <span class="hljs-variable">$state</span> = <span class="hljs-variable">$h</span>.ConnectionState
+        <span class="hljs-variable">$color</span> = <span class="hljs-keyword">if</span> (<span class="hljs-variable">$state</span> <span class="hljs-operator">-eq</span> <span class="hljs-string">"Connected"</span>) { <span class="hljs-string">"Green"</span> } <span class="hljs-keyword">else</span> { <span class="hljs-string">"Red"</span> }
+        <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  <span class="hljs-variable">$</span>(<span class="hljs-variable">$h</span>.Name): <span class="hljs-variable">$state</span>"</span> <span class="hljs-literal">-ForegroundColor</span> <span class="hljs-variable">$color</span>
+    }
+
+    <span class="hljs-comment"># Disk Health</span>
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"`n--- Disk Health ---"</span> <span class="hljs-literal">-ForegroundColor</span> Yellow
+    <span class="hljs-variable">$disks</span> = <span class="hljs-built_in">Get-VsanDisk</span> <span class="hljs-literal">-Cluster</span> <span class="hljs-variable">$cluster</span>
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  Total Disks: <span class="hljs-variable">$</span>(<span class="hljs-variable">$disks</span>.Count)"</span>
+
+    <span class="hljs-comment"># Policy Compliance</span>
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"`n--- Policy Compliance ---"</span> <span class="hljs-literal">-ForegroundColor</span> Yellow
+    <span class="hljs-variable">$vms</span> = <span class="hljs-built_in">Get-VM</span> <span class="hljs-literal">-Location</span> <span class="hljs-variable">$cluster</span>
+    <span class="hljs-variable">$nonCompliant</span> = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$vm</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$vms</span>) {
+        <span class="hljs-variable">$compliance</span> = <span class="hljs-built_in">Get-SpbmEntityConfiguration</span> <span class="hljs-literal">-VM</span> <span class="hljs-variable">$vm</span> <span class="hljs-literal">-ErrorAction</span> SilentlyContinue
+        <span class="hljs-variable">$nonCompliant</span> += (<span class="hljs-variable">$compliance</span> | <span class="hljs-built_in">Where-Object</span> { <span class="hljs-variable">$_</span>.ComplianceStatus <span class="hljs-operator">-ne</span> <span class="hljs-string">"compliant"</span> }).Count
+    }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$nonCompliant</span> <span class="hljs-operator">-eq</span> <span class="hljs-number">0</span>) {
+        <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  All VMs compliant"</span> <span class="hljs-literal">-ForegroundColor</span> Green
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"  Non-compliant entities: <span class="hljs-variable">$nonCompliant</span>"</span> <span class="hljs-literal">-ForegroundColor</span> Red
+    }
+
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"`n========================================"</span> <span class="hljs-literal">-ForegroundColor</span> Cyan
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">" Report Complete"</span>                          <span class="hljs-literal">-ForegroundColor</span> Cyan
+    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"========================================"</span> <span class="hljs-literal">-ForegroundColor</span> Cyan
+}
+
+<span class="hljs-comment"># Execute the report</span>
+<span class="hljs-built_in">Get-VsanHealthReport</span> <span class="hljs-literal">-ClusterName</span> <span class="hljs-string">"SDDC-Cluster1"</span>
+</code></pre>
+<div class="page-break"></div>
+
+<hr>
+<div style="text-align: center; padding: 40px 20px; color: #666;">
+
+<p><strong>vSAN Health Check Handbook</strong></p>
+<p>Version 1.0 -- March 2026</p>
+<p>Copyright 2026 Virtual Control LLC. All rights reserved.</p>
+<p>This document is for internal use only and may not be distributed without written permission.</p>
+<p>VMware, vSAN, vSphere, vCenter, ESXi, and VCF are registered trademarks of Broadcom Inc.</p>
+</div>
+
+	
+
+</body></html>

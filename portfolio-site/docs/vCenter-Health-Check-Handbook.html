@@ -1,0 +1,3719 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8"><style>* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	line-height: 1.6;
+	font-size: 0.6875em; /* 11 pt */
+	color: #111;
+	margin: 0;
+}
+
+body > :first-child {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+body > :last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0.5em 0 0.25em;
+}
+
+h5,
+h6 {
+	padding: 0;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h6 {
+	font-size: 0.875em;
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0.25em 0 1em;
+}
+
+blockquote {
+	margin: 0.5em 0 1em;
+	padding-left: 0.5em;
+	padding-right: 1em;
+	border-left: 4px solid gainsboro;
+	font-style: italic;
+}
+
+ul,
+ol {
+	margin: 0;
+	margin-left: 1em;
+	padding: 0 1.5em 0.5em;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+p code,
+li code,
+pre code {
+	background-color: #f8f8f8;
+	padding: 0.1em 0.375em;
+	border: 1px solid #f8f8f8;
+	border-radius: 0.25em;
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+pre code {
+	display: block;
+	padding: 0.5em;
+}
+
+.page-break {
+	page-break-after: always;
+}
+
+img {
+	max-width: 100%;
+	margin: 1em 0;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: block;
+	margin: 0 0 1em;
+	width: 100%;
+	overflow: auto;
+}
+
+table th,
+table td {
+	padding: 0.5em 1em;
+	border: 1px solid gainsboro;
+}
+
+table th {
+	font-weight: 600;
+}
+
+table tr {
+	background-color: white;
+	border-top: 1px solid gainsboro;
+}
+
+table tr:nth-child(2n) {
+	background-color: whitesmoke;
+}
+/*# sourceURL=E:\VCF-Depot\node_modules\md-to-pdf\markdown.css*/</style><style>pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/
+.hljs {
+  color: #24292e;
+  background: #ffffff
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  /* prettylights-syntax-keyword */
+  color: #d73a49
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  /* prettylights-syntax-entity */
+  color: #6f42c1
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  /* prettylights-syntax-constant */
+  color: #005cc5
+}
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  /* prettylights-syntax-string */
+  color: #032f62
+}
+.hljs-built_in,
+.hljs-symbol {
+  /* prettylights-syntax-variable */
+  color: #e36209
+}
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  /* prettylights-syntax-comment */
+  color: #6a737d
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  /* prettylights-syntax-entity-tag */
+  color: #22863a
+}
+.hljs-subst {
+  /* prettylights-syntax-storage-modifier-import */
+  color: #24292e
+}
+.hljs-section {
+  /* prettylights-syntax-markup-heading */
+  color: #005cc5;
+  font-weight: bold
+}
+.hljs-bullet {
+  /* prettylights-syntax-markup-list */
+  color: #735c0f
+}
+.hljs-emphasis {
+  /* prettylights-syntax-markup-italic */
+  color: #24292e;
+  font-style: italic
+}
+.hljs-strong {
+  /* prettylights-syntax-markup-bold */
+  color: #24292e;
+  font-weight: bold
+}
+.hljs-addition {
+  /* prettylights-syntax-markup-inserted */
+  color: #22863a;
+  background-color: #f0fff4
+}
+.hljs-deletion {
+  /* prettylights-syntax-markup-deleted */
+  color: #b31d28;
+  background-color: #ffeef0
+}
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
+  
+}/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
+h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
+h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
+h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
+th { background-color: #0b3d6b; color: white; padding: 7px 10px; text-align: left; }
+td { border: 1px solid #cfd8dc; padding: 6px 10px; }
+tr:nth-child(even) { background-color: #e3f2fd; }
+code { background-color: #e3f2fd; padding: 2px 5px; border-radius: 3px; font-size: 9pt; font-family: 'Cascadia Code', Consolas, monospace; color: #0b3d6b; }
+pre { background-color: #f5f5f5; padding: 12px; border-radius: 5px; border-left: 4px solid #1565c0; font-size: 9pt; line-height: 1.4; overflow-x: auto; }
+pre code { background: none; padding: 0; color: #1a1a1a; }
+a { color: #1565c0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 14px; margin: 10px 0; font-size: 9pt; }
+.toc { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px 30px; margin: 20px 0; }
+.toc ul { list-style: none; padding-left: 0; }
+.toc > ul > li { margin-bottom: 6px; }
+.toc > ul > li > a { font-weight: bold; font-size: 11pt; color: #0b3d6b; }
+.toc ul ul { padding-left: 22px; margin-top: 3px; }
+.toc ul ul li { margin-bottom: 2px; }
+.toc ul ul li a { font-size: 9.5pt; color: #333; }
+.info-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.warn-box { background: #fff3e0; border-left: 4px solid #f57c00; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.fix-box { background: #e8f5e9; border-left: 4px solid #43a047; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.danger { background: #ffebee; border-left: 4px solid #e53935; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.badge-pass { background: #43a047; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.badge-warn { background: #f57c00; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.badge-fail { background: #e53935; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.cover-page { text-align: center; padding: 80px 20px; page-break-after: always; }
+.cover-page h1 { font-size: 28pt; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 30px; border-radius: 10px; }
+.cover-page .subtitle { font-size: 14pt; color: #1565c0; margin-top: 20px; }
+.cover-page .meta { font-size: 10pt; color: #666; margin-top: 40px; line-height: 2; }
+.page-break { page-break-before: always; }</style></head>
+	<body class="">
+		<div class="cover-page">
+
+<h1 id="vcenter-server-health-check-handbook">vCenter Server Health Check Handbook</h1>
+<div class="subtitle">Comprehensive Health Verification for vCenter Server in VCF 9</div>
+
+<div class="meta">
+
+<p><strong>Author:</strong> Virtual Control LLC
+<strong>Date:</strong> March 2026
+<strong>Version:</strong> 1.0
+<strong>Classification:</strong> Internal Use
+<strong>Platform:</strong> VMware Cloud Foundation 9.0 / vCenter Server 8.x</p>
+</div>
+</div>
+
+<hr>
+<div class="toc">
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#overview">1. Overview &amp; Purpose</a></li>
+<li><a href="#prerequisites">2. Prerequisites</a></li>
+<li><a href="#quick-reference">3. Quick Reference — All Checks Summary</a></li>
+<li><a href="#vpxd-health">4. VPXD Service Health</a>
+  <ul>
+  <li><a href="#vpxd-process">4.1 VPXD Process Status</a></li>
+  <li><a href="#vpxd-restart">4.2 VPXD Restart Procedures</a></li>
+  <li><a href="#vpxd-logs">4.3 VPXD Log Analysis</a></li>
+  </ul>
+</li>
+<li><a href="#vcenter-services">5. vCenter Services Status</a>
+  <ul>
+  <li><a href="#vmon-cli">5.1 vmon-cli Service Listing</a></li>
+  <li><a href="#service-control">5.2 service-control Commands</a></li>
+  <li><a href="#critical-services">5.3 Critical vs Non-Critical Services</a></li>
+  </ul>
+</li>
+<li><a href="#vami-health">6. vCenter Appliance Health (VAMI)</a>
+  <ul>
+  <li><a href="#vami-system">6.1 System Health</a></li>
+  <li><a href="#vami-memory">6.2 Memory Health</a></li>
+  <li><a href="#vami-storage">6.3 Storage Health</a></li>
+  <li><a href="#vami-database">6.4 Database Storage Health</a></li>
+  <li><a href="#vami-load">6.5 CPU Load Health</a></li>
+  <li><a href="#vami-swap">6.6 Swap Health</a></li>
+  <li><a href="#vami-software">6.7 Software Packages Health</a></li>
+  </ul>
+</li>
+<li><a href="#database-health">7. Database Health</a>
+  <ul>
+  <li><a href="#db-postgres">7.1 PostgreSQL Embedded DB Status</a></li>
+  <li><a href="#db-size">7.2 VCDB Size Monitoring</a></li>
+  <li><a href="#db-vacuum">7.3 Vacuum &amp; Maintenance</a></li>
+  </ul>
+</li>
+<li><a href="#vcha">8. vCenter HA (VCHA)</a>
+  <ul>
+  <li><a href="#vcha-mode">8.1 VCHA Mode &amp; Status</a></li>
+  <li><a href="#vcha-nodes">8.2 Active / Passive / Witness Status</a></li>
+  <li><a href="#vcha-failover">8.3 Failover Readiness</a></li>
+  </ul>
+</li>
+<li><a href="#certificate-health">9. Certificate Health</a>
+  <ul>
+  <li><a href="#cert-manager">9.1 Certificate Manager Tool</a></li>
+  <li><a href="#cert-vecs">9.2 VECS Store Listing</a></li>
+  <li><a href="#cert-sts">9.3 STS Certificate</a></li>
+  <li><a href="#cert-machine">9.4 Machine SSL Certificate</a></li>
+  <li><a href="#cert-expiry">9.5 Expiry Checks</a></li>
+  </ul>
+</li>
+<li><a href="#storage-health">10. Storage Health</a>
+  <ul>
+  <li><a href="#disk-partitions">10.1 Disk Partitions &amp; Filesystem</a></li>
+  <li><a href="#log-storage">10.2 Log Storage Utilization</a></li>
+  <li><a href="#db-storage">10.3 DB Storage Utilization</a></li>
+  </ul>
+</li>
+<li><a href="#performance">11. Performance &amp; Resource Utilization</a>
+  <ul>
+  <li><a href="#perf-cpu">11.1 CPU Utilization</a></li>
+  <li><a href="#perf-memory">11.2 Memory Utilization</a></li>
+  <li><a href="#perf-swap">11.3 Swap &amp; Load Average</a></li>
+  </ul>
+</li>
+<li><a href="#sso-health">12. SSO / Identity Source Health</a>
+  <ul>
+  <li><a href="#sso-domain">12.1 SSO Domain Health</a></li>
+  <li><a href="#sso-identity">12.2 Identity Source Connectivity</a></li>
+  <li><a href="#sso-ldap">12.3 LDAP / AD Binding Test</a></li>
+  <li><a href="#sso-token">12.4 Token Validation</a></li>
+  </ul>
+</li>
+<li><a href="#plugins">13. Plugins &amp; Extensions</a>
+  <ul>
+  <li><a href="#plugins-list">13.1 Registered Plugins</a></li>
+  <li><a href="#plugins-health">13.2 Plugin Health Verification</a></li>
+  <li><a href="#plugins-cleanup">13.3 Stale Plugin Cleanup</a></li>
+  </ul>
+</li>
+<li><a href="#lookup-service">14. Lookup Service &amp; PSC</a>
+  <ul>
+  <li><a href="#ls-registration">14.1 Lookup Service Registration</a></li>
+  <li><a href="#ls-sts">14.2 STS Health</a></li>
+  <li><a href="#ls-entries">14.3 Service Registration Entries</a></li>
+  </ul>
+</li>
+<li><a href="#inventory">15. Inventory Verification</a>
+  <ul>
+  <li><a href="#inv-counts">15.1 Datacenter / Cluster / Host / VM Counts</a></li>
+  <li><a href="#inv-consistency">15.2 Inventory Consistency</a></li>
+  </ul>
+</li>
+<li><a href="#syslog">16. Syslog &amp; Log Configuration</a>
+  <ul>
+  <li><a href="#syslog-forward">16.1 Syslog Forwarding</a></li>
+  <li><a href="#log-rotation">16.2 Log Rotation</a></li>
+  <li><a href="#log-bundle">16.3 Log Bundle Generation</a></li>
+  </ul>
+</li>
+<li><a href="#ntp">17. NTP Configuration</a>
+  <ul>
+  <li><a href="#ntp-api">17.1 Time Sync via API</a></li>
+  <li><a href="#ntp-cli">17.2 Time Sync via CLI</a></li>
+  <li><a href="#ntp-drift">17.3 Drift Check</a></li>
+  </ul>
+</li>
+<li><a href="#ports">18. Port Reference Table</a></li>
+<li><a href="#common-issues">19. Common Issues &amp; Remediation</a></li>
+<li><a href="#cli-reference">20. CLI Quick Reference Card</a></li>
+<li><a href="#api-reference">21. API Quick Reference</a></li>
+</ul>
+
+</div>
+
+<div class="page-break"></div>
+
+<h2 id="1-overview--purpose"><span id="overview"></span>1. Overview &amp; Purpose</h2>
+<p>This handbook provides a <strong>complete, step-by-step health check procedure</strong> for VMware vCenter Server 8.x deployed within a VCF 9.0 environment. It is designed for VMware administrators who need to verify vCenter Server health during:</p>
+<ul>
+<li><strong>Routine maintenance windows</strong> -- Weekly or monthly proactive checks</li>
+<li><strong>Pre/post-upgrade validation</strong> -- Before and after vCenter patches or upgrades</li>
+<li><strong>Incident troubleshooting</strong> -- When service, connectivity, or performance issues occur</li>
+<li><strong>Environment handover</strong> -- Documenting health state for audits or transfers</li>
+<li><strong>VCF lifecycle operations</strong> -- Before and after SDDC Manager orchestrated updates</li>
+</ul>
+<h3 id="what-this-document-covers">What This Document Covers</h3>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Components Checked</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Core Services</td>
+<td>VPXD, vmon services, service-control status</td>
+</tr>
+<tr>
+<td>Appliance Health</td>
+<td>VAMI REST API health endpoints for system, memory, storage, load, swap</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>Embedded PostgreSQL health, VCDB size, vacuum status</td>
+</tr>
+<tr>
+<td>High Availability</td>
+<td>VCHA mode, active/passive/witness, failover readiness</td>
+</tr>
+<tr>
+<td>Certificates</td>
+<td>Machine SSL, STS, VECS stores, certificate expiry</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>Disk partitions, log storage, database storage, filesystem utilization</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>CPU, memory, swap, load average via API and CLI</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td>SSO domain, identity sources, LDAP/AD binding, token validation</td>
+</tr>
+<tr>
+<td>Plugins</td>
+<td>Registered extensions, plugin health, stale cleanup</td>
+</tr>
+<tr>
+<td>Lookup Service</td>
+<td>Service registrations, STS health, PSC endpoints</td>
+</tr>
+<tr>
+<td>Inventory</td>
+<td>Datacenter/cluster/host/VM counts, consistency</td>
+</tr>
+<tr>
+<td>Logging</td>
+<td>Syslog forwarding, log rotation, log bundle generation</td>
+</tr>
+<tr>
+<td>Time Sync</td>
+<td>NTP configuration, drift check</td>
+</tr>
+</tbody></table>
+<h3 id="health-check-methodology">Health Check Methodology</h3>
+<p>Each check in this handbook follows a consistent format:</p>
+<ol>
+<li><strong>What to check</strong> -- Description of the component and why it matters</li>
+<li><strong>How to check</strong> -- Exact CLI command or API call (copy-paste ready)</li>
+<li><strong>Expected output</strong> -- What a healthy result looks like</li>
+<li><strong>Pass / Warn / Fail criteria</strong> -- Clear thresholds with visual indicators</li>
+<li><strong>Remediation</strong> -- What to do if the check fails</li>
+</ol>
+<div class="info-box">
+<strong>Environment Variables:</strong> Throughout this document, replace the following placeholders with your actual values:<br>
+<code>$VC_FQDN</code> = vCenter Server FQDN (e.g., vcenter01.lab.local)<br>
+<code>$VC_USER</code> = administrator@vsphere.local<br>
+<code>$VC_PASS</code> = vCenter SSO administrator password<br>
+<code>$VC_TOKEN</code> = Session token obtained via authentication API
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="2-prerequisites"><span id="prerequisites"></span>2. Prerequisites</h2>
+<h3 id="required-access">Required Access</h3>
+<table>
+<thead>
+<tr>
+<th>Access Type</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SSH Access</td>
+<td>Root shell access to vCenter Appliance (enable via VAMI if disabled)</td>
+</tr>
+<tr>
+<td>VAMI Access</td>
+<td>https://$VC_FQDN:5480 -- root credentials</td>
+</tr>
+<tr>
+<td>vSphere Client</td>
+<td>https://$VC_FQDN/ui -- <a href="mailto:administrator@vsphere.local">administrator@vsphere.local</a></td>
+</tr>
+<tr>
+<td>REST API</td>
+<td>https://$VC_FQDN/api -- session-based authentication</td>
+</tr>
+<tr>
+<td>SDDC Manager</td>
+<td>For VCF-specific lifecycle checks</td>
+</tr>
+</tbody></table>
+<h3 id="required-tools">Required Tools</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>curl</code></td>
+<td>REST API calls from jump host or local machine</td>
+</tr>
+<tr>
+<td><code>jq</code></td>
+<td>JSON parsing of API responses</td>
+</tr>
+<tr>
+<td><code>openssl</code></td>
+<td>Certificate inspection and expiry checks</td>
+</tr>
+<tr>
+<td>SSH client</td>
+<td>Shell access for CLI commands</td>
+</tr>
+<tr>
+<td>Web browser</td>
+<td>VAMI and vSphere Client access</td>
+</tr>
+</tbody></table>
+<h3 id="environment-setup">Environment Setup</h3>
+<p>Set these variables before running commands:</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># vCenter connection variables</span>
+<span class="hljs-built_in">export</span> VC_FQDN=<span class="hljs-string">"vcenter01.lab.local"</span>
+<span class="hljs-built_in">export</span> VC_USER=<span class="hljs-string">"administrator@vsphere.local"</span>
+<span class="hljs-built_in">export</span> VC_PASS=<span class="hljs-string">'YourPasswordHere'</span>
+
+<span class="hljs-comment"># Obtain a session token</span>
+<span class="hljs-built_in">export</span> VC_TOKEN=$(curl -sk -X POST \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/session"</span> \
+  -u <span class="hljs-string">"<span class="hljs-variable">${VC_USER}</span>:<span class="hljs-variable">${VC_PASS}</span>"</span> | <span class="hljs-built_in">tr</span> -d <span class="hljs-string">'"'</span>)
+
+<span class="hljs-comment"># Verify the token was obtained</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Session Token: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
+</code></pre>
+<div class="warn-box">
+<strong>Security Note:</strong> Never store passwords in shell history. Use <code>read -s VC_PASS</code> for interactive password entry. Destroy sessions when finished with: <code>curl -sk -X DELETE "https://${VC_FQDN}/api/session" -H "vmware-api-session-id: ${VC_TOKEN}"</code>
+</div>
+
+<h3 id="enable-ssh-on-vcenter-appliance">Enable SSH on vCenter Appliance</h3>
+<p>If SSH is not enabled, enable it via VAMI:</p>
+<ol>
+<li>Navigate to <code>https://$VC_FQDN:5480</code></li>
+<li>Log in with root credentials</li>
+<li>Go to <strong>Access</strong> &gt; <strong>SSH Login</strong> &gt; <strong>Edit</strong> &gt; Enable</li>
+<li>Alternatively via API:</li>
+</ol>
+<pre><code class="hljs bash">curl -sk -X PUT \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/access/ssh"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"enabled": true}'</span>
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="3-quick-reference----all-checks-summary"><span id="quick-reference"></span>3. Quick Reference -- All Checks Summary</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Check</th>
+<th>Command / Endpoint</th>
+<th>Pass</th>
+<th>Warn</th>
+<th>Fail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4.1</td>
+<td>VPXD Process</td>
+<td><code>service-control --status vmware-vpxd</code></td>
+<td><span class="badge-pass">RUNNING</span></td>
+<td>--</td>
+<td><span class="badge-fail">STOPPED</span></td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>All vCenter Services</td>
+<td><code>service-control --status --all</code></td>
+<td>All STARTED</td>
+<td>1-2 non-critical stopped</td>
+<td><span class="badge-fail">Critical stopped</span></td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>System Health (VAMI)</td>
+<td><code>/api/appliance/health/system</code></td>
+<td><span class="badge-pass">green</span></td>
+<td><span class="badge-warn">yellow</span></td>
+<td><span class="badge-fail">orange/red</span></td>
+</tr>
+<tr>
+<td>6.2</td>
+<td>Memory Health</td>
+<td><code>/api/appliance/health/mem</code></td>
+<td><span class="badge-pass">green</span></td>
+<td><span class="badge-warn">yellow</span></td>
+<td><span class="badge-fail">orange/red</span></td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>Storage Health</td>
+<td><code>/api/appliance/health/storage</code></td>
+<td><span class="badge-pass">green</span></td>
+<td><span class="badge-warn">yellow</span></td>
+<td><span class="badge-fail">orange/red</span></td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>Database Storage</td>
+<td><code>/api/appliance/health/database-storage</code></td>
+<td><span class="badge-pass">green</span></td>
+<td><span class="badge-warn">yellow</span></td>
+<td><span class="badge-fail">orange/red</span></td>
+</tr>
+<tr>
+<td>6.5</td>
+<td>CPU Load</td>
+<td><code>/api/appliance/health/load</code></td>
+<td><span class="badge-pass">green</span></td>
+<td><span class="badge-warn">yellow</span></td>
+<td><span class="badge-fail">orange/red</span></td>
+</tr>
+<tr>
+<td>6.6</td>
+<td>Swap Health</td>
+<td><code>/api/appliance/health/swap</code></td>
+<td><span class="badge-pass">green</span></td>
+<td><span class="badge-warn">yellow</span></td>
+<td><span class="badge-fail">orange/red</span></td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>Software Packages</td>
+<td><code>/api/appliance/health/softwarepackages</code></td>
+<td><span class="badge-pass">green</span></td>
+<td><span class="badge-warn">yellow</span></td>
+<td><span class="badge-fail">red</span></td>
+</tr>
+<tr>
+<td>7.1</td>
+<td>PostgreSQL Status</td>
+<td><code>systemctl status vmware-vpostgres</code></td>
+<td><span class="badge-pass">active</span></td>
+<td>--</td>
+<td><span class="badge-fail">inactive</span></td>
+</tr>
+<tr>
+<td>7.2</td>
+<td>VCDB Size</td>
+<td>SQL query</td>
+<td><span class="badge-pass">&lt;50GB</span></td>
+<td><span class="badge-warn">50-80GB</span></td>
+<td><span class="badge-fail">&gt;80GB</span></td>
+</tr>
+<tr>
+<td>8.1</td>
+<td>VCHA Mode</td>
+<td><code>/api/vcenter/vcha/cluster/mode</code></td>
+<td><span class="badge-pass">ENABLED</span></td>
+<td>--</td>
+<td><span class="badge-fail">DISABLED</span></td>
+</tr>
+<tr>
+<td>9.1</td>
+<td>Machine SSL Cert</td>
+<td><code>openssl</code> expiry check</td>
+<td><span class="badge-pass">&gt;60 days</span></td>
+<td><span class="badge-warn">30-60 days</span></td>
+<td><span class="badge-fail">&lt;30 days</span></td>
+</tr>
+<tr>
+<td>9.3</td>
+<td>STS Certificate</td>
+<td><code>/usr/lib/vmware-vmca</code> check</td>
+<td><span class="badge-pass">&gt;60 days</span></td>
+<td><span class="badge-warn">30-60 days</span></td>
+<td><span class="badge-fail">&lt;30 days</span></td>
+</tr>
+<tr>
+<td>10.1</td>
+<td>Disk Utilization</td>
+<td><code>df -h</code></td>
+<td><span class="badge-pass">&lt;70%</span></td>
+<td><span class="badge-warn">70-85%</span></td>
+<td><span class="badge-fail">&gt;85%</span></td>
+</tr>
+<tr>
+<td>11.1</td>
+<td>CPU Utilization</td>
+<td>API + <code>top</code></td>
+<td><span class="badge-pass">&lt;70%</span></td>
+<td><span class="badge-warn">70-85%</span></td>
+<td><span class="badge-fail">&gt;85%</span></td>
+</tr>
+<tr>
+<td>11.2</td>
+<td>Memory Utilization</td>
+<td>API + <code>free</code></td>
+<td><span class="badge-pass">&lt;80%</span></td>
+<td><span class="badge-warn">80-90%</span></td>
+<td><span class="badge-fail">&gt;90%</span></td>
+</tr>
+<tr>
+<td>12.1</td>
+<td>SSO Domain</td>
+<td><code>sso-config.sh</code></td>
+<td><span class="badge-pass">Healthy</span></td>
+<td>--</td>
+<td><span class="badge-fail">Error</span></td>
+</tr>
+<tr>
+<td>14.1</td>
+<td>Lookup Service</td>
+<td><code>lstool.py</code></td>
+<td><span class="badge-pass">Registered</span></td>
+<td>--</td>
+<td><span class="badge-fail">Missing</span></td>
+</tr>
+<tr>
+<td>17.1</td>
+<td>NTP Sync</td>
+<td><code>/api/appliance/ntp</code></td>
+<td><span class="badge-pass">Synced</span></td>
+<td><span class="badge-warn">Drift &gt;1s</span></td>
+<td><span class="badge-fail">Not configured</span></td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="4-vpxd-service-health"><span id="vpxd-health"></span>4. VPXD Service Health</h2>
+<p>The <strong>VPXD</strong> (VMware VirtualCenter Server Daemon) is the core service of vCenter Server. It manages ESXi hosts, virtual machines, storage, and networking. If VPXD is down, the entire vCenter is non-functional.</p>
+<h3 id="41-vpxd-process-status"><span id="vpxd-process"></span>4.1 VPXD Process Status</h3>
+<h4 id="cli-check-ssh-to-vcenter-appliance">CLI Check (SSH to vCenter Appliance)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check VPXD service status</span>
+service-control --status vmware-vpxd
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>VMware vCenter Server:Status: RUNNING
+</code></pre>
+<h4 id="alternative-systemctl-check">Alternative: systemctl check</h4>
+<pre><code class="hljs bash">systemctl status vmware-vpxd
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>● vmware-vpxd.service - VMware vCenter Server
+   Loaded: loaded (/usr/lib/systemd/system/vmware-vpxd.service; enabled)
+   Active: active (running) since Mon 2026-03-23 10:15:22 UTC; 3 days ago
+ Main PID: 5432 (vpxd)
+    Tasks: 312
+   Memory: 2.1G
+   CGroup: /system.slice/vmware-vpxd.service
+           └─5432 /usr/lib/vmware-vpxd/vpxd
+</code></pre>
+<h4 id="api-check">API Check</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/services/vmware-vpxd"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq .
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Result</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Status = RUNNING, Active (running)</td>
+<td>Healthy</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Status = STARTING (briefly during boot)</td>
+<td>Transitional</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Status = STOPPED or inactive (dead)</td>
+<td>Critical failure</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (VPXD Stopped):</strong><br>
+1. Attempt to start: <code>service-control --start vmware-vpxd</code><br>
+2. If fails, check logs: <code>tail -200 /var/log/vmware/vpxd/vpxd.log</code><br>
+3. Check for port conflicts: <code>netstat -tlnp | grep 443</code><br>
+4. Verify database connectivity: <code>systemctl status vmware-vpostgres</code><br>
+5. If persistent, restart all services: <code>service-control --stop --all &amp;&amp; service-control --start --all</code>
+</div>
+
+<h3 id="42-vpxd-restart-procedures"><span id="vpxd-restart"></span>4.2 VPXD Restart Procedures</h3>
+<div class="danger">
+<strong>Warning:</strong> Restarting VPXD will disconnect all vSphere Client sessions and temporarily interrupt management operations. VMs continue to run on ESXi hosts unaffected.
+</div>
+
+<h4 id="graceful-restart">Graceful Restart</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Stop then start VPXD</span>
+service-control --stop vmware-vpxd
+<span class="hljs-built_in">sleep</span> 10
+service-control --start vmware-vpxd
+
+<span class="hljs-comment"># Verify it came back</span>
+service-control --status vmware-vpxd
+</code></pre>
+<h4 id="full-service-stack-restart">Full Service Stack Restart</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Nuclear option -- restarts all vCenter services</span>
+service-control --stop --all
+<span class="hljs-built_in">sleep</span> 15
+service-control --start --all
+
+<span class="hljs-comment"># Verify all services</span>
+service-control --status --all
+</code></pre>
+<h3 id="43-vpxd-log-analysis"><span id="vpxd-logs"></span>4.3 VPXD Log Analysis</h3>
+<h4 id="key-log-files">Key Log Files</h4>
+<table>
+<thead>
+<tr>
+<th>Log File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/var/log/vmware/vpxd/vpxd.log</code></td>
+<td>Main VPXD log -- service operations, errors</td>
+</tr>
+<tr>
+<td><code>/var/log/vmware/vpxd/vpxd-alert.log</code></td>
+<td>Critical alerts only</td>
+</tr>
+<tr>
+<td><code>/var/log/vmware/vpxd/vpxd-profiler.log</code></td>
+<td>Performance profiling data</td>
+</tr>
+<tr>
+<td><code>/var/log/vmware/vpxd/vpxd-svcs.log</code></td>
+<td>Service-level operations</td>
+</tr>
+</tbody></table>
+<h4 id="check-for-recent-errors">Check for Recent Errors</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Last 50 error entries in VPXD log</span>
+grep -i <span class="hljs-string">"error\|fatal\|panic\|exception"</span> /var/log/vmware/vpxd/vpxd.log | <span class="hljs-built_in">tail</span> -50
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check for crash indicators</span>
+grep -c <span class="hljs-string">"core dump\|segfault\|SIGABRT"</span> /var/log/vmware/vpxd/vpxd.log
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check VPXD alert log</span>
+<span class="hljs-built_in">cat</span> /var/log/vmware/vpxd/vpxd-alert.log | <span class="hljs-built_in">tail</span> -20
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong> No recent fatal errors, no crash indicators, alert log empty or minimal entries.</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>No errors or only informational entries</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Warning-level entries present</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Fatal/crash/exception entries in last 24h</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="5-vcenter-services-status"><span id="vcenter-services"></span>5. vCenter Services Status</h2>
+<h3 id="51-vmon-cli-service-listing"><span id="vmon-cli"></span>5.1 vmon-cli Service Listing</h3>
+<p>The <code>vmon-cli</code> utility manages vCenter services at the vMon (VMware Service Lifecycle Manager) level.</p>
+<h4 id="list-all-services">List All Services</h4>
+<pre><code class="hljs bash">vmon-cli --list
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>analyticss        STARTED
+applmgmt          STARTED
+certificateauthority STARTED
+certificatemanagement STARTED
+cis-license       STARTED
+content-library   STARTED
+eam               STARTED
+envoy             STARTED
+hvc               STARTED
+imagebuilder      STARTED
+infraprofile      STARTED
+lookupsvc         STARTED
+netdumper         STARTED
+observability     STARTED
+perfcharts        STARTED
+pschealth         STARTED
+rbd               STARTED
+rhttpproxy        STARTED
+sca               STARTED
+sps               STARTED
+statsmonitor      STARTED
+sts               STARTED
+topologysvc       STARTED
+trustmanagement   STARTED
+updatemgr         STARTED
+vapi-endpoint     STARTED
+vcha              STARTED
+vlcm              STARTED
+vmcam             STARTED
+vmonapi           STARTED
+vmware-vpostgres  STARTED
+vpxd              STARTED
+vpxd-svcs         STARTED
+vsan-health       STARTED
+vsm               STARTED
+vsphere-ui        STARTED
+vstats            STARTED
+vtsdb             STARTED
+wcp               STARTED
+</code></pre>
+<h4 id="check-specific-service-status">Check Specific Service Status</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check a single service</span>
+vmon-cli --status vpxd
+
+<span class="hljs-comment"># Check multiple services</span>
+<span class="hljs-keyword">for</span> svc <span class="hljs-keyword">in</span> vpxd lookupsvc sts vmware-vpostgres vsphere-ui; <span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$svc</span>: <span class="hljs-subst">$(vmon-cli --status $svc)</span>"</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+<h3 id="52-service-control-commands"><span id="service-control"></span>5.2 service-control Commands</h3>
+<h4 id="check-all-services-status">Check All Services Status</h4>
+<pre><code class="hljs bash">service-control --status --all
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>VMware vCenter Server:Status: RUNNING
+VMware vAPI Endpoint:Status: RUNNING
+VMware Content Library:Status: RUNNING
+VMware Certificate Authority:Status: RUNNING
+VMware Identity Management Service:Status: RUNNING
+VMware Lookup Service:Status: RUNNING
+VMware Security Token Service:Status: RUNNING
+VMware vSphere Client:Status: RUNNING
+VMware vSphere Update Manager:Status: RUNNING
+VMware PostgreSQL:Status: RUNNING
+VMware HTTP Reverse Proxy:Status: RUNNING
+VMware Envoy Service:Status: RUNNING
+...
+(all services RUNNING)
+</code></pre>
+<h4 id="start--stop--restart-individual-services">Start / Stop / Restart Individual Services</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Stop a specific service</span>
+service-control --stop vmware-updatemgr
+
+<span class="hljs-comment"># Start a specific service</span>
+service-control --start vmware-updatemgr
+
+<span class="hljs-comment"># Restart a specific service (stop + start)</span>
+service-control --stop vmware-vsphere-ui &amp;&amp; service-control --start vmware-vsphere-ui
+</code></pre>
+<h3 id="53-critical-vs-non-critical-services"><span id="critical-services"></span>5.3 Critical vs Non-Critical Services</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Criticality</th>
+<th>Impact if Stopped</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vpxd</code></td>
+<td><strong>CRITICAL</strong></td>
+<td>vCenter completely non-functional</td>
+</tr>
+<tr>
+<td><code>vmware-vpostgres</code></td>
+<td><strong>CRITICAL</strong></td>
+<td>Database unavailable, all services fail</td>
+</tr>
+<tr>
+<td><code>vmware-sts</code></td>
+<td><strong>CRITICAL</strong></td>
+<td>SSO authentication fails, no logins</td>
+</tr>
+<tr>
+<td><code>lookupsvc</code></td>
+<td><strong>CRITICAL</strong></td>
+<td>Service discovery fails</td>
+</tr>
+<tr>
+<td><code>rhttpproxy</code></td>
+<td><strong>CRITICAL</strong></td>
+<td>All HTTPS endpoints inaccessible</td>
+</tr>
+<tr>
+<td><code>envoy</code></td>
+<td><strong>CRITICAL</strong></td>
+<td>Reverse proxy down, API unreachable</td>
+</tr>
+<tr>
+<td><code>vpxd-svcs</code></td>
+<td>HIGH</td>
+<td>vCenter sub-services degraded</td>
+</tr>
+<tr>
+<td><code>vsphere-ui</code></td>
+<td>HIGH</td>
+<td>vSphere Client (HTML5) unavailable</td>
+</tr>
+<tr>
+<td><code>vapi-endpoint</code></td>
+<td>HIGH</td>
+<td>REST API unavailable</td>
+</tr>
+<tr>
+<td><code>vmware-sps</code></td>
+<td>MEDIUM</td>
+<td>Storage profile service down</td>
+</tr>
+<tr>
+<td><code>content-library</code></td>
+<td>MEDIUM</td>
+<td>Content library operations fail</td>
+</tr>
+<tr>
+<td><code>updatemgr</code></td>
+<td>MEDIUM</td>
+<td>vSphere Lifecycle Manager offline</td>
+</tr>
+<tr>
+<td><code>vlcm</code></td>
+<td>MEDIUM</td>
+<td>Lifecycle operations unavailable</td>
+</tr>
+<tr>
+<td><code>eam</code></td>
+<td>MEDIUM</td>
+<td>ESX Agent Manager down</td>
+</tr>
+<tr>
+<td><code>perfcharts</code></td>
+<td>LOW</td>
+<td>Performance charts unavailable</td>
+</tr>
+<tr>
+<td><code>imagebuilder</code></td>
+<td>LOW</td>
+<td>Image building unavailable</td>
+</tr>
+<tr>
+<td><code>vstats</code></td>
+<td>LOW</td>
+<td>vStats collection paused</td>
+</tr>
+<tr>
+<td><code>netdumper</code></td>
+<td>LOW</td>
+<td>Network core dump receiver offline</td>
+</tr>
+<tr>
+<td><code>analytics</code></td>
+<td>LOW</td>
+<td>CEIP analytics paused</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>All services RUNNING</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>1-2 LOW/MEDIUM services stopped</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Any CRITICAL/HIGH service stopped</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Services Stopped):</strong><br>
+1. Start individual service: <code>service-control --start &lt;service-name&gt;</code><br>
+2. If dependency failure, start all: <code>service-control --start --all</code><br>
+3. Check service logs: <code>journalctl -u &lt;service-name&gt; --no-pager -n 100</code><br>
+4. Last resort full restart: <code>reboot</code> (from appliance shell)
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="6-vcenter-appliance-health-vami"><span id="vami-health"></span>6. vCenter Appliance Health (VAMI)</h2>
+<p>The VAMI (vCenter Server Appliance Management Interface) REST API provides health status for all key appliance subsystems. These endpoints return standardized color-coded health states: <code>green</code>, <code>yellow</code>, <code>orange</code>, <code>red</code>, <code>gray</code>.</p>
+<div class="info-box">
+<strong>Health Color Key:</strong><br>
+<code>green</code> = Healthy | <code>yellow</code> = Warning, degraded | <code>orange</code> = Degraded, action needed | <code>red</code> = Critical failure | <code>gray</code> = Unknown / not available
+</div>
+
+<h3 id="61-system-health"><span id="vami-system"></span>6.1 System Health</h3>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/health/system"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>"green"
+</code></pre>
+<h4 id="detailed-system-health-with-messages">Detailed System Health (with messages)</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/health/system?messages=true"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq .
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>"green"</code></td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td><code>"yellow"</code></td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td><code>"orange"</code> or <code>"red"</code></td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="62-memory-health"><span id="vami-memory"></span>6.2 Memory Health</h3>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/health/mem"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>"green"
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Threshold</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>"green"</code></td>
+<td>Memory utilization &lt; 80%</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td><code>"yellow"</code></td>
+<td>Memory utilization 80-95%</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td><code>"orange"</code> / <code>"red"</code></td>
+<td>Memory utilization &gt; 95% or OOM</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Memory Warning/Critical):</strong><br>
+1. Check top memory consumers: SSH to appliance, run <code>top -o %MEM</code><br>
+2. Restart heavy services: <code>service-control --stop vmware-vpxd &amp;&amp; service-control --start vmware-vpxd</code><br>
+3. Check for memory leaks in VPXD: <code>grep -i "out of memory\|oom" /var/log/vmware/vpxd/vpxd.log</code><br>
+4. If persistent, increase appliance VM memory allocation (requires shutdown)
+</div>
+
+<h3 id="63-storage-health"><span id="vami-storage"></span>6.3 Storage Health</h3>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/health/storage"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>"green"
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Threshold</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>"green"</code></td>
+<td>All partitions below warning threshold</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td><code>"yellow"</code></td>
+<td>One or more partitions 70-85% full</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td><code>"orange"</code> / <code>"red"</code></td>
+<td>Partitions &gt; 85% full</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="64-database-storage-health"><span id="vami-database"></span>6.4 Database Storage Health</h3>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/health/database-storage"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>"green"
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Threshold</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>"green"</code></td>
+<td>DB storage utilization &lt; 70%</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td><code>"yellow"</code></td>
+<td>DB storage utilization 70-85%</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td><code>"orange"</code> / <code>"red"</code></td>
+<td>DB storage utilization &gt; 85%</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="65-cpu-load-health"><span id="vami-load"></span>6.5 CPU Load Health</h3>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/health/load"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>"green"
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Threshold</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>"green"</code></td>
+<td>Load average within normal range</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td><code>"yellow"</code></td>
+<td>Load average elevated</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td><code>"orange"</code> / <code>"red"</code></td>
+<td>Load critically high</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="66-swap-health"><span id="vami-swap"></span>6.6 Swap Health</h3>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/health/swap"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>"green"
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Threshold</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>"green"</code></td>
+<td>Swap usage minimal or zero</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td><code>"yellow"</code></td>
+<td>Swap usage moderate</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td><code>"orange"</code> / <code>"red"</code></td>
+<td>Swap usage critically high</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Swap Critical):</strong><br>
+1. Check swap usage: <code>free -m</code> and <code>swapon --show</code><br>
+2. Identify swap-heavy processes: <code>for pid in /proc/[0-9]*; do awk '/VmSwap/{print FILENAME,$0}' $pid/status 2&gt;/dev/null; done | sort -k3 -rn | head -20</code><br>
+3. If persistent, increase VM memory and reduce swap pressure by restarting services
+</div>
+
+<h3 id="67-software-packages-health"><span id="vami-software"></span>6.7 Software Packages Health</h3>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/health/softwarepackages"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>"green"
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>"green"</code> -- All packages consistent</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td><code>"yellow"</code> -- Minor package inconsistencies</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td><code>"red"</code> -- Package corruption or missing packages</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h4 id="comprehensive-vami-health-script">Comprehensive VAMI Health Script</h4>
+<p>Run all health checks at once:</p>
+<pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">"=== vCenter Appliance Health Summary ==="</span>
+<span class="hljs-keyword">for</span> endpoint <span class="hljs-keyword">in</span> system mem storage database-storage load swap softwarepackages; <span class="hljs-keyword">do</span>
+  result=$(curl -sk -X GET \
+    <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/health/<span class="hljs-variable">${endpoint}</span>"</span> \
+    -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | <span class="hljs-built_in">tr</span> -d <span class="hljs-string">'"'</span>)
+  <span class="hljs-built_in">printf</span> <span class="hljs-string">"%-25s : %s\n"</span> <span class="hljs-string">"<span class="hljs-variable">$endpoint</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$result</span>"</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+<p><strong>Expected Output (All Healthy):</strong></p>
+<pre><code>=== vCenter Appliance Health Summary ===
+system                    : green
+mem                       : green
+storage                   : green
+database-storage          : green
+load                      : green
+swap                      : green
+softwarepackages          : green
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="7-database-health"><span id="database-health"></span>7. Database Health</h2>
+<p>vCenter Server 8.x uses an embedded PostgreSQL database (vPostgres) for all configuration and inventory data. Database health is foundational to vCenter operations.</p>
+<h3 id="71-postgresql-embedded-db-status"><span id="db-postgres"></span>7.1 PostgreSQL Embedded DB Status</h3>
+<h4 id="service-status">Service Status</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check vPostgres service</span>
+systemctl status vmware-vpostgres
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>● vmware-vpostgres.service - VMware Postgres
+   Loaded: loaded (/usr/lib/systemd/system/vmware-vpostgres.service; enabled)
+   Active: active (running) since Mon 2026-03-23 10:14:55 UTC; 3 days ago
+ Main PID: 4821 (postgres)
+    Tasks: 48
+   Memory: 512.3M
+   CGroup: /system.slice/vmware-vpostgres.service
+           ├─4821 /opt/vmware/vpostgres/current/bin/postgres -D /storage/db/vpostgres
+           ├─4910 postgres: checkpointer
+           ├─4911 postgres: background writer
+           └─ ...
+</code></pre>
+<h4 id="test-database-connectivity">Test Database Connectivity</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Connect to VCDB and run a basic query</span>
+/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -c <span class="hljs-string">"SELECT version();"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>                                                  version
+------------------------------------------------------------------------------------------------------------
+ PostgreSQL 14.x (VMware Postgres 14.x) on x86_64-unknown-linux-gnu, compiled by gcc ...
+(1 row)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Service active (running), query succeeds</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Service active but slow queries</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Service inactive or query fails</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="72-vcdb-size-monitoring"><span id="db-size"></span>7.2 VCDB Size Monitoring</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check total VCDB size</span>
+/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -c \
+  <span class="hljs-string">"SELECT pg_size_pretty(pg_database_size('VCDB')) AS db_size;"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code> db_size
+---------
+ 12 GB
+(1 row)
+</code></pre>
+<h4 id="top-tables-by-size">Top Tables by Size</h4>
+<pre><code class="hljs bash">/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -c <span class="hljs-string">"
+SELECT
+  schemaname || '.' || tablename AS table_full_name,
+  pg_size_pretty(pg_total_relation_size(schemaname || '.' || tablename)) AS total_size
+FROM pg_tables
+WHERE schemaname NOT IN ('pg_catalog', 'information_schema')
+ORDER BY pg_total_relation_size(schemaname || '.' || tablename) DESC
+LIMIT 15;"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>         table_full_name          | total_size
+----------------------------------+------------
+ vc.vpx_event_arg                 | 3200 MB
+ vc.vpx_event                     | 2100 MB
+ vc.vpx_task_event                | 1800 MB
+ vc.vpx_stat_counter              | 980 MB
+ vc.vpx_task                      | 850 MB
+ ...
+(15 rows)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VCDB size &lt; 50 GB</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>VCDB size 50 - 80 GB</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>VCDB size &gt; 80 GB</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Database Too Large):</strong><br>
+1. Purge old events and tasks via vSphere Client: <b>Administration &gt; vCenter Server Settings &gt; Runtime Settings</b><br>
+2. Reduce task and event retention: set <code>task.maxAge</code> and <code>event.maxAge</code> to 30 days<br>
+3. Manual cleanup (careful!): <code>/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -c "DELETE FROM vc.vpx_event WHERE create_time &lt; NOW() - INTERVAL '30 days';"</code><br>
+4. Run vacuum afterward: <code>/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -c "VACUUM FULL ANALYZE;"</code>
+</div>
+
+<h3 id="73-vacuum--maintenance"><span id="db-vacuum"></span>7.3 Vacuum &amp; Maintenance</h3>
+<h4 id="check-last-vacuum-time">Check Last Vacuum Time</h4>
+<pre><code class="hljs bash">/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -c <span class="hljs-string">"
+SELECT
+  schemaname || '.' || relname AS table_name,
+  last_vacuum,
+  last_autovacuum,
+  last_analyze,
+  n_dead_tup
+FROM pg_stat_user_tables
+WHERE n_dead_tup &gt; 1000
+ORDER BY n_dead_tup DESC
+LIMIT 10;"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>       table_name        |      last_vacuum      |   last_autovacuum    |     last_analyze      | n_dead_tup
+-------------------------+-----------------------+----------------------+-----------------------+------------
+ vc.vpx_event_arg        | 2026-03-25 02:00:01   | 2026-03-25 14:30:22  | 2026-03-25 02:00:01   |       2341
+ vc.vpx_event            | 2026-03-25 02:00:01   | 2026-03-25 14:28:11  | 2026-03-25 02:00:01   |       1822
+ ...
+</code></pre>
+<h4 id="manual-vacuum-if-needed">Manual Vacuum (if needed)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Standard vacuum (non-blocking)</span>
+/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -c <span class="hljs-string">"VACUUM ANALYZE;"</span>
+
+<span class="hljs-comment"># Full vacuum (blocking, reclaims space)</span>
+/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -c <span class="hljs-string">"VACUUM FULL ANALYZE;"</span>
+</code></pre>
+<div class="warn-box">
+<strong>Warning:</strong> <code>VACUUM FULL</code> acquires an exclusive lock on each table and rewrites the entire table. Only run during a maintenance window. Standard <code>VACUUM ANALYZE</code> is safe to run at any time.
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Autovacuum ran in last 24h, dead tuples &lt; 10,000</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Autovacuum &gt; 48h ago or dead tuples 10,000 - 100,000</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>No vacuum in 7+ days or dead tuples &gt; 100,000</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="8-vcenter-ha-vcha"><span id="vcha"></span>8. vCenter HA (VCHA)</h2>
+<p>vCenter High Availability (VCHA) provides automated failover for vCenter Server using an active/passive/witness architecture.</p>
+<h3 id="81-vcha-mode--status"><span id="vcha-mode"></span>8.1 VCHA Mode &amp; Status</h3>
+<h4 id="api-check-1">API Check</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/vcha/cluster/mode"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq .
+</code></pre>
+<p><strong>Expected Output (VCHA Enabled):</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"mode"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"ENABLED"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="get-full-vcha-cluster-status">Get Full VCHA Cluster Status</h4>
+<pre><code class="hljs bash">curl -sk -X POST \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/vcha/cluster?action=get"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"partial": false}'</span> | jq .
+</code></pre>
+<p><strong>Expected Output (Healthy VCHA):</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"config_state"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"CONFIGURED"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"mode"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"ENABLED"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"health_state"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"HEALTHY"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"node1"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"state"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UP"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"role"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"ACTIVE"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"runtime"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"ip"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"ipv4"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">"address"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"10.0.0.101"</span> <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"node2"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"state"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UP"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"role"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"PASSIVE"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"runtime"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"ip"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"ipv4"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">"address"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"10.0.0.102"</span> <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"witness"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"state"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UP"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"runtime"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"ip"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"ipv4"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">"address"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"10.0.0.103"</span> <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mode=ENABLED, health_state=HEALTHY, all nodes UP</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>mode=ENABLED but one node degraded</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>mode=DISABLED or health_state not HEALTHY</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="82-active--passive--witness-status"><span id="vcha-nodes"></span>8.2 Active / Passive / Witness Status</h3>
+<h4 id="cli-check-from-active-node">CLI Check (from Active Node)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check VCHA state via CLI</span>
+/usr/lib/vmware-vcha/vcha-cli cluster-get-state
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>VCHA Cluster State: HEALTHY
+Active Node State: UP
+Passive Node State: UP
+Witness Node State: UP
+Replication State: IN_SYNC
+</code></pre>
+<h4 id="database-replication-lag">Database Replication Lag</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check replication lag from active node</span>
+/opt/vmware/vpostgres/current/bin/psql -U postgres -c \
+  <span class="hljs-string">"SELECT client_addr, state, sent_lsn, write_lsn, flush_lsn, replay_lsn,
+   (sent_lsn - replay_lsn) AS replication_lag
+   FROM pg_stat_replication;"</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Replication state IN_SYNC, lag = 0</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Replication active but lag &gt; 0</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Replication not running</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="83-failover-readiness"><span id="vcha-failover"></span>8.3 Failover Readiness</h3>
+<h4 id="manual-failover-test-planned">Manual Failover Test (Planned)</h4>
+<div class="danger">
+<strong>Warning:</strong> Only perform planned failover during a maintenance window. This will temporarily disconnect all vSphere Client sessions.
+</div>
+
+<pre><code class="hljs bash"><span class="hljs-comment"># Initiate planned failover via API</span>
+curl -sk -X POST \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/vcha/cluster?action=failover"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"planned": true}'</span>
+</code></pre>
+<div class="fix-box">
+<strong>Remediation (VCHA Degraded):</strong><br>
+1. Check network connectivity between all three VCHA nodes (HA network)<br>
+2. Verify passive node is reachable: <code>ping &lt;passive-ip&gt;</code><br>
+3. Verify witness node is reachable: <code>ping &lt;witness-ip&gt;</code><br>
+4. Check VCHA logs: <code>/var/log/vmware/vcha/vcha.log</code><br>
+5. If passive node offline, redeploy: remove and re-add VCHA via vSphere Client
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="9-certificate-health"><span id="certificate-health"></span>9. Certificate Health</h2>
+<p>Certificate expiry is one of the most common causes of vCenter outages. Regular monitoring of all certificate stores is essential.</p>
+<h3 id="91-certificate-manager-tool"><span id="cert-manager"></span>9.1 Certificate Manager Tool</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Launch Certificate Manager (interactive)</span>
+/usr/lib/vmware-vmca/bin/certificate-manager
+</code></pre>
+<p>This interactive tool provides options:</p>
+<ol>
+<li>Replace Machine SSL certificate with Custom Certificate</li>
+<li>Replace VMCA Root certificate with Custom Signing Certificate</li>
+<li>Replace Machine SSL certificate with VMCA Certificate</li>
+<li>Regenerate a new VMCA Root Certificate</li>
+<li>Replace Solution user certificates with Custom Certificate</li>
+<li>Replace Solution user certificates with VMCA certificates</li>
+<li>Revert last performed operation</li>
+<li>Reset all Certificates</li>
+</ol>
+<h3 id="92-vecs-store-listing"><span id="cert-vecs"></span>9.2 VECS Store Listing</h3>
+<h4 id="list-all-vecs-stores">List All VECS Stores</h4>
+<pre><code class="hljs bash">/usr/lib/vmware-vmafd/bin/vecs-cli store list
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>MACHINE_SSL_CERT
+TRUSTED_ROOTS
+TRUSTED_ROOT_CRLS
+machine
+vsphere-webclient
+vpxd
+vpxd-extension
+hvc
+data-encipherment
+APPLMGMT_PASSWORD
+SMS
+wcp
+backup_store
+</code></pre>
+<h4 id="list-certificates-in-a-store">List Certificates in a Store</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List Machine SSL certificate</span>
+/usr/lib/vmware-vmafd/bin/vecs-cli entry list --store MACHINE_SSL_CERT
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Alias : __MACHINE_CERT
+Entry type : Private Key
+</code></pre>
+<h4 id="get-certificate-details-from-a-store">Get Certificate Details from a Store</h4>
+<pre><code class="hljs bash">/usr/lib/vmware-vmafd/bin/vecs-cli entry getcert \
+  --store MACHINE_SSL_CERT --<span class="hljs-built_in">alias</span> __MACHINE_CERT | \
+  openssl x509 -noout -subject -issuer -dates -serial
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>subject=CN = vcenter01.lab.local
+issuer=CN = CA, DC = vsphere, DC = local, C = US, ST = California, O = lab.local
+notBefore=Jan 15 00:00:00 2026 GMT
+notAfter=Jan 15 00:00:00 2028 GMT
+serial=3A4B5C6D7E8F
+</code></pre>
+<h3 id="93-sts-certificate"><span id="cert-sts"></span>9.3 STS Certificate</h3>
+<p>The Security Token Service (STS) signing certificate is critical for SSO authentication.</p>
+<h4 id="check-sts-certificate-expiry">Check STS Certificate Expiry</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Extract and check the STS signing certificate</span>
+/usr/lib/vmware-vmafd/bin/dir-cli trustedcert list \
+  --login administrator@vsphere.local \
+  --password <span class="hljs-string">"<span class="hljs-variable">${VC_PASS}</span>"</span> | <span class="hljs-built_in">head</span> -20
+</code></pre>
+<h4 id="alternative-check-via-lookup-service">Alternative: Check via Lookup Service</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get STS certificate from LDAP</span>
+/usr/lib/vmware-vmdir/bin/ldapsearch -h localhost -p 389 \
+  -b <span class="hljs-string">"cn=TenantCredential-1,cn=local,cn=Tenants,cn=IdentityManager,cn=Services,dc=vsphere,dc=local"</span> \
+  -D <span class="hljs-string">"cn=administrator,cn=users,dc=vsphere,dc=local"</span> \
+  -w <span class="hljs-string">"<span class="hljs-variable">${VC_PASS}</span>"</span> \
+  userCertificate 2&gt;/dev/null | grep -A1 <span class="hljs-string">"userCertificate"</span>
+</code></pre>
+<h4 id="check-sts-token-signing-certificate-with-python-script">Check STS Token Signing Certificate with Python Script</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># VMware-provided STS cert check script</span>
+python /usr/lib/vmware-vmca/share/config/checksts.py
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>STS signing certificate:
+  Subject: CN=ssoserver-sign
+  Not Before: Jan 15 00:00:00 2026 GMT
+  Not After:  Jan 15 00:00:00 2028 GMT
+  Days remaining: 661
+  Status: VALID
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>STS cert &gt; 60 days until expiry</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>STS cert 30 - 60 days until expiry</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>STS cert &lt; 30 days or expired</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="94-machine-ssl-certificate"><span id="cert-machine"></span>9.4 Machine SSL Certificate</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check Machine SSL cert expiry remotely</span>
+<span class="hljs-built_in">echo</span> | openssl s_client -connect <span class="hljs-variable">${VC_FQDN}</span>:443 -servername <span class="hljs-variable">${VC_FQDN}</span> 2&gt;/dev/null | \
+  openssl x509 -noout -subject -issuer -dates -checkend 2592000
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>subject=CN = vcenter01.lab.local
+issuer=CN = CA, DC = vsphere, DC = local
+notBefore=Jan 15 00:00:00 2026 GMT
+notAfter=Jan 15 00:00:00 2028 GMT
+Certificate will not expire
+</code></pre>
+<h4 id="check-expiry-of-all-solution-user-certificates">Check Expiry of All Solution User Certificates</h4>
+<pre><code class="hljs bash"><span class="hljs-keyword">for</span> store <span class="hljs-keyword">in</span> machine vsphere-webclient vpxd vpxd-extension; <span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"=== Store: <span class="hljs-variable">${store}</span> ==="</span>
+  /usr/lib/vmware-vmafd/bin/vecs-cli entry getcert \
+    --store <span class="hljs-variable">${store}</span> --<span class="hljs-built_in">alias</span> <span class="hljs-variable">${store}</span> 2&gt;/dev/null | \
+    openssl x509 -noout -subject -dates 2&gt;/dev/null
+<span class="hljs-keyword">done</span>
+</code></pre>
+<h3 id="95-expiry-checks----all-certificates"><span id="cert-expiry"></span>9.5 Expiry Checks -- All Certificates</h3>
+<h4 id="comprehensive-certificate-expiry-report">Comprehensive Certificate Expiry Report</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check all VECS stores for certificate expiry</span>
+<span class="hljs-keyword">for</span> store <span class="hljs-keyword">in</span> $(/usr/lib/vmware-vmafd/bin/vecs-cli store list); <span class="hljs-keyword">do</span>
+  <span class="hljs-keyword">for</span> <span class="hljs-built_in">alias</span> <span class="hljs-keyword">in</span> $(/usr/lib/vmware-vmafd/bin/vecs-cli entry list --store <span class="hljs-variable">${store}</span> 2&gt;/dev/null | grep <span class="hljs-string">"Alias"</span> | awk <span class="hljs-string">'{print $3}'</span>); <span class="hljs-keyword">do</span>
+    CERT=$(/usr/lib/vmware-vmafd/bin/vecs-cli entry getcert --store <span class="hljs-variable">${store}</span> --<span class="hljs-built_in">alias</span> <span class="hljs-variable">${alias}</span> 2&gt;/dev/null)
+    <span class="hljs-keyword">if</span> [ -n <span class="hljs-string">"<span class="hljs-variable">$CERT</span>"</span> ]; <span class="hljs-keyword">then</span>
+      EXPIRY=$(<span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$CERT</span>"</span> | openssl x509 -noout -enddate 2&gt;/dev/null | <span class="hljs-built_in">cut</span> -d= -f2)
+      DAYS=$(<span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$CERT</span>"</span> | openssl x509 -noout -checkend 0 2&gt;/dev/null &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">"VALID"</span> || <span class="hljs-built_in">echo</span> <span class="hljs-string">"EXPIRED"</span>)
+      <span class="hljs-built_in">printf</span> <span class="hljs-string">"Store: %-25s Alias: %-25s Expires: %-30s Status: %s\n"</span> <span class="hljs-string">"<span class="hljs-variable">$store</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$alias</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$EXPIRY</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$DAYS</span>"</span>
+    <span class="hljs-keyword">fi</span>
+  <span class="hljs-keyword">done</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+<h4 id="api-based-certificate-check">API-based Certificate Check</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/certificate-management/vcenter/tls"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'{
+    subject: .subject_dn,
+    issuer: .issuer_dn,
+    valid_from: .valid_from,
+    valid_to: .valid_to
+  }'</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"subject"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"CN=vcenter01.lab.local"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"issuer"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"CN=CA, DC=vsphere, DC=local"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"valid_from"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2026-01-15T00:00:00.000Z"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"valid_to"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2028-01-15T00:00:00.000Z"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>All certificates &gt; 60 days until expiry</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Any certificate 30 - 60 days until expiry</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Any certificate &lt; 30 days or expired</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Certificate Expiring/Expired):</strong><br>
+1. For Machine SSL: Use Certificate Manager option 3 or 1 to replace<br>
+2. For STS: Use <code>/usr/lib/vmware-vmca/bin/certificate-manager</code> option 8 (reset) as last resort<br>
+3. For Solution Users: Use Certificate Manager option 6 to regenerate with VMCA<br>
+4. KB Reference: <a href="https://knowledge.broadcom.com/external/article?legacyId=2111411">KB 2111411</a> for STS certificate renewal
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="10-storage-health"><span id="storage-health"></span>10. Storage Health</h2>
+<h3 id="101-disk-partitions--filesystem"><span id="disk-partitions"></span>10.1 Disk Partitions &amp; Filesystem</h3>
+<h4 id="check-all-partitions">Check All Partitions</h4>
+<pre><code class="hljs bash"><span class="hljs-built_in">df</span> -h
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda3        11G  4.2G  6.1G  41% /
+tmpfs           6.0G   48M  5.9G   1% /dev/shm
+/dev/sda1       128M   32M   97M  25% /boot
+/dev/sda5        25G  5.8G   18G  25% /storage/log
+/dev/sda6        10G  2.1G  7.4G  22% /storage/db
+/dev/sda8        50G  9.2G   38G  20% /storage/seat
+/dev/sda9        25G  3.3G   20G  15% /storage/netdump
+/dev/sda10       10G  1.2G  8.2G  13% /storage/autodeploy
+/dev/sda11       10G  836M  8.6G   9% /storage/imagebuilder
+/dev/sda12       10G  2.5G  7.0G  27% /storage/updatemgr
+/dev/sda13        5G   63M  4.7G   2% /storage/lifecycle
+</code></pre>
+<h4 id="check-inode-usage">Check inode Usage</h4>
+<pre><code class="hljs bash"><span class="hljs-built_in">df</span> -ih
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Warn Threshold</th>
+<th>Fail Threshold</th>
+<th>Badge (Healthy)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/</code> (root)</td>
+<td>&gt; 70%</td>
+<td>&gt; 85%</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td><code>/storage/log</code></td>
+<td>&gt; 70%</td>
+<td>&gt; 85%</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td><code>/storage/db</code></td>
+<td>&gt; 70%</td>
+<td>&gt; 85%</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td><code>/storage/seat</code></td>
+<td>&gt; 70%</td>
+<td>&gt; 85%</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>All others</td>
+<td>&gt; 75%</td>
+<td>&gt; 90%</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+</tbody></table>
+<h3 id="102-log-storage-utilization"><span id="log-storage"></span>10.2 Log Storage Utilization</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check /storage/log usage</span>
+<span class="hljs-built_in">du</span> -sh /storage/log/* 2&gt;/dev/null | <span class="hljs-built_in">sort</span> -rh | <span class="hljs-built_in">head</span> -15
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>2.1G    /storage/log/vmware/vpxd
+812M    /storage/log/vmware/vsphere-ui
+543M    /storage/log/vmware/sso
+322M    /storage/log/vmware/eam
+210M    /storage/log/vmware/rhttpproxy
+...
+</code></pre>
+<h4 id="find-large-log-files">Find Large Log Files</h4>
+<pre><code class="hljs bash">find /storage/log -<span class="hljs-built_in">type</span> f -size +100M -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">ls</span> -lh {} \; 2&gt;/dev/null
+</code></pre>
+<h3 id="103-db-storage-utilization"><span id="db-storage"></span>10.3 DB Storage Utilization</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check /storage/db usage</span>
+<span class="hljs-built_in">du</span> -sh /storage/db/*
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>8.2G    /storage/db/vpostgres
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check PostgreSQL WAL files</span>
+<span class="hljs-built_in">du</span> -sh /storage/db/vpostgres/pg_wal/
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>All partitions &lt; 70%</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Any partition 70 - 85%</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Any partition &gt; 85%</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Storage Full):</strong><br>
+1. Clear old logs: <code>find /storage/log -name "*.log" -mtime +7 -delete</code><br>
+2. Rotate logs: <code>logrotate -f /etc/logrotate.conf</code><br>
+3. Clean temp files: <code>rm -rf /storage/log/vmware/vpxd/vpxd-*.log.[0-9]*</code><br>
+4. Purge old WAL files: <code>/opt/vmware/vpostgres/current/bin/pg_archivecleanup /storage/db/vpostgres/pg_wal/ &lt;oldest_needed_wal&gt;</code><br>
+5. Expand disk: Shutdown appliance, expand VMDK, boot, run <code>/usr/lib/applmgmt/support/scripts/expand_disk.sh</code>
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="11-performance--resource-utilization"><span id="performance"></span>11. Performance &amp; Resource Utilization</h2>
+<h3 id="111-cpu-utilization"><span id="perf-cpu"></span>11.1 CPU Utilization</h3>
+<h4 id="api-check-2">API Check</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/health/load"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
+</code></pre>
+<h4 id="cli-check">CLI Check</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Current CPU load</span>
+<span class="hljs-built_in">uptime</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code> 14:22:33 up 3 days,  4:07,  1 user,  load average: 1.23, 1.45, 1.32
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Top CPU consumers</span>
+top -bn1 | <span class="hljs-built_in">head</span> -20
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># CPU info</span>
+<span class="hljs-built_in">nproc</span>
+<span class="hljs-built_in">cat</span> /proc/cpuinfo | grep <span class="hljs-string">"model name"</span> | <span class="hljs-built_in">head</span> -1
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Load average &lt; number of CPUs (&lt; 70% per core)</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Load average 70-85% of CPU count</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Load average &gt; 85% of CPU count sustained</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="112-memory-utilization"><span id="perf-memory"></span>11.2 Memory Utilization</h3>
+<h4 id="api-check-3">API Check</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/health/mem"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
+</code></pre>
+<h4 id="cli-check-1">CLI Check</h4>
+<pre><code class="hljs bash">free -m
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>              total        used        free      shared  buff/cache   available
+Mem:          24576       14234        2180         312        8162        9876
+Swap:          3071          32        3039
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Memory usage percentage</span>
+free -m | awk <span class="hljs-string">'NR==2{printf "Memory Usage: %.1f%%\n", $3*100/$2}'</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Memory usage &lt; 80%</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Memory usage 80 - 90%</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Memory usage &gt; 90%</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="113-swap--load-average"><span id="perf-swap"></span>11.3 Swap &amp; Load Average</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Swap usage</span>
+swapon --show
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>NAME      TYPE SIZE USED PRIO
+/dev/sda2 partition 3G  32M   -2
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Detailed swap info</span>
+<span class="hljs-built_in">cat</span> /proc/swaps
+vmstat 1 5
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Swap usage &lt; 5%</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Swap usage 5 - 25%</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Swap usage &gt; 25%</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Performance Degradation):</strong><br>
+1. Identify top consumers: <code>top -bn1 -o %MEM | head -20</code><br>
+2. Restart heavy service: <code>service-control --stop vmware-vpxd &amp;&amp; service-control --start vmware-vpxd</code><br>
+3. Check for runaway Java processes: <code>ps aux | grep java | grep -v grep</code><br>
+4. Increase VM resources: Add more vCPUs or memory to the appliance VM<br>
+5. Check for DRS/HA tasks in loop: review <code>/var/log/vmware/vpxd/vpxd.log</code> for repeated task patterns
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="12-sso--identity-source-health"><span id="sso-health"></span>12. SSO / Identity Source Health</h2>
+<h3 id="121-sso-domain-health"><span id="sso-domain"></span>12.1 SSO Domain Health</h3>
+<h4 id="check-sso-domain-status">Check SSO Domain Status</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List SSO domains</span>
+/opt/vmware/bin/sso-config.sh -get_identity_sources
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Identity Source: vsphere.local
+Type: System Domain
+Default: true
+
+Identity Source: lab.local
+Type: ActiveDirectory
+Default: false
+</code></pre>
+<h4 id="verify-sso-configuration">Verify SSO Configuration</h4>
+<pre><code class="hljs bash">/opt/vmware/bin/sso-config.sh -get_default_identity_sources
+</code></pre>
+<h3 id="122-identity-source-connectivity"><span id="sso-identity"></span>12.2 Identity Source Connectivity</h3>
+<h4 id="api-check-4">API Check</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/identity/providers"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq .
+</code></pre>
+<h4 id="test-authentication">Test Authentication</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Test SSO login via API session creation</span>
+curl -sk -w <span class="hljs-string">"\nHTTP_CODE: %{http_code}\n"</span> -X POST \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/session"</span> \
+  -u <span class="hljs-string">"administrator@vsphere.local:<span class="hljs-variable">${VC_PASS}</span>"</span>
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>"b1a2c3d4-e5f6-7890-abcd-ef1234567890"
+HTTP_CODE: 201
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTTP 201, session token returned</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>HTTP 401 (credentials issue)</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>HTTP 500 or connection timeout</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="123-ldap--ad-binding-test"><span id="sso-ldap"></span>12.3 LDAP / AD Binding Test</h3>
+<h4 id="test-ldap-connectivity">Test LDAP Connectivity</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Test LDAP bind to AD (if AD identity source configured)</span>
+ldapsearch -h dc01.lab.local -p 389 \
+  -D <span class="hljs-string">"CN=svc_vcenter,OU=Service Accounts,DC=lab,DC=local"</span> \
+  -w <span class="hljs-string">'ServiceAccountPassword'</span> \
+  -b <span class="hljs-string">"DC=lab,DC=local"</span> \
+  -s base <span class="hljs-string">"(objectClass=*)"</span> 2&gt;&amp;1 | <span class="hljs-built_in">head</span> -5
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code># extended LDIF
+#
+# LDAPv3
+# base &lt;DC=lab,DC=local&gt; with scope baseObject
+# filter: (objectClass=*)
+</code></pre>
+<h4 id="check-vmware-directory-service-vmdir">Check VMware Directory Service (vmdir)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check vmdir service status</span>
+systemctl status vmware-stsd
+/opt/vmware/bin/ldapsearch -h localhost -p 389 \
+  -b <span class="hljs-string">""</span> -s base <span class="hljs-string">"(objectClass=*)"</span> namingContexts 2&gt;/dev/null
+</code></pre>
+<h3 id="124-token-validation"><span id="sso-token"></span>12.4 Token Validation</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Verify existing session token is valid</span>
+curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/session"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq .
+</code></pre>
+<p><strong>Expected Output (Valid Token):</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"VSPHERE.LOCAL\\Administrator"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"created_time"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2026-03-26T10:15:22.000Z"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Token valid, user details returned</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Token expired (HTTP 401)</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>SSO service unreachable (HTTP 503)</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (SSO Issues):</strong><br>
+1. Restart STS service: <code>service-control --stop vmware-stsd &amp;&amp; service-control --start vmware-stsd</code><br>
+2. Check STS logs: <code>tail -100 /var/log/vmware/sso/ssoAdminServer.log</code><br>
+3. For AD connectivity: verify DNS, network, service account credentials<br>
+4. For lockout: unlock admin via <code>/usr/lib/vmware-vmdir/bin/dir-cli password reset --account administrator --new &lt;new_pass&gt;</code><br>
+5. STS cert expiry: Replace using KB 79248 procedures
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="13-plugins--extensions"><span id="plugins"></span>13. Plugins &amp; Extensions</h2>
+<h3 id="131-registered-plugins"><span id="plugins-list"></span>13.1 Registered Plugins</h3>
+<h4 id="api-check-5">API Check</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/namespace-management/software/registries"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> 2&gt;/dev/null | jq .
+</code></pre>
+<h4 id="mob-managed-object-browser-method">MOB (Managed Object Browser) Method</h4>
+<p>Navigate to: <code>https://$VC_FQDN/mob/?moid=ExtensionManager&amp;doPath=extensionList</code></p>
+<h4 id="powercli-method">PowerCLI Method</h4>
+<pre><code class="hljs powershell"><span class="hljs-built_in">Connect-VIServer</span> <span class="hljs-literal">-Server</span> <span class="hljs-variable">$VC_FQDN</span> <span class="hljs-literal">-User</span> <span class="hljs-variable">$VC_USER</span> <span class="hljs-literal">-Password</span> <span class="hljs-variable">$VC_PASS</span>
+<span class="hljs-variable">$em</span> = <span class="hljs-built_in">Get-View</span> ExtensionManager
+<span class="hljs-variable">$em</span>.ExtensionList | <span class="hljs-built_in">Select-Object</span> Key, Description, Company, Version | <span class="hljs-built_in">Format-Table</span> <span class="hljs-literal">-AutoSize</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Key                                      Description              Company              Version
+---                                      -----------              -------              -------
+com.vmware.vim.sms                       Storage Monitoring       VMware, Inc.         8.0.3
+com.vmware.vcIntegrity                   vSphere Lifecycle Mgr    VMware, Inc.         8.0.3
+com.vmware.vim.eam                       ESX Agent Manager        VMware, Inc.         8.0.3
+com.vmware.rbd                           RBD                      VMware, Inc.         8.0.3
+com.vmware.h4.vsphere.client             vSphere Client           VMware, Inc.         8.0.3
+com.vmware.nsx.management.nsxt           NSX                      VMware, Inc.         4.2.1
+...
+</code></pre>
+<h3 id="132-plugin-health-verification"><span id="plugins-health"></span>13.2 Plugin Health Verification</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check plugin health via REST</span>
+curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/ui/extensionmanager/extensionlist"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> 2&gt;/dev/null | jq <span class="hljs-string">'.[].key'</span>
+</code></pre>
+<h4 id="check-for-plugin-load-errors">Check for Plugin Load Errors</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check vsphere-ui logs for plugin errors</span>
+grep -i <span class="hljs-string">"plugin\|extension"</span> /var/log/vmware/vsphere-ui/logs/vsphere_client_virgo.log | \
+  grep -i <span class="hljs-string">"error\|fail\|exception"</span> | <span class="hljs-built_in">tail</span> -20
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>All expected plugins registered and loading</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Some plugins failing to load but not critical</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Core plugins missing or all failing</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="133-stale-plugin-cleanup"><span id="plugins-cleanup"></span>13.3 Stale Plugin Cleanup</h3>
+<div class="warn-box">
+<strong>Warning:</strong> Only remove plugins that have been confirmed as stale (e.g., from decommissioned products). Removing active plugins will break functionality.
+</div>
+
+<h4 id="identify-stale-plugins">Identify Stale Plugins</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check for plugins whose server URL is unreachable</span>
+curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/mob/?moid=ExtensionManager"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> 2&gt;/dev/null
+</code></pre>
+<h4 id="remove-stale-plugin-via-mob">Remove Stale Plugin via MOB</h4>
+<ol>
+<li>Navigate to: <code>https://$VC_FQDN/mob/?moid=ExtensionManager</code></li>
+<li>Click <code>UnregisterExtension</code></li>
+<li>Enter the extension key (e.g., <code>com.vendor.stale.plugin</code>)</li>
+<li>Click <code>Invoke Method</code></li>
+</ol>
+<h4 id="remove-via-powercli">Remove via PowerCLI</h4>
+<pre><code class="hljs powershell"><span class="hljs-variable">$em</span> = <span class="hljs-built_in">Get-View</span> ExtensionManager
+<span class="hljs-variable">$em</span>.UnregisterExtension(<span class="hljs-string">"com.vendor.stale.plugin"</span>)
+</code></pre>
+<div class="fix-box">
+<strong>Remediation (Plugin Issues):</strong><br>
+1. Restart vSphere Client: <code>service-control --stop vsphere-ui &amp;&amp; service-control --start vsphere-ui</code><br>
+2. Clear client cache: <code>rm -rf /etc/vmware/vsphere-ui/cm-init-*</code><br>
+3. Re-register plugin: reinstall the product that provides the plugin<br>
+4. Check plugin compatibility with current vCenter version
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="14-lookup-service--psc"><span id="lookup-service"></span>14. Lookup Service &amp; PSC</h2>
+<p>The Lookup Service is the service registry for all vSphere components. Since vCenter 7.0+, the Platform Services Controller (PSC) is embedded.</p>
+<h3 id="141-lookup-service-registration"><span id="ls-registration"></span>14.1 Lookup Service Registration</h3>
+<h4 id="check-lookup-service-status">Check Lookup Service Status</h4>
+<pre><code class="hljs bash">service-control --status vmware-lookupsvc
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>VMware Lookup Service:Status: RUNNING
+</code></pre>
+<h4 id="list-all-service-registrations">List All Service Registrations</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Use lstool to list registrations</span>
+python /usr/lib/vmidentity/tools/scripts/lstool.py list \
+  --url <span class="hljs-string">"https://localhost/lookupservice/sdk"</span> \
+  --no-check-cert 2&gt;/dev/null | <span class="hljs-built_in">head</span> -60
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>=== Service Registration ===
+Service ID: vcenterserver
+Owner ID: vcenter01.lab.local@vsphere.local
+Service Type: vcenterserver
+Endpoints:
+  URL: https://vcenter01.lab.local/sdk
+  Protocol: vmomi
+
+Service ID: cs.identity
+Owner ID: vcenter01.lab.local@vsphere.local
+Service Type: cs.identity
+Endpoints:
+  URL: https://vcenter01.lab.local/sts/STSService/vsphere.local
+  Protocol: wsTrust
+...
+</code></pre>
+<h3 id="142-sts-health"><span id="ls-sts"></span>14.2 STS Health</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check STS service status</span>
+service-control --status vmware-stsd
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>VMware Security Token Service:Status: RUNNING
+</code></pre>
+<h4 id="test-sts-token-issuance">Test STS Token Issuance</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Verify STS can issue tokens by creating an API session</span>
+curl -sk -X POST \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/session"</span> \
+  -u <span class="hljs-string">"<span class="hljs-variable">${VC_USER}</span>:<span class="hljs-variable">${VC_PASS}</span>"</span> \
+  -w <span class="hljs-string">"\nHTTP Status: %{http_code}\n"</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>STS running, tokens issued successfully</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>STS running but slow token issuance (&gt; 5s)</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>STS stopped or tokens not issued</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="143-service-registration-entries"><span id="ls-entries"></span>14.3 Service Registration Entries</h3>
+<h4 id="verify-key-registrations-exist">Verify Key Registrations Exist</h4>
+<pre><code class="hljs bash">python /usr/lib/vmidentity/tools/scripts/lstool.py list \
+  --url <span class="hljs-string">"https://localhost/lookupservice/sdk"</span> \
+  --no-check-cert 2&gt;/dev/null | grep <span class="hljs-string">"Service Type"</span> | <span class="hljs-built_in">sort</span> -u
+</code></pre>
+<p><strong>Expected Service Types:</strong></p>
+<pre><code>Service Type: cs.authorization
+Service Type: cs.identity
+Service Type: cs.license
+Service Type: cs.lookup
+Service Type: cs.privilege
+Service Type: sso:admin
+Service Type: sso:groupcheck
+Service Type: sso:sts
+Service Type: vcenterserver
+Service Type: cs.inventory
+Service Type: cs.envoy
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>All expected service types registered</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Some non-critical registrations missing</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Core registrations (sts, identity, vcenterserver) missing</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Lookup Service Issues):</strong><br>
+1. Restart Lookup Service: <code>service-control --stop vmware-lookupsvc &amp;&amp; service-control --start vmware-lookupsvc</code><br>
+2. Re-register services: <code>/usr/lib/vmware-lookupsvc/tools/ls_update_certs.py --url https://localhost/lookupservice/sdk --fingerprint &lt;thumbprint&gt;</code><br>
+3. Check logs: <code>/var/log/vmware/lookupsvc/lookupsvc.log</code><br>
+4. If corrupted, run: <code>/usr/lib/vmware-lookupsvc/tools/ls_recover.py</code>
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="15-inventory-verification"><span id="inventory"></span>15. Inventory Verification</h2>
+<h3 id="151-datacenter--cluster--host--vm-counts"><span id="inv-counts"></span>15.1 Datacenter / Cluster / Host / VM Counts</h3>
+<h4 id="get-datacenter-count">Get Datacenter Count</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/datacenter"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'length'</span>
+</code></pre>
+<h4 id="list-all-datacenters">List All Datacenters</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/datacenter"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'.[] | {name, datacenter}'</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"DC-Site-A"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"datacenter"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"datacenter-1"</span>
+<span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"DC-Site-B"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"datacenter"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"datacenter-2"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="get-cluster-count-and-list">Get Cluster Count and List</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/cluster"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'.[] | {name, cluster, ha_enabled, drs_enabled}'</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Management-Cluster"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"cluster"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"domain-c8"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"ha_enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"drs_enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+<span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Workload-Cluster-01"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"cluster"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"domain-c44"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"ha_enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"drs_enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="get-host-count-and-status">Get Host Count and Status</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/host"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'.[] | {name, host, connection_state, power_state}'</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"esxi01.lab.local"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"host"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"host-10"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"connection_state"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"CONNECTED"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"power_state"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"POWERED_ON"</span>
+<span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"esxi02.lab.local"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"host"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"host-11"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"connection_state"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"CONNECTED"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"power_state"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"POWERED_ON"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="get-vm-count">Get VM Count</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Total VM count</span>
+curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/vm"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'length'</span>
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Powered-on VMs</span>
+curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/vm?power_states=POWERED_ON"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'length'</span>
+</code></pre>
+<h4 id="full-inventory-summary-script">Full Inventory Summary Script</h4>
+<pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">"=== vCenter Inventory Summary ==="</span>
+DC=$(curl -sk <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/datacenter"</span> -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'length'</span>)
+CL=$(curl -sk <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/cluster"</span> -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'length'</span>)
+HO=$(curl -sk <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/host"</span> -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'length'</span>)
+VM=$(curl -sk <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/vm"</span> -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'length'</span>)
+VMon=$(curl -sk <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/vm?power_states=POWERED_ON"</span> -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'length'</span>)
+DS=$(curl -sk <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/datastore"</span> -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'length'</span>)
+NET=$(curl -sk <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/network"</span> -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'length'</span>)
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Datacenters:  <span class="hljs-variable">${DC}</span>"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Clusters:     <span class="hljs-variable">${CL}</span>"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Hosts:        <span class="hljs-variable">${HO}</span>"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Total VMs:    <span class="hljs-variable">${VM}</span>"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Powered-On:   <span class="hljs-variable">${VMon}</span>"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Datastores:   <span class="hljs-variable">${DS}</span>"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Networks:     <span class="hljs-variable">${NET}</span>"</span>
+</code></pre>
+<h3 id="152-inventory-consistency"><span id="inv-consistency"></span>15.2 Inventory Consistency</h3>
+<h4 id="check-for-disconnected-hosts">Check for Disconnected Hosts</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/host?connection_states=DISCONNECTED,NOT_RESPONDING"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'.[] | {name, connection_state}'</span>
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong> Empty array <code>[]</code></p>
+<h4 id="check-for-orphaned-vms">Check for Orphaned VMs</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/vcenter/vm?power_states=POWERED_OFF"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq <span class="hljs-string">'.[] | {name, vm, power_state}'</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>All hosts CONNECTED, inventory counts match expected</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Some hosts in maintenance mode (planned)</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Disconnected/NOT_RESPONDING hosts found</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (Inventory Issues):</strong><br>
+1. Reconnect host: Right-click host in vSphere Client &gt; Connection &gt; Connect<br>
+2. Via API: <code>curl -sk -X POST "https://${VC_FQDN}/api/vcenter/host/host-XX?action=connect" -H "vmware-api-session-id: ${VC_TOKEN}"</code><br>
+3. Remove orphaned objects: Right-click &gt; Remove from Inventory<br>
+4. If hosts persistently disconnect, check network, DNS, and host certificates
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="16-syslog--log-configuration"><span id="syslog"></span>16. Syslog &amp; Log Configuration</h2>
+<h3 id="161-syslog-forwarding"><span id="syslog-forward"></span>16.1 Syslog Forwarding</h3>
+<h4 id="check-syslog-configuration-via-api">Check Syslog Configuration via API</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/logging/forwarding"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq .
+</code></pre>
+<p><strong>Expected Output (Configured):</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">[</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"hostname"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"syslog.lab.local"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"port"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">514</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"protocol"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UDP"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"hostname"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"loginsight.lab.local"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"port"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">9000</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"protocol"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"TCP"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">]</span>
+</code></pre>
+<h4 id="test-syslog-forwarding">Test Syslog Forwarding</h4>
+<pre><code class="hljs bash">curl -sk -X POST \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/logging/forwarding?action=test"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"send_test_message": true}'</span> | jq .
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">[</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"hostname"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"syslog.lab.local"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"state"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UP"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"message"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">]</span>
+</code></pre>
+<h4 id="configure-syslog-forwarding">Configure Syslog Forwarding</h4>
+<pre><code class="hljs bash">curl -sk -X PUT \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/logging/forwarding"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'[{"hostname": "syslog.lab.local", "port": 514, "protocol": "UDP"}]'</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Syslog configured and test passes (state=UP)</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>Syslog configured but test fails</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>Syslog not configured</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<h3 id="162-log-rotation"><span id="log-rotation"></span>16.2 Log Rotation</h3>
+<h4 id="check-logrotate-configuration">Check Logrotate Configuration</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check logrotate status</span>
+<span class="hljs-built_in">cat</span> /etc/logrotate.conf | <span class="hljs-built_in">head</span> -20
+
+<span class="hljs-comment"># Check vCenter-specific rotation configs</span>
+<span class="hljs-built_in">ls</span> -la /etc/logrotate.d/
+</code></pre>
+<h4 id="trigger-manual-log-rotation">Trigger Manual Log Rotation</h4>
+<pre><code class="hljs bash">logrotate -f /etc/logrotate.conf
+</code></pre>
+<h3 id="163-log-bundle-generation"><span id="log-bundle"></span>16.3 Log Bundle Generation</h3>
+<h4 id="generate-support-bundle-via-api">Generate Support Bundle via API</h4>
+<pre><code class="hljs bash">curl -sk -X POST \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/support-bundle"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> | jq .
+</code></pre>
+<h4 id="generate-via-cli">Generate via CLI</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Generate support bundle</span>
+/usr/lib/vmware-vpxd/support/vcdb_report.sh
+
+<span class="hljs-comment"># Generate full log bundle</span>
+vc-support-bundle
+</code></pre>
+<div class="info-box">
+<strong>Tip:</strong> Support bundles can be large (several GB). Ensure sufficient free space in <code>/storage/log</code> before generating. Target directory: <code>/var/log/vmware/support/</code>
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="17-ntp-configuration"><span id="ntp"></span>17. NTP Configuration</h2>
+<p>Time synchronization is critical for vCenter operations, certificate validation, SSO token integrity, and log correlation.</p>
+<h3 id="171-time-sync-via-api"><span id="ntp-api"></span>17.1 Time Sync via API</h3>
+<h4 id="get-ntp-configuration">Get NTP Configuration</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/ntp"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq .
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">[</span>
+  <span class="hljs-string">"ntp1.lab.local"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-string">"ntp2.lab.local"</span>
+<span class="hljs-punctuation">]</span>
+</code></pre>
+<h4 id="get-time-sync-mode">Get Time Sync Mode</h4>
+<pre><code class="hljs bash">curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/timesync"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>"NTP"
+</code></pre>
+<h4 id="set-ntp-servers-via-api">Set NTP Servers via API</h4>
+<pre><code class="hljs bash">curl -sk -X PUT \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/appliance/ntp"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'["ntp1.lab.local", "ntp2.lab.local"]'</span>
+</code></pre>
+<h3 id="172-time-sync-via-cli"><span id="ntp-cli"></span>17.2 Time Sync via CLI</h3>
+<h4 id="check-ntp-service">Check NTP Service</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check NTP daemon status</span>
+systemctl status systemd-timesyncd
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check NTP synchronization</span>
+timedatectl status
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>               Local time: Thu 2026-03-26 14:22:33 UTC
+           Universal time: Thu 2026-03-26 14:22:33 UTC
+                 RTC time: Thu 2026-03-26 14:22:33
+                Time zone: UTC (UTC, +0000)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check NTP peers</span>
+ntpq -p 2&gt;/dev/null || chronyc sources 2&gt;/dev/null
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>MS Name/IP address         Stratum Poll Reach LastRx Last sample
+===============================================================================
+^* ntp1.lab.local                2   6   377    34   +0.234ms[+0.312ms] +/- 12ms
+^+ ntp2.lab.local                2   6   377    35   +1.023ms[+1.101ms] +/- 15ms
+</code></pre>
+<h3 id="173-drift-check"><span id="ntp-drift"></span>17.3 Drift Check</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check clock offset</span>
+chronyc tracking 2&gt;/dev/null | grep <span class="hljs-string">"System time\|Last offset"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>System time     : 0.000000234 seconds fast of NTP time
+Last offset     : +0.000000312 seconds
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Badge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NTP configured, synced, drift &lt; 1 second</td>
+<td><span class="badge-pass">PASS</span></td>
+</tr>
+<tr>
+<td>NTP configured but drift 1 - 5 seconds</td>
+<td><span class="badge-warn">WARN</span></td>
+</tr>
+<tr>
+<td>NTP not configured or drift &gt; 5 seconds</td>
+<td><span class="badge-fail">FAIL</span></td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation (NTP Issues):</strong><br>
+1. Set NTP servers: <code>curl -sk -X PUT "https://${VC_FQDN}/api/appliance/ntp" -H "vmware-api-session-id: ${VC_TOKEN}" -H "Content-Type: application/json" -d '["pool.ntp.org"]'</code><br>
+2. Force time sync: <code>systemctl restart systemd-timesyncd</code><br>
+3. Verify mode is NTP (not HOST): <code>curl -sk -X PUT "https://${VC_FQDN}/api/appliance/timesync" -H "vmware-api-session-id: ${VC_TOKEN}" -H "Content-Type: application/json" -d '"NTP"'</code><br>
+4. Check firewall allows NTP (UDP 123) outbound
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="18-port-reference-table"><span id="ports"></span>18. Port Reference Table</h2>
+<h3 id="vcenter-server-inbound-ports">vCenter Server Inbound Ports</h3>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Protocol</th>
+<th>Service</th>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>22</td>
+<td>TCP</td>
+<td>SSH</td>
+<td>Admin workstations</td>
+<td>Appliance shell access (should be disabled in production)</td>
+</tr>
+<tr>
+<td>80</td>
+<td>TCP</td>
+<td>HTTP</td>
+<td>All clients</td>
+<td>Redirects to HTTPS (443)</td>
+</tr>
+<tr>
+<td>443</td>
+<td>TCP</td>
+<td>HTTPS</td>
+<td>All clients</td>
+<td>vSphere Client, REST API, SDK, MOB</td>
+</tr>
+<tr>
+<td>389</td>
+<td>TCP</td>
+<td>LDAP</td>
+<td>PSC components</td>
+<td>VMware Directory Service (vmdir)</td>
+</tr>
+<tr>
+<td>636</td>
+<td>TCP</td>
+<td>LDAPS</td>
+<td>PSC components</td>
+<td>VMware Directory Service (secure)</td>
+</tr>
+<tr>
+<td>902</td>
+<td>TCP/UDP</td>
+<td>VMware Auth</td>
+<td>ESXi hosts</td>
+<td>VM console proxy, host management</td>
+</tr>
+<tr>
+<td>1514</td>
+<td>TCP</td>
+<td>Syslog (TLS)</td>
+<td>ESXi hosts</td>
+<td>Syslog collection from hosts</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>TCP</td>
+<td>Control Interface</td>
+<td>Internal</td>
+<td>vCenter control interface</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>TCP</td>
+<td>Auth Framework</td>
+<td>Internal</td>
+<td>Authentication framework</td>
+</tr>
+<tr>
+<td>5480</td>
+<td>TCP</td>
+<td>VAMI</td>
+<td>Admin workstations</td>
+<td>Appliance Management Interface</td>
+</tr>
+<tr>
+<td>6501</td>
+<td>TCP</td>
+<td>Auto Deploy</td>
+<td>ESXi hosts</td>
+<td>Auto Deploy service</td>
+</tr>
+<tr>
+<td>6502</td>
+<td>TCP</td>
+<td>Auto Deploy</td>
+<td>ESXi hosts</td>
+<td>Auto Deploy reverse proxy</td>
+</tr>
+<tr>
+<td>7080</td>
+<td>TCP</td>
+<td>Secure Token</td>
+<td>Internal</td>
+<td>VMware STS (HTTP)</td>
+</tr>
+<tr>
+<td>7444</td>
+<td>TCP</td>
+<td>Secure Token</td>
+<td>Internal</td>
+<td>VMware STS (HTTPS)</td>
+</tr>
+<tr>
+<td>8084</td>
+<td>TCP</td>
+<td>Update Manager</td>
+<td>ESXi hosts</td>
+<td>vSphere Update Manager</td>
+</tr>
+<tr>
+<td>9084</td>
+<td>TCP</td>
+<td>Update Manager</td>
+<td>ESXi hosts</td>
+<td>Update Manager web client</td>
+</tr>
+<tr>
+<td>9087</td>
+<td>TCP</td>
+<td>Analytics</td>
+<td>Internal</td>
+<td>Analytics service</td>
+</tr>
+<tr>
+<td>9123</td>
+<td>TCP</td>
+<td>Migration Assistant</td>
+<td>External</td>
+<td>vCenter migration</td>
+</tr>
+</tbody></table>
+<h3 id="vcenter-server-outbound-ports">vCenter Server Outbound Ports</h3>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Protocol</th>
+<th>Destination</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>53</td>
+<td>TCP/UDP</td>
+<td>DNS servers</td>
+<td>DNS resolution</td>
+</tr>
+<tr>
+<td>88</td>
+<td>TCP/UDP</td>
+<td>AD/KDC</td>
+<td>Kerberos authentication</td>
+</tr>
+<tr>
+<td>123</td>
+<td>UDP</td>
+<td>NTP servers</td>
+<td>Time synchronization</td>
+</tr>
+<tr>
+<td>389</td>
+<td>TCP</td>
+<td>AD/LDAP</td>
+<td>Identity source queries</td>
+</tr>
+<tr>
+<td>443</td>
+<td>TCP</td>
+<td>ESXi hosts</td>
+<td>Host management via HTTPS</td>
+</tr>
+<tr>
+<td>443</td>
+<td>TCP</td>
+<td>NSX Manager</td>
+<td>NSX integration</td>
+</tr>
+<tr>
+<td>443</td>
+<td>TCP</td>
+<td>SDDC Manager</td>
+<td>VCF lifecycle management</td>
+</tr>
+<tr>
+<td>514</td>
+<td>UDP</td>
+<td>Syslog server</td>
+<td>Syslog forwarding</td>
+</tr>
+<tr>
+<td>902</td>
+<td>TCP</td>
+<td>ESXi hosts</td>
+<td>VM console, host management</td>
+</tr>
+</tbody></table>
+<h3 id="port-verification-commands">Port Verification Commands</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check listening ports on vCenter appliance</span>
+ss -tlnp | <span class="hljs-built_in">sort</span> -t: -k2 -n
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check specific port connectivity</span>
+curl -sk -o /dev/null -w <span class="hljs-string">"%{http_code}"</span> https://<span class="hljs-variable">${VC_FQDN}</span>:443
+curl -sk -o /dev/null -w <span class="hljs-string">"%{http_code}"</span> https://<span class="hljs-variable">${VC_FQDN}</span>:5480
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check outbound connectivity</span>
+nc -zv ntp1.lab.local 123 2&gt;&amp;1
+nc -zv dc01.lab.local 389 2&gt;&amp;1
+nc -zv esxi01.lab.local 443 2&gt;&amp;1
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="19-common-issues--remediation"><span id="common-issues"></span>19. Common Issues &amp; Remediation</h2>
+<h3 id="191-vpxd-crashes-or-wont-start">19.1 VPXD Crashes or Won't Start</h3>
+<p><strong>Symptoms:</strong> vSphere Client inaccessible, <code>service-control --status vmware-vpxd</code> shows STOPPED.</p>
+<div class="danger">
+<strong>Impact:</strong> Complete vCenter management outage. VMs continue running on ESXi hosts but cannot be managed.
+</div>
+
+<p><strong>Diagnostic Steps:</strong></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check VPXD logs for crash reason</span>
+<span class="hljs-built_in">tail</span> -200 /var/log/vmware/vpxd/vpxd.log | grep -i <span class="hljs-string">"error\|fatal\|abort"</span>
+
+<span class="hljs-comment"># Check for core dumps</span>
+<span class="hljs-built_in">ls</span> -la /var/core/
+
+<span class="hljs-comment"># Check if database is reachable</span>
+systemctl status vmware-vpostgres
+
+<span class="hljs-comment"># Check disk space (VPXD won't start if disk full)</span>
+<span class="hljs-built_in">df</span> -h /storage/log /storage/db /
+
+<span class="hljs-comment"># Check for port conflicts</span>
+ss -tlnp | grep <span class="hljs-string">":443\b"</span>
+</code></pre>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. If disk full: clear logs per Section 10, then start VPXD<br>
+2. If DB down: <code>service-control --start vmware-vpostgres</code>, then start VPXD<br>
+3. If port conflict: identify and stop conflicting process, then start VPXD<br>
+4. If persistent crash: collect support bundle and open VMware SR<br>
+5. As last resort: <code>service-control --stop --all &amp;&amp; service-control --start --all</code>
+</div>
+
+<h3 id="192-database-corruption">19.2 Database Corruption</h3>
+<p><strong>Symptoms:</strong> VPXD errors referencing VCDB, inventory inconsistencies, SQL errors in logs.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check PostgreSQL logs</span>
+<span class="hljs-built_in">tail</span> -100 /var/log/vmware/vpostgres/postgresql*.<span class="hljs-built_in">log</span>
+
+<span class="hljs-comment"># Run database integrity check</span>
+/opt/vmware/vpostgres/current/bin/pg_isready -h localhost -p 5432
+
+<span class="hljs-comment"># Check for corruption indicators</span>
+/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -c \
+  <span class="hljs-string">"SELECT datname, datallowconn FROM pg_database;"</span>
+</code></pre>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. If minor: Run <code>VACUUM FULL ANALYZE;</code> to reclaim and rebuild<br>
+2. If tables corrupted: <code>REINDEX DATABASE VCDB;</code><br>
+3. If severe: Restore from backup: <code>/opt/vmware/vpostgres/current/bin/pg_restore</code><br>
+4. If no backup available: Contact VMware Global Support immediately<br>
+5. Prevention: Ensure regular file-based backups are configured
+</div>
+
+<h3 id="193-certificate-expiry">19.3 Certificate Expiry</h3>
+<p><strong>Symptoms:</strong> SSO login failures, "certificate expired" errors in browser, service communication failures.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Quick check all certs</span>
+<span class="hljs-keyword">for</span> store <span class="hljs-keyword">in</span> MACHINE_SSL_CERT machine vsphere-webclient vpxd vpxd-extension; <span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"=== <span class="hljs-variable">${store}</span> ==="</span>
+  /usr/lib/vmware-vmafd/bin/vecs-cli entry getcert --store <span class="hljs-variable">${store}</span> \
+    --<span class="hljs-built_in">alias</span> $(/usr/lib/vmware-vmafd/bin/vecs-cli entry list --store <span class="hljs-variable">${store}</span> 2&gt;/dev/null | grep Alias | awk <span class="hljs-string">'{print $3}'</span> | <span class="hljs-built_in">head</span> -1) 2&gt;/dev/null | \
+    openssl x509 -noout -dates 2&gt;/dev/null
+<span class="hljs-keyword">done</span>
+
+<span class="hljs-comment"># Check STS cert specifically</span>
+python /usr/lib/vmware-vmca/share/config/checksts.py 2&gt;/dev/null
+</code></pre>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. For Machine SSL: <code>/usr/lib/vmware-vmca/bin/certificate-manager</code> option 3 (VMCA) or 1 (custom)<br>
+2. For STS expired: Follow KB 79248 to replace STS signing certificate<br>
+3. For Solution User certs: Certificate Manager option 6<br>
+4. After renewal: restart all services <code>service-control --stop --all &amp;&amp; service-control --start --all</code><br>
+5. Schedule proactive monitoring: check certs monthly
+</div>
+
+<h3 id="194-sso-lockout">19.4 SSO Lockout</h3>
+<p><strong>Symptoms:</strong> Cannot log in as <a href="mailto:administrator@vsphere.local">administrator@vsphere.local</a>, "invalid credentials" or "account locked."</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check lockout policy</span>
+/opt/vmware/bin/sso-config.sh -get_lockout_policy
+
+<span class="hljs-comment"># Check failed login attempts</span>
+grep -i <span class="hljs-string">"login\|auth\|lock"</span> /var/log/vmware/sso/ssoAdminServer.<span class="hljs-built_in">log</span> | <span class="hljs-built_in">tail</span> -30
+</code></pre>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. Wait for lockout period to expire (default: 5 minutes)<br>
+2. Unlock via CLI: <code>/usr/lib/vmware-vmdir/bin/dir-cli account unlock --account administrator --password &lt;current_password&gt;</code><br>
+3. Reset password: <code>/usr/lib/vmware-vmdir/bin/dir-cli password reset --account administrator --new &lt;new_password&gt;</code><br>
+4. If vmdir corrupted: Boot to single-user mode and reset via <code>/usr/lib/vmware-vmdir/bin/vdcadmintool</code><br>
+5. As absolute last resort: restore from backup
+</div>
+
+<h3 id="195-performance-degradation">19.5 Performance Degradation</h3>
+<p><strong>Symptoms:</strong> vSphere Client slow, API timeouts, tasks taking excessively long.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># Identify bottleneck</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== CPU ==="</span> &amp;&amp; <span class="hljs-built_in">uptime</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== Memory ==="</span> &amp;&amp; free -m
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== Swap ==="</span> &amp;&amp; swapon --show
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== Disk I/O ==="</span> &amp;&amp; iostat -x 1 3 2&gt;/dev/null || <span class="hljs-built_in">echo</span> <span class="hljs-string">"iostat not available"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== Top Processes ==="</span> &amp;&amp; top -bn1 | <span class="hljs-built_in">head</span> -15
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"=== DB Connections ==="</span> &amp;&amp; /opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB -c \
+  <span class="hljs-string">"SELECT count(*) FROM pg_stat_activity;"</span>
+</code></pre>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. If CPU high: check for runaway tasks, reduce DRS sensitivity<br>
+2. If memory high: restart VPXD to reclaim, or add VM memory<br>
+3. If swap heavy: increase VM memory, check for memory leaks<br>
+4. If DB connections high: restart VPXD, check for stuck tasks<br>
+5. If disk I/O: move vCenter to faster storage (SSD/NVMe)<br>
+6. Long-term: right-size vCenter appliance per VMware sizing guidelines
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="20-cli-quick-reference-card"><span id="cli-reference"></span>20. CLI Quick Reference Card</h2>
+<h3 id="service-management">Service Management</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>service-control --status --all</code></td>
+<td>Show status of all vCenter services</td>
+</tr>
+<tr>
+<td><code>service-control --status vmware-vpxd</code></td>
+<td>Show VPXD service status</td>
+</tr>
+<tr>
+<td><code>service-control --start --all</code></td>
+<td>Start all vCenter services</td>
+</tr>
+<tr>
+<td><code>service-control --stop --all</code></td>
+<td>Stop all vCenter services</td>
+</tr>
+<tr>
+<td><code>service-control --start &lt;service&gt;</code></td>
+<td>Start a specific service</td>
+</tr>
+<tr>
+<td><code>service-control --stop &lt;service&gt;</code></td>
+<td>Stop a specific service</td>
+</tr>
+<tr>
+<td><code>vmon-cli --list</code></td>
+<td>List all vMon-managed services</td>
+</tr>
+<tr>
+<td><code>vmon-cli --status &lt;service&gt;</code></td>
+<td>Check specific vMon service status</td>
+</tr>
+<tr>
+<td><code>vmon-cli --start &lt;service&gt;</code></td>
+<td>Start a vMon service</td>
+</tr>
+<tr>
+<td><code>vmon-cli --stop &lt;service&gt;</code></td>
+<td>Stop a vMon service</td>
+</tr>
+<tr>
+<td><code>vmon-cli --restart &lt;service&gt;</code></td>
+<td>Restart a vMon service</td>
+</tr>
+</tbody></table>
+<h3 id="system--appliance">System &amp; Appliance</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>uptime</code></td>
+<td>System uptime and load average</td>
+</tr>
+<tr>
+<td><code>free -m</code></td>
+<td>Memory usage in MB</td>
+</tr>
+<tr>
+<td><code>df -h</code></td>
+<td>Disk partition usage</td>
+</tr>
+<tr>
+<td><code>top -bn1</code></td>
+<td>Process listing (batch mode, single iteration)</td>
+</tr>
+<tr>
+<td><code>timedatectl status</code></td>
+<td>Time synchronization status</td>
+</tr>
+<tr>
+<td><code>hostnamectl</code></td>
+<td>Hostname and OS information</td>
+</tr>
+<tr>
+<td><code>cat /etc/applmgmt/appliance/update.conf</code></td>
+<td>Appliance version info</td>
+</tr>
+<tr>
+<td><code>vpxd -v</code></td>
+<td>VPXD version</td>
+</tr>
+<tr>
+<td><code>cat /etc/issue</code></td>
+<td>Photon OS version</td>
+</tr>
+</tbody></table>
+<h3 id="database">Database</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/opt/vmware/vpostgres/current/bin/psql -U postgres -d VCDB</code></td>
+<td>Connect to VCDB</td>
+</tr>
+<tr>
+<td><code>systemctl status vmware-vpostgres</code></td>
+<td>PostgreSQL service status</td>
+</tr>
+<tr>
+<td><code>VACUUM ANALYZE;</code> (in psql)</td>
+<td>Standard vacuum with analyze</td>
+</tr>
+<tr>
+<td><code>VACUUM FULL ANALYZE;</code> (in psql)</td>
+<td>Full vacuum (blocking)</td>
+</tr>
+<tr>
+<td><code>SELECT pg_size_pretty(pg_database_size('VCDB'));</code></td>
+<td>VCDB size</td>
+</tr>
+</tbody></table>
+<h3 id="certificates">Certificates</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/usr/lib/vmware-vmca/bin/certificate-manager</code></td>
+<td>Certificate Manager (interactive)</td>
+</tr>
+<tr>
+<td><code>/usr/lib/vmware-vmafd/bin/vecs-cli store list</code></td>
+<td>List VECS stores</td>
+</tr>
+<tr>
+<td><code>/usr/lib/vmware-vmafd/bin/vecs-cli entry list --store &lt;store&gt;</code></td>
+<td>List entries in a VECS store</td>
+</tr>
+<tr>
+<td><code>/usr/lib/vmware-vmafd/bin/vecs-cli entry getcert --store &lt;store&gt; --alias &lt;alias&gt;</code></td>
+<td>Get certificate from store</td>
+</tr>
+<tr>
+<td><code>/usr/lib/vmware-vmafd/bin/dir-cli trustedcert list</code></td>
+<td>List trusted root certificates</td>
+</tr>
+<tr>
+<td><code>python /usr/lib/vmware-vmca/share/config/checksts.py</code></td>
+<td>Check STS certificate</td>
+</tr>
+</tbody></table>
+<h3 id="sso--identity">SSO &amp; Identity</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/opt/vmware/bin/sso-config.sh -get_identity_sources</code></td>
+<td>List identity sources</td>
+</tr>
+<tr>
+<td><code>/opt/vmware/bin/sso-config.sh -get_default_identity_sources</code></td>
+<td>Get default identity source</td>
+</tr>
+<tr>
+<td><code>/opt/vmware/bin/sso-config.sh -get_lockout_policy</code></td>
+<td>SSO lockout policy</td>
+</tr>
+<tr>
+<td><code>/usr/lib/vmware-vmdir/bin/dir-cli password reset --account &lt;user&gt; --new &lt;pass&gt;</code></td>
+<td>Reset SSO password</td>
+</tr>
+<tr>
+<td><code>/usr/lib/vmware-vmdir/bin/dir-cli account unlock --account &lt;user&gt;</code></td>
+<td>Unlock SSO account</td>
+</tr>
+</tbody></table>
+<h3 id="lookup-service">Lookup Service</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>python /usr/lib/vmidentity/tools/scripts/lstool.py list --url https://localhost/lookupservice/sdk --no-check-cert</code></td>
+<td>List all registrations</td>
+</tr>
+</tbody></table>
+<h3 id="logs">Logs</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tail -f /var/log/vmware/vpxd/vpxd.log</code></td>
+<td>Follow VPXD log</td>
+</tr>
+<tr>
+<td><code>tail -f /var/log/vmware/sso/ssoAdminServer.log</code></td>
+<td>Follow SSO log</td>
+</tr>
+<tr>
+<td><code>tail -f /var/log/vmware/lookupsvc/lookupsvc.log</code></td>
+<td>Follow Lookup Service log</td>
+</tr>
+<tr>
+<td><code>tail -f /var/log/vmware/vsphere-ui/logs/vsphere_client_virgo.log</code></td>
+<td>Follow vSphere Client log</td>
+</tr>
+<tr>
+<td><code>tail -f /var/log/vmware/vpostgres/postgresql*.log</code></td>
+<td>Follow PostgreSQL log</td>
+</tr>
+<tr>
+<td><code>vc-support-bundle</code></td>
+<td>Generate full support bundle</td>
+</tr>
+</tbody></table>
+<h3 id="vcha">VCHA</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/usr/lib/vmware-vcha/vcha-cli cluster-get-state</code></td>
+<td>VCHA cluster state</td>
+</tr>
+</tbody></table>
+<h3 id="networking">Networking</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ss -tlnp</code></td>
+<td>List all listening TCP ports</td>
+</tr>
+<tr>
+<td><code>ip addr show</code></td>
+<td>Show network interfaces</td>
+</tr>
+<tr>
+<td><code>ip route show</code></td>
+<td>Show routing table</td>
+</tr>
+<tr>
+<td><code>cat /etc/resolv.conf</code></td>
+<td>DNS configuration</td>
+</tr>
+<tr>
+<td><code>nslookup ${VC_FQDN}</code></td>
+<td>DNS resolution test</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="21-api-quick-reference"><span id="api-reference"></span>21. API Quick Reference</h2>
+<h3 id="authentication">Authentication</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td><code>/api/session</code></td>
+<td>Create session (Basic Auth) -- returns session token</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/session</code></td>
+<td>Get current session info</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/api/session</code></td>
+<td>Destroy session (logout)</td>
+</tr>
+</tbody></table>
+<h3 id="appliance-health">Appliance Health</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/api/appliance/health/system</code></td>
+<td>Overall system health</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/appliance/health/mem</code></td>
+<td>Memory health</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/appliance/health/storage</code></td>
+<td>Storage health</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/appliance/health/database-storage</code></td>
+<td>Database storage health</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/appliance/health/load</code></td>
+<td>CPU load health</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/appliance/health/swap</code></td>
+<td>Swap health</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/appliance/health/softwarepackages</code></td>
+<td>Software package health</td>
+</tr>
+</tbody></table>
+<h3 id="appliance-configuration">Appliance Configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/api/appliance/ntp</code></td>
+<td>Get NTP servers</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/api/appliance/ntp</code></td>
+<td>Set NTP servers</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/appliance/timesync</code></td>
+<td>Get time sync mode</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/api/appliance/timesync</code></td>
+<td>Set time sync mode (NTP/HOST)</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/appliance/access/ssh</code></td>
+<td>Get SSH access status</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/api/appliance/access/ssh</code></td>
+<td>Enable/disable SSH</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/appliance/networking</code></td>
+<td>Get network configuration</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/appliance/networking/dns/servers</code></td>
+<td>Get DNS servers</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/appliance/networking/dns/hostname</code></td>
+<td>Get hostname</td>
+</tr>
+</tbody></table>
+<h3 id="logging">Logging</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/api/appliance/logging/forwarding</code></td>
+<td>Get syslog forwarding config</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/api/appliance/logging/forwarding</code></td>
+<td>Set syslog forwarding config</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/appliance/logging/forwarding?action=test</code></td>
+<td>Test syslog forwarding</td>
+</tr>
+</tbody></table>
+<h3 id="inventory">Inventory</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/api/vcenter/datacenter</code></td>
+<td>List datacenters</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/vcenter/cluster</code></td>
+<td>List clusters</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/vcenter/host</code></td>
+<td>List hosts</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/vcenter/vm</code></td>
+<td>List VMs</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/vcenter/datastore</code></td>
+<td>List datastores</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/vcenter/network</code></td>
+<td>List networks</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/vcenter/folder</code></td>
+<td>List folders</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/vcenter/resource-pool</code></td>
+<td>List resource pools</td>
+</tr>
+</tbody></table>
+<h3 id="vcenter-ha">vCenter HA</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/api/vcenter/vcha/cluster/mode</code></td>
+<td>Get VCHA mode</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/vcenter/vcha/cluster?action=get</code></td>
+<td>Get full VCHA cluster status</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/vcenter/vcha/cluster?action=failover</code></td>
+<td>Initiate VCHA failover</td>
+</tr>
+</tbody></table>
+<h3 id="certificates-1">Certificates</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/api/vcenter/certificate-management/vcenter/tls</code></td>
+<td>Get TLS certificate info</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/vcenter/certificate-management/vcenter/trusted-root-chains</code></td>
+<td>List trusted root chains</td>
+</tr>
+</tbody></table>
+<h3 id="identity--sso">Identity &amp; SSO</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/api/vcenter/identity/providers</code></td>
+<td>List identity providers</td>
+</tr>
+</tbody></table>
+<h3 id="common-curl-pattern">Common curl Pattern</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># GET request pattern</span>
+curl -sk -X GET \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/&lt;endpoint&gt;"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> | jq .
+
+<span class="hljs-comment"># POST request pattern</span>
+curl -sk -X POST \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/&lt;endpoint&gt;"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{ "key": "value" }'</span> | jq .
+
+<span class="hljs-comment"># PUT request pattern</span>
+curl -sk -X PUT \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/&lt;endpoint&gt;"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{ "key": "value" }'</span>
+</code></pre>
+<h3 id="session-management-best-practice">Session Management Best Practice</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Create session at start</span>
+<span class="hljs-built_in">export</span> VC_TOKEN=$(curl -sk -X POST \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/session"</span> \
+  -u <span class="hljs-string">"<span class="hljs-variable">${VC_USER}</span>:<span class="hljs-variable">${VC_PASS}</span>"</span> | <span class="hljs-built_in">tr</span> -d <span class="hljs-string">'"'</span>)
+
+<span class="hljs-comment"># ... run all health checks ...</span>
+
+<span class="hljs-comment"># Destroy session at end</span>
+curl -sk -X DELETE \
+  <span class="hljs-string">"https://<span class="hljs-variable">${VC_FQDN}</span>/api/session"</span> \
+  -H <span class="hljs-string">"vmware-api-session-id: <span class="hljs-variable">${VC_TOKEN}</span>"</span>
+<span class="hljs-built_in">unset</span> VC_TOKEN VC_PASS
+</code></pre>
+<hr>
+<div class="info-box">
+<strong>Document Information:</strong><br>
+<b>Title:</b> vCenter Server Health Check Handbook<br>
+<b>Version:</b> 1.0<br>
+<b>Author:</b> Virtual Control LLC<br>
+<b>Date:</b> March 2026<br>
+<b>Classification:</b> Internal Use<br>
+<b>Platform:</b> VMware Cloud Foundation 9.0 / vCenter Server 8.x<br>
+<b>Disclaimer:</b> Always test commands in a non-production environment first. Virtual Control LLC is not responsible for any issues arising from the use of commands in this document without proper testing.
+</div>
+
+<p><em>(c) 2026 Virtual Control LLC. All rights reserved.</em></p>
+
+	
+
+</body></html>

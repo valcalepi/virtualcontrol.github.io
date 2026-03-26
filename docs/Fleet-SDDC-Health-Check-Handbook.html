@@ -1,0 +1,1916 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8"><style>* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	line-height: 1.6;
+	font-size: 0.6875em; /* 11 pt */
+	color: #111;
+	margin: 0;
+}
+
+body > :first-child {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+body > :last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0.5em 0 0.25em;
+}
+
+h5,
+h6 {
+	padding: 0;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h6 {
+	font-size: 0.875em;
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0.25em 0 1em;
+}
+
+blockquote {
+	margin: 0.5em 0 1em;
+	padding-left: 0.5em;
+	padding-right: 1em;
+	border-left: 4px solid gainsboro;
+	font-style: italic;
+}
+
+ul,
+ol {
+	margin: 0;
+	margin-left: 1em;
+	padding: 0 1.5em 0.5em;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+p code,
+li code,
+pre code {
+	background-color: #f8f8f8;
+	padding: 0.1em 0.375em;
+	border: 1px solid #f8f8f8;
+	border-radius: 0.25em;
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+pre code {
+	display: block;
+	padding: 0.5em;
+}
+
+.page-break {
+	page-break-after: always;
+}
+
+img {
+	max-width: 100%;
+	margin: 1em 0;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: block;
+	margin: 0 0 1em;
+	width: 100%;
+	overflow: auto;
+}
+
+table th,
+table td {
+	padding: 0.5em 1em;
+	border: 1px solid gainsboro;
+}
+
+table th {
+	font-weight: 600;
+}
+
+table tr {
+	background-color: white;
+	border-top: 1px solid gainsboro;
+}
+
+table tr:nth-child(2n) {
+	background-color: whitesmoke;
+}
+/*# sourceURL=E:\VCF-Depot\node_modules\md-to-pdf\markdown.css*/</style><style>pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/
+.hljs {
+  color: #24292e;
+  background: #ffffff
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  /* prettylights-syntax-keyword */
+  color: #d73a49
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  /* prettylights-syntax-entity */
+  color: #6f42c1
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  /* prettylights-syntax-constant */
+  color: #005cc5
+}
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  /* prettylights-syntax-string */
+  color: #032f62
+}
+.hljs-built_in,
+.hljs-symbol {
+  /* prettylights-syntax-variable */
+  color: #e36209
+}
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  /* prettylights-syntax-comment */
+  color: #6a737d
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  /* prettylights-syntax-entity-tag */
+  color: #22863a
+}
+.hljs-subst {
+  /* prettylights-syntax-storage-modifier-import */
+  color: #24292e
+}
+.hljs-section {
+  /* prettylights-syntax-markup-heading */
+  color: #005cc5;
+  font-weight: bold
+}
+.hljs-bullet {
+  /* prettylights-syntax-markup-list */
+  color: #735c0f
+}
+.hljs-emphasis {
+  /* prettylights-syntax-markup-italic */
+  color: #24292e;
+  font-style: italic
+}
+.hljs-strong {
+  /* prettylights-syntax-markup-bold */
+  color: #24292e;
+  font-weight: bold
+}
+.hljs-addition {
+  /* prettylights-syntax-markup-inserted */
+  color: #22863a;
+  background-color: #f0fff4
+}
+.hljs-deletion {
+  /* prettylights-syntax-markup-deleted */
+  color: #b31d28;
+  background-color: #ffeef0
+}
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
+  
+}/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
+h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
+h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
+h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
+th { background-color: #0b3d6b; color: white; padding: 7px 10px; text-align: left; }
+td { border: 1px solid #cfd8dc; padding: 6px 10px; }
+tr:nth-child(even) { background-color: #e3f2fd; }
+code { background-color: #e3f2fd; padding: 2px 5px; border-radius: 3px; font-size: 9pt; font-family: 'Cascadia Code', Consolas, monospace; color: #0b3d6b; }
+pre { background-color: #f5f5f5; padding: 12px; border-radius: 5px; border-left: 4px solid #1565c0; font-size: 9pt; line-height: 1.4; overflow-x: auto; }
+pre code { background: none; padding: 0; color: #1a1a1a; }
+a { color: #1565c0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 14px; margin: 10px 0; font-size: 9pt; }
+.toc { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px 30px; margin: 20px 0; }
+.toc ul { list-style: none; padding-left: 0; }
+.toc > ul > li { margin-bottom: 6px; }
+.toc > ul > li > a { font-weight: bold; font-size: 11pt; color: #0b3d6b; }
+.toc ul ul { padding-left: 22px; margin-top: 3px; }
+.toc ul ul li { margin-bottom: 2px; }
+.toc ul ul li a { font-size: 9.5pt; color: #333; }
+.info-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.warn-box { background: #fff3e0; border-left: 4px solid #f57c00; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.fix-box { background: #e8f5e9; border-left: 4px solid #43a047; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.danger { background: #ffebee; border-left: 4px solid #e53935; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.badge-pass { background: #43a047; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.badge-warn { background: #f57c00; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.badge-fail { background: #e53935; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.cover-page { text-align: center; padding: 80px 20px; page-break-after: always; }
+.cover-page h1 { font-size: 28pt; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 30px; border-radius: 10px; }
+.cover-page .subtitle { font-size: 14pt; color: #1565c0; margin-top: 20px; }
+.cover-page .meta { font-size: 10pt; color: #666; margin-top: 40px; line-height: 2; }
+.page-break { page-break-before: always; }</style></head>
+	<body class="">
+		<div class="cover-page">
+
+<h1 id="fleet--sddc-manager-health-check-handbook">Fleet / SDDC Manager Health Check Handbook</h1>
+<div class="subtitle">Comprehensive Health Verification for Fleet &amp; SDDC Manager in VCF 9</div>
+
+<div class="meta">
+
+<p><strong>Author:</strong> Virtual Control LLC
+<strong>Date:</strong> March 2026
+<strong>Version:</strong> 1.0
+<strong>Classification:</strong> Internal Use
+<strong>Platform:</strong> VMware Cloud Foundation 9.0 / SDDC Manager 5.2.x</p>
+</div>
+</div>
+
+<hr>
+<div class="toc">
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#overview">1. Overview &amp; Purpose</a></li>
+<li><a href="#prerequisites">2. Prerequisites</a></li>
+<li><a href="#quick-reference">3. Quick Reference — All Checks Summary</a></li>
+<li><a href="#service-status">4. Service Status</a>
+  <ul>
+  <li><a href="#svc-systemctl">4.1 All Services via systemctl</a></li>
+  <li><a href="#svc-script">4.2 VCF Service Status Script</a></li>
+  <li><a href="#svc-critical">4.3 Critical vs Non-Critical Services</a></li>
+  </ul>
+</li>
+<li><a href="#database">5. Database Health</a>
+  <ul>
+  <li><a href="#db-postgres">5.1 PostgreSQL Status</a></li>
+  <li><a href="#db-size">5.2 Database Size &amp; Connections</a></li>
+  <li><a href="#db-vacuum">5.3 Vacuum Status</a></li>
+  <li><a href="#db-backup">5.4 Database Backup</a></li>
+  </ul>
+</li>
+<li><a href="#inventory">6. Component Inventory</a>
+  <ul>
+  <li><a href="#inv-components">6.1 System Components</a></li>
+  <li><a href="#inv-domains">6.2 Workload Domains</a></li>
+  <li><a href="#inv-hosts">6.3 Host Inventory</a></li>
+  </ul>
+</li>
+<li><a href="#lifecycle">7. Lifecycle Management (LCM)</a>
+  <ul>
+  <li><a href="#lcm-version">7.1 Current Version</a></li>
+  <li><a href="#lcm-updates">7.2 Available Updates</a></li>
+  <li><a href="#lcm-prechecks">7.3 Upgrade Prechecks</a></li>
+  </ul>
+</li>
+<li><a href="#bundles">8. Bundle Management</a></li>
+<li><a href="#dns-ntp">9. DNS &amp; NTP Verification</a></li>
+<li><a href="#certificates">10. Certificate Health</a></li>
+<li><a href="#tasks">11. Task &amp; Workflow History</a></li>
+<li><a href="#commissioning">12. Host Commissioning Status</a></li>
+<li><a href="#domains">13. Workload Domain Health</a></li>
+<li><a href="#backup">14. Backup &amp; Restore</a></li>
+<li><a href="#api-health">15. API Health Verification</a></li>
+<li><a href="#resources">16. Resource Utilization</a></li>
+<li><a href="#ports">17. Port Reference Table</a></li>
+<li><a href="#common-issues">18. Common Issues &amp; Remediation</a></li>
+<li><a href="#cli-reference">19. CLI Quick Reference Card</a></li>
+<li><a href="#api-reference">20. API Quick Reference</a></li>
+</ul>
+
+</div>
+
+<div class="page-break"></div>
+
+<h2 id="1-overview--purpose"><span id="overview"></span>1. Overview &amp; Purpose</h2>
+<p>This handbook provides a <strong>complete health check procedure</strong> for the SDDC Manager (Fleet Manager) in a VCF 9.0 environment. SDDC Manager is the <strong>central orchestration and lifecycle management</strong> component of VCF. Its health directly affects your ability to:</p>
+<ul>
+<li>Deploy and manage workload domains</li>
+<li>Perform lifecycle updates (patches, upgrades)</li>
+<li>Commission/decommission ESXi hosts</li>
+<li>Manage certificates across all VCF components</li>
+<li>Monitor component inventory and compliance</li>
+</ul>
+<h3 id="when-to-run-this-health-check">When to Run This Health Check</h3>
+<table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Before any LCM operation (upgrade/patch)</td>
+<td><strong>Critical</strong></td>
+</tr>
+<tr>
+<td>After any LCM operation</td>
+<td><strong>Critical</strong></td>
+</tr>
+<tr>
+<td>Weekly routine maintenance</td>
+<td><strong>Recommended</strong></td>
+</tr>
+<tr>
+<td>After infrastructure changes</td>
+<td><strong>Recommended</strong></td>
+</tr>
+<tr>
+<td>When tasks are failing/stuck</td>
+<td><strong>Troubleshooting</strong></td>
+</tr>
+</tbody></table>
+<div class="info-box">
+<strong>Environment Variables:</strong> Throughout this document:<br>
+<code>$SDDC</code> = SDDC Manager FQDN (e.g., sddc-manager.lab.local)<br>
+<code>$SDDC_USER</code> = admin@local (or SSO admin)<br>
+<code>$SDDC_PASS</code> = SDDC Manager password<br>
+<code>$TOKEN</code> = Bearer token acquired via API
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="2-prerequisites"><span id="prerequisites"></span>2. Prerequisites</h2>
+<h3 id="required-access">Required Access</h3>
+<table>
+<thead>
+<tr>
+<th>Access Type</th>
+<th>Target</th>
+<th>Credentials</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTTPS (443)</td>
+<td>SDDC Manager</td>
+<td>admin@local or <a href="mailto:administrator@vsphere.local">administrator@vsphere.local</a></td>
+</tr>
+<tr>
+<td>SSH (22)</td>
+<td>SDDC Manager appliance</td>
+<td>vcf / password</td>
+</tr>
+<tr>
+<td>SSH (22)</td>
+<td>SDDC Manager appliance</td>
+<td>root / password</td>
+</tr>
+<tr>
+<td>REST API</td>
+<td>SDDC Manager :443</td>
+<td>Bearer token</td>
+</tr>
+</tbody></table>
+<h3 id="token-acquisition">Token Acquisition</h3>
+<pre><code class="hljs bash"><span class="hljs-built_in">export</span> SDDC=<span class="hljs-string">"sddc-manager.lab.local"</span>
+<span class="hljs-built_in">export</span> SDDC_USER=<span class="hljs-string">"admin@local"</span>
+<span class="hljs-built_in">export</span> SDDC_PASS=<span class="hljs-string">"YourPassword123!"</span>
+
+<span class="hljs-comment"># Acquire access token</span>
+TOKEN=$(curl -sk -X POST <span class="hljs-string">"https://<span class="hljs-variable">$SDDC</span>/v1/tokens"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">"{\"username\":\"<span class="hljs-variable">$SDDC_USER</span>\",\"password\":\"<span class="hljs-variable">$SDDC_PASS</span>\"}"</span> | jq -r <span class="hljs-string">'.accessToken'</span>)
+
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Token: <span class="hljs-variable">${TOKEN:0:20}</span>..."</span>
+
+<span class="hljs-comment"># Convenience function</span>
+<span class="hljs-function"><span class="hljs-title">sddc_api</span></span>() {
+  curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+    -H <span class="hljs-string">"Content-Type: application/json"</span> \
+    <span class="hljs-string">"https://$SDDC<span class="hljs-variable">$1</span>"</span> 2&gt;/dev/null
+}
+</code></pre>
+<div class="warn-box">
+<strong>Token Expiry:</strong> SDDC Manager tokens expire after 30 minutes. Re-acquire if you get 401 responses.
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="3-quick-reference--all-checks-summary"><span id="quick-reference"></span>3. Quick Reference — All Checks Summary</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Check</th>
+<th>Method</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4.1</td>
+<td>Service Status</td>
+<td>SSH/systemctl</td>
+<td>All services active</td>
+<td>Non-critical stopped</td>
+<td>Critical service down</td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>PostgreSQL</td>
+<td>SSH</td>
+<td>Running, accepting connections</td>
+<td>High connection count</td>
+<td>Not running</td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>DB Size</td>
+<td>SQL</td>
+<td>&lt; 5 GB</td>
+<td>5-10 GB</td>
+<td>&gt; 10 GB</td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>Component Inventory</td>
+<td>API</td>
+<td>All components <code>ACTIVE</code></td>
+<td>Any <code>WARNING</code></td>
+<td>Any <code>ERROR</code></td>
+</tr>
+<tr>
+<td>7.1</td>
+<td>Current Version</td>
+<td>API</td>
+<td>Latest VCF version</td>
+<td>1 version behind</td>
+<td>2+ versions behind</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Bundles</td>
+<td>API</td>
+<td>Bundles available</td>
+<td>Download in progress</td>
+<td>Download failed</td>
+</tr>
+<tr>
+<td>9</td>
+<td>DNS/NTP</td>
+<td>API/CLI</td>
+<td>All resolving, time sync</td>
+<td>Intermittent DNS</td>
+<td>DNS failure or NTP &gt; 5s</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Certificates</td>
+<td>API</td>
+<td>All &gt; 30 days</td>
+<td>Any 7-30 days</td>
+<td>Any &lt; 7 days or expired</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Tasks</td>
+<td>API</td>
+<td>No failed tasks</td>
+<td>Old failed tasks</td>
+<td>Recent critical failures</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Hosts</td>
+<td>API</td>
+<td>All <code>ASSIGNED</code> or <code>UNASSIGNED_USEABLE</code></td>
+<td>Any <code>COMMISSIONING</code></td>
+<td>Any <code>ERROR</code></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Domains</td>
+<td>API</td>
+<td>All <code>ACTIVE</code></td>
+<td>Any <code>ACTIVATING</code></td>
+<td>Any <code>ERROR</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Backup</td>
+<td>API/SSH</td>
+<td>Configured, recent success</td>
+<td>&gt; 24h since last</td>
+<td>Not configured</td>
+</tr>
+<tr>
+<td>15</td>
+<td>API Health</td>
+<td>API</td>
+<td>Token acquired, &lt; 2s response</td>
+<td>2-5s response</td>
+<td>API unresponsive</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Resources</td>
+<td>SSH</td>
+<td>CPU &lt; 70%, Mem &lt; 80%, Disk &lt; 70%</td>
+<td>CPU/Mem/Disk warn</td>
+<td>Any critical</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="4-service-status"><span id="service-status"></span>4. Service Status</h2>
+<h3 id="41-all-services-via-systemctl"><span id="svc-systemctl"></span>4.1 All Services via systemctl</h3>
+<p><strong>What:</strong> Verify all SDDC Manager services are running.</p>
+<pre><code class="hljs bash">ssh vcf@<span class="hljs-variable">$SDDC</span>
+<span class="hljs-comment"># Then switch to root or use sudo:</span>
+<span class="hljs-built_in">sudo</span> systemctl list-units --<span class="hljs-built_in">type</span>=service --state=running | grep -E <span class="hljs-string">"vcf|sddc|operationsd|commonsvcs|domainmanager|lcm"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>  commonsvcs.service               loaded active running   VCF Common Services
+  domainmanager.service            loaded active running   VCF Domain Manager
+  lcm.service                      loaded active running   VCF Lifecycle Manager
+  operationsd.service              loaded active running   VCF Operations
+  sddc-manager-ui-app.service      loaded active running   SDDC Manager UI
+  sddc-support.service             loaded active running   VCF Support Service
+</code></pre>
+<h3 id="42-vcf-service-status-script"><span id="svc-script"></span>4.2 VCF Service Status Script</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Comprehensive service check</span>
+<span class="hljs-keyword">for</span> SVC <span class="hljs-keyword">in</span> commonsvcs domainmanager lcm operationsd sddc-manager-ui-app sddc-support; <span class="hljs-keyword">do</span>
+  STATUS=$(systemctl is-active <span class="hljs-variable">$SVC</span> 2&gt;/dev/null)
+  <span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$STATUS</span>"</span> = <span class="hljs-string">"active"</span> ]; <span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"[PASS] <span class="hljs-variable">$SVC</span>: <span class="hljs-variable">$STATUS</span>"</span>
+  <span class="hljs-keyword">else</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"[FAIL] <span class="hljs-variable">$SVC</span>: <span class="hljs-variable">$STATUS</span>"</span>
+  <span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+<h3 id="43-critical-vs-non-critical-services"><span id="svc-critical"></span>4.3 Critical vs Non-Critical Services</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Critical</th>
+<th>Function</th>
+<th>Impact if Down</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>commonsvcs</code></td>
+<td><strong>Yes</strong></td>
+<td>Shared services (auth, config)</td>
+<td>All SDDC Manager functions fail</td>
+</tr>
+<tr>
+<td><code>domainmanager</code></td>
+<td><strong>Yes</strong></td>
+<td>Domain operations</td>
+<td>Cannot create/modify workload domains</td>
+</tr>
+<tr>
+<td><code>lcm</code></td>
+<td><strong>Yes</strong></td>
+<td>Lifecycle management</td>
+<td>Cannot patch/upgrade</td>
+</tr>
+<tr>
+<td><code>operationsd</code></td>
+<td><strong>Yes</strong></td>
+<td>Task orchestration</td>
+<td>No task execution</td>
+</tr>
+<tr>
+<td><code>sddc-manager-ui-app</code></td>
+<td>No</td>
+<td>Web UI</td>
+<td>UI unavailable (API still works)</td>
+</tr>
+<tr>
+<td><code>sddc-support</code></td>
+<td>No</td>
+<td>Support bundle</td>
+<td>Cannot generate support bundles</td>
+</tr>
+<tr>
+<td><code>postgresql</code></td>
+<td><strong>Yes</strong></td>
+<td>Database</td>
+<td>Complete SDDC Manager failure</td>
+</tr>
+<tr>
+<td><code>nginx</code></td>
+<td><strong>Yes</strong></td>
+<td>Reverse proxy / API gateway</td>
+<td>API and UI unreachable</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All services <code>active</code></td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Non-critical service stopped</td>
+<td>Limited functionality</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any critical service not <code>active</code></td>
+<td>SDDC Manager degraded/down</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. Restart specific service: <code>sudo systemctl restart &lt;service-name&gt;</code><br>
+2. Restart all VCF services: <code>sudo systemctl restart commonsvcs domainmanager lcm operationsd</code><br>
+3. Check logs: <code>journalctl -u &lt;service-name&gt; --since "1 hour ago"</code><br>
+4. Full service restart: <code>sudo /opt/vmware/vcf/operationsmanager/scripts/cli/vcf-service-status.sh</code>
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="5-database-health"><span id="database"></span>5. Database Health</h2>
+<h3 id="51-postgresql-status"><span id="db-postgres"></span>5.1 PostgreSQL Status</h3>
+<pre><code class="hljs bash">ssh root@<span class="hljs-variable">$SDDC</span>
+systemctl status postgresql
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>● postgresql.service - PostgreSQL database server
+     Loaded: loaded (/usr/lib/systemd/system/postgresql.service; enabled)
+     Active: active (running) since Mon 2026-03-20 08:00:00 UTC; 6 days ago
+   Main PID: 1234 (postgres)
+     Memory: 256.0M
+</code></pre>
+<h4 id="connection-test">Connection Test</h4>
+<pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> -u postgres psql -c <span class="hljs-string">"SELECT version();"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>                                  version
+---------------------------------------------------------------------------
+ PostgreSQL 14.x on x86_64-pc-linux-gnu, compiled by gcc ...
+(1 row)
+</code></pre>
+<h3 id="52-database-size--connections"><span id="db-size"></span>5.2 Database Size &amp; Connections</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Database size</span>
+<span class="hljs-built_in">sudo</span> -u postgres psql -c <span class="hljs-string">"
+SELECT datname, pg_size_pretty(pg_database_size(datname)) as size
+FROM pg_database WHERE datname NOT IN ('template0','template1','postgres')
+ORDER BY pg_database_size(datname) DESC;"</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>    datname     |  size
+-----------------+---------
+ sddc_manager_db | 2.1 GB
+ lcm_db          | 512 MB
+ operations_db   | 256 MB
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Active connections</span>
+<span class="hljs-built_in">sudo</span> -u postgres psql -c <span class="hljs-string">"
+SELECT datname, count(*) as connections
+FROM pg_stat_activity
+GROUP BY datname ORDER BY connections DESC;"</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>DB size &lt; 5 GB, connections &lt; 100</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>DB size 5-10 GB or connections 100-200</td>
+<td>Monitor</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>DB size &gt; 10 GB or connections &gt; 200</td>
+<td>Investigate bloat</td>
+</tr>
+</tbody></table>
+<h3 id="53-vacuum-status"><span id="db-vacuum"></span>5.3 Vacuum Status</h3>
+<pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> -u postgres psql -d sddc_manager_db -c <span class="hljs-string">"
+SELECT schemaname, relname, n_dead_tup, last_autovacuum
+FROM pg_stat_user_tables
+WHERE n_dead_tup &gt; 10000
+ORDER BY n_dead_tup DESC LIMIT 10;"</span>
+</code></pre>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. Manual vacuum: <code>sudo -u postgres vacuumdb --all --analyze</code><br>
+2. If bloated: <code>sudo -u postgres vacuumdb --full --all</code> (requires downtime)<br>
+3. Check autovacuum: <code>SHOW autovacuum;</code> should return <code>on</code>
+</div>
+
+<h3 id="54-database-backup"><span id="db-backup"></span>5.4 Database Backup</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check if database backups exist</span>
+<span class="hljs-built_in">ls</span> -la /opt/vmware/vcf/sddc-manager/backup/ 2&gt;/dev/null
+<span class="hljs-built_in">ls</span> -la /nfs-mount/vcf-backups/ 2&gt;/dev/null
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="6-component-inventory"><span id="inventory"></span>6. Component Inventory</h2>
+<h3 id="61-system-components"><span id="inv-components"></span>6.1 System Components</h3>
+<p><strong>What:</strong> Verify all VCF-managed components are in a healthy state.</p>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all VCF components</span>
+sddc_api <span class="hljs-string">"/v1/system"</span> | jq .
+</code></pre>
+<h4 id="get-all-vcenters">Get all vCenters</h4>
+<pre><code class="hljs bash">sddc_api <span class="hljs-string">"/v1/vcenter"</span> | jq <span class="hljs-string">'.elements[] | {
+  id: .id,
+  fqdn: .fqdn,
+  version: .version,
+  status: .status
+}'</span>
+</code></pre>
+<h4 id="get-all-nsx-managers">Get all NSX Managers</h4>
+<pre><code class="hljs bash">sddc_api <span class="hljs-string">"/v1/nsxt-clusters"</span> | jq <span class="hljs-string">'.elements[] | {
+  id: .id,
+  vipFqdn: .vipFqdn,
+  version: .version
+}'</span>
+</code></pre>
+<h3 id="62-workload-domains"><span id="inv-domains"></span>6.2 Workload Domains</h3>
+<pre><code class="hljs bash">sddc_api <span class="hljs-string">"/v1/domains"</span> | jq <span class="hljs-string">'.elements[] | {
+  id: .id,
+  name: .name,
+  type: .type,
+  status: .status
+}'</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123..."</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"MGMT"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"MANAGEMENT"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"ACTIVE"</span>
+<span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"def456..."</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"WLD-01"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"VI"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"ACTIVE"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="63-host-inventory"><span id="inv-hosts"></span>6.3 Host Inventory</h3>
+<pre><code class="hljs bash">sddc_api <span class="hljs-string">"/v1/hosts"</span> | jq <span class="hljs-string">'.elements[] | {
+  id: .id,
+  fqdn: .fqdn,
+  status: .status,
+  domain: .domain.name
+}'</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ASSIGNED</code></td>
+<td>Host is part of a workload domain</td>
+</tr>
+<tr>
+<td><code>UNASSIGNED_USEABLE</code></td>
+<td>Commissioned, available for assignment</td>
+</tr>
+<tr>
+<td><code>COMMISSIONING</code></td>
+<td>Being added to inventory</td>
+</tr>
+<tr>
+<td><code>DECOMMISSIONING</code></td>
+<td>Being removed</td>
+</tr>
+<tr>
+<td><code>ERROR</code></td>
+<td>Host in error state</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="7-lifecycle-management-lcm"><span id="lifecycle"></span>7. Lifecycle Management (LCM)</h2>
+<h3 id="71-current-version"><span id="lcm-version"></span>7.1 Current Version</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># SDDC Manager version</span>
+sddc_api <span class="hljs-string">"/v1/system"</span> | jq <span class="hljs-string">'{
+  version: .version,
+  build: .build,
+  fips_enabled: .fipsEnabled
+}'</span>
+</code></pre>
+<h3 id="72-available-updates"><span id="lcm-updates"></span>7.2 Available Updates</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check available updates</span>
+sddc_api <span class="hljs-string">"/v1/system/prechecks"</span> | jq .
+</code></pre>
+<h4 id="bundle-availability">Bundle Availability</h4>
+<pre><code class="hljs bash">sddc_api <span class="hljs-string">"/v1/bundles"</span> | jq <span class="hljs-string">'.elements[] | {
+  id: .id,
+  bundleType: .bundleType,
+  version: .version,
+  status: .downloadStatus,
+  components: [.components[].type]
+}'</span>
+</code></pre>
+<h3 id="73-upgrade-prechecks"><span id="lcm-prechecks"></span>7.3 Upgrade Prechecks</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Trigger precheck</span>
+curl -sk -X POST -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$SDDC</span>/v1/system/prechecks"</span> \
+  -d <span class="hljs-string">'{"bundleId":"&lt;bundle-id&gt;"}'</span>
+
+<span class="hljs-comment"># Check precheck results</span>
+sddc_api <span class="hljs-string">"/v1/system/prechecks/&lt;precheck-id&gt;"</span> | jq <span class="hljs-string">'.results[] | {
+  check: .description,
+  status: .status,
+  severity: .severity,
+  resolution: .resolution
+}'</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All prechecks pass</td>
+<td>Ready to upgrade</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Warning-level prechecks</td>
+<td>Review before proceeding</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any critical precheck failure</td>
+<td>Must resolve before upgrade</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="8-bundle-management"><span id="bundles"></span>8. Bundle Management</h2>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all bundles</span>
+sddc_api <span class="hljs-string">"/v1/bundles"</span> | jq <span class="hljs-string">'.elements[] | {
+  id: .id,
+  type: .bundleType,
+  version: .version,
+  downloadStatus: .downloadStatus,
+  applicableVersions: .applicableVersions
+}'</span>
+</code></pre>
+<p><strong>Download Statuses:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SUCCESSFUL</code></td>
+<td>Bundle downloaded successfully</td>
+</tr>
+<tr>
+<td><code>IN_PROGRESS</code></td>
+<td>Currently downloading</td>
+</tr>
+<tr>
+<td><code>FAILED</code></td>
+<td>Download failed</td>
+</tr>
+<tr>
+<td><code>NOT_STARTED</code></td>
+<td>Available but not downloaded</td>
+</tr>
+</tbody></table>
+<h4 id="check-depot-connectivity">Check Depot Connectivity</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Test connectivity to VMware depot (online mode)</span>
+ssh vcf@<span class="hljs-variable">$SDDC</span>
+curl -sk https://depot.vmware.com/PROD2/vcf/manifest.json | <span class="hljs-built_in">head</span> -5
+</code></pre>
+<div class="info-box">
+<strong>Offline Depot:</strong> If using an offline depot, verify the depot server is reachable and the depot path is configured correctly in SDDC Manager → Administration → Depot Settings.
+</div>
+
+<hr>
+<h2 id="9-dns--ntp-verification"><span id="dns-ntp"></span>9. DNS &amp; NTP Verification</h2>
+<h3 id="dns-configuration">DNS Configuration</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get DNS config via API</span>
+sddc_api <span class="hljs-string">"/v1/system/dns-configuration"</span> | jq .
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"dnsServers"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span><span class="hljs-attr">"ipAddress"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"192.168.1.1"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"isPrimary"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span><span class="hljs-attr">"ipAddress"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"192.168.1.2"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"isPrimary"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="dns-resolution-test">DNS Resolution Test</h4>
+<pre><code class="hljs bash">ssh vcf@<span class="hljs-variable">$SDDC</span>
+<span class="hljs-comment"># Test forward resolution for all VCF components</span>
+<span class="hljs-keyword">for</span> HOST <span class="hljs-keyword">in</span> vcenter.lab.local nsx-vip.lab.local sddc-manager.lab.local; <span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$HOST</span>: <span class="hljs-subst">$(nslookup $HOST | grep Address | tail -1)</span>"</span>
+<span class="hljs-keyword">done</span>
+
+<span class="hljs-comment"># Test reverse resolution</span>
+<span class="hljs-keyword">for</span> IP <span class="hljs-keyword">in</span> 192.168.1.70 192.168.1.71 192.168.1.60; <span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$IP</span>: <span class="hljs-subst">$(nslookup $IP | grep name | head -1)</span>"</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+<h3 id="ntp-configuration">NTP Configuration</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get NTP config</span>
+sddc_api <span class="hljs-string">"/v1/system/ntp-configuration"</span> | jq .
+
+<span class="hljs-comment"># Check time sync on appliance</span>
+ssh vcf@<span class="hljs-variable">$SDDC</span>
+timedatectl status
+chronyc tracking
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>DNS resolves all components, NTP synced &lt; 1s</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Slow DNS or NTP drift 1-5s</td>
+<td>Monitor</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>DNS failure or NTP not synced</td>
+<td>LCM operations will fail</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="10-certificate-health"><span id="certificates"></span>10. Certificate Health</h2>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all certificates managed by VCF</span>
+sddc_api <span class="hljs-string">"/v1/certificate-authorities"</span> | jq .
+
+<span class="hljs-comment"># Get certificates for a specific resource</span>
+sddc_api <span class="hljs-string">"/v1/domains/&lt;domain-id&gt;/resource-certificates"</span> | jq <span class="hljs-string">'.elements[] | {
+  resource: .resourceFqdn,
+  type: .certificateType,
+  expiresAt: .expirationDate,
+  issuedBy: .issuedBy
+}'</span>
+</code></pre>
+<h4 id="check-certificate-expiry-via-openssl">Check Certificate Expiry via OpenSSL</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check SDDC Manager certificate</span>
+<span class="hljs-built_in">echo</span> | openssl s_client -connect <span class="hljs-variable">$SDDC</span>:443 2&gt;/dev/null | \
+  openssl x509 -noout -dates -subject
+</code></pre>
+<h4 id="csr-status">CSR Status</h4>
+<pre><code class="hljs bash">sddc_api <span class="hljs-string">"/v1/certificate-authorities/csr"</span> | jq .
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All certificates &gt; 30 days from expiry</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Any certificate 7-30 days from expiry</td>
+<td>Plan renewal</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any certificate &lt; 7 days or expired</td>
+<td>Immediate action</td>
+</tr>
+</tbody></table>
+<div class="danger">
+<strong>Certificate Expiry Impact:</strong> Expired SDDC Manager certificates will prevent:<br>
+- API access (token acquisition fails)<br>
+- LCM operations<br>
+- Communication with vCenter, NSX, ESXi<br>
+<strong>Action:</strong> Use Certificate Manager or API to replace certificates before expiry.
+</div>
+
+<hr>
+<h2 id="11-task--workflow-history"><span id="tasks"></span>11. Task &amp; Workflow History</h2>
+<pre><code class="hljs bash"><span class="hljs-comment"># List recent tasks (last 20)</span>
+sddc_api <span class="hljs-string">"/v1/tasks?limit=20"</span> | jq <span class="hljs-string">'.elements[] | {
+  id: .id,
+  name: .name,
+  status: .status,
+  type: .type,
+  creationTimestamp: .creationTimestamp,
+  completionTimestamp: .completionTimestamp
+}'</span>
+</code></pre>
+<p><strong>Task Statuses:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SUCCESSFUL</code></td>
+<td>Completed successfully</td>
+</tr>
+<tr>
+<td><code>FAILED</code></td>
+<td>Failed — check subtasks for details</td>
+</tr>
+<tr>
+<td><code>IN_PROGRESS</code></td>
+<td>Currently executing</td>
+</tr>
+<tr>
+<td><code>CANCELLED</code></td>
+<td>Cancelled by user</td>
+</tr>
+</tbody></table>
+<h4 id="check-for-failed-tasks">Check for Failed Tasks</h4>
+<pre><code class="hljs bash">sddc_api <span class="hljs-string">"/v1/tasks?status=FAILED&amp;limit=10"</span> | jq <span class="hljs-string">'.elements[] | {
+  id: .id,
+  name: .name,
+  creationTimestamp: .creationTimestamp,
+  errorMessage: .errors
+}'</span>
+</code></pre>
+<h4 id="retry-a-failed-task">Retry a Failed Task</h4>
+<pre><code class="hljs bash">curl -sk -X PATCH -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$SDDC</span>/v1/tasks/&lt;task-id&gt;"</span> \
+  -d <span class="hljs-string">'{"status":"IN_PROGRESS"}'</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>No failed tasks in last 7 days</td>
+<td>Clean</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Older failed tasks present</td>
+<td>Review and clean up</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Recent critical task failures</td>
+<td>Investigate immediately</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="12-host-commissioning-status"><span id="commissioning"></span>12. Host Commissioning Status</h2>
+<pre><code class="hljs bash"><span class="hljs-comment"># All hosts with their status</span>
+sddc_api <span class="hljs-string">"/v1/hosts"</span> | jq <span class="hljs-string">'.elements[] | {
+  fqdn: .fqdn,
+  status: .status,
+  domain: .domain.name,
+  clusterId: .cluster.id
+}'</span>
+
+<span class="hljs-comment"># Count by status</span>
+sddc_api <span class="hljs-string">"/v1/hosts"</span> | jq <span class="hljs-string">'[.elements[] | .status] | group_by(.) | map({status: .[0], count: length})'</span>
+</code></pre>
+<div class="fix-box">
+<strong>Remediation for stuck COMMISSIONING:</strong><br>
+1. Check task status: <code>sddc_api "/v1/tasks?type=HOST_COMMISSION"</code><br>
+2. Verify host SSH access and credentials<br>
+3. Check DNS resolution for the host<br>
+4. Retry: Cancel and recommission
+</div>
+
+<hr>
+<h2 id="13-workload-domain-health"><span id="domains"></span>13. Workload Domain Health</h2>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all domains with health</span>
+sddc_api <span class="hljs-string">"/v1/domains"</span> | jq <span class="hljs-string">'.elements[] | {
+  name: .name,
+  type: .type,
+  status: .status,
+  clusters: [.clusters[].name]
+}'</span>
+</code></pre>
+<h4 id="cluster-health-per-domain">Cluster Health per Domain</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List clusters</span>
+sddc_api <span class="hljs-string">"/v1/clusters"</span> | jq <span class="hljs-string">'.elements[] | {
+  name: .name,
+  status: .status,
+  domain: .domainName,
+  hostCount: (.hosts | length),
+  primaryDatastore: .primaryDatastoreType
+}'</span>
+</code></pre>
+<hr>
+<h2 id="14-backup--restore"><span id="backup"></span>14. Backup &amp; Restore</h2>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get backup configuration</span>
+sddc_api <span class="hljs-string">"/v1/system/backup-configuration"</span> | jq .
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"backupEnabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"backupSchedule"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"frequency"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"DAILY"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"daysOfWeek"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"hourOfDay"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"minuteOfHour"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"server"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"protocol"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"SFTP"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"host"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"backup-server.lab.local"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"port"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">22</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"directory"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/backups/sddc/"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"encryption"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"passphrase"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"***"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="check-backup-history">Check Backup History</h4>
+<pre><code class="hljs bash">sddc_api <span class="hljs-string">"/v1/system/backup-configuration/backups"</span> | jq <span class="hljs-string">'.elements[0:3]'</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Backup configured, last success &lt; 24h</td>
+<td>Protected</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Backup configured, last success &gt; 24h</td>
+<td>Check schedule</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>No backup configured or all recent failed</td>
+<td>Critical risk</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="15-api-health-verification"><span id="api-health"></span>15. API Health Verification</h2>
+<h3 id="token-acquisition-test">Token Acquisition Test</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Time the token acquisition</span>
+<span class="hljs-keyword">time</span> curl -sk -X POST <span class="hljs-string">"https://<span class="hljs-variable">$SDDC</span>/v1/tokens"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">"{\"username\":\"<span class="hljs-variable">$SDDC_USER</span>\",\"password\":\"<span class="hljs-variable">$SDDC_PASS</span>\"}"</span> | jq -r <span class="hljs-string">'.accessToken'</span> &gt; /dev/null
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Token acquired in &lt; 2 seconds</td>
+<td>API responsive</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Token acquired in 2-5 seconds</td>
+<td>API slow</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Token acquisition fails or &gt; 5 seconds</td>
+<td>API issue</td>
+</tr>
+</tbody></table>
+<h3 id="endpoint-health-check-script">Endpoint Health Check Script</h3>
+<pre><code class="hljs bash">ENDPOINTS=<span class="hljs-string">"/v1/system /v1/domains /v1/hosts /v1/clusters /v1/bundles"</span>
+<span class="hljs-keyword">for</span> EP <span class="hljs-keyword">in</span> <span class="hljs-variable">$ENDPOINTS</span>; <span class="hljs-keyword">do</span>
+  START=$(<span class="hljs-built_in">date</span> +%s%N)
+  HTTP_CODE=$(curl -sk -o /dev/null -w <span class="hljs-string">"%{http_code}"</span> \
+    -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+    <span class="hljs-string">"https://$SDDC<span class="hljs-variable">$EP</span>"</span>)
+  END=$(<span class="hljs-built_in">date</span> +%s%N)
+  DURATION=$(( (END - START) / <span class="hljs-number">1000000</span> ))
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$EP</span>: HTTP <span class="hljs-variable">$HTTP_CODE</span> (<span class="hljs-variable">${DURATION}</span>ms)"</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+<hr>
+<h2 id="16-resource-utilization"><span id="resources"></span>16. Resource Utilization</h2>
+<pre><code class="hljs bash">ssh root@<span class="hljs-variable">$SDDC</span>
+
+<span class="hljs-comment"># CPU</span>
+<span class="hljs-built_in">uptime</span>
+top -b -n 1 | <span class="hljs-built_in">head</span> -5
+
+<span class="hljs-comment"># Memory</span>
+free -m
+
+<span class="hljs-comment"># Disk</span>
+<span class="hljs-built_in">df</span> -h
+</code></pre>
+<h4 id="critical-partitions">Critical Partitions</h4>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/</code> (root)</td>
+<td>&lt; 70%</td>
+<td>70-85%</td>
+<td>&gt; 85%</td>
+</tr>
+<tr>
+<td><code>/var/log</code></td>
+<td>&lt; 70%</td>
+<td>70-85%</td>
+<td>&gt; 85%</td>
+</tr>
+<tr>
+<td><code>/opt</code></td>
+<td>&lt; 70%</td>
+<td>70-85%</td>
+<td>&gt; 85%</td>
+</tr>
+<tr>
+<td>DB partition</td>
+<td>&lt; 70%</td>
+<td>70-85%</td>
+<td>&gt; 85%</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. Clean old logs: <code>find /var/log -name "*.gz" -mtime +30 -delete</code><br>
+2. Clean old task data: <code>sddc_api "/v1/tasks?status=SUCCESSFUL" | jq '.elements | length'</code><br>
+3. Check large files: <code>du -sh /var/log/* | sort -rh | head -10</code>
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="17-port-reference-table"><span id="ports"></span>17. Port Reference Table</h2>
+<h3 id="inbound-ports">Inbound Ports</h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Port</th>
+<th>Protocol</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Admin Browser</td>
+<td>443</td>
+<td>TCP</td>
+<td>Web UI / REST API</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>22</td>
+<td>TCP</td>
+<td>SSH</td>
+</tr>
+<tr>
+<td>vCenter</td>
+<td>443</td>
+<td>TCP</td>
+<td>Inventory sync</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>443</td>
+<td>TCP</td>
+<td>Component registration</td>
+</tr>
+<tr>
+<td>ESXi Hosts</td>
+<td>443</td>
+<td>TCP</td>
+<td>Host commissioning</td>
+</tr>
+</tbody></table>
+<h3 id="outbound-ports">Outbound Ports</h3>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Port</th>
+<th>Protocol</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vCenter</td>
+<td>443</td>
+<td>TCP</td>
+<td>vCenter management</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>443</td>
+<td>TCP</td>
+<td>NSX lifecycle</td>
+</tr>
+<tr>
+<td>ESXi Hosts</td>
+<td>443</td>
+<td>TCP</td>
+<td>Host preparation</td>
+</tr>
+<tr>
+<td>ESXi Hosts</td>
+<td>22</td>
+<td>TCP</td>
+<td>Host configuration (SSH)</td>
+</tr>
+<tr>
+<td>DNS Server</td>
+<td>53</td>
+<td>TCP/UDP</td>
+<td>Name resolution</td>
+</tr>
+<tr>
+<td>NTP Server</td>
+<td>123</td>
+<td>UDP</td>
+<td>Time synchronization</td>
+</tr>
+<tr>
+<td>SFTP Backup</td>
+<td>22</td>
+<td>TCP</td>
+<td>Backup transfer</td>
+</tr>
+<tr>
+<td>VMware Depot</td>
+<td>443</td>
+<td>TCP</td>
+<td>Bundle downloads (online)</td>
+</tr>
+<tr>
+<td>Offline Depot</td>
+<td>443</td>
+<td>TCP</td>
+<td>Bundle downloads (offline)</td>
+</tr>
+<tr>
+<td>PostgreSQL (local)</td>
+<td>5432</td>
+<td>TCP</td>
+<td>Database (localhost)</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="18-common-issues--remediation"><span id="common-issues"></span>18. Common Issues &amp; Remediation</h2>
+<h3 id="181-service-failures">18.1 Service Failures</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely Cause</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UI inaccessible</td>
+<td>nginx or UI service down</td>
+<td><code>systemctl restart nginx sddc-manager-ui-app</code></td>
+</tr>
+<tr>
+<td>API returns 503</td>
+<td>Backend services down</td>
+<td><code>systemctl restart commonsvcs domainmanager lcm operationsd</code></td>
+</tr>
+<tr>
+<td>Slow API responses</td>
+<td>Database issue or resource exhaustion</td>
+<td>Check DB connections and disk space</td>
+</tr>
+</tbody></table>
+<h3 id="182-database-issues">18.2 Database Issues</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely Cause</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Connection refused</td>
+<td>PostgreSQL not running</td>
+<td><code>systemctl restart postgresql</code></td>
+</tr>
+<tr>
+<td>Slow queries</td>
+<td>Table bloat / missing vacuum</td>
+<td><code>vacuumdb --all --analyze</code></td>
+</tr>
+<tr>
+<td>Disk full (DB)</td>
+<td>Large transaction logs</td>
+<td>Clean WAL files, increase disk</td>
+</tr>
+</tbody></table>
+<h3 id="183-lcm-failures">18.3 LCM Failures</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely Cause</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Precheck fails</td>
+<td>Component version mismatch</td>
+<td>Review precheck report, resolve each item</td>
+</tr>
+<tr>
+<td>Bundle download fails</td>
+<td>Network/proxy issue</td>
+<td>Check depot connectivity, proxy settings</td>
+</tr>
+<tr>
+<td>Upgrade stuck</td>
+<td>Task hung</td>
+<td>Check subtasks, cancel and retry</td>
+</tr>
+</tbody></table>
+<h3 id="184-task-stuck-in-in_progress">18.4 Task Stuck in IN_PROGRESS</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Find stuck tasks (running &gt; 2 hours)</span>
+sddc_api <span class="hljs-string">"/v1/tasks?status=IN_PROGRESS"</span> | jq <span class="hljs-string">'.elements[] | {
+  id: .id,
+  name: .name,
+  creationTimestamp: .creationTimestamp
+}'</span>
+</code></pre>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. Check subtask status for the stuck task<br>
+2. If safe to cancel: <code>PATCH /v1/tasks/&lt;id&gt;</code> with <code>{"status":"CANCELLED"}</code><br>
+3. Restart VCF services: <code>systemctl restart commonsvcs domainmanager lcm operationsd</code><br>
+4. Check for locks: <code>sddc_api "/v1/tasks?type=LOCK" | jq .</code>
+</div>
+
+<h3 id="185-certificate-problems">18.5 Certificate Problems</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely Cause</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>401 on all API calls</td>
+<td>SDDC Manager cert expired</td>
+<td>Replace via Certificate Manager</td>
+</tr>
+<tr>
+<td>LCM fails with cert error</td>
+<td>Component cert expired</td>
+<td>Replace component certificates first</td>
+</tr>
+<tr>
+<td>Trust verification fails</td>
+<td>CA not in trust store</td>
+<td>Add CA to SDDC Manager trust store</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="19-cli-quick-reference-card"><span id="cli-reference"></span>19. CLI Quick Reference Card</h2>
+<h3 id="service-management">Service Management</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>systemctl status commonsvcs</code></td>
+<td>Common services status</td>
+</tr>
+<tr>
+<td><code>systemctl status domainmanager</code></td>
+<td>Domain manager status</td>
+</tr>
+<tr>
+<td><code>systemctl status lcm</code></td>
+<td>Lifecycle manager status</td>
+</tr>
+<tr>
+<td><code>systemctl status operationsd</code></td>
+<td>Operations daemon status</td>
+</tr>
+<tr>
+<td><code>systemctl status postgresql</code></td>
+<td>Database status</td>
+</tr>
+<tr>
+<td><code>systemctl status nginx</code></td>
+<td>Web server / proxy status</td>
+</tr>
+<tr>
+<td><code>systemctl restart &lt;service&gt;</code></td>
+<td>Restart a service</td>
+</tr>
+</tbody></table>
+<h3 id="database-commands">Database Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sudo -u postgres psql</code></td>
+<td>Enter PostgreSQL shell</td>
+</tr>
+<tr>
+<td><code>sudo -u postgres psql -c "SELECT version();"</code></td>
+<td>Check DB version</td>
+</tr>
+<tr>
+<td><code>sudo -u postgres psql -l</code></td>
+<td>List databases</td>
+</tr>
+<tr>
+<td><code>sudo -u postgres vacuumdb --all --analyze</code></td>
+<td>Vacuum all databases</td>
+</tr>
+</tbody></table>
+<h3 id="system-commands">System Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>df -h</code></td>
+<td>Disk usage</td>
+</tr>
+<tr>
+<td><code>free -m</code></td>
+<td>Memory usage</td>
+</tr>
+<tr>
+<td><code>uptime</code></td>
+<td>Load average</td>
+</tr>
+<tr>
+<td><code>timedatectl</code></td>
+<td>Time sync status</td>
+</tr>
+<tr>
+<td><code>chronyc tracking</code></td>
+<td>NTP tracking details</td>
+</tr>
+<tr>
+<td><code>cat /etc/vmware/vcf/sddc-manager-version</code></td>
+<td>SDDC Manager version</td>
+</tr>
+<tr>
+<td><code>nslookup &lt;hostname&gt;</code></td>
+<td>DNS test</td>
+</tr>
+<tr>
+<td><code>openssl s_client -connect &lt;host&gt;:443</code></td>
+<td>Certificate check</td>
+</tr>
+</tbody></table>
+<h3 id="log-files">Log Files</h3>
+<table>
+<thead>
+<tr>
+<th>Log File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/var/log/vmware/vcf/commonsvcs/commonsvcs.log</code></td>
+<td>Common services</td>
+</tr>
+<tr>
+<td><code>/var/log/vmware/vcf/domainmanager/domainmanager.log</code></td>
+<td>Domain manager</td>
+</tr>
+<tr>
+<td><code>/var/log/vmware/vcf/lcm/lcm.log</code></td>
+<td>Lifecycle manager</td>
+</tr>
+<tr>
+<td><code>/var/log/vmware/vcf/operationsmanager/operationsmanager.log</code></td>
+<td>Operations</td>
+</tr>
+<tr>
+<td><code>/var/log/vmware/vcf/sddc-support/sddc-support.log</code></td>
+<td>Support service</td>
+</tr>
+<tr>
+<td><code>/var/log/nginx/access.log</code></td>
+<td>Nginx access log</td>
+</tr>
+<tr>
+<td><code>/var/log/nginx/error.log</code></td>
+<td>Nginx error log</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="20-api-quick-reference"><span id="api-reference"></span>20. API Quick Reference</h2>
+<h3 id="authentication">Authentication</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Acquire token</span>
+curl -sk -X POST <span class="hljs-string">"https://<span class="hljs-variable">$SDDC</span>/v1/tokens"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username":"admin@local","password":"password"}'</span>
+
+<span class="hljs-comment"># Use token</span>
+curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> <span class="hljs-string">"https://<span class="hljs-variable">$SDDC</span>/v1/..."</span>
+</code></pre>
+<h3 id="key-endpoints">Key Endpoints</h3>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/v1/tokens</code></td>
+<td>POST</td>
+<td>Acquire access token</td>
+</tr>
+<tr>
+<td><code>/v1/system</code></td>
+<td>GET</td>
+<td>System info / version</td>
+</tr>
+<tr>
+<td><code>/v1/system/dns-configuration</code></td>
+<td>GET</td>
+<td>DNS config</td>
+</tr>
+<tr>
+<td><code>/v1/system/ntp-configuration</code></td>
+<td>GET</td>
+<td>NTP config</td>
+</tr>
+<tr>
+<td><code>/v1/system/backup-configuration</code></td>
+<td>GET</td>
+<td>Backup config</td>
+</tr>
+<tr>
+<td><code>/v1/system/prechecks</code></td>
+<td>POST</td>
+<td>Trigger upgrade precheck</td>
+</tr>
+<tr>
+<td><code>/v1/domains</code></td>
+<td>GET</td>
+<td>List workload domains</td>
+</tr>
+<tr>
+<td><code>/v1/domains/&lt;id&gt;</code></td>
+<td>GET</td>
+<td>Domain details</td>
+</tr>
+<tr>
+<td><code>/v1/clusters</code></td>
+<td>GET</td>
+<td>List clusters</td>
+</tr>
+<tr>
+<td><code>/v1/hosts</code></td>
+<td>GET</td>
+<td>List hosts</td>
+</tr>
+<tr>
+<td><code>/v1/hosts/&lt;id&gt;</code></td>
+<td>GET</td>
+<td>Host details</td>
+</tr>
+<tr>
+<td><code>/v1/vcenter</code></td>
+<td>GET</td>
+<td>List vCenters</td>
+</tr>
+<tr>
+<td><code>/v1/nsxt-clusters</code></td>
+<td>GET</td>
+<td>List NSX clusters</td>
+</tr>
+<tr>
+<td><code>/v1/bundles</code></td>
+<td>GET</td>
+<td>List bundles</td>
+</tr>
+<tr>
+<td><code>/v1/tasks</code></td>
+<td>GET</td>
+<td>List tasks</td>
+</tr>
+<tr>
+<td><code>/v1/tasks/&lt;id&gt;</code></td>
+<td>GET</td>
+<td>Task details</td>
+</tr>
+<tr>
+<td><code>/v1/tasks/&lt;id&gt;</code></td>
+<td>PATCH</td>
+<td>Retry/cancel task</td>
+</tr>
+<tr>
+<td><code>/v1/certificate-authorities</code></td>
+<td>GET</td>
+<td>CA configuration</td>
+</tr>
+<tr>
+<td><code>/v1/sddc-managers</code></td>
+<td>GET</td>
+<td>SDDC Manager info</td>
+</tr>
+</tbody></table>
+<h3 id="common-query-parameters">Common Query Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Example</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>limit</code></td>
+<td><code>?limit=50</code></td>
+<td>Results per page</td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td><code>?offset=0</code></td>
+<td>Pagination offset</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>?status=FAILED</code></td>
+<td>Filter by status</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><code>?sort=creationTimestamp,DESC</code></td>
+<td>Sort results</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>?type=HOST_COMMISSION</code></td>
+<td>Filter by task type</td>
+</tr>
+</tbody></table>
+<hr>
+<div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #1565c0; color: #666; font-size: 9pt;">
+
+<p><strong>Fleet / SDDC Manager Health Check Handbook</strong>
+Version 1.0 | March 2026
+© 2026 Virtual Control LLC — All Rights Reserved</p>
+</div>
+
+	
+
+</body></html>

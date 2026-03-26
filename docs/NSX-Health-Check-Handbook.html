@@ -1,0 +1,2930 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8"><style>* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	line-height: 1.6;
+	font-size: 0.6875em; /* 11 pt */
+	color: #111;
+	margin: 0;
+}
+
+body > :first-child {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+body > :last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0.5em 0 0.25em;
+}
+
+h5,
+h6 {
+	padding: 0;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h6 {
+	font-size: 0.875em;
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0.25em 0 1em;
+}
+
+blockquote {
+	margin: 0.5em 0 1em;
+	padding-left: 0.5em;
+	padding-right: 1em;
+	border-left: 4px solid gainsboro;
+	font-style: italic;
+}
+
+ul,
+ol {
+	margin: 0;
+	margin-left: 1em;
+	padding: 0 1.5em 0.5em;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+p code,
+li code,
+pre code {
+	background-color: #f8f8f8;
+	padding: 0.1em 0.375em;
+	border: 1px solid #f8f8f8;
+	border-radius: 0.25em;
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+pre code {
+	display: block;
+	padding: 0.5em;
+}
+
+.page-break {
+	page-break-after: always;
+}
+
+img {
+	max-width: 100%;
+	margin: 1em 0;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: block;
+	margin: 0 0 1em;
+	width: 100%;
+	overflow: auto;
+}
+
+table th,
+table td {
+	padding: 0.5em 1em;
+	border: 1px solid gainsboro;
+}
+
+table th {
+	font-weight: 600;
+}
+
+table tr {
+	background-color: white;
+	border-top: 1px solid gainsboro;
+}
+
+table tr:nth-child(2n) {
+	background-color: whitesmoke;
+}
+/*# sourceURL=E:\VCF-Depot\node_modules\md-to-pdf\markdown.css*/</style><style>pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/
+.hljs {
+  color: #24292e;
+  background: #ffffff
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  /* prettylights-syntax-keyword */
+  color: #d73a49
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  /* prettylights-syntax-entity */
+  color: #6f42c1
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  /* prettylights-syntax-constant */
+  color: #005cc5
+}
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  /* prettylights-syntax-string */
+  color: #032f62
+}
+.hljs-built_in,
+.hljs-symbol {
+  /* prettylights-syntax-variable */
+  color: #e36209
+}
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  /* prettylights-syntax-comment */
+  color: #6a737d
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  /* prettylights-syntax-entity-tag */
+  color: #22863a
+}
+.hljs-subst {
+  /* prettylights-syntax-storage-modifier-import */
+  color: #24292e
+}
+.hljs-section {
+  /* prettylights-syntax-markup-heading */
+  color: #005cc5;
+  font-weight: bold
+}
+.hljs-bullet {
+  /* prettylights-syntax-markup-list */
+  color: #735c0f
+}
+.hljs-emphasis {
+  /* prettylights-syntax-markup-italic */
+  color: #24292e;
+  font-style: italic
+}
+.hljs-strong {
+  /* prettylights-syntax-markup-bold */
+  color: #24292e;
+  font-weight: bold
+}
+.hljs-addition {
+  /* prettylights-syntax-markup-inserted */
+  color: #22863a;
+  background-color: #f0fff4
+}
+.hljs-deletion {
+  /* prettylights-syntax-markup-deleted */
+  color: #b31d28;
+  background-color: #ffeef0
+}
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
+  
+}/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
+h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
+h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
+h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
+th { background-color: #0b3d6b; color: white; padding: 7px 10px; text-align: left; }
+td { border: 1px solid #cfd8dc; padding: 6px 10px; }
+tr:nth-child(even) { background-color: #e3f2fd; }
+code { background-color: #e3f2fd; padding: 2px 5px; border-radius: 3px; font-size: 9pt; font-family: 'Cascadia Code', Consolas, monospace; color: #0b3d6b; }
+pre { background-color: #f5f5f5; padding: 12px; border-radius: 5px; border-left: 4px solid #1565c0; font-size: 9pt; line-height: 1.4; overflow-x: auto; }
+pre code { background: none; padding: 0; color: #1a1a1a; }
+a { color: #1565c0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 14px; margin: 10px 0; font-size: 9pt; }
+.toc { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px 30px; margin: 20px 0; }
+.toc ul { list-style: none; padding-left: 0; }
+.toc > ul > li { margin-bottom: 6px; }
+.toc > ul > li > a { font-weight: bold; font-size: 11pt; color: #0b3d6b; }
+.toc ul ul { padding-left: 22px; margin-top: 3px; }
+.toc ul ul li { margin-bottom: 2px; }
+.toc ul ul li a { font-size: 9.5pt; color: #333; }
+.info-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.warn-box { background: #fff3e0; border-left: 4px solid #f57c00; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.fix-box { background: #e8f5e9; border-left: 4px solid #43a047; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.danger { background: #ffebee; border-left: 4px solid #e53935; padding: 12px 16px; border-radius: 4px; margin: 12px 0; font-size: 9.5pt; }
+.badge-pass { background: #43a047; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.badge-warn { background: #f57c00; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.badge-fail { background: #e53935; color: white; padding: 2px 8px; border-radius: 12px; font-size: 8pt; font-weight: bold; }
+.cover-page { text-align: center; padding: 80px 20px; page-break-after: always; }
+.cover-page h1 { font-size: 28pt; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 30px; border-radius: 10px; }
+.cover-page .subtitle { font-size: 14pt; color: #1565c0; margin-top: 20px; }
+.cover-page .meta { font-size: 10pt; color: #666; margin-top: 40px; line-height: 2; }
+.page-break { page-break-before: always; }</style></head>
+	<body class="">
+		<div class="cover-page">
+
+<h1 id="nsx-4x-health-check-handbook">NSX 4.x Health Check Handbook</h1>
+<div class="subtitle">Comprehensive Health Verification for VMware NSX in VCF 9</div>
+
+<div class="meta">
+
+<p><strong>Author:</strong> Virtual Control LLC
+<strong>Date:</strong> March 2026
+<strong>Version:</strong> 1.0
+<strong>Classification:</strong> Internal Use
+<strong>Platform:</strong> VMware Cloud Foundation 9.0 / NSX 4.2.x</p>
+</div>
+</div>
+
+<hr>
+<div class="toc">
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#overview">1. Overview &amp; Purpose</a></li>
+<li><a href="#prerequisites">2. Prerequisites</a></li>
+<li><a href="#quick-reference">3. Quick Reference — All Checks Summary</a></li>
+<li><a href="#mgr-cluster">4. NSX Manager Cluster Health</a>
+  <ul>
+  <li><a href="#mgr-cluster-status">4.1 Cluster Status (API + CLI)</a></li>
+  <li><a href="#mgr-node-health">4.2 Individual Node Health</a></li>
+  <li><a href="#mgr-service-status">4.3 Service Status Verification</a></li>
+  </ul>
+</li>
+<li><a href="#mgr-resources">5. NSX Manager Resource Utilization</a>
+  <ul>
+  <li><a href="#mgr-cpu-mem">5.1 CPU &amp; Memory</a></li>
+  <li><a href="#mgr-disk">5.2 Disk &amp; Filesystem</a></li>
+  <li><a href="#mgr-thresholds">5.3 Thresholds &amp; Alarms</a></li>
+  </ul>
+</li>
+<li><a href="#certificates">6. Certificate Health</a>
+  <ul>
+  <li><a href="#cert-list">6.1 List All Certificates</a></li>
+  <li><a href="#cert-expiry">6.2 Expiry Verification</a></li>
+  </ul>
+</li>
+<li><a href="#backups">7. Backup Verification</a>
+  <ul>
+  <li><a href="#backup-config">7.1 Backup Configuration</a></li>
+  <li><a href="#backup-history">7.2 Backup History</a></li>
+  </ul>
+</li>
+<li><a href="#transport-nodes">8. Transport Node Health</a>
+  <ul>
+  <li><a href="#tn-status">8.1 Transport Node Status</a></li>
+  <li><a href="#tn-esxi-cli">8.2 ESXi nsxcli Commands</a></li>
+  <li><a href="#tn-agent">8.3 NSX Agent Status</a></li>
+  <li><a href="#tn-ports">8.4 Port Connectivity</a></li>
+  </ul>
+</li>
+<li><a href="#tep">9. TEP Connectivity</a>
+  <ul>
+  <li><a href="#tep-vmkping">9.1 vmkping Tests</a></li>
+  <li><a href="#tep-bfd">9.2 BFD Session Verification</a></li>
+  <li><a href="#tep-tunnels">9.3 Tunnel Status</a></li>
+  </ul>
+</li>
+<li><a href="#edge-nodes">10. Edge Node Health</a>
+  <ul>
+  <li><a href="#edge-cluster">10.1 Edge Cluster Status</a></li>
+  <li><a href="#edge-ha">10.2 HA State Verification</a></li>
+  <li><a href="#edge-channels">10.3 Service Channels</a></li>
+  </ul>
+</li>
+<li><a href="#routing">11. Routing &amp; BGP Health</a>
+  <ul>
+  <li><a href="#bgp-neighbors">11.1 BGP Neighbor Summary</a></li>
+  <li><a href="#route-tables">11.2 Route Table Verification</a></li>
+  <li><a href="#gw-realized">11.3 Gateway Realized State</a></li>
+  </ul>
+</li>
+<li><a href="#dfw">12. Distributed Firewall Health</a>
+  <ul>
+  <li><a href="#dfw-realization">12.1 DFW Rule Realization</a></li>
+  <li><a href="#dfw-dvfilter">12.2 ESXi dvfilter Verification</a></li>
+  <li><a href="#dfw-vsipioctl">12.3 vsipioctl Commands</a></li>
+  </ul>
+</li>
+<li><a href="#gw-fw">13. Gateway Firewall Health</a></li>
+<li><a href="#segments">14. Segments &amp; Logical Switches</a>
+  <ul>
+  <li><a href="#seg-status">14.1 Segment Status</a></li>
+  <li><a href="#seg-tables">14.2 MAC / ARP / VTEP Tables</a></li>
+  </ul>
+</li>
+<li><a href="#alarms">15. NSX Alarms</a></li>
+<li><a href="#ports">16. Port Reference Table</a></li>
+<li><a href="#common-issues">17. Common Issues &amp; Remediation</a></li>
+<li><a href="#cli-reference">18. CLI Quick Reference Card</a></li>
+<li><a href="#api-reference">19. API Quick Reference</a></li>
+</ul>
+
+</div>
+
+<div class="page-break"></div>
+
+<h2 id="1-overview--purpose"><span id="overview"></span>1. Overview &amp; Purpose</h2>
+<p>This handbook provides a <strong>complete, step-by-step health check procedure</strong> for VMware NSX 4.x deployed within a VCF 9.0 environment. It is designed for VMware administrators who need to verify NSX health during:</p>
+<ul>
+<li><strong>Routine maintenance windows</strong> — Weekly or monthly proactive checks</li>
+<li><strong>Pre/post-upgrade validation</strong> — Before and after NSX patches or upgrades</li>
+<li><strong>Incident troubleshooting</strong> — When connectivity, firewall, or routing issues occur</li>
+<li><strong>Environment handover</strong> — Documenting health state for audits or transfers</li>
+</ul>
+<h3 id="what-this-document-covers">What This Document Covers</h3>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Components Checked</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Management Plane</td>
+<td>NSX Manager cluster, services, certificates, backups</td>
+</tr>
+<tr>
+<td>Control Plane</td>
+<td>Controller connectivity, transport node preparation</td>
+</tr>
+<tr>
+<td>Data Plane</td>
+<td>TEP connectivity, tunnels, BFD sessions</td>
+</tr>
+<tr>
+<td>Edge Services</td>
+<td>Edge clusters, HA state, routing, BGP</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Distributed firewall, gateway firewall, rule realization</td>
+</tr>
+<tr>
+<td>Networking</td>
+<td>Segments, logical switches, MAC/ARP/VTEP tables</td>
+</tr>
+</tbody></table>
+<h3 id="health-check-methodology">Health Check Methodology</h3>
+<p>Each check in this handbook follows a consistent format:</p>
+<ol>
+<li><strong>What to check</strong> — Description of the component and why it matters</li>
+<li><strong>How to check</strong> — Exact CLI command or API call (copy-paste ready)</li>
+<li><strong>Expected output</strong> — What a healthy result looks like</li>
+<li><strong>Pass / Warn / Fail criteria</strong> — Clear thresholds with visual indicators</li>
+<li><strong>Remediation</strong> — What to do if the check fails</li>
+</ol>
+<div class="info-box">
+<strong>Environment Variables:</strong> Throughout this document, replace the following placeholders with your actual values:<br>
+<code>$NSX_VIP</code> = NSX Manager VIP (e.g., nsx-vip.lab.local)<br>
+<code>$NSX_NODE1/2/3</code> = Individual NSX Manager nodes<br>
+<code>$NSX_USER</code> = admin<br>
+<code>$NSX_PASS</code> = NSX Manager admin password
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="2-prerequisites"><span id="prerequisites"></span>2. Prerequisites</h2>
+<h3 id="required-access">Required Access</h3>
+<table>
+<thead>
+<tr>
+<th>Access Type</th>
+<th>Target</th>
+<th>Credentials Needed</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTTPS (443)</td>
+<td>NSX Manager VIP</td>
+<td>admin / password</td>
+</tr>
+<tr>
+<td>SSH (22)</td>
+<td>Each NSX Manager node</td>
+<td>admin or root</td>
+</tr>
+<tr>
+<td>SSH (22)</td>
+<td>ESXi hosts (transport nodes)</td>
+<td>root</td>
+</tr>
+<tr>
+<td>SSH (22)</td>
+<td>Edge nodes (bare metal)</td>
+<td>admin or root</td>
+</tr>
+<tr>
+<td>API</td>
+<td>NSX Manager VIP:443</td>
+<td>admin / password</td>
+</tr>
+</tbody></table>
+<h3 id="required-tools">Required Tools</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Install Location</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>curl</code></td>
+<td>API calls to NSX Manager</td>
+<td>Jumpbox / workstation</td>
+</tr>
+<tr>
+<td><code>ssh</code></td>
+<td>CLI access to NSX / ESXi / Edge</td>
+<td>Jumpbox / workstation</td>
+</tr>
+<tr>
+<td><code>jq</code></td>
+<td>JSON parsing for API output</td>
+<td><code>apt install jq</code> or <code>brew install jq</code></td>
+</tr>
+<tr>
+<td><code>openssl</code></td>
+<td>Certificate verification</td>
+<td>Pre-installed on Linux/Mac</td>
+</tr>
+<tr>
+<td>Web Browser</td>
+<td>NSX Manager UI verification</td>
+<td>Workstation</td>
+</tr>
+</tbody></table>
+<h3 id="environment-variables-setup">Environment Variables Setup</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># NSX Manager</span>
+<span class="hljs-built_in">export</span> NSX_VIP=<span class="hljs-string">"nsx-vip.lab.local"</span>
+<span class="hljs-built_in">export</span> NSX_NODE1=<span class="hljs-string">"nsx-mgr-01.lab.local"</span>
+<span class="hljs-built_in">export</span> NSX_NODE2=<span class="hljs-string">"nsx-mgr-02.lab.local"</span>
+<span class="hljs-built_in">export</span> NSX_NODE3=<span class="hljs-string">"nsx-mgr-03.lab.local"</span>
+<span class="hljs-built_in">export</span> NSX_USER=<span class="hljs-string">"admin"</span>
+<span class="hljs-built_in">export</span> NSX_PASS=<span class="hljs-string">"YourPassword123!"</span>
+
+<span class="hljs-comment"># Convenience function for NSX API calls</span>
+<span class="hljs-function"><span class="hljs-title">nsx_api</span></span>() {
+  curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+    -H <span class="hljs-string">"Content-Type: application/json"</span> \
+    <span class="hljs-string">"https://$NSX_VIP<span class="hljs-variable">$1</span>"</span> 2&gt;/dev/null
+}
+
+<span class="hljs-comment"># Example usage:</span>
+<span class="hljs-comment"># nsx_api /api/v1/cluster/status | jq .</span>
+</code></pre>
+<div class="warn-box">
+<strong>Security Note:</strong> Never store passwords in plain text in production. Use a credential vault or enter passwords interactively. These examples use environment variables for convenience during health checks only.
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="3-quick-reference--all-checks-summary"><span id="quick-reference"></span>3. Quick Reference — All Checks Summary</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Check</th>
+<th>Method</th>
+<th>Pass Criteria</th>
+<th>Warn Criteria</th>
+<th>Fail Criteria</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4.1</td>
+<td>Manager Cluster Status</td>
+<td>API</td>
+<td><code>STABLE</code></td>
+<td><code>DEGRADED</code></td>
+<td><code>UNSTABLE</code> / unreachable</td>
+</tr>
+<tr>
+<td>4.2</td>
+<td>Node Health</td>
+<td>API</td>
+<td>All nodes <code>CONNECTED</code></td>
+<td>1 node degraded</td>
+<td>2+ nodes down</td>
+</tr>
+<tr>
+<td>4.3</td>
+<td>Service Status</td>
+<td>CLI</td>
+<td>All services <code>running</code></td>
+<td>Non-critical stopped</td>
+<td>Critical service stopped</td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>Manager CPU</td>
+<td>CLI/API</td>
+<td>&lt; 70%</td>
+<td>70-85%</td>
+<td>&gt; 85%</td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>Manager Memory</td>
+<td>CLI/API</td>
+<td>&lt; 75%</td>
+<td>75-90%</td>
+<td>&gt; 90%</td>
+</tr>
+<tr>
+<td>5.3</td>
+<td>Manager Disk</td>
+<td>CLI</td>
+<td>&lt; 70% used</td>
+<td>70-85% used</td>
+<td>&gt; 85% used</td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>Certificates</td>
+<td>API</td>
+<td>&gt; 30 days to expiry</td>
+<td>7-30 days</td>
+<td>&lt; 7 days or expired</td>
+</tr>
+<tr>
+<td>7.1</td>
+<td>Backup Config</td>
+<td>API</td>
+<td>Configured &amp; recent</td>
+<td>&gt; 24h since last</td>
+<td>No backup configured</td>
+</tr>
+<tr>
+<td>8.1</td>
+<td>Transport Nodes</td>
+<td>API</td>
+<td>All <code>SUCCESS</code></td>
+<td>Any <code>IN_PROGRESS</code></td>
+<td>Any <code>FAILED</code></td>
+</tr>
+<tr>
+<td>8.3</td>
+<td>NSX Agents</td>
+<td>CLI</td>
+<td><code>nsx-mpa</code> + <code>nsx-proxy</code> running</td>
+<td>Agent restarting</td>
+<td>Agent not running</td>
+</tr>
+<tr>
+<td>9.1</td>
+<td>TEP Connectivity</td>
+<td>CLI</td>
+<td>vmkping MTU 1600 succeeds</td>
+<td>Intermittent loss</td>
+<td>vmkping fails</td>
+</tr>
+<tr>
+<td>9.2</td>
+<td>BFD Sessions</td>
+<td>CLI</td>
+<td>All <code>UP</code></td>
+<td>Any <code>INIT</code></td>
+<td>Any <code>DOWN</code></td>
+</tr>
+<tr>
+<td>10.1</td>
+<td>Edge Cluster</td>
+<td>API</td>
+<td>All members <code>UP</code></td>
+<td>1 member degraded</td>
+<td>Multiple members down</td>
+</tr>
+<tr>
+<td>10.2</td>
+<td>Edge HA</td>
+<td>API</td>
+<td><code>ACTIVE/STANDBY</code> correct</td>
+<td>HA state mismatch</td>
+<td>Both <code>STANDBY</code></td>
+</tr>
+<tr>
+<td>11.1</td>
+<td>BGP Neighbors</td>
+<td>CLI</td>
+<td>All <code>Established</code></td>
+<td>Any <code>OpenConfirm</code></td>
+<td>Any <code>Idle</code>/<code>Active</code></td>
+</tr>
+<tr>
+<td>11.3</td>
+<td>Gateway State</td>
+<td>API</td>
+<td><code>REALIZED</code></td>
+<td><code>IN_PROGRESS</code></td>
+<td><code>ERROR</code></td>
+</tr>
+<tr>
+<td>12.1</td>
+<td>DFW Realization</td>
+<td>API</td>
+<td>All rules <code>REALIZED</code></td>
+<td>Any <code>IN_PROGRESS</code></td>
+<td>Any <code>ERROR</code></td>
+</tr>
+<tr>
+<td>14.1</td>
+<td>Segments</td>
+<td>API</td>
+<td>All <code>SUCCESS</code></td>
+<td>Any <code>IN_PROGRESS</code></td>
+<td>Any <code>ERROR</code></td>
+</tr>
+<tr>
+<td>15</td>
+<td>Alarms</td>
+<td>API</td>
+<td>0 critical alarms</td>
+<td>Warning alarms present</td>
+<td>Critical alarms present</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="4-nsx-manager-cluster-health"><span id="mgr-cluster"></span>4. NSX Manager Cluster Health</h2>
+<h3 id="41-cluster-status-api--cli"><span id="mgr-cluster-status"></span>4.1 Cluster Status (API + CLI)</h3>
+<p><strong>What:</strong> Verify the NSX Manager cluster is stable with all 3 nodes participating.</p>
+<p><strong>Why:</strong> A degraded management cluster means reduced redundancy. An unstable cluster can cause configuration failures and data loss.</p>
+<h4 id="api-method">API Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get cluster status</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/cluster/status"</span> | jq .
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"detailed_cluster_status"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"overall_status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"STABLE"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"groups"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+      <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"group_type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"CONTROLLER"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"group_status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"STABLE"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"members"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+          <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"member_uuid"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123..."</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"member_status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UP"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"member_fqdn"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"nsx-mgr-01.lab.local"</span>
+          <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"member_uuid"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"def456..."</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"member_status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UP"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"member_fqdn"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"nsx-mgr-02.lab.local"</span>
+          <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"member_uuid"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"ghi789..."</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"member_status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UP"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"member_fqdn"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"nsx-mgr-03.lab.local"</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">]</span>
+      <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"group_type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"MANAGER"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"group_status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"STABLE"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"members"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>...<span class="hljs-punctuation">]</span>
+      <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"group_type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"POLICY"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"group_status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"STABLE"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"members"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>...<span class="hljs-punctuation">]</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"mgmt_cluster_status"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"STABLE"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"control_cluster_status"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"STABLE"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="cli-method-ssh-to-any-nsx-manager">CLI Method (SSH to any NSX Manager)</h4>
+<pre><code class="hljs bash">ssh admin@<span class="hljs-variable">$NSX_NODE1</span>
+<span class="hljs-comment"># Then run:</span>
+get cluster status
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Cluster Id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+Overall Status: STABLE
+
+Group Type: CONTROLLER
+  Group Status: STABLE
+  Leader: nsx-mgr-01.lab.local
+
+Group Type: MANAGER
+  Group Status: STABLE
+  Leader: nsx-mgr-01.lab.local
+
+Group Type: POLICY
+  Group Status: STABLE
+  Leader: nsx-mgr-02.lab.local
+</code></pre>
+<h4 id="pass--warn--fail">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td><code>overall_status</code> = <code>STABLE</code>, all groups <code>STABLE</code></td>
+<td>All 3 nodes UP, all group leaders elected</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td><code>overall_status</code> = <code>DEGRADED</code></td>
+<td>1 node down but quorum maintained</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td><code>overall_status</code> = <code>UNSTABLE</code> or unreachable</td>
+<td>2+ nodes down, no quorum, API unresponsive</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation if FAIL:</strong><br>
+1. SSH to each node individually and check: <code>get cluster status</code><br>
+2. Check node reachability: <code>ping $NSX_NODE1</code><br>
+3. Restart cluster service: <code>restart cluster boot-manager</code><br>
+4. Check logs: <code>/var/log/cluster-manager/cluster-manager.log</code><br>
+5. If split-brain: identify the minority partition and restart those nodes
+</div>
+
+<hr>
+<h3 id="42-individual-node-health"><span id="mgr-node-health"></span>4.2 Individual Node Health</h3>
+<p><strong>What:</strong> Check the health status of each individual NSX Manager node.</p>
+<p><strong>Why:</strong> A node can be in the cluster but unhealthy (high load, service failures).</p>
+<h4 id="api-method-1">API Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all cluster nodes with health</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/cluster/nodes"</span> | jq <span class="hljs-string">'.results[] | {
+    fqdn: .fqdn,
+    ip: .ip_address,
+    status: .status,
+    version: .node_version
+  }'</span>
+</code></pre>
+<h4 id="check-individual-node-appliance-health">Check Individual Node Appliance Health</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Per-node health via appliance API</span>
+<span class="hljs-keyword">for</span> NODE <span class="hljs-keyword">in</span> <span class="hljs-variable">$NSX_NODE1</span> <span class="hljs-variable">$NSX_NODE2</span> <span class="hljs-variable">$NSX_NODE3</span>; <span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"=== <span class="hljs-variable">$NODE</span> ==="</span>
+  curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+    <span class="hljs-string">"https://<span class="hljs-variable">$NODE</span>/api/v1/node"</span> | jq <span class="hljs-string">'{
+      hostname: .hostname,
+      kernel_version: .kernel_version,
+      product_version: .product_version,
+      uptime: .system_time
+    }'</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+<h4 id="pass--warn--fail-1">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All 3 nodes report status <code>CONNECTED</code> and matching versions</td>
+<td>Healthy cluster</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Version mismatch between nodes</td>
+<td>Possible mid-upgrade state</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any node <code>DISCONNECTED</code> or unreachable</td>
+<td>Node failure</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="43-service-status-verification"><span id="mgr-service-status"></span>4.3 Service Status Verification</h3>
+<p><strong>What:</strong> Verify all critical NSX Manager services are running on each node.</p>
+<p><strong>Why:</strong> Individual service failures can cause specific feature outages even when the cluster appears healthy.</p>
+<h4 id="cli-method-ssh-to-each-nsx-manager">CLI Method (SSH to each NSX Manager)</h4>
+<pre><code class="hljs bash">ssh admin@<span class="hljs-variable">$NSX_NODE1</span>
+get services
+</code></pre>
+<p><strong>Expected Output (all running):</strong></p>
+<pre><code>Service Name          Service Status
+-------------------------------------
+async_replicator      running
+cluster-manager       running
+controller            running
+corfu                 running
+corfu-nonconfig       running
+datastore             running
+http                  running
+install-upgrade       running
+liagent               running
+manager               running
+migration-coordinator running
+monitoring            running
+nsx-message-bus       running
+nsx-ui-plugin         running
+phonehome             running
+platform-client       running
+policy                running
+proton                running
+search                running
+syslog-server         running
+upgrade-coordinator   running
+</code></pre>
+<h4 id="api-method-2">API Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get node services status</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/node/services"</span> | jq <span class="hljs-string">'.results[] | {
+    service: .service_name,
+    status: .service_status.runtime_state
+  }'</span>
+</code></pre>
+<h4 id="critical-services-must-be-running">Critical Services (must be running)</h4>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Function</th>
+<th>Impact if Down</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>controller</code></td>
+<td>Control plane</td>
+<td>Transport node connectivity loss</td>
+</tr>
+<tr>
+<td><code>corfu</code></td>
+<td>Distributed datastore</td>
+<td>Configuration data unavailable</td>
+</tr>
+<tr>
+<td><code>manager</code></td>
+<td>Management plane</td>
+<td>API / UI unavailable</td>
+</tr>
+<tr>
+<td><code>policy</code></td>
+<td>Policy engine</td>
+<td>Security policy changes fail</td>
+</tr>
+<tr>
+<td><code>http</code></td>
+<td>Web server / API</td>
+<td>All API calls fail</td>
+</tr>
+<tr>
+<td><code>proton</code></td>
+<td>Message bus</td>
+<td>Cluster communication failure</td>
+</tr>
+<tr>
+<td><code>datastore</code></td>
+<td>Data persistence</td>
+<td>Config persistence failure</td>
+</tr>
+<tr>
+<td><code>search</code></td>
+<td>Search engine</td>
+<td>UI search / inventory failure</td>
+</tr>
+</tbody></table>
+<div class="danger">
+<strong>Critical:</strong> If <code>controller</code>, <code>corfu</code>, or <code>manager</code> are not running, the NSX environment is in a critical state. Do not make configuration changes until these services are restored.
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="5-nsx-manager-resource-utilization"><span id="mgr-resources"></span>5. NSX Manager Resource Utilization</h2>
+<h3 id="51-cpu--memory"><span id="mgr-cpu-mem"></span>5.1 CPU &amp; Memory</h3>
+<p><strong>What:</strong> Check CPU and memory utilization on each NSX Manager node.</p>
+<p><strong>Why:</strong> NSX Manager nodes under resource pressure may respond slowly or fail to process API requests, causing cascading issues across the environment.</p>
+<h4 id="cli-method">CLI Method</h4>
+<pre><code class="hljs bash">ssh admin@<span class="hljs-variable">$NSX_NODE1</span>
+<span class="hljs-comment"># CPU utilization</span>
+get node-stats
+</code></pre>
+<h4 id="api-method-3">API Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Node status with resource utilization</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_NODE1</span>/api/v1/node/status"</span> | jq <span class="hljs-string">'{
+    cpu_cores: .cpu_cores,
+    load_average: .load_average,
+    mem_total: .mem_total,
+    mem_used: .mem_used,
+    mem_cache: .mem_cache,
+    swap_total: .swap_total,
+    swap_used: .swap_used,
+    uptime: .uptime
+  }'</span>
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"cpu_cores"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">12</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"load_average"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-number">1.2</span><span class="hljs-punctuation">,</span> <span class="hljs-number">1.5</span><span class="hljs-punctuation">,</span> <span class="hljs-number">1.8</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"mem_total"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">49152</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"mem_used"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">32768</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"mem_cache"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">8192</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"swap_total"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">8192</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"swap_used"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"uptime"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">8640000</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="pass--warn--fail-2">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CPU Load Average (per core)</td>
+<td>&lt; 0.7</td>
+<td>0.7 - 0.85</td>
+<td>&gt; 0.85</td>
+</tr>
+<tr>
+<td>Memory Used %</td>
+<td>&lt; 75%</td>
+<td>75% - 90%</td>
+<td>&gt; 90%</td>
+</tr>
+<tr>
+<td>Swap Used</td>
+<td>0 MB</td>
+<td>&lt; 1 GB</td>
+<td>&gt; 1 GB</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. High CPU: Check for excessive API polling — <code>get service http connection-limit</code><br>
+2. High Memory: Restart non-critical services, or increase VM memory (requires downtime per node)<br>
+3. Swap usage: Indicates memory pressure — investigate with <code>top -b -n 1 | head -20</code> (as root)
+</div>
+
+<hr>
+<h3 id="52-disk--filesystem"><span id="mgr-disk"></span>5.2 Disk &amp; Filesystem</h3>
+<p><strong>What:</strong> Check disk space utilization on all NSX Manager filesystem partitions.</p>
+<p><strong>Why:</strong> Full disks cause service crashes, log loss, and database corruption.</p>
+<h4 id="cli-method-1">CLI Method</h4>
+<pre><code class="hljs bash">ssh admin@<span class="hljs-variable">$NSX_NODE1</span>
+<span class="hljs-comment"># As admin:</span>
+get filesystem-info
+</code></pre>
+<h4 id="api-method-4">API Method</h4>
+<pre><code class="hljs bash">curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_NODE1</span>/api/v1/node/status"</span> | jq <span class="hljs-string">'.filesystem'</span>
+</code></pre>
+<h4 id="root-ssh-method-more-detail">Root SSH Method (more detail)</h4>
+<pre><code class="hljs bash">ssh root@<span class="hljs-variable">$NSX_NODE1</span>
+<span class="hljs-built_in">df</span> -h
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Filesystem      Size  Used  Avail  Use%  Mounted on
+/dev/sda2        40G   15G    23G   40%  /
+/dev/sda3        80G   28G    48G   37%  /nonconfig-datastore
+/dev/sda5        40G   12G    26G   32%  /config-datastore
+/dev/sda6        20G    4G    15G   21%  /image
+tmpfs            24G   12M    24G    1%  /dev/shm
+</code></pre>
+<h4 id="critical-filesystem-thresholds">Critical Filesystem Thresholds</h4>
+<table>
+<thead>
+<tr>
+<th>Filesystem</th>
+<th><span class="badge-pass">PASS</span></th>
+<th><span class="badge-warn">WARN</span></th>
+<th><span class="badge-fail">FAIL</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/</code> (root)</td>
+<td>&lt; 70%</td>
+<td>70-85%</td>
+<td>&gt; 85%</td>
+</tr>
+<tr>
+<td><code>/nonconfig-datastore</code></td>
+<td>&lt; 70%</td>
+<td>70-85%</td>
+<td>&gt; 85%</td>
+</tr>
+<tr>
+<td><code>/config-datastore</code></td>
+<td>&lt; 70%</td>
+<td>70-85%</td>
+<td>&gt; 85%</td>
+</tr>
+<tr>
+<td><code>/image</code></td>
+<td>&lt; 80%</td>
+<td>80-90%</td>
+<td>&gt; 90%</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. Clean old log files: <code>ls -la /var/log/</code> — identify large files<br>
+2. Clean old upgrade bundles: <code>ls -la /image/</code><br>
+3. Compress or rotate logs: <code>logrotate -f /etc/logrotate.conf</code><br>
+4. Check corfu compaction: <code>get service corfu compaction-status</code>
+</div>
+
+<hr>
+<h3 id="53-thresholds--alarms"><span id="mgr-thresholds"></span>5.3 Thresholds &amp; Alarms</h3>
+<p><strong>What:</strong> Check if any resource-related alarms are active on NSX Manager nodes.</p>
+<h4 id="api-method-5">API Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check system alarms related to resources</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/alarms?feature_name=system"</span> | jq <span class="hljs-string">'.results[] | {
+    id: .id,
+    severity: .severity,
+    description: .description,
+    status: .status,
+    entity_id: .entity_id
+  }'</span>
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="6-certificate-health"><span id="certificates"></span>6. Certificate Health</h2>
+<h3 id="61-list-all-certificates"><span id="cert-list"></span>6.1 List All Certificates</h3>
+<p><strong>What:</strong> Retrieve all certificates managed by NSX and verify none are expired or expiring soon.</p>
+<p><strong>Why:</strong> Expired certificates cause communication failures between NSX components, transport nodes, and external integrations.</p>
+<h4 id="api-method-6">API Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all certificates</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/trust-management/certificates"</span> | jq <span class="hljs-string">'.results[] | {
+    id: .id,
+    display_name: .display_name,
+    not_before: .not_before,
+    not_after: .not_after,
+    subject: .pem_encoded | split("\n")[0]
+  }'</span>
+</code></pre>
+<h4 id="extract-expiry-dates-for-quick-review">Extract Expiry Dates for Quick Review</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check certificate expiry with days remaining</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/trust-management/certificates"</span> | jq -r <span class="hljs-string">'
+  .results[] |
+  "\(.display_name)\t\(.not_after)\t\(
+    ((.not_after / 1000) - (now | floor)) / 86400 | floor
+  ) days remaining"'</span>
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>nsx-mgr-01-cert     1774003200000    365 days remaining
+nsx-mgr-02-cert     1774003200000    365 days remaining
+nsx-mgr-03-cert     1774003200000    365 days remaining
+nsx-api-cert        1774003200000    365 days remaining
+mp-cluster-cert     1774003200000    365 days remaining
+</code></pre>
+<h3 id="62-expiry-verification"><span id="cert-expiry"></span>6.2 Expiry Verification</h3>
+<h4 id="pass--warn--fail-3">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All certificates &gt; 30 days from expiry</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Any certificate 7-30 days from expiry</td>
+<td>Plan replacement</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any certificate &lt; 7 days or expired</td>
+<td>Immediate action required</td>
+</tr>
+</tbody></table>
+<h4 id="verify-certificate-via-openssl">Verify Certificate via OpenSSL</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Verify the NSX Manager certificate externally</span>
+<span class="hljs-built_in">echo</span> | openssl s_client -connect <span class="hljs-variable">$NSX_VIP</span>:443 2&gt;/dev/null | \
+  openssl x509 -noout -dates -subject -issuer
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>notBefore=Jan 15 00:00:00 2026 GMT
+notAfter=Jan 15 00:00:00 2028 GMT
+subject=CN = nsx-vip.lab.local
+issuer=CN = NSX CA
+</code></pre>
+<div class="danger">
+<strong>Critical:</strong> If the NSX Manager certificate is expired:<br>
+1. Transport nodes will lose control plane connectivity<br>
+2. API calls will fail with certificate errors<br>
+3. DFW rule updates will stop propagating<br>
+<strong>Action:</strong> Follow VMware KB 83054 to replace expired certificates.
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="7-backup-verification"><span id="backups"></span>7. Backup Verification</h2>
+<h3 id="71-backup-configuration"><span id="backup-config"></span>7.1 Backup Configuration</h3>
+<p><strong>What:</strong> Verify that NSX Manager backups are configured and running on schedule.</p>
+<p><strong>Why:</strong> Without valid backups, any cluster failure could result in complete NSX configuration loss.</p>
+<h4 id="api-method-7">API Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get backup configuration</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/cluster/backups/config"</span> | jq <span class="hljs-string">'{
+    backup_enabled: .backup_enabled,
+    backup_schedule: .backup_schedule,
+    remote_file_server: .remote_file_server.server,
+    remote_path: .remote_file_server.directory_path
+  }'</span>
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"backup_enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"backup_schedule"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"resource_type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"WeeklyBackupSchedule"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"days_of_week"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"MONDAY"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"WEDNESDAY"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"FRIDAY"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"hour_of_day"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"minute_of_day"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"remote_file_server"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"backup-server.lab.local"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"remote_path"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/backups/nsx/"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="72-backup-history"><span id="backup-history"></span>7.2 Backup History</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check backup history</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/cluster/backups/history"</span> | jq <span class="hljs-string">'.results[0:5] | .[] | {
+    start_time: .start_time,
+    end_time: .end_time,
+    backup_status: .success,
+    node: .node_id
+  }'</span>
+</code></pre>
+<h4 id="pass--warn--fail-4">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Backup configured, last successful &lt; 24 hours ago</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Backup configured, last successful &gt; 24 hours ago</td>
+<td>Check schedule</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>No backup configured, or all recent backups failed</td>
+<td>Critical risk</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation:</strong><br>
+1. Configure backup: NSX UI → System → Backup &amp; Restore<br>
+2. Trigger manual backup: <code>POST /api/v1/cluster/backups?action=backup_to_remote</code><br>
+3. Verify remote server connectivity: SSH to NSX Manager → <code>ping backup-server.lab.local</code><br>
+4. Check SFTP permissions on backup target directory
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="8-transport-node-health"><span id="transport-nodes"></span>8. Transport Node Health</h2>
+<h3 id="81-transport-node-status"><span id="tn-status"></span>8.1 Transport Node Status</h3>
+<p><strong>What:</strong> Verify all ESXi hosts prepared as NSX transport nodes are in a healthy state.</p>
+<p><strong>Why:</strong> Transport node failures mean VMs on that host lose NSX networking (overlay, DFW, load balancing).</p>
+<h4 id="api-method-8">API Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get all transport node states</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/transport-nodes/state"</span> | jq <span class="hljs-string">'.results[] | {
+    transport_node_id: .transport_node_id,
+    node_deployment_state: .node_deployment_state.state,
+    state: .state,
+    status: .status,
+    host_node_deployment_status: .host_node_deployment_status
+  }'</span>
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"transport_node_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"node_deployment_state"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"NODE_READY"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"state"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"success"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UP"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="summary-view">Summary View</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Compact summary of all transport node states</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/transport-nodes/state?status=UP"</span> | jq <span class="hljs-string">'.result_count'</span>
+
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/transport-nodes/state?status=DOWN"</span> | jq <span class="hljs-string">'.result_count'</span>
+
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/transport-nodes/state?status=DEGRADED"</span> | jq <span class="hljs-string">'.result_count'</span>
+</code></pre>
+<h4 id="pass--warn--fail-5">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All transport nodes <code>SUCCESS</code> / <code>UP</code></td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Any node <code>IN_PROGRESS</code> (e.g., during upgrade)</td>
+<td>Monitor</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any node <code>FAILED</code> or <code>DOWN</code></td>
+<td>Immediate investigation</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="82-esxi-nsxcli-commands"><span id="tn-esxi-cli"></span>8.2 ESXi nsxcli Commands</h3>
+<p><strong>What:</strong> Verify NSX components on individual ESXi hosts via the <code>nsxcli</code> shell.</p>
+<h4 id="ssh-to-esxi-and-enter-nsxcli">SSH to ESXi and Enter nsxcli</h4>
+<pre><code class="hljs bash">ssh root@&lt;esxi-host&gt;
+nsxcli
+</code></pre>
+<h4 id="check-manager-connection">Check Manager Connection</h4>
+<pre><code>&gt; get managers
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Manager IP     : 192.168.1.71
+Manager IP     : 192.168.1.72
+Manager IP     : 192.168.1.73
+Connected to   : 192.168.1.71
+</code></pre>
+<h4 id="check-controller-connection">Check Controller Connection</h4>
+<pre><code>&gt; get controllers
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Controller IP  : 192.168.1.71
+Controller IP  : 192.168.1.72
+Controller IP  : 192.168.1.73
+Connected to   : 192.168.1.72
+Status         : Connected
+</code></pre>
+<hr>
+<h3 id="83-nsx-agent-status"><span id="tn-agent"></span>8.3 NSX Agent Status</h3>
+<p><strong>What:</strong> Verify the NSX agent processes (nsx-mpa, nsx-proxy) are running on each ESXi host.</p>
+<p><strong>Why:</strong> These agents handle management plane communication and data plane programming.</p>
+<h4 id="cli-method-on-esxi-host">CLI Method (on ESXi host)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check NSX services on ESXi</span>
+/etc/init.d/nsx-mpa status
+/etc/init.d/nsx-proxy status
+/etc/init.d/nsx-context-mux status
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>nsx-mpa is running
+nsx-proxy is running
+nsx-context-mux is running
+</code></pre>
+<h4 id="alternative-check">Alternative Check</h4>
+<pre><code class="hljs bash">esxcli software vib list | grep -i nsx
+</code></pre>
+<p><strong>Expected Output (shows installed NSX VIBs):</strong></p>
+<pre><code>nsx-esx-datapath       4.2.0.0.0-12345678   VMW  VMwareCertified  2026-01-15
+nsx-mpa                4.2.0.0.0-12345678   VMW  VMwareCertified  2026-01-15
+nsx-platform-client    4.2.0.0.0-12345678   VMW  VMwareCertified  2026-01-15
+nsx-proxy              4.2.0.0.0-12345678   VMW  VMwareCertified  2026-01-15
+</code></pre>
+<div class="fix-box">
+<strong>Remediation if agents not running:</strong><br>
+1. Restart MPA: <code>/etc/init.d/nsx-mpa restart</code><br>
+2. Restart proxy: <code>/etc/init.d/nsx-proxy restart</code><br>
+3. Check logs: <code>/var/log/nsx-mpa.log</code> and <code>/var/log/nsx-syslog.log</code><br>
+4. If persistent: Re-prepare host via NSX Manager UI → Fabric → Host Transport Nodes → Resolve
+</div>
+
+<hr>
+<h3 id="84-port-connectivity"><span id="tn-ports"></span>8.4 Port Connectivity</h3>
+<p><strong>What:</strong> Verify ESXi transport nodes can reach NSX Managers on required ports.</p>
+<h4 id="port-requirements">Port Requirements</h4>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Destination</th>
+<th>Port</th>
+<th>Protocol</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ESXi</td>
+<td>NSX Manager</td>
+<td>1234</td>
+<td>TCP</td>
+<td>NSX Manager → Host MPA</td>
+</tr>
+<tr>
+<td>ESXi</td>
+<td>NSX Manager</td>
+<td>1235</td>
+<td>TCP</td>
+<td>NSX Central CLI</td>
+</tr>
+<tr>
+<td>ESXi</td>
+<td>NSX Manager</td>
+<td>5671</td>
+<td>TCP</td>
+<td>Message bus (RabbitMQ)</td>
+</tr>
+<tr>
+<td>ESXi</td>
+<td>NSX Manager</td>
+<td>443</td>
+<td>TCP</td>
+<td>HTTPS API</td>
+</tr>
+<tr>
+<td>ESXi</td>
+<td>ESXi (TEP)</td>
+<td>4789</td>
+<td>UDP</td>
+<td>Geneve overlay</td>
+</tr>
+<tr>
+<td>ESXi</td>
+<td>ESXi (TEP)</td>
+<td>6081</td>
+<td>UDP</td>
+<td>Geneve (BFD)</td>
+</tr>
+</tbody></table>
+<h4 id="connectivity-test-from-esxi">Connectivity Test from ESXi</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Test connectivity to NSX Manager ports from ESXi</span>
+nc -zv <span class="hljs-variable">$NSX_VIP</span> 1234
+nc -zv <span class="hljs-variable">$NSX_VIP</span> 1235
+nc -zv <span class="hljs-variable">$NSX_VIP</span> 5671
+nc -zv <span class="hljs-variable">$NSX_VIP</span> 443
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Connection to nsx-vip.lab.local 1234 port [tcp/*] succeeded!
+Connection to nsx-vip.lab.local 1235 port [tcp/*] succeeded!
+Connection to nsx-vip.lab.local 5671 port [tcp/*] succeeded!
+Connection to nsx-vip.lab.local 443 port [tcp/https] succeeded!
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="9-tep-connectivity"><span id="tep"></span>9. TEP Connectivity</h2>
+<h3 id="91-vmkping-tests-with-mtu-validation"><span id="tep-vmkping"></span>9.1 vmkping Tests with MTU Validation</h3>
+<p><strong>What:</strong> Verify Tunnel Endpoint (TEP) connectivity between all ESXi hosts with proper MTU.</p>
+<p><strong>Why:</strong> TEP connectivity is the foundation of NSX overlay networking. Failed TEP = no overlay connectivity between VMs on different hosts.</p>
+<h4 id="standard-vmkping-default-mtu">Standard vmkping (Default MTU)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># From ESXi host, ping another host's TEP IP</span>
+vmkping -I vmk10 -d -s 1572 &lt;remote-TEP-IP&gt;
+</code></pre>
+<div class="info-box">
+<strong>MTU Note:</strong> The <code>-s 1572</code> flag sets the payload size. With IP (20 bytes) and ICMP (8 bytes) headers, total packet size = 1600 bytes, which is the minimum MTU for Geneve overlay. The <code>-d</code> flag sets the Don't Fragment bit to ensure the full MTU path is tested.
+</div>
+
+<h4 id="test-all-tep-pairs">Test All TEP Pairs</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Script to test TEP connectivity from current host</span>
+REMOTE_TEPS=<span class="hljs-string">"192.168.12.75 192.168.12.76 192.168.12.82"</span>
+<span class="hljs-keyword">for</span> TEP <span class="hljs-keyword">in</span> <span class="hljs-variable">$REMOTE_TEPS</span>; <span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"Testing TEP: <span class="hljs-variable">$TEP</span>"</span>
+  vmkping -I vmk10 -d -s 1572 -c 3 <span class="hljs-variable">$TEP</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"---"</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+<p><strong>Expected Output (Healthy):</strong></p>
+<pre><code>PING 192.168.12.75 (192.168.12.75): 1572 data bytes
+1580 bytes from 192.168.12.75: icmp_seq=0 ttl=64 time=0.543 ms
+1580 bytes from 192.168.12.75: icmp_seq=1 ttl=64 time=0.421 ms
+1580 bytes from 192.168.12.75: icmp_seq=2 ttl=64 time=0.389 ms
+
+--- 192.168.12.75 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+</code></pre>
+<h4 id="pass--warn--fail-6">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>0% packet loss with MTU 1600</td>
+<td>TEP healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Intermittent loss (&lt; 5%) or high latency (&gt; 5ms)</td>
+<td>Network issue</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>100% loss or MTU 1600 fails (but smaller succeeds)</td>
+<td>TEP broken or MTU mismatch</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>Remediation for MTU failures:</strong><br>
+1. Check physical switch MTU: Must be ≥ 1700 (Geneve adds 50-byte overhead)<br>
+2. Check vDS MTU: <code>esxcli network vswitch dvs vmware list</code> — MTU should be 9000 or at least 1600<br>
+3. Check TEP VLAN: Ensure TEP VLAN is trunked on all switch ports<br>
+4. Test with smaller MTU to isolate: <code>vmkping -I vmk10 -d -s 1400 &lt;TEP&gt;</code>
+</div>
+
+<hr>
+<h3 id="92-bfd-session-verification"><span id="tep-bfd"></span>9.2 BFD Session Verification</h3>
+<p><strong>What:</strong> Verify Bidirectional Forwarding Detection (BFD) sessions between transport nodes.</p>
+<p><strong>Why:</strong> BFD provides fast failure detection for TEP tunnels. Down BFD = NSX considers the tunnel failed.</p>
+<h4 id="cli-method-nsxcli-on-esxi">CLI Method (nsxcli on ESXi)</h4>
+<pre><code class="hljs bash">ssh root@&lt;esxi-host&gt;
+nsxcli
+&gt; get bfd-sessions
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>BFD Session          Remote IP        State   Diagnostic
+-------------------------------------------------------
+192.168.12.75        192.168.12.75    UP      No Diagnostic
+192.168.12.76        192.168.12.76    UP      No Diagnostic
+192.168.12.82        192.168.12.82    UP      No Diagnostic
+</code></pre>
+<h4 id="pass--warn--fail-7">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All BFD sessions <code>UP</code></td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Any session in <code>INIT</code> state</td>
+<td>Establishing</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any session <code>DOWN</code> or missing</td>
+<td>Tunnel failure</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="93-tunnel-status"><span id="tep-tunnels"></span>9.3 Tunnel Status</h3>
+<p><strong>What:</strong> Verify overlay tunnel status between transport nodes.</p>
+<h4 id="nsxcli-method">nsxcli Method</h4>
+<pre><code class="hljs bash">&gt; get logical-switches
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Logical Switch UUID                          VNI     Port Count
+---------------------------------------------------------------
+abc123-def456-789012-abcdef-123456789012    71001   5
+def456-789012-abcdef-123456-789012abcdef    71002   3
+</code></pre>
+<pre><code class="hljs bash">&gt; get tunnel-ports
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Tunnel Port  Remote IP        Encap  Status
+--------------------------------------------
+vxlan_12     192.168.12.75    Geneve UP
+vxlan_13     192.168.12.76    Geneve UP
+vxlan_14     192.168.12.82    Geneve UP
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="10-edge-node-health"><span id="edge-nodes"></span>10. Edge Node Health</h2>
+<h3 id="101-edge-cluster-status"><span id="edge-cluster"></span>10.1 Edge Cluster Status</h3>
+<p><strong>What:</strong> Verify the Edge cluster and all member Edge nodes are operational.</p>
+<p><strong>Why:</strong> Edge nodes provide north-south routing, NAT, load balancing, VPN, and gateway firewall services. Edge failure = services outage.</p>
+<h4 id="api-method-9">API Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List edge clusters</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/edge-clusters"</span> | jq <span class="hljs-string">'.results[] | {
+    id: .id,
+    display_name: .display_name,
+    member_count: (.members | length),
+    deployment_type: .deployment_type
+  }'</span>
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get edge cluster status</span>
+EDGE_CLUSTER_ID=<span class="hljs-string">"&lt;edge-cluster-id&gt;"</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/edge-clusters/<span class="hljs-variable">$EDGE_CLUSTER_ID</span>/status"</span> | jq .
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"edge_cluster_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123..."</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"member_status"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"member_index"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"transport_node_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"tn-edge-01"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UP"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"member_index"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"transport_node_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"tn-edge-02"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UP"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<hr>
+<h3 id="102-ha-state-verification"><span id="edge-ha"></span>10.2 HA State Verification</h3>
+<p><strong>What:</strong> Verify Edge High Availability is correctly configured with proper ACTIVE/STANDBY states.</p>
+<h4 id="api-method--tier-0-ha-status">API Method — Tier-0 HA Status</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get Tier-0 gateways</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/policy/api/v1/infra/tier-0s"</span> | jq <span class="hljs-string">'.results[] | {
+    id: .id,
+    display_name: .display_name,
+    ha_mode: .ha_mode,
+    failover_mode: .failover_mode
+  }'</span>
+</code></pre>
+<h4 id="cli-method-ssh-to-edge-node">CLI Method (SSH to Edge Node)</h4>
+<pre><code class="hljs bash">ssh admin@&lt;edge-node&gt;
+get high-availability status
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Active-Standby Status
+  Service Router    : ACTIVE
+  Distributed Router: ACTIVE
+  HA Channel State  : UP
+  Peer Status       : STANDBY (edge-02)
+</code></pre>
+<h4 id="pass--warn--fail-8">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>One edge <code>ACTIVE</code>, one <code>STANDBY</code>, HA channel <code>UP</code></td>
+<td>Healthy HA</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>HA channel <code>DOWN</code> but roles correct</td>
+<td>HA monitoring degraded</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Both edges <code>STANDBY</code> or both <code>ACTIVE</code> (split-brain)</td>
+<td>HA failure</td>
+</tr>
+</tbody></table>
+<div class="danger">
+<strong>Split-Brain Warning:</strong> If both edges are ACTIVE, this is a split-brain condition. Traffic may be blackholed. Immediate remediation: restart HA on the secondary edge: <code>restart service high-availability</code>
+</div>
+
+<hr>
+<h3 id="103-service-channels"><span id="edge-channels"></span>10.3 Service Channels</h3>
+<p><strong>What:</strong> Verify datapath and routing services on edge nodes.</p>
+<h4 id="cli-method-on-edge-node">CLI Method (on Edge Node)</h4>
+<pre><code class="hljs bash">ssh admin@&lt;edge-node&gt;
+get service status
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Service          Status
+--------------------------
+dataplane        running
+edge-health-agg  running
+nestdb           running
+nsx-edge-mpa     running
+nsx-proxy        running
+syslog           running
+</code></pre>
+<pre><code class="hljs bash">get interfaces
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Interface    IP Address         MAC               MTU   Admin Status
+--------------------------------------------------------------------
+fp-eth0      192.168.10.1/24    00:50:56:xx:xx:01 1500  UP
+fp-eth1      192.168.20.1/24    00:50:56:xx:xx:02 1500  UP
+fp-eth2      169.254.0.1/28     02:50:56:xx:xx:03 1500  UP
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="11-routing--bgp-health"><span id="routing"></span>11. Routing &amp; BGP Health</h2>
+<h3 id="111-bgp-neighbor-summary"><span id="bgp-neighbors"></span>11.1 BGP Neighbor Summary</h3>
+<p><strong>What:</strong> Verify BGP sessions with upstream physical routers are established and routes are being exchanged.</p>
+<p><strong>Why:</strong> BGP peering is critical for north-south traffic flow. Failed BGP = no external connectivity.</p>
+<h4 id="cli-method-on-edge-node-1">CLI Method (on Edge Node)</h4>
+<pre><code class="hljs bash">ssh admin@&lt;edge-node&gt;
+get bgp neighbor summary
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>BGP Summary:
+  Router ID: 192.168.10.1
+  Local AS:  65001
+
+Neighbor        AS      State        Up/Down   Prefixes Received
+-----------------------------------------------------------------
+192.168.10.254  65000   Established  5d12h     12
+192.168.20.254  65000   Established  5d12h     12
+</code></pre>
+<h4 id="api-method-10">API Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get BGP neighbors via policy API</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/policy/api/v1/infra/tier-0s/&lt;tier0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/status"</span> | jq .
+</code></pre>
+<h4 id="pass--warn--fail-9">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All neighbors <code>Established</code>, prefixes received &gt; 0</td>
+<td>BGP healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Any neighbor <code>OpenConfirm</code> or <code>OpenSent</code></td>
+<td>BGP negotiating</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any neighbor <code>Idle</code> or <code>Active</code></td>
+<td>BGP session down</td>
+</tr>
+</tbody></table>
+<div class="fix-box">
+<strong>BGP Troubleshooting:</strong><br>
+1. Check BGP config: <code>get bgp config</code><br>
+2. Check route advertisements: <code>get bgp neighbor &lt;IP&gt; advertised-routes</code><br>
+3. Check received routes: <code>get bgp neighbor &lt;IP&gt; received-routes</code><br>
+4. Verify physical router config (AS number, peer IP, password if MD5)<br>
+5. Check firewall: TCP port 179 must be open between peers
+</div>
+
+<hr>
+<h3 id="112-route-table-verification"><span id="route-tables"></span>11.2 Route Table Verification</h3>
+<p><strong>What:</strong> Verify the routing table contains expected routes for all network segments.</p>
+<h4 id="cli-method-edge-node">CLI Method (Edge Node)</h4>
+<pre><code class="hljs bash">get route-table
+</code></pre>
+<p><strong>Expected Output (abbreviated):</strong></p>
+<pre><code>Flags: c - connected, s - static, b - BGP, ns - nsx_static
+  &gt; - selected route, * - FIB route
+
+b&gt;*  0.0.0.0/0         via 192.168.10.254    fp-eth0   [20/0]
+c&gt;*  192.168.10.0/24   directly connected    fp-eth0
+c&gt;*  192.168.20.0/24   directly connected    fp-eth1
+b&gt;*  10.0.0.0/8        via 192.168.10.254    fp-eth0   [20/0]
+ns&gt;* 172.16.0.0/16     via 169.254.0.2       linked    [3/0]
+ns&gt;* 172.17.0.0/16     via 169.254.0.2       linked    [3/0]
+</code></pre>
+<h4 id="verify-expected-routes">Verify Expected Routes</h4>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Source</th>
+<th>Expected Next Hop</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Default (0.0.0.0/0)</td>
+<td>BGP</td>
+<td>Physical router IP</td>
+</tr>
+<tr>
+<td>Management network</td>
+<td>Connected</td>
+<td>Local interface</td>
+</tr>
+<tr>
+<td>Overlay segments</td>
+<td>NSX static</td>
+<td>DR backplane</td>
+</tr>
+<tr>
+<td>External networks</td>
+<td>BGP</td>
+<td>Physical router IP</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="113-gateway-realized-state"><span id="gw-realized"></span>11.3 Gateway Realized State</h3>
+<p><strong>What:</strong> Verify Tier-0 and Tier-1 gateways are fully realized (configured intent matches actual state).</p>
+<h4 id="api-method--tier-0">API Method — Tier-0</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check Tier-0 realized state</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/policy/api/v1/infra/tier-0s/&lt;tier0-id&gt;/state"</span> | jq <span class="hljs-string">'{
+    state: .state,
+    details: .details
+  }'</span>
+</code></pre>
+<h4 id="api-method--tier-1">API Method — Tier-1</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check Tier-1 realized state</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/policy/api/v1/infra/tier-1s"</span> | jq <span class="hljs-string">'.results[] | {
+    display_name: .display_name,
+    id: .id
+  }'</span>
+
+<span class="hljs-comment"># Then for each Tier-1:</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/policy/api/v1/infra/tier-1s/&lt;tier1-id&gt;/state"</span> | jq <span class="hljs-string">'{
+    state: .state,
+    details: .details
+  }'</span>
+</code></pre>
+<h4 id="pass--warn--fail-10">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All gateways <code>state: REALIZED</code></td>
+<td>Configuration applied</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Any gateway <code>state: IN_PROGRESS</code></td>
+<td>Being configured</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any gateway <code>state: ERROR</code></td>
+<td>Configuration failure</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="12-distributed-firewall-health"><span id="dfw"></span>12. Distributed Firewall Health</h2>
+<h3 id="121-dfw-rule-realization-status"><span id="dfw-realization"></span>12.1 DFW Rule Realization Status</h3>
+<p><strong>What:</strong> Verify all DFW security policies and rules have been successfully realized (pushed) to transport nodes.</p>
+<p><strong>Why:</strong> Unrealized rules mean security policies are not being enforced, creating security gaps.</p>
+<h4 id="api-method-11">API Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check DFW realization status</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/policy/api/v1/infra/realized-state/status?intent_path=/infra/domains/default/security-policies"</span> | jq <span class="hljs-string">'{
+    publish_status: .publish_status,
+    consolidated_status: .consolidated_status.consolidated_status
+  }'</span>
+</code></pre>
+<h4 id="detailed-status-per-policy">Detailed Status Per Policy</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all security policies and their realization state</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/policy/api/v1/infra/domains/default/security-policies"</span> | jq <span class="hljs-string">'.results[] | {
+    display_name: .display_name,
+    id: .id,
+    rule_count: (.rules | length)
+  }'</span>
+</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># Check realization for a specific policy</span>
+POLICY_ID=<span class="hljs-string">"&lt;policy-id&gt;"</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/policy/api/v1/infra/realized-state/status?intent_path=/infra/domains/default/security-policies/<span class="hljs-variable">$POLICY_ID</span>"</span> | jq .
+</code></pre>
+<h4 id="pass--warn--fail-11">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All policies <code>REALIZED</code></td>
+<td>Rules enforced on all hosts</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Any policy <code>IN_PROGRESS</code></td>
+<td>Rules being pushed</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any policy <code>ERROR</code></td>
+<td>Rules NOT enforced — security gap</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="122-esxi-dvfilter-verification"><span id="dfw-dvfilter"></span>12.2 ESXi dvfilter Verification</h3>
+<p><strong>What:</strong> Verify DFW filters are attached to VM vNICs on ESXi hosts.</p>
+<p><strong>Why:</strong> If dvfilter is not attached, DFW rules are not applied to that VM regardless of realization status.</p>
+<h4 id="cli-method-on-esxi-host-1">CLI Method (on ESXi host)</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all dvfilters</span>
+summarize-dvfilter
+</code></pre>
+<p><strong>Expected Output (abbreviated):</strong></p>
+<pre><code>world 12345678 vmm0:MyVM vcUuid:'50 12 ab cd ...'
+ ++  port 50331651 myvm.eth0
+    vNic slot 2
+    name: nic-12345678-eth0-vmware-sfw.2
+    agentName: vmware-sfw
+    state: IOChain Attached
+</code></pre>
+<div class="info-box">
+<strong>Key indicators:</strong><br>
+- <code>agentName: vmware-sfw</code> — confirms DFW is active<br>
+- <code>state: IOChain Attached</code> — confirms filter is operational<br>
+- Each VM vNIC should have a corresponding dvfilter entry
+</div>
+
+<hr>
+<h3 id="123-vsipioctl-commands"><span id="dfw-vsipioctl"></span>12.3 vsipioctl Commands</h3>
+<p><strong>What:</strong> Verify DFW rules are programmed on the ESXi datapath using vsipioctl.</p>
+<h4 id="get-filter-list">Get Filter List</h4>
+<pre><code class="hljs bash">vsipioctl getfilters
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Filter Name                              : nic-12345678-eth0-vmware-sfw.2
+Filter Rules:
+  Rule Count  : 47
+  Applied To  : myvm.eth0
+</code></pre>
+<h4 id="view-rules-for-a-specific-filter">View Rules for a Specific Filter</h4>
+<pre><code class="hljs bash">vsipioctl getrules -f nic-12345678-eth0-vmware-sfw.2
+</code></pre>
+<p><strong>Expected Output (abbreviated):</strong></p>
+<pre><code>ruleset domain-c8:1001 {
+  # DFW Section: Application Rules
+  rule 1001 at 1 inout protocol any from any to any accept with log;
+  rule 1002 at 2 inout protocol tcp from addrset src-001 to addrset dst-001 port 443 accept;
+  rule 1003 at 3 inout protocol any from any to any drop;
+}
+</code></pre>
+<h4 id="view-address-sets">View Address Sets</h4>
+<pre><code class="hljs bash">vsipioctl getaddrsets -f nic-12345678-eth0-vmware-sfw.2
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="13-gateway-firewall-health"><span id="gw-fw"></span>13. Gateway Firewall Health</h2>
+<p><strong>What:</strong> Verify Gateway Firewall rules on Tier-0 and Tier-1 gateways are realized and synchronized between HA edge pairs.</p>
+<p><strong>Why:</strong> Gateway firewall protects north-south traffic. Desynchronized rules between active/standby edges create intermittent security gaps during failover.</p>
+<h4 id="api-method--gateway-firewall-status">API Method — Gateway Firewall Status</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Tier-0 Gateway Firewall policies</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/policy/api/v1/infra/tier-0s/&lt;tier0-id&gt;/gateway-firewall"</span> | jq .
+
+<span class="hljs-comment"># Tier-1 Gateway Firewall policies</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/policy/api/v1/infra/tier-1s/&lt;tier1-id&gt;/gateway-firewall"</span> | jq .
+</code></pre>
+<h4 id="check-rule-realization-on-edge">Check Rule Realization on Edge</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># SSH to edge node</span>
+ssh admin@&lt;edge-node&gt;
+get firewall rules
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Rule ID    Action   Direction  Source          Destination     Service    Logged
+---------------------------------------------------------------------------------
+1001       allow    in-out     10.0.0.0/8      any            HTTPS       yes
+1002       allow    in-out     any             10.0.0.0/8     SSH         yes
+2001       drop     in-out     any             any            any         yes
+</code></pre>
+<h4 id="verify-sync-between-activestandby">Verify Sync Between Active/Standby</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># On ACTIVE edge:</span>
+get firewall rules | <span class="hljs-built_in">wc</span> -l
+
+<span class="hljs-comment"># On STANDBY edge:</span>
+get firewall rules | <span class="hljs-built_in">wc</span> -l
+</code></pre>
+<p>The rule count should be identical on both edges.</p>
+<h4 id="pass--warn--fail-12">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>Rules realized, rule count matches between HA pair</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Rule count differs by 1-2 (possible in-flight update)</td>
+<td>Monitor</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Significant rule count mismatch or rules not realized</td>
+<td>Security gap</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="14-segments--logical-switches"><span id="segments"></span>14. Segments &amp; Logical Switches</h2>
+<h3 id="141-segment-status"><span id="seg-status"></span>14.1 Segment Status</h3>
+<p><strong>What:</strong> Verify all NSX segments are operational and correctly realized.</p>
+<h4 id="api-method-12">API Method</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># List all segments with status</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/policy/api/v1/infra/segments"</span> | jq <span class="hljs-string">'.results[] | {
+    display_name: .display_name,
+    id: .id,
+    type: .type,
+    vlan_ids: .vlan_ids,
+    transport_zone_path: .transport_zone_path,
+    admin_state: .admin_state
+  }'</span>
+</code></pre>
+<h4 id="check-segment-realized-state">Check Segment Realized State</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># For each segment, check realization</span>
+SEGMENT_ID=<span class="hljs-string">"&lt;segment-id&gt;"</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/policy/api/v1/infra/segments/<span class="hljs-variable">$SEGMENT_ID</span>/state"</span> | jq <span class="hljs-string">'{
+    state: .state,
+    details: .details
+  }'</span>
+</code></pre>
+<h4 id="pass--warn--fail-13">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>All segments <code>admin_state: UP</code>, realized <code>SUCCESS</code></td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Any segment <code>IN_PROGRESS</code></td>
+<td>Being configured</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Any segment <code>ERROR</code> or <code>admin_state: DOWN</code></td>
+<td>Connectivity loss</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="142-mac--arp--vtep-tables"><span id="seg-tables"></span>14.2 MAC / ARP / VTEP Tables</h3>
+<p><strong>What:</strong> Verify logical switch forwarding tables are populated correctly.</p>
+<h4 id="nsxcli-on-esxi">nsxcli on ESXi</h4>
+<pre><code class="hljs bash">nsxcli
+&gt; get logical-switch &lt;VNI&gt; mac-table
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>Inner MAC          Outer MAC          Outer IP         Flags
+--------------------------------------------------------------
+00:50:56:aa:bb:01  00:50:56:cc:dd:01  192.168.12.75   L
+00:50:56:aa:bb:02  00:50:56:cc:dd:02  192.168.12.76   R
+</code></pre>
+<ul>
+<li><strong>L</strong> = Local (VM is on this host)</li>
+<li><strong>R</strong> = Remote (VM is on another host, reachable via VTEP)</li>
+</ul>
+<pre><code class="hljs bash">&gt; get logical-switch &lt;VNI&gt; arp-table
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>IP Address       MAC Address        Flags
+-------------------------------------------
+172.16.1.10      00:50:56:aa:bb:01  L
+172.16.1.11      00:50:56:aa:bb:02  R
+</code></pre>
+<pre><code class="hljs bash">&gt; get logical-switch &lt;VNI&gt; vtep-table
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code>VTEP IP           VTEP MAC             Segment ID  Is Local
+------------------------------------------------------------
+192.168.12.74     00:50:56:66:xx:01    192.168.12.0  true
+192.168.12.75     00:50:56:66:xx:02    192.168.12.0  false
+192.168.12.76     00:50:56:66:xx:03    192.168.12.0  false
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="15-nsx-alarms"><span id="alarms"></span>15. NSX Alarms</h2>
+<p><strong>What:</strong> Check for active alarms on the NSX Manager that indicate current or impending issues.</p>
+<p><strong>Why:</strong> NSX generates alarms for certificate expiry, resource exhaustion, connectivity failures, and more. Unresolved alarms indicate health issues.</p>
+<h4 id="api-method--all-active-alarms">API Method — All Active Alarms</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get all open alarms</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/alarms?status=OPEN,ACKNOWLEDGED&amp;sort_by=severity"</span> | jq <span class="hljs-string">'.results[] | {
+    alarm_id: .id,
+    severity: .severity,
+    feature: .feature_name,
+    event_type: .event_type,
+    description: .description,
+    entity: .entity_id,
+    last_reported: .last_reported_time,
+    status: .status
+  }'</span>
+</code></pre>
+<h4 id="filter-critical-alarms-only">Filter Critical Alarms Only</h4>
+<pre><code class="hljs bash">curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/alarms?status=OPEN&amp;severity=CRITICAL"</span> | jq <span class="hljs-string">'.result_count'</span>
+</code></pre>
+<h4 id="key-alarm-categories">Key Alarm Categories</h4>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Feature Name</th>
+<th>Example Alarm</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cluster</td>
+<td><code>clustering</code></td>
+<td>Manager node connectivity lost</td>
+</tr>
+<tr>
+<td>Certificate</td>
+<td><code>trust_management</code></td>
+<td>Certificate expiring soon</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td><code>transport_node</code></td>
+<td>Transport node connection down</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td><code>edge</code></td>
+<td>Edge node unhealthy</td>
+</tr>
+<tr>
+<td>Routing</td>
+<td><code>routing</code></td>
+<td>BGP neighbor down</td>
+</tr>
+<tr>
+<td>Firewall</td>
+<td><code>firewall</code></td>
+<td>DFW realization failure</td>
+</tr>
+<tr>
+<td>Backup</td>
+<td><code>backup</code></td>
+<td>Backup failure</td>
+</tr>
+<tr>
+<td>Resource</td>
+<td><code>system</code></td>
+<td>Disk space critical</td>
+</tr>
+</tbody></table>
+<h4 id="pass--warn--fail-14">Pass / Warn / Fail</h4>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Criteria</th>
+<th>Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="badge-pass">PASS</span></td>
+<td>0 critical alarms, 0 high-severity alarms</td>
+<td>Clean</td>
+</tr>
+<tr>
+<td><span class="badge-warn">WARN</span></td>
+<td>Warning-severity alarms present</td>
+<td>Review recommended</td>
+</tr>
+<tr>
+<td><span class="badge-fail">FAIL</span></td>
+<td>Critical or high-severity alarms present</td>
+<td>Immediate action</td>
+</tr>
+</tbody></table>
+<h4 id="acknowledge--resolve-alarms-via-api">Acknowledge / Resolve Alarms via API</h4>
+<pre><code class="hljs bash"><span class="hljs-comment"># Acknowledge an alarm</span>
+curl -sk -X POST -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/alarms/&lt;alarm-id&gt;?action=set_status&amp;new_status=ACKNOWLEDGED"</span>
+
+<span class="hljs-comment"># Resolve an alarm (after fixing the root cause)</span>
+curl -sk -X POST -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/alarms/&lt;alarm-id&gt;?action=set_status&amp;new_status=RESOLVED"</span>
+</code></pre>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="16-port-reference-table"><span id="ports"></span>16. Port Reference Table</h2>
+<h3 id="nsx-manager-ports">NSX Manager Ports</h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Destination</th>
+<th>Port</th>
+<th>Protocol</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Admin Workstation</td>
+<td>NSX Manager</td>
+<td>443</td>
+<td>TCP</td>
+<td>Web UI / API</td>
+</tr>
+<tr>
+<td>Admin Workstation</td>
+<td>NSX Manager</td>
+<td>22</td>
+<td>TCP</td>
+<td>SSH CLI</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>NSX Manager</td>
+<td>443</td>
+<td>TCP</td>
+<td>Inter-node API</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>NSX Manager</td>
+<td>5671</td>
+<td>TCP</td>
+<td>Messaging (AMQP)</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>NSX Manager</td>
+<td>9000</td>
+<td>TCP</td>
+<td>Cluster bootstrap</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>NSX Manager</td>
+<td>9200</td>
+<td>TCP</td>
+<td>Corfu datastore</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>NSX Manager</td>
+<td>9300</td>
+<td>TCP</td>
+<td>Search engine</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>vCenter</td>
+<td>443</td>
+<td>TCP</td>
+<td>Compute Manager</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>vCenter</td>
+<td>902</td>
+<td>TCP</td>
+<td>VM console proxy</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>DNS</td>
+<td>53</td>
+<td>TCP/UDP</td>
+<td>Name resolution</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>NTP</td>
+<td>123</td>
+<td>UDP</td>
+<td>Time sync</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>Syslog</td>
+<td>514/6514</td>
+<td>UDP/TCP</td>
+<td>Log forwarding</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>SFTP Backup</td>
+<td>22</td>
+<td>TCP</td>
+<td>Backup file transfer</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>LDAP/AD</td>
+<td>389/636</td>
+<td>TCP</td>
+<td>Authentication</td>
+</tr>
+</tbody></table>
+<h3 id="transport-node-esxi-ports">Transport Node (ESXi) Ports</h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Destination</th>
+<th>Port</th>
+<th>Protocol</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ESXi</td>
+<td>NSX Manager</td>
+<td>1234</td>
+<td>TCP</td>
+<td>MPA communication</td>
+</tr>
+<tr>
+<td>ESXi</td>
+<td>NSX Manager</td>
+<td>1235</td>
+<td>TCP</td>
+<td>Central CLI</td>
+</tr>
+<tr>
+<td>ESXi</td>
+<td>NSX Manager</td>
+<td>5671</td>
+<td>TCP</td>
+<td>Message bus</td>
+</tr>
+<tr>
+<td>ESXi</td>
+<td>NSX Manager</td>
+<td>443</td>
+<td>TCP</td>
+<td>API / certificate</td>
+</tr>
+<tr>
+<td>ESXi</td>
+<td>ESXi (TEP)</td>
+<td>4789</td>
+<td>UDP</td>
+<td>Geneve overlay</td>
+</tr>
+<tr>
+<td>ESXi</td>
+<td>ESXi (TEP)</td>
+<td>6081</td>
+<td>UDP</td>
+<td>Geneve BFD</td>
+</tr>
+<tr>
+<td>NSX Manager</td>
+<td>ESXi</td>
+<td>443</td>
+<td>TCP</td>
+<td>Host preparation</td>
+</tr>
+</tbody></table>
+<h3 id="edge-node-ports">Edge Node Ports</h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Destination</th>
+<th>Port</th>
+<th>Protocol</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Edge</td>
+<td>NSX Manager</td>
+<td>1234</td>
+<td>TCP</td>
+<td>MPA</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>NSX Manager</td>
+<td>1235</td>
+<td>TCP</td>
+<td>Central CLI</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>NSX Manager</td>
+<td>5671</td>
+<td>TCP</td>
+<td>Message bus</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>NSX Manager</td>
+<td>443</td>
+<td>TCP</td>
+<td>API</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>ESXi (TEP)</td>
+<td>4789</td>
+<td>UDP</td>
+<td>Geneve overlay</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>Edge</td>
+<td>4789</td>
+<td>UDP</td>
+<td>Inter-edge overlay</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>Physical Router</td>
+<td>179</td>
+<td>TCP</td>
+<td>BGP peering</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>Physical Router</td>
+<td>ICMP</td>
+<td>—</td>
+<td>BFD (if configured)</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="17-common-issues--remediation"><span id="common-issues"></span>17. Common Issues &amp; Remediation</h2>
+<h3 id="171-control-plane-connectivity-issues">17.1 Control Plane Connectivity Issues</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely Cause</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Transport node shows <code>DOWN</code></td>
+<td>NSX Manager unreachable from host</td>
+<td>Check port 1234/5671 connectivity; restart <code>nsx-mpa</code></td>
+</tr>
+<tr>
+<td><code>get controllers</code> shows <code>Disconnected</code></td>
+<td>Controller service issue</td>
+<td>Restart controller: <code>restart service controller</code> on NSX Manager</td>
+</tr>
+<tr>
+<td>Multiple nodes disconnecting</td>
+<td>Network partition</td>
+<td>Check upstream switch/VLAN; verify management network</td>
+</tr>
+</tbody></table>
+<h3 id="172-transport-node-preparation-failures">17.2 Transport Node Preparation Failures</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely Cause</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Host stuck in <code>IN_PROGRESS</code></td>
+<td>VIB installation hung</td>
+<td>Reboot ESXi host; re-trigger preparation</td>
+</tr>
+<tr>
+<td><code>FAILED</code> with "VIB conflict"</td>
+<td>Incompatible third-party VIB</td>
+<td>Remove conflicting VIB; check compatibility matrix</td>
+</tr>
+<tr>
+<td><code>FAILED</code> with certificate error</td>
+<td>Clock skew</td>
+<td>Verify NTP on ESXi and NSX Manager</td>
+</tr>
+</tbody></table>
+<h3 id="173-certificate-expiry-impacts">17.3 Certificate Expiry Impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Certificate Type</th>
+<th>Impact When Expired</th>
+<th>Recovery</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NSX Manager API</td>
+<td>API calls fail, UI inaccessible</td>
+<td>Replace via CLI: <code>set certificate api</code></td>
+</tr>
+<tr>
+<td>Cluster certificate</td>
+<td>Inter-node communication fails</td>
+<td>Replace per VMware KB 83054</td>
+</tr>
+<tr>
+<td>Transport node</td>
+<td>Host loses control plane</td>
+<td>Replace and re-prepare host</td>
+</tr>
+</tbody></table>
+<h3 id="174-cluster-split-brain">17.4 Cluster Split-Brain</h3>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Two NSX Manager groups each claiming to be leader</li>
+<li>Conflicting configuration states</li>
+<li>Intermittent API responses with different data</li>
+</ul>
+<p><strong>Resolution:</strong></p>
+<ol>
+<li>Identify the minority partition (fewer nodes)</li>
+<li>Power off minority nodes</li>
+<li>Verify majority cluster stabilizes</li>
+<li>Power on minority nodes one at a time</li>
+<li>Monitor cluster rejoin via <code>get cluster status</code></li>
+</ol>
+<div class="danger">
+<strong>Warning:</strong> Never force-delete a cluster node during split-brain. This can cause permanent data loss. Always follow the VMware documented procedure.
+</div>
+
+<hr>
+<div class="page-break"></div>
+
+<h2 id="18-cli-quick-reference-card"><span id="cli-reference"></span>18. CLI Quick Reference Card</h2>
+<h3 id="nsx-manager-cli-ssh-as-admin">NSX Manager CLI (SSH as admin)</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>get cluster status</code></td>
+<td>Cluster health overview</td>
+</tr>
+<tr>
+<td><code>get services</code></td>
+<td>All service status</td>
+</tr>
+<tr>
+<td><code>get node-stats</code></td>
+<td>CPU/memory/disk stats</td>
+</tr>
+<tr>
+<td><code>get filesystem-info</code></td>
+<td>Disk utilization</td>
+</tr>
+<tr>
+<td><code>get certificate api</code></td>
+<td>API certificate details</td>
+</tr>
+<tr>
+<td><code>get managers</code></td>
+<td>Connected manager nodes</td>
+</tr>
+<tr>
+<td><code>get controllers</code></td>
+<td>Connected controllers</td>
+</tr>
+<tr>
+<td><code>get interface eth0</code></td>
+<td>Network interface info</td>
+</tr>
+<tr>
+<td><code>get log-file syslog follow</code></td>
+<td>Tail syslog in real-time</td>
+</tr>
+<tr>
+<td><code>restart cluster boot-manager</code></td>
+<td>Restart cluster membership</td>
+</tr>
+<tr>
+<td><code>restart service &lt;name&gt;</code></td>
+<td>Restart a specific service</td>
+</tr>
+<tr>
+<td><code>set logging-level &lt;service&gt; level debug</code></td>
+<td>Enable debug logging</td>
+</tr>
+<tr>
+<td><code>clear logging-level &lt;service&gt;</code></td>
+<td>Reset to default logging</td>
+</tr>
+</tbody></table>
+<h3 id="esxi-nsxcli-commands">ESXi nsxcli Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>get managers</code></td>
+<td>NSX Manager connectivity</td>
+</tr>
+<tr>
+<td><code>get controllers</code></td>
+<td>Controller connectivity</td>
+</tr>
+<tr>
+<td><code>get logical-switches</code></td>
+<td>Overlay segments on host</td>
+</tr>
+<tr>
+<td><code>get logical-switch &lt;VNI&gt; mac-table</code></td>
+<td>MAC forwarding table</td>
+</tr>
+<tr>
+<td><code>get logical-switch &lt;VNI&gt; arp-table</code></td>
+<td>ARP table</td>
+</tr>
+<tr>
+<td><code>get logical-switch &lt;VNI&gt; vtep-table</code></td>
+<td>VTEP table</td>
+</tr>
+<tr>
+<td><code>get bfd-sessions</code></td>
+<td>BFD tunnel status</td>
+</tr>
+<tr>
+<td><code>get tunnel-ports</code></td>
+<td>Geneve tunnel endpoints</td>
+</tr>
+<tr>
+<td><code>get firewall rules</code></td>
+<td>DFW rules (on edge)</td>
+</tr>
+</tbody></table>
+<h3 id="esxi-host-commands-as-root">ESXi Host Commands (as root)</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/etc/init.d/nsx-mpa status</code></td>
+<td>MPA agent status</td>
+</tr>
+<tr>
+<td><code>/etc/init.d/nsx-proxy status</code></td>
+<td>Proxy agent status</td>
+</tr>
+<tr>
+<td><code>/etc/init.d/nsx-mpa restart</code></td>
+<td>Restart MPA</td>
+</tr>
+<tr>
+<td><code>summarize-dvfilter</code></td>
+<td>DFW filter summary</td>
+</tr>
+<tr>
+<td><code>vsipioctl getfilters</code></td>
+<td>DFW filter list</td>
+</tr>
+<tr>
+<td><code>vsipioctl getrules -f &lt;filter&gt;</code></td>
+<td>DFW rules for a filter</td>
+</tr>
+<tr>
+<td><code>vsipioctl getaddrsets -f &lt;filter&gt;</code></td>
+<td>Address sets</td>
+</tr>
+<tr>
+<td><code>esxcli software vib list | grep nsx</code></td>
+<td>Installed NSX VIBs</td>
+</tr>
+<tr>
+<td><code>vmkping -I vmk10 -d -s 1572 &lt;IP&gt;</code></td>
+<td>TEP MTU test</td>
+</tr>
+</tbody></table>
+<h3 id="edge-node-cli">Edge Node CLI</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>get high-availability status</code></td>
+<td>HA state</td>
+</tr>
+<tr>
+<td><code>get bgp neighbor summary</code></td>
+<td>BGP sessions</td>
+</tr>
+<tr>
+<td><code>get route-table</code></td>
+<td>Routing table</td>
+</tr>
+<tr>
+<td><code>get interfaces</code></td>
+<td>Network interfaces</td>
+</tr>
+<tr>
+<td><code>get service status</code></td>
+<td>Running services</td>
+</tr>
+<tr>
+<td><code>get firewall rules</code></td>
+<td>Gateway FW rules</td>
+</tr>
+<tr>
+<td><code>get arp-table</code></td>
+<td>ARP entries</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div>
+
+<h2 id="19-api-quick-reference"><span id="api-reference"></span>19. API Quick Reference</h2>
+<h3 id="authentication">Authentication</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Basic authentication (used throughout this document)</span>
+curl -sk -u <span class="hljs-string">"admin:password"</span> <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/..."</span>
+
+<span class="hljs-comment"># Session-based authentication</span>
+curl -sk -c cookies.txt -X POST \
+  -d <span class="hljs-string">'{"j_username":"admin","j_password":"password"}'</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/session/create"</span>
+
+<span class="hljs-comment"># Subsequent calls with session cookie</span>
+curl -sk -b cookies.txt <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/..."</span>
+</code></pre>
+<h3 id="key-api-endpoints">Key API Endpoints</h3>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/api/v1/cluster/status</code></td>
+<td>GET</td>
+<td>Cluster health</td>
+</tr>
+<tr>
+<td><code>/api/v1/cluster/nodes</code></td>
+<td>GET</td>
+<td>Node inventory</td>
+</tr>
+<tr>
+<td><code>/api/v1/node</code></td>
+<td>GET</td>
+<td>Local node info</td>
+</tr>
+<tr>
+<td><code>/api/v1/node/status</code></td>
+<td>GET</td>
+<td>Node resource usage</td>
+</tr>
+<tr>
+<td><code>/api/v1/node/services</code></td>
+<td>GET</td>
+<td>Service status</td>
+</tr>
+<tr>
+<td><code>/api/v1/trust-management/certificates</code></td>
+<td>GET</td>
+<td>All certificates</td>
+</tr>
+<tr>
+<td><code>/api/v1/cluster/backups/config</code></td>
+<td>GET</td>
+<td>Backup configuration</td>
+</tr>
+<tr>
+<td><code>/api/v1/cluster/backups/history</code></td>
+<td>GET</td>
+<td>Backup history</td>
+</tr>
+<tr>
+<td><code>/api/v1/transport-nodes/state</code></td>
+<td>GET</td>
+<td>Transport node status</td>
+</tr>
+<tr>
+<td><code>/api/v1/edge-clusters</code></td>
+<td>GET</td>
+<td>Edge clusters</td>
+</tr>
+<tr>
+<td><code>/api/v1/edge-clusters/&lt;id&gt;/status</code></td>
+<td>GET</td>
+<td>Edge cluster status</td>
+</tr>
+<tr>
+<td><code>/api/v1/alarms</code></td>
+<td>GET</td>
+<td>Active alarms</td>
+</tr>
+<tr>
+<td><code>/policy/api/v1/infra/tier-0s</code></td>
+<td>GET</td>
+<td>Tier-0 gateways</td>
+</tr>
+<tr>
+<td><code>/policy/api/v1/infra/tier-1s</code></td>
+<td>GET</td>
+<td>Tier-1 gateways</td>
+</tr>
+<tr>
+<td><code>/policy/api/v1/infra/segments</code></td>
+<td>GET</td>
+<td>Network segments</td>
+</tr>
+<tr>
+<td><code>/policy/api/v1/infra/domains/default/security-policies</code></td>
+<td>GET</td>
+<td>DFW policies</td>
+</tr>
+<tr>
+<td><code>/policy/api/v1/infra/realized-state/status</code></td>
+<td>GET</td>
+<td>Realization status</td>
+</tr>
+</tbody></table>
+<h3 id="common-api-query-parameters">Common API Query Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Example</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>cursor</code></td>
+<td><code>?cursor=0</code></td>
+<td>Pagination start</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td><code>?page_size=100</code></td>
+<td>Results per page</td>
+</tr>
+<tr>
+<td><code>sort_by</code></td>
+<td><code>?sort_by=display_name</code></td>
+<td>Sort field</td>
+</tr>
+<tr>
+<td><code>sort_ascending</code></td>
+<td><code>?sort_ascending=true</code></td>
+<td>Sort order</td>
+</tr>
+<tr>
+<td><code>included_fields</code></td>
+<td><code>?included_fields=display_name,id</code></td>
+<td>Limit response fields</td>
+</tr>
+</tbody></table>
+<h3 id="version-check">Version Check</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Get NSX Manager version</span>
+curl -sk -u <span class="hljs-string">"<span class="hljs-variable">$NSX_USER</span>:<span class="hljs-variable">$NSX_PASS</span>"</span> \
+  <span class="hljs-string">"https://<span class="hljs-variable">$NSX_VIP</span>/api/v1/node/version"</span> | jq .
+</code></pre>
+<p><strong>Expected Output:</strong></p>
+<pre><code class="hljs json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"node_version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4.2.0.0.0.12345678"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"product_version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4.2.0.0.0.12345678"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<hr>
+<div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #1565c0; color: #666; font-size: 9pt;">
+
+<p><strong>NSX 4.x Health Check Handbook</strong>
+Version 1.0 | March 2026
+© 2026 Virtual Control LLC — All Rights Reserved</p>
+</div>
+
+	
+
+</body></html>
