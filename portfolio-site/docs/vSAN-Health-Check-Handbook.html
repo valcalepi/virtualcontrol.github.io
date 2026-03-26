@@ -249,7 +249,7 @@ code.hljs {
   
 }/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
 h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
-h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; page-break-before: always; }
 h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
 h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
 table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
@@ -297,7 +297,7 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 
 </div>
 
-<hr>
+
 <div class="toc">
 
 <h2 id="table-of-contents">Table of Contents</h2>
@@ -420,7 +420,6 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="overview-and-purpose"></a></p>
 <h1 id="1-overview--purpose">1. Overview &amp; Purpose</h1>
@@ -547,8 +546,6 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 <li><strong>Operations Teams</strong> performing routine maintenance windows</li>
 <li><strong>Escalation Engineers</strong> troubleshooting vSAN issues</li>
 </ul>
-<div class="page-break"></div>
-
 <p><a id="prerequisites"></a></p>
 <h1 id="2-prerequisites">2. Prerequisites</h1>
 <p><a id="access-requirements"></a></p>
@@ -709,7 +706,6 @@ vsan.perf.stats_object_list /localhost/datacenter/computers/cluster
 <strong>PowerCLI 13.3+:</strong> VCF 9 ships with vCenter 8.x which requires PowerCLI 13.3 or later for full vSAN ESA cmdlet support. Ensure you are running the latest version before executing vSAN commands.
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="quick-reference-summary"></a></p>
 <h1 id="3-quick-reference-summary-table">3. Quick Reference Summary Table</h1>
@@ -926,8 +922,6 @@ vsan.perf.stats_object_list /localhost/datacenter/computers/cluster
 <td>&gt; 3 silenced</td>
 </tr>
 </tbody></table>
-<div class="page-break"></div>
-
 <p><a id="vsan-cluster-health"></a></p>
 <h1 id="4-vsan-cluster-health">4. vSAN Cluster Health</h1>
 <p><a id="cluster-health-list"></a></p>
@@ -1136,7 +1130,6 @@ esxcli vsan health cluster list -t <span class="hljs-string">"vSAN Health Servic
 5. As a last resort, remove and re-add the host to the vSAN cluster
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="disk-group-status"></a></p>
 <h1 id="5-disk-group-status">5. Disk Group Status</h1>
@@ -1318,8 +1311,6 @@ esxcli vsan storage list --format=xml
     }
 } | <span class="hljs-built_in">Format-Table</span> <span class="hljs-literal">-AutoSize</span>
 </code></pre>
-<div class="page-break"></div>
-
 <p><a id="capacity-analysis"></a></p>
 <h1 id="6-capacity-analysis">6. Capacity Analysis</h1>
 <p><a id="capacity-overview"></a></p>
@@ -1496,7 +1487,6 @@ With FTT=1, RAID-1 mirroring:
 6. Review and right-size VMDK allocations
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="resync-status"></a></p>
 <h1 id="7-resync-status">7. Resync Status</h1>
@@ -1612,7 +1602,6 @@ esxcli system settings advanced list -o /VSAN/ResyncThrottleAdaptive
 <strong>Performance Impact:</strong> During large-scale resyncs (e.g., after host failure), expect 10-30% reduction in VM IO performance. Avoid scheduling additional maintenance operations or large deployments until resyncs complete.
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="vsan-network-health"></a></p>
 <h1 id="8-vsan-network-health">8. vSAN Network Health</h1>
@@ -1864,8 +1853,6 @@ vmkping -I vmk1 &lt;witness_vsan_ip&gt;
 <td>Immediate investigation -- quorum at risk</td>
 </tr>
 </tbody></table>
-<div class="page-break"></div>
-
 <p><a id="performance-health"></a></p>
 <h1 id="9-performance-health">9. Performance Health</h1>
 <p><a id="iops-latency"></a></p>
@@ -2123,8 +2110,6 @@ vscsiStats -x -w &lt;world_id&gt; -i &lt;handle_id&gt;
 <td>Enable via PowerCLI or vCenter UI</td>
 </tr>
 </tbody></table>
-<div class="page-break"></div>
-
 <p><a id="object-health-compliance"></a></p>
 <h1 id="10-object-health--compliance">10. Object Health &amp; Compliance</h1>
 <p><a id="object-count"></a></p>
@@ -2270,7 +2255,6 @@ esxcli vsan debug object list -u &lt;object_uuid&gt;
 5. Restart CLOMD if the service is stuck: <code>/etc/init.d/clomd restart</code>
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="stretched-cluster-health"></a></p>
 <h1 id="11-stretched-cluster-health">11. Stretched Cluster Health</h1>
@@ -2438,7 +2422,6 @@ vmkping -I vmk1 -c 100 &lt;site-b-host-vsan-ip&gt;
 <strong>Latency Note:</strong> vSAN stretched clusters in VCF 9 support up to 5ms RTT between data sites for write operations (synchronous replication). The witness host can tolerate up to 200ms RTT. Exceeding these limits will cause write performance degradation or cluster instability.
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="fault-domains"></a></p>
 <h1 id="12-fault-domains">12. Fault Domains</h1>
@@ -2538,7 +2521,6 @@ Fault Domain: rack-04 -&gt; esx-04.vcf.local
 <code>New-VsanFaultDomain -Name "rack-05" -VMHost (Get-VMHost "esx-05.vcf.local")</code>
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="vsan-health-service-detail"></a></p>
 <h1 id="13-vsan-health-service-detail">13. vSAN Health Service Detail</h1>
@@ -2687,8 +2669,6 @@ vmon-cli --status vsanhealth
 <td>Audit all silenced checks; likely masking real issues</td>
 </tr>
 </tbody></table>
-<div class="page-break"></div>
-
 <p><a id="hcl-compliance"></a></p>
 <h1 id="14-hcl-compliance">14. HCL Compliance</h1>
 <p><a id="controller-driver-firmware"></a></p>
@@ -2779,7 +2759,6 @@ esxcli storage core adapter list | grep -i firmware
 4. After updating, re-run health checks to verify compliance
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="port-reference-table"></a></p>
 <h1 id="15-port-reference-table">15. Port Reference Table</h1>
@@ -2919,7 +2898,6 @@ nc -z -w3 172.16.10.104 2233 &amp;&amp; <span class="hljs-built_in">echo</span> 
 <strong>VCF 9 Note:</strong> In VCF 9, vSAN ESA may use RDMA transport on ports 8100/8200 when supported NICs are present. Ensure these ports are open if RDMA is enabled in your environment.
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="common-issues-remediation"></a></p>
 <h1 id="16-common-issues--remediation">16. Common Issues &amp; Remediation</h1>
@@ -3144,7 +3122,6 @@ esxcli vsan debug object list --<span class="hljs-built_in">type</span>=nonCompl
 6. After resolving constraints, CLOM will automatically retry placement
 </div>
 
-<div class="page-break"></div>
 
 <p><a id="cli-quick-reference-card"></a></p>
 <h1 id="17-cli-quick-reference-card">17. CLI Quick Reference Card</h1>
@@ -3281,8 +3258,6 @@ esxcli system settings advanced <span class="hljs-built_in">set</span> -o /VSAN/
 <span class="hljs-comment"># vSAN observer data (if enabled)</span>
 /var/log/vsan/observer/
 </code></pre>
-<div class="page-break"></div>
-
 <p><a id="powercli-quick-reference"></a></p>
 <h1 id="18-powercli-quick-reference">18. PowerCLI Quick Reference</h1>
 <h3 id="connection--setup">Connection &amp; Setup</h3>
@@ -3530,9 +3505,6 @@ esxcli system settings advanced <span class="hljs-built_in">set</span> -o /VSAN/
 <span class="hljs-comment"># Execute the report</span>
 <span class="hljs-built_in">Get-VsanHealthReport</span> <span class="hljs-literal">-ClusterName</span> <span class="hljs-string">"SDDC-Cluster1"</span>
 </code></pre>
-<div class="page-break"></div>
-
-<hr>
 <div style="text-align: center; padding: 40px 20px; color: #666;">
 
 <p><strong>vSAN Health Check Handbook</strong></p>

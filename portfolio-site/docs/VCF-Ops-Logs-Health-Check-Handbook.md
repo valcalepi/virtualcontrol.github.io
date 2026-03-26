@@ -8,7 +8,7 @@ classification: "Internal Use"
 css: |-
   body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
   h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
-  h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+  h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; page-break-before: always; }
   h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
   h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
   table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
@@ -198,7 +198,6 @@ pdf_options:
 
 </div>
 
-<div class="page-break"></div>
 
 <a id="overview-purpose"></a>
 
@@ -262,7 +261,6 @@ VCF Operations for Logs in VCF 9 consists of the following architectural compone
 <strong>Note:</strong> In VCF 9, Operations for Logs is deployed and lifecycle-managed through SDDC Manager. The product was previously known as VMware Aria Operations for Logs (8.x) and vRealize Log Insight (pre-8.x). API endpoints and CLI commands remain largely consistent across naming transitions.
 </div>
 
-<div class="page-break"></div>
 
 <a id="prerequisites"></a>
 
@@ -366,7 +364,6 @@ echo "Token acquired: ${TOKEN:0:8}..."
 | `ntpq` / `chronyc` | NTP verification | `ntpq -V` or `chronyc --version` |
 | `dig` / `nslookup` | DNS resolution testing | `dig -v` |
 
-<div class="page-break"></div>
 
 <a id="quick-reference"></a>
 
@@ -400,7 +397,6 @@ This table provides a single-glance view of every health check in this handbook,
 | 16.2 | Memory Usage | `free -m` | < 80% used | 80-90% used | > 90% used |
 | 16.3 | JVM Heap | JMX / log analysis | < 75% heap | 75-90% heap | > 90% heap / OOM |
 
-<div class="page-break"></div>
 
 <a id="service-status"></a>
 
@@ -679,7 +675,6 @@ for NODE in ${OFL_NODE1} ${OFL_NODE2} ${OFL_NODE3}; do
 done
 ```
 
-<div class="page-break"></div>
 
 <a id="cluster-health"></a>
 
@@ -892,7 +887,6 @@ Connection to ops-for-logs-node2.vcf.local 7000 port [tcp/*] succeeded!
 Connection to ops-for-logs-node3.vcf.local 7000 port [tcp/*] succeeded!
 ```
 
-<div class="page-break"></div>
 
 <a id="disk-storage"></a>
 
@@ -1067,7 +1061,6 @@ ssh root@${OFL_NODE1} "mount | grep nfs && df -h /storage/var/loginsight/archive
 4. Check for and remove stale Cassandra snapshots: <code>nodetool clearsnapshot</code>
 </div>
 
-<div class="page-break"></div>
 
 <a id="ingestion-rate"></a>
 
@@ -1187,7 +1180,6 @@ ssh root@${OFL_NODE1} "grep -i 'queue.*depth\|pending.*events' \
 5. Review forwarding destinations -- slow downstream targets can cause backpressure
 </div>
 
-<div class="page-break"></div>
 
 <a id="log-forwarding"></a>
 
@@ -1347,7 +1339,6 @@ Then verify the test event arrived at the forwarding destination by searching fo
 5. Check destination-side logs for connection rejections
 </div>
 
-<div class="page-break"></div>
 
 <a id="content-packs"></a>
 
@@ -1477,7 +1468,6 @@ curl -sk -X GET "${OFL_API}/content/contentpack/autoupdate" \
 4. Enable auto-update: <code>PUT /api/v1/content/contentpack/autoupdate</code> with <code>{"autoUpdateEnabled": true}</code>
 </div>
 
-<div class="page-break"></div>
 
 <a id="integration-ops"></a>
 
@@ -1600,7 +1590,6 @@ curl -sk -X POST "${OFL_API}/events" \
 5. Restart the integration service: <code>systemctl restart loginsight</code> (integration is part of the main daemon)
 </div>
 
-<div class="page-break"></div>
 
 <a id="agent-status"></a>
 
@@ -1771,7 +1760,6 @@ curl -sk -X GET "${OFL_API}/agent/agents?status=DISCONNECTED" \
 6. Verify agent can reach Ops for Logs on port 9543: <code>nc -zv ops-for-logs.vcf.local 9543</code>
 </div>
 
-<div class="page-break"></div>
 
 <a id="api-health"></a>
 
@@ -1911,7 +1899,6 @@ If rate limiting is active, you may see `HTTP 429` (Too Many Requests) after a t
 6. As a last resort, restart the loginsight daemon: <code>systemctl restart loginsight</code>
 </div>
 
-<div class="page-break"></div>
 
 <a id="certificate-health"></a>
 
@@ -2045,7 +2032,6 @@ done
 6. Verify all agents reconnect after certificate change -- agents must trust the new CA
 </div>
 
-<div class="page-break"></div>
 
 <a id="ntp-dns"></a>
 
@@ -2211,7 +2197,6 @@ nameserver 192.168.1.11
 5. Clear DNS cache if applicable: <code>systemd-resolve --flush-caches</code>
 </div>
 
-<div class="page-break"></div>
 
 <a id="backup-config"></a>
 
@@ -2309,7 +2294,6 @@ ssh root@${OFL_NODE1} "
 6. Verify backup integrity by testing a restore in a non-production environment
 </div>
 
-<div class="page-break"></div>
 
 <a id="resource-utilization"></a>
 
@@ -2471,7 +2455,6 @@ sdb await: 2.34ms util: 18.56%
 5. <strong>JVM Heap:</strong> Increase Cassandra heap in <code>/storage/var/cassandra/conf/cassandra-env.sh</code>. Restart Cassandra after changes.
 </div>
 
-<div class="page-break"></div>
 
 <a id="port-reference"></a>
 
@@ -2547,7 +2530,6 @@ for PORT in 443 9000 9543 514 6514; do
 done
 ```
 
-<div class="page-break"></div>
 
 <a id="common-issues"></a>
 
@@ -2807,7 +2789,6 @@ ssh root@<esxi-host> "nc -zv ${OFL_HOST} 9543"
 6. <strong>DNS issue:</strong> Verify the agent can resolve the Ops for Logs FQDN
 </div>
 
-<div class="page-break"></div>
 
 <a id="cli-reference"></a>
 
@@ -2920,7 +2901,6 @@ This section provides a consolidated list of all CLI commands used throughout th
 | `/var/log/fluentd/fluentd.log` | Fluentd log |
 | `/var/log/liagent/liagent.log` | Log Insight agent log (on agent hosts) |
 
-<div class="page-break"></div>
 
 <a id="api-reference"></a>
 
@@ -3173,9 +3153,7 @@ curl -sk -X GET "https://${OFL_HOST}/api/v1/archive" \
   -H "Authorization: Bearer ${TOKEN}" | jq '.'
 ```
 
-<div class="page-break"></div>
 
----
 
 <div style="text-align: center; padding: 40px 20px; color: #666;">
 

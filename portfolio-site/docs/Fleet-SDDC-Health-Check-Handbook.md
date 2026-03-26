@@ -8,7 +8,7 @@ classification: "Internal Use"
 css: |-
   body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
   h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
-  h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+  h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; page-break-before: always; }
   h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
   h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
   table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
@@ -65,7 +65,6 @@ pdf_options:
 </div>
 </div>
 
----
 
 <div class="toc">
 
@@ -121,7 +120,6 @@ pdf_options:
 
 </div>
 
-<div class="page-break"></div>
 
 ## <span id="overview"></span>1. Overview & Purpose
 
@@ -151,9 +149,7 @@ This handbook provides a **complete health check procedure** for the SDDC Manage
 <code>$TOKEN</code> = Bearer token acquired via API
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="prerequisites"></span>2. Prerequisites
 
@@ -192,9 +188,7 @@ sddc_api() {
 <strong>Token Expiry:</strong> SDDC Manager tokens expire after 30 minutes. Re-acquire if you get 401 responses.
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="quick-reference"></span>3. Quick Reference — All Checks Summary
 
@@ -215,9 +209,7 @@ sddc_api() {
 | 15 | API Health | API | Token acquired, < 2s response | 2-5s response | API unresponsive |
 | 16 | Resources | SSH | CPU < 70%, Mem < 80%, Disk < 70% | CPU/Mem/Disk warn | Any critical |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="service-status"></span>4. Service Status
 
@@ -283,9 +275,7 @@ done
 4. Full service restart: <code>sudo /opt/vmware/vcf/operationsmanager/scripts/cli/vcf-service-status.sh</code>
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="database"></span>5. Database Health
 
@@ -380,9 +370,7 @@ ls -la /opt/vmware/vcf/sddc-manager/backup/ 2>/dev/null
 ls -la /nfs-mount/vcf-backups/ 2>/dev/null
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="inventory"></span>6. Component Inventory
 
@@ -463,9 +451,7 @@ sddc_api "/v1/hosts" | jq '.elements[] | {
 | `DECOMMISSIONING` | Being removed |
 | `ERROR` | Host in error state |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="lifecycle"></span>7. Lifecycle Management (LCM)
 
@@ -523,9 +509,7 @@ sddc_api "/v1/system/prechecks/<precheck-id>" | jq '.results[] | {
 | <span class="badge-warn">WARN</span> | Warning-level prechecks | Review before proceeding |
 | <span class="badge-fail">FAIL</span> | Any critical precheck failure | Must resolve before upgrade |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="bundles"></span>8. Bundle Management
 
@@ -561,7 +545,6 @@ curl -sk https://depot.vmware.com/PROD2/vcf/manifest.json | head -5
 <strong>Offline Depot:</strong> If using an offline depot, verify the depot server is reachable and the depot path is configured correctly in SDDC Manager → Administration → Depot Settings.
 </div>
 
----
 
 ## <span id="dns-ntp"></span>9. DNS & NTP Verification
 
@@ -616,9 +599,7 @@ chronyc tracking
 | <span class="badge-warn">WARN</span> | Slow DNS or NTP drift 1-5s | Monitor |
 | <span class="badge-fail">FAIL</span> | DNS failure or NTP not synced | LCM operations will fail |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="certificates"></span>10. Certificate Health
 
@@ -663,7 +644,6 @@ sddc_api "/v1/certificate-authorities/csr" | jq .
 <strong>Action:</strong> Use Certificate Manager or API to replace certificates before expiry.
 </div>
 
----
 
 ## <span id="tasks"></span>11. Task & Workflow History
 
@@ -714,9 +694,7 @@ curl -sk -X PATCH -H "Authorization: Bearer $TOKEN" \
 | <span class="badge-warn">WARN</span> | Older failed tasks present | Review and clean up |
 | <span class="badge-fail">FAIL</span> | Recent critical task failures | Investigate immediately |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="commissioning"></span>12. Host Commissioning Status
 
@@ -741,7 +719,6 @@ sddc_api "/v1/hosts" | jq '[.elements[] | .status] | group_by(.) | map({status: 
 4. Retry: Cancel and recommission
 </div>
 
----
 
 ## <span id="domains"></span>13. Workload Domain Health
 
@@ -768,7 +745,6 @@ sddc_api "/v1/clusters" | jq '.elements[] | {
 }'
 ```
 
----
 
 ## <span id="backup"></span>14. Backup & Restore
 
@@ -812,9 +788,7 @@ sddc_api "/v1/system/backup-configuration/backups" | jq '.elements[0:3]'
 | <span class="badge-warn">WARN</span> | Backup configured, last success > 24h | Check schedule |
 | <span class="badge-fail">FAIL</span> | No backup configured or all recent failed | Critical risk |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="api-health"></span>15. API Health Verification
 
@@ -848,7 +822,6 @@ for EP in $ENDPOINTS; do
 done
 ```
 
----
 
 ## <span id="resources"></span>16. Resource Utilization
 
@@ -882,9 +855,7 @@ df -h
 3. Check large files: <code>du -sh /var/log/* | sort -rh | head -10</code>
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="ports"></span>17. Port Reference Table
 
@@ -913,9 +884,7 @@ df -h
 | Offline Depot | 443 | TCP | Bundle downloads (offline) |
 | PostgreSQL (local) | 5432 | TCP | Database (localhost) |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="common-issues"></span>18. Common Issues & Remediation
 
@@ -970,9 +939,7 @@ sddc_api "/v1/tasks?status=IN_PROGRESS" | jq '.elements[] | {
 | LCM fails with cert error | Component cert expired | Replace component certificates first |
 | Trust verification fails | CA not in trust store | Add CA to SDDC Manager trust store |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="cli-reference"></span>19. CLI Quick Reference Card
 
@@ -1022,9 +989,7 @@ sddc_api "/v1/tasks?status=IN_PROGRESS" | jq '.elements[] | {
 | `/var/log/nginx/access.log` | Nginx access log |
 | `/var/log/nginx/error.log` | Nginx error log |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="api-reference"></span>20. API Quick Reference
 
@@ -1074,7 +1039,6 @@ curl -sk -H "Authorization: Bearer $TOKEN" "https://$SDDC/v1/..."
 | `sort` | `?sort=creationTimestamp,DESC` | Sort results |
 | `type` | `?type=HOST_COMMISSION` | Filter by task type |
 
----
 
 <div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #1565c0; color: #666; font-size: 9pt;">
 

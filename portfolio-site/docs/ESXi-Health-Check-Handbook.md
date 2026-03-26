@@ -8,7 +8,7 @@ classification: "Internal Use"
 css: |-
   body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
   h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
-  h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+  h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; page-break-before: always; }
   h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
   h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
   table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
@@ -65,7 +65,6 @@ pdf_options:
 </div>
 </div>
 
----
 
 <div class="toc">
 
@@ -138,7 +137,6 @@ pdf_options:
 
 </div>
 
-<div class="page-break"></div>
 
 ## <span id="overview"></span>1. Overview & Purpose
 
@@ -165,9 +163,7 @@ This handbook provides a **complete, step-by-step health check procedure** for E
 <strong>Notation:</strong> All commands in this document are run via SSH as <code>root</code> on the ESXi host unless otherwise specified. Replace <code>&lt;esxi-host&gt;</code> with your actual hostname or IP.
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="prerequisites"></span>2. Prerequisites
 
@@ -205,9 +201,7 @@ for HOST in $ESXI_HOSTS; do
 done
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="quick-reference"></span>3. Quick Reference — All Checks Summary
 
@@ -232,9 +226,7 @@ done
 | 14 | Boot Banks | `bootbank-util status` | Both banks healthy | Alt bank outdated | Primary bank corrupt |
 | 15 | Patch Level | `esxcli software profile get` | Matches VCF BOM | 1 patch behind | 2+ patches behind |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="hardware"></span>4. Hardware Health
 
@@ -301,7 +293,6 @@ esxcli hardware ipmi bmc get
 4. Always cross-reference with vendor BMC (iDRAC, iLO, IPMI web UI)
 </div>
 
----
 
 ### <span id="hw-memory"></span>4.2 Memory Hardware Errors
 
@@ -341,7 +332,6 @@ grep -i "machine check\|memory error\|ECC\|CECC\|UECC" /var/log/vmkernel.log | t
 | <span class="badge-warn">WARN</span> | Correctable ECC errors (CE) present | Schedule DIMM replacement |
 | <span class="badge-fail">FAIL</span> | Uncorrectable errors (UE) or DIMM status not `ok` | Immediate replacement |
 
----
 
 ### <span id="hw-cpu"></span>4.3 CPU Health
 
@@ -363,7 +353,6 @@ Hyperthreading Active: true
 Hyperthreading Supported: true
 ```
 
----
 
 ### <span id="hw-pci"></span>4.4 PCI Devices
 
@@ -372,7 +361,6 @@ Hyperthreading Supported: true
 esxcli hardware pci list | grep -E "Device Name|Vendor Name|Address"
 ```
 
----
 
 ### <span id="hw-firmware"></span>4.5 Firmware Versions
 
@@ -384,9 +372,7 @@ esxcli hardware platform get
 esxcli storage core adapter list
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="storage"></span>5. Storage Health
 
@@ -430,7 +416,6 @@ Mount Point              Volume Name    UUID                                  Mo
 | <span class="badge-warn">WARN</span> | Any datastore 10-20% free | Plan capacity expansion |
 | <span class="badge-fail">FAIL</span> | Any datastore < 10% free or unmounted | Critical — VMs may not power on |
 
----
 
 ### <span id="stor-scsi"></span>5.2 SCSI Device Status
 
@@ -455,7 +440,6 @@ esxcli storage core device list | grep -E "Display Name|Status|Is Perennially Re
 <strong>APD / PDL Warning:</strong> If any device shows APD or PDL, VMs on that storage may be inaccessible. APD triggers automatic VM termination after 140 seconds by default. Check <code>Misc.APDHandlingEnable</code> and <code>Misc.APDTimeout</code>.
 </div>
 
----
 
 ### <span id="stor-hba"></span>5.3 HBA Health & Multipathing
 
@@ -515,7 +499,6 @@ Runtime Name: vmhba1:C0:T0:L0
 4. Check multipath policy: <code>esxcli storage nmp device list</code>
 </div>
 
----
 
 ### <span id="stor-nfs"></span>5.4 NFS Mounts
 
@@ -537,7 +520,6 @@ nfs-backup   192.168.1.100   /exports   true        true     false      Supporte
 | <span class="badge-pass">PASS</span> | All NFS shares `Accessible: true`, `Mounted: true` | Healthy |
 | <span class="badge-fail">FAIL</span> | Any NFS share `Accessible: false` | NFS server unreachable |
 
----
 
 ### <span id="stor-latency"></span>5.5 Disk Latency & SMART
 
@@ -568,9 +550,7 @@ esxtop -b -d 5 -n 3 | grep -E "DAVG|KAVG|GAVG"
 esxcli storage core device smart get -d <device-naa-id>
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="networking"></span>6. Networking Health
 
@@ -615,7 +595,6 @@ esxcli network ip interface tag get -i vmk2
 | <span class="badge-warn">WARN</span> | MTU mismatch or wrong service tag | Reconfigure |
 | <span class="badge-fail">FAIL</span> | VMkernel adapter missing or no IP | Connectivity loss |
 
----
 
 ### <span id="net-vswitches"></span>6.2 vSwitch / vDS Configuration
 
@@ -644,7 +623,6 @@ Name: DSwitch-Compute
   Uplinks: vmnic2, vmnic3
 ```
 
----
 
 ### <span id="net-uplinks"></span>6.3 Physical Uplink Status
 
@@ -678,7 +656,6 @@ vmnic3  0000:5e:01  i40en   Up            Up           25000  Full    9000   00:
 3. Replace NIC driver: <code>esxcli software vib install -v /path/to/driver.vib</code>
 </div>
 
----
 
 ### <span id="net-drivers"></span>6.4 NIC Driver & Firmware
 
@@ -701,7 +678,6 @@ Link Detected: true
 Link Status: Up
 ```
 
----
 
 ### <span id="net-cdp"></span>6.5 CDP / LLDP Neighbor Info
 
@@ -725,7 +701,6 @@ import ssl
 "
 ```
 
----
 
 ### <span id="net-vmkping"></span>6.6 vmkping Connectivity Tests
 
@@ -750,9 +725,7 @@ vmkping -I vmk10 -d -s 1572 <other-host-tep-ip>
 | vSAN jumbo | 0% loss with -s 8972 | Loss or MTU error |
 | NSX TEP | 0% loss with -s 1572 | Loss or MTU error |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="services"></span>7. Services Health
 
@@ -805,9 +778,7 @@ hostd is running.
 4. Check logs: <code>/var/log/hostd.log</code>, <code>/var/log/vpxa.log</code>
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="ntp"></span>8. NTP Configuration
 
@@ -856,7 +827,6 @@ ntpq -p
 <strong>Time Sync Critical:</strong> ESXi hosts with > 5 seconds clock drift can cause vSAN issues, certificate validation failures, and cluster partition events.
 </div>
 
----
 
 ## <span id="syslog"></span>9. Syslog Configuration
 
@@ -890,7 +860,6 @@ esxcli system syslog mark --message="Health Check Test $(date)"
 | <span class="badge-warn">WARN</span> | Local logging only (no remote) | Logs may be lost on failure |
 | <span class="badge-fail">FAIL</span> | Syslog service not running | No logging |
 
----
 
 ## <span id="scratch"></span>10. Scratch Partition
 
@@ -912,7 +881,6 @@ CurrentScratchLocation: /vmfs/volumes/datastore1/.locker-<hostname>
 <strong>Warning:</strong> If the scratch location is <code>/tmp/scratch</code> or empty, it's using ramdisk. Logs and coredumps will be lost on reboot. Set it to persistent storage.
 </div>
 
----
 
 ## <span id="coredump"></span>11. Core Dump Configuration
 
@@ -944,9 +912,7 @@ Network Server Port: 6500
 | <span class="badge-warn">WARN</span> | Only network dump (no local partition) | Depends on network availability |
 | <span class="badge-fail">FAIL</span> | No dump target configured | PSOD data will be lost |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="security"></span>12. Security Health
 
@@ -966,7 +932,6 @@ esxcli system settings advanced list -o /UserVars/ESXiShellTimeOut
 | Production | Disabled (enable only for maintenance) | 300-900 seconds |
 | Lab | Enabled acceptable | 900 seconds |
 
----
 
 ### <span id="sec-lockdown"></span>12.2 Lockdown Mode
 
@@ -986,7 +951,6 @@ lockdownMode = "lockdownNormal"
 | `lockdownNormal` | Only vCenter can manage host | Production recommended |
 | `lockdownStrict` | vCenter only, no DCUI | High-security environments |
 
----
 
 ### <span id="sec-firewall"></span>12.3 ESXi Firewall Rules
 
@@ -1009,7 +973,6 @@ esxcli network firewall ruleset rule list --ruleset-id=sshServer
 | `ntpClient` | Enabled | NTP synchronization |
 | `syslog` | Enabled | Log forwarding |
 
----
 
 ### <span id="sec-certs"></span>12.4 Certificate Validity
 
@@ -1032,7 +995,6 @@ subject=CN = esxi-01.lab.local, ...
 | <span class="badge-warn">WARN</span> | Certificate 7-30 days from expiry | Plan renewal |
 | <span class="badge-fail">FAIL</span> | Certificate expired or < 7 days | Renew immediately |
 
----
 
 ### <span id="sec-accounts"></span>12.5 Account Lockout Policy
 
@@ -1047,9 +1009,7 @@ Maximum Failed Login Attempts: 5
 Unlock Time (seconds): 900
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="performance"></span>13. Performance Health
 
@@ -1079,7 +1039,6 @@ esxtop -b -d 5 -n 3 > /tmp/esxtop-cpu.csv
 <strong>CPU Ready Explained:</strong> %RDY shows the percentage of time a vCPU wanted to run but had to wait for a physical CPU. High values indicate host CPU overcommitment. Reduce VM vCPU count or migrate VMs to balance load.
 </div>
 
----
 
 ### <span id="perf-mem"></span>13.2 Memory Ballooning & Swap
 
@@ -1104,7 +1063,6 @@ esxtop
 <strong>Swap Warning:</strong> Active swapping (SWR/s > 0) causes severe VM performance degradation. Add physical memory or reduce VM count.
 </div>
 
----
 
 ### <span id="perf-overcommit"></span>13.3 Host Overcommit Ratio
 
@@ -1125,9 +1083,7 @@ esxcli hardware memory get
 | vCPU : pCPU | < 3:1 | 3:1 - 5:1 | > 5:1 |
 | vRAM : pRAM | < 1.2:1 | 1.2:1 - 1.5:1 | > 1.5:1 |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="boot"></span>14. Boot Configuration
 
@@ -1160,7 +1116,6 @@ Acceptance Level: VMwareCertified
 | <span class="badge-warn">WARN</span> | Alt boot bank outdated | Update after next patch |
 | <span class="badge-fail">FAIL</span> | Primary boot bank corrupt or `CommunitySupported` acceptance | Remediation needed |
 
----
 
 ## <span id="patches"></span>15. Patch / VIB Level
 
@@ -1198,9 +1153,7 @@ esxcli software vib list | grep -i nsx
 | vSAN | Included in ESXi |
 | Drivers | Per HCL |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="ports"></span>16. Port Reference Table
 
@@ -1236,9 +1189,7 @@ esxcli software vib list | grep -i nsx
 | Syslog | 514/6514 | UDP/TCP | Log forwarding |
 | Dump Collector | 6500 | TCP | Network core dump |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="common-issues"></span>17. Common Issues & Remediation
 
@@ -1295,9 +1246,7 @@ tail -100 /var/log/vpxa.log | grep -i error
 | Storage latency | `esxtop` DAVG > 50ms | Check SAN, move VM to faster storage |
 | Network drops | `esxcli network nic stats get -n vmnicX` | Check NIC errors, replace cable/NIC |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="cli-reference"></span>18. CLI Quick Reference Card
 
@@ -1388,7 +1337,6 @@ tail -100 /var/log/vpxa.log | grep -i error
 | `tail -f /var/log/hostd.log` | Host agent log |
 | `tail -f /var/log/vpxa.log` | vCenter agent log |
 
----
 
 <div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #1565c0; color: #666; font-size: 9pt;">
 

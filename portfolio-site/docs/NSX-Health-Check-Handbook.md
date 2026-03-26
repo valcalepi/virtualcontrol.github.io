@@ -8,7 +8,7 @@ classification: "Internal Use"
 css: |-
   body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
   h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
-  h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+  h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; page-break-before: always; }
   h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
   h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
   table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
@@ -65,7 +65,6 @@ pdf_options:
 </div>
 </div>
 
----
 
 <div class="toc">
 
@@ -153,7 +152,6 @@ pdf_options:
 
 </div>
 
-<div class="page-break"></div>
 
 ## <span id="overview"></span>1. Overview & Purpose
 
@@ -193,9 +191,7 @@ Each check in this handbook follows a consistent format:
 <code>$NSX_PASS</code> = NSX Manager admin password
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="prerequisites"></span>2. Prerequisites
 
@@ -245,9 +241,7 @@ nsx_api() {
 <strong>Security Note:</strong> Never store passwords in plain text in production. Use a credential vault or enter passwords interactively. These examples use environment variables for convenience during health checks only.
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="quick-reference"></span>3. Quick Reference — All Checks Summary
 
@@ -273,9 +267,7 @@ nsx_api() {
 | 14.1 | Segments | API | All `SUCCESS` | Any `IN_PROGRESS` | Any `ERROR` |
 | 15 | Alarms | API | 0 critical alarms | Warning alarms present | Critical alarms present |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="mgr-cluster"></span>4. NSX Manager Cluster Health
 
@@ -386,7 +378,6 @@ Group Type: POLICY
 5. If split-brain: identify the minority partition and restart those nodes
 </div>
 
----
 
 ### <span id="mgr-node-health"></span>4.2 Individual Node Health
 
@@ -431,7 +422,6 @@ done
 | <span class="badge-warn">WARN</span> | Version mismatch between nodes | Possible mid-upgrade state |
 | <span class="badge-fail">FAIL</span> | Any node `DISCONNECTED` or unreachable | Node failure |
 
----
 
 ### <span id="mgr-service-status"></span>4.3 Service Status Verification
 
@@ -502,9 +492,7 @@ curl -sk -u "$NSX_USER:$NSX_PASS" \
 <strong>Critical:</strong> If <code>controller</code>, <code>corfu</code>, or <code>manager</code> are not running, the NSX environment is in a critical state. Do not make configuration changes until these services are restored.
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="mgr-resources"></span>5. NSX Manager Resource Utilization
 
@@ -569,7 +557,6 @@ curl -sk -u "$NSX_USER:$NSX_PASS" \
 3. Swap usage: Indicates memory pressure — investigate with <code>top -b -n 1 | head -20</code> (as root)
 </div>
 
----
 
 ### <span id="mgr-disk"></span>5.2 Disk & Filesystem
 
@@ -627,7 +614,6 @@ tmpfs            24G   12M    24G    1%  /dev/shm
 4. Check corfu compaction: <code>get service corfu compaction-status</code>
 </div>
 
----
 
 ### <span id="mgr-thresholds"></span>5.3 Thresholds & Alarms
 
@@ -647,9 +633,7 @@ curl -sk -u "$NSX_USER:$NSX_PASS" \
   }'
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="certificates"></span>6. Certificate Health
 
@@ -730,9 +714,7 @@ issuer=CN = NSX CA
 <strong>Action:</strong> Follow VMware KB 83054 to replace expired certificates.
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="backups"></span>7. Backup Verification
 
@@ -800,9 +782,7 @@ curl -sk -u "$NSX_USER:$NSX_PASS" \
 4. Check SFTP permissions on backup target directory
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="transport-nodes"></span>8. Transport Node Health
 
@@ -859,7 +839,6 @@ curl -sk -u "$NSX_USER:$NSX_PASS" \
 | <span class="badge-warn">WARN</span> | Any node `IN_PROGRESS` (e.g., during upgrade) | Monitor |
 | <span class="badge-fail">FAIL</span> | Any node `FAILED` or `DOWN` | Immediate investigation |
 
----
 
 ### <span id="tn-esxi-cli"></span>8.2 ESXi nsxcli Commands
 
@@ -903,7 +882,6 @@ Connected to   : 192.168.1.72
 Status         : Connected
 ```
 
----
 
 ### <span id="tn-agent"></span>8.3 NSX Agent Status
 
@@ -951,7 +929,6 @@ nsx-proxy              4.2.0.0.0-12345678   VMW  VMwareCertified  2026-01-15
 4. If persistent: Re-prepare host via NSX Manager UI → Fabric → Host Transport Nodes → Resolve
 </div>
 
----
 
 ### <span id="tn-ports"></span>8.4 Port Connectivity
 
@@ -987,9 +964,7 @@ Connection to nsx-vip.lab.local 5671 port [tcp/*] succeeded!
 Connection to nsx-vip.lab.local 443 port [tcp/https] succeeded!
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="tep"></span>9. TEP Connectivity
 
@@ -1050,7 +1025,6 @@ PING 192.168.12.75 (192.168.12.75): 1572 data bytes
 4. Test with smaller MTU to isolate: <code>vmkping -I vmk10 -d -s 1400 &lt;TEP&gt;</code>
 </div>
 
----
 
 ### <span id="tep-bfd"></span>9.2 BFD Session Verification
 
@@ -1084,7 +1058,6 @@ BFD Session          Remote IP        State   Diagnostic
 | <span class="badge-warn">WARN</span> | Any session in `INIT` state | Establishing |
 | <span class="badge-fail">FAIL</span> | Any session `DOWN` or missing | Tunnel failure |
 
----
 
 ### <span id="tep-tunnels"></span>9.3 Tunnel Status
 
@@ -1119,9 +1092,7 @@ vxlan_13     192.168.12.76    Geneve UP
 vxlan_14     192.168.12.82    Geneve UP
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="edge-nodes"></span>10. Edge Node Health
 
@@ -1171,7 +1142,6 @@ curl -sk -u "$NSX_USER:$NSX_PASS" \
 }
 ```
 
----
 
 ### <span id="edge-ha"></span>10.2 HA State Verification
 
@@ -1219,7 +1189,6 @@ Active-Standby Status
 <strong>Split-Brain Warning:</strong> If both edges are ACTIVE, this is a split-brain condition. Traffic may be blackholed. Immediate remediation: restart HA on the secondary edge: <code>restart service high-availability</code>
 </div>
 
----
 
 ### <span id="edge-channels"></span>10.3 Service Channels
 
@@ -1259,9 +1228,7 @@ fp-eth1      192.168.20.1/24    00:50:56:xx:xx:02 1500  UP
 fp-eth2      169.254.0.1/28     02:50:56:xx:xx:03 1500  UP
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="routing"></span>11. Routing & BGP Health
 
@@ -1316,7 +1283,6 @@ curl -sk -u "$NSX_USER:$NSX_PASS" \
 5. Check firewall: TCP port 179 must be open between peers
 </div>
 
----
 
 ### <span id="route-tables"></span>11.2 Route Table Verification
 
@@ -1351,7 +1317,6 @@ ns>* 172.17.0.0/16     via 169.254.0.2       linked    [3/0]
 | Overlay segments | NSX static | DR backplane |
 | External networks | BGP | Physical router IP |
 
----
 
 ### <span id="gw-realized"></span>11.3 Gateway Realized State
 
@@ -1394,9 +1359,7 @@ curl -sk -u "$NSX_USER:$NSX_PASS" \
 | <span class="badge-warn">WARN</span> | Any gateway `state: IN_PROGRESS` | Being configured |
 | <span class="badge-fail">FAIL</span> | Any gateway `state: ERROR` | Configuration failure |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="dfw"></span>12. Distributed Firewall Health
 
@@ -1444,7 +1407,6 @@ curl -sk -u "$NSX_USER:$NSX_PASS" \
 | <span class="badge-warn">WARN</span> | Any policy `IN_PROGRESS` | Rules being pushed |
 | <span class="badge-fail">FAIL</span> | Any policy `ERROR` | Rules NOT enforced — security gap |
 
----
 
 ### <span id="dfw-dvfilter"></span>12.2 ESXi dvfilter Verification
 
@@ -1477,7 +1439,6 @@ world 12345678 vmm0:MyVM vcUuid:'50 12 ab cd ...'
 - Each VM vNIC should have a corresponding dvfilter entry
 </div>
 
----
 
 ### <span id="dfw-vsipioctl"></span>12.3 vsipioctl Commands
 
@@ -1521,9 +1482,7 @@ ruleset domain-c8:1001 {
 vsipioctl getaddrsets -f nic-12345678-eth0-vmware-sfw.2
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="gw-fw"></span>13. Gateway Firewall Health
 
@@ -1581,9 +1540,7 @@ The rule count should be identical on both edges.
 | <span class="badge-warn">WARN</span> | Rule count differs by 1-2 (possible in-flight update) | Monitor |
 | <span class="badge-fail">FAIL</span> | Significant rule count mismatch or rules not realized | Security gap |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="segments"></span>14. Segments & Logical Switches
 
@@ -1626,7 +1583,6 @@ curl -sk -u "$NSX_USER:$NSX_PASS" \
 | <span class="badge-warn">WARN</span> | Any segment `IN_PROGRESS` | Being configured |
 | <span class="badge-fail">FAIL</span> | Any segment `ERROR` or `admin_state: DOWN` | Connectivity loss |
 
----
 
 ### <span id="seg-tables"></span>14.2 MAC / ARP / VTEP Tables
 
@@ -1678,9 +1634,7 @@ VTEP IP           VTEP MAC             Segment ID  Is Local
 192.168.12.76     00:50:56:66:xx:03    192.168.12.0  false
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="alarms"></span>15. NSX Alarms
 
@@ -1745,9 +1699,7 @@ curl -sk -X POST -u "$NSX_USER:$NSX_PASS" \
   "https://$NSX_VIP/api/v1/alarms/<alarm-id>?action=set_status&new_status=RESOLVED"
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="ports"></span>16. Port Reference Table
 
@@ -1795,9 +1747,7 @@ curl -sk -X POST -u "$NSX_USER:$NSX_PASS" \
 | Edge | Physical Router | 179 | TCP | BGP peering |
 | Edge | Physical Router | ICMP | — | BFD (if configured) |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="common-issues"></span>17. Common Issues & Remediation
 
@@ -1844,9 +1794,7 @@ curl -sk -X POST -u "$NSX_USER:$NSX_PASS" \
 <strong>Warning:</strong> Never force-delete a cluster node during split-brain. This can cause permanent data loss. Always follow the VMware documented procedure.
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="cli-reference"></span>18. CLI Quick Reference Card
 
@@ -1908,9 +1856,7 @@ curl -sk -X POST -u "$NSX_USER:$NSX_PASS" \
 | `get firewall rules` | Gateway FW rules |
 | `get arp-table` | ARP entries |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="api-reference"></span>19. API Quick Reference
 
@@ -1978,7 +1924,6 @@ curl -sk -u "$NSX_USER:$NSX_PASS" \
 }
 ```
 
----
 
 <div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #1565c0; color: #666; font-size: 9pt;">
 

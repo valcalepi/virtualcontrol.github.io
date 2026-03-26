@@ -8,7 +8,7 @@ classification: "Internal Use"
 css: |-
   body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
   h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
-  h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+  h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; page-break-before: always; }
   h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
   h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
   table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
@@ -65,7 +65,6 @@ pdf_options:
 </div>
 </div>
 
----
 
 <div class="toc">
 
@@ -187,7 +186,6 @@ pdf_options:
 
 </div>
 
-<div class="page-break"></div>
 
 ## <span id="overview"></span>1. Overview & Purpose
 
@@ -235,9 +233,7 @@ Each check in this handbook follows a consistent format:
 <code>$VC_TOKEN</code> = Session token obtained via authentication API
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="prerequisites"></span>2. Prerequisites
 
@@ -301,9 +297,7 @@ curl -sk -X PUT \
   -d '{"enabled": true}'
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="quick-reference"></span>3. Quick Reference -- All Checks Summary
 
@@ -330,9 +324,7 @@ curl -sk -X PUT \
 | 14.1 | Lookup Service | `lstool.py` | <span class="badge-pass">Registered</span> | -- | <span class="badge-fail">Missing</span> |
 | 17.1 | NTP Sync | `/api/appliance/ntp` | <span class="badge-pass">Synced</span> | <span class="badge-warn">Drift &gt;1s</span> | <span class="badge-fail">Not configured</span> |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="vpxd-health"></span>4. VPXD Service Health
 
@@ -461,9 +453,7 @@ cat /var/log/vmware/vpxd/vpxd-alert.log | tail -20
 | Warning-level entries present | <span class="badge-warn">WARN</span> |
 | Fatal/crash/exception entries in last 24h | <span class="badge-fail">FAIL</span> |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="vcenter-services"></span>5. vCenter Services Status
 
@@ -611,9 +601,7 @@ service-control --stop vmware-vsphere-ui && service-control --start vmware-vsphe
 4. Last resort full restart: <code>reboot</code> (from appliance shell)
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="vami-health"></span>6. vCenter Appliance Health (VAMI)
 
@@ -814,9 +802,7 @@ swap                      : green
 softwarepackages          : green
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="database-health"></span>7. Database Health
 
@@ -975,9 +961,7 @@ LIMIT 10;"
 | Autovacuum > 48h ago or dead tuples 10,000 - 100,000 | <span class="badge-warn">WARN</span> |
 | No vacuum in 7+ days or dead tuples > 100,000 | <span class="badge-fail">FAIL</span> |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="vcha"></span>8. vCenter HA (VCHA)
 
@@ -1114,9 +1098,7 @@ curl -sk -X POST \
 5. If passive node offline, redeploy: remove and re-add VCHA via vSphere Client
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="certificate-health"></span>9. Certificate Health
 
@@ -1330,9 +1312,7 @@ curl -sk -X GET \
 4. KB Reference: <a href="https://knowledge.broadcom.com/external/article?legacyId=2111411">KB 2111411</a> for STS certificate renewal
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="storage-health"></span>10. Storage Health
 
@@ -1432,9 +1412,7 @@ du -sh /storage/db/vpostgres/pg_wal/
 5. Expand disk: Shutdown appliance, expand VMDK, boot, run <code>/usr/lib/applmgmt/support/scripts/expand_disk.sh</code>
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="performance"></span>11. Performance & Resource Utilization
 
@@ -1548,9 +1526,7 @@ vmstat 1 5
 5. Check for DRS/HA tasks in loop: review <code>/var/log/vmware/vpxd/vpxd.log</code> for repeated task patterns
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="sso-health"></span>12. SSO / Identity Source Health
 
@@ -1678,9 +1654,7 @@ curl -sk -X GET \
 5. STS cert expiry: Replace using KB 79248 procedures
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="plugins"></span>13. Plugins & Extensions
 
@@ -1780,9 +1754,7 @@ $em.UnregisterExtension("com.vendor.stale.plugin")
 4. Check plugin compatibility with current vCenter version
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="lookup-service"></span>14. Lookup Service & PSC
 
@@ -1900,9 +1872,7 @@ Service Type: cs.envoy
 4. If corrupted, run: <code>/usr/lib/vmware-lookupsvc/tools/ls_recover.py</code>
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="inventory"></span>15. Inventory Verification
 
@@ -2057,9 +2027,7 @@ curl -sk -X GET \
 4. If hosts persistently disconnect, check network, DNS, and host certificates
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="syslog"></span>16. Syslog & Log Configuration
 
@@ -2171,9 +2139,7 @@ vc-support-bundle
 <strong>Tip:</strong> Support bundles can be large (several GB). Ensure sufficient free space in <code>/storage/log</code> before generating. Target directory: <code>/var/log/vmware/support/</code>
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="ntp"></span>17. NTP Configuration
 
@@ -2290,9 +2256,7 @@ Last offset     : +0.000000312 seconds
 4. Check firewall allows NTP (UDP 123) outbound
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="ports"></span>18. Port Reference Table
 
@@ -2353,9 +2317,7 @@ nc -zv dc01.lab.local 389 2>&1
 nc -zv esxi01.lab.local 443 2>&1
 ```
 
----
 
-<div class="page-break"></div>
 
 ## <span id="common-issues"></span>19. Common Issues & Remediation
 
@@ -2492,9 +2454,7 @@ echo "=== DB Connections ===" && /opt/vmware/vpostgres/current/bin/psql -U postg
 6. Long-term: right-size vCenter appliance per VMware sizing guidelines
 </div>
 
----
 
-<div class="page-break"></div>
 
 ## <span id="cli-reference"></span>20. CLI Quick Reference Card
 
@@ -2592,9 +2552,7 @@ echo "=== DB Connections ===" && /opt/vmware/vpostgres/current/bin/psql -U postg
 | `cat /etc/resolv.conf` | DNS configuration |
 | `nslookup ${VC_FQDN}` | DNS resolution test |
 
----
 
-<div class="page-break"></div>
 
 ## <span id="api-reference"></span>21. API Quick Reference
 
@@ -2714,7 +2672,6 @@ curl -sk -X DELETE \
 unset VC_TOKEN VC_PASS
 ```
 
----
 
 <div class="info-box">
 <strong>Document Information:</strong><br>

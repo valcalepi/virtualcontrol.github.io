@@ -249,7 +249,7 @@ code.hljs {
   
 }/*# sourceURL=E:\VCF-Depot\node_modules\highlight.js\styles\github.css*/</style><style>body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; max-width: 100%; line-height: 1.5; }
 h1 { color: #ffffff; background: linear-gradient(135deg, #0b3d6b, #1565c0); padding: 16px 22px; border-radius: 6px; font-size: 22pt; margin-top: 30px; }
-h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; }
+h2 { color: #0b3d6b; border-bottom: 3px solid #1565c0; padding-bottom: 6px; font-size: 15pt; margin-top: 28px; page-break-before: always; }
 h3 { color: #0d47a1; font-size: 12pt; margin-top: 18px; border-left: 4px solid #1565c0; padding-left: 10px; }
 h4 { color: #1565c0; font-size: 10.5pt; margin-top: 14px; }
 table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9pt; }
@@ -297,7 +297,7 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 </div>
 </div>
 
-<hr>
+
 <div class="toc">
 
 <h2 id="table-of-contents">Table of Contents</h2>
@@ -351,7 +351,6 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 
 </div>
 
-<div class="page-break"></div>
 
 <h2 id="1-overview--purpose"><span id="overview"></span>1. Overview &amp; Purpose</h2>
 <p>This handbook provides a <strong>complete health check procedure</strong> for the SDDC Manager (Fleet Manager) in a VCF 9.0 environment. SDDC Manager is the <strong>central orchestration and lifecycle management</strong> component of VCF. Its health directly affects your ability to:</p>
@@ -399,8 +398,7 @@ blockquote { border-left: 4px solid #f39c12; background: #fef9e7; padding: 10px 
 <code>$TOKEN</code> = Bearer token acquired via API
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="2-prerequisites"><span id="prerequisites"></span>2. Prerequisites</h2>
 <h3 id="required-access">Required Access</h3>
@@ -456,8 +454,7 @@ TOKEN=$(curl -sk -X POST <span class="hljs-string">"https://<span class="hljs-va
 <strong>Token Expiry:</strong> SDDC Manager tokens expire after 30 minutes. Re-acquire if you get 401 responses.
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="3-quick-reference--all-checks-summary"><span id="quick-reference"></span>3. Quick Reference — All Checks Summary</h2>
 <table>
@@ -584,9 +581,6 @@ TOKEN=$(curl -sk -X POST <span class="hljs-string">"https://<span class="hljs-va
 <td>Any critical</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="4-service-status"><span id="service-status"></span>4. Service Status</h2>
 <h3 id="41-all-services-via-systemctl"><span id="svc-systemctl"></span>4.1 All Services via systemctl</h3>
 <p><strong>What:</strong> Verify all SDDC Manager services are running.</p>
@@ -704,8 +698,7 @@ TOKEN=$(curl -sk -X POST <span class="hljs-string">"https://<span class="hljs-va
 4. Full service restart: <code>sudo /opt/vmware/vcf/operationsmanager/scripts/cli/vcf-service-status.sh</code>
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="5-database-health"><span id="database"></span>5. Database Health</h2>
 <h3 id="51-postgresql-status"><span id="db-postgres"></span>5.1 PostgreSQL Status</h3>
@@ -791,9 +784,6 @@ ORDER BY n_dead_tup DESC LIMIT 10;"</span>
 <span class="hljs-built_in">ls</span> -la /opt/vmware/vcf/sddc-manager/backup/ 2&gt;/dev/null
 <span class="hljs-built_in">ls</span> -la /nfs-mount/vcf-backups/ 2&gt;/dev/null
 </code></pre>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="6-component-inventory"><span id="inventory"></span>6. Component Inventory</h2>
 <h3 id="61-system-components"><span id="inv-components"></span>6.1 System Components</h3>
 <p><strong>What:</strong> Verify all VCF-managed components are in a healthy state.</p>
@@ -873,9 +863,6 @@ sddc_api <span class="hljs-string">"/v1/system"</span> | jq .
 <td>Host in error state</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="7-lifecycle-management-lcm"><span id="lifecycle"></span>7. Lifecycle Management (LCM)</h2>
 <h3 id="71-current-version"><span id="lcm-version"></span>7.1 Current Version</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># SDDC Manager version</span>
@@ -937,9 +924,6 @@ sddc_api <span class="hljs-string">"/v1/system/prechecks/&lt;precheck-id&gt;"</s
 <td>Must resolve before upgrade</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="8-bundle-management"><span id="bundles"></span>8. Bundle Management</h2>
 <pre><code class="hljs bash"><span class="hljs-comment"># List all bundles</span>
 sddc_api <span class="hljs-string">"/v1/bundles"</span> | jq <span class="hljs-string">'.elements[] | {
@@ -984,7 +968,7 @@ curl -sk https://depot.vmware.com/PROD2/vcf/manifest.json | <span class="hljs-bu
 <strong>Offline Depot:</strong> If using an offline depot, verify the depot server is reachable and the depot path is configured correctly in SDDC Manager → Administration → Depot Settings.
 </div>
 
-<hr>
+
 <h2 id="9-dns--ntp-verification"><span id="dns-ntp"></span>9. DNS &amp; NTP Verification</h2>
 <h3 id="dns-configuration">DNS Configuration</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># Get DNS config via API</span>
@@ -1043,9 +1027,6 @@ chronyc tracking
 <td>LCM operations will fail</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="10-certificate-health"><span id="certificates"></span>10. Certificate Health</h2>
 <pre><code class="hljs bash"><span class="hljs-comment"># List all certificates managed by VCF</span>
 sddc_api <span class="hljs-string">"/v1/certificate-authorities"</span> | jq .
@@ -1098,7 +1079,7 @@ sddc_api <span class="hljs-string">"/v1/domains/&lt;domain-id&gt;/resource-certi
 <strong>Action:</strong> Use Certificate Manager or API to replace certificates before expiry.
 </div>
 
-<hr>
+
 <h2 id="11-task--workflow-history"><span id="tasks"></span>11. Task &amp; Workflow History</h2>
 <pre><code class="hljs bash"><span class="hljs-comment"># List recent tasks (last 20)</span>
 sddc_api <span class="hljs-string">"/v1/tasks?limit=20"</span> | jq <span class="hljs-string">'.elements[] | {
@@ -1173,9 +1154,6 @@ sddc_api <span class="hljs-string">"/v1/tasks?limit=20"</span> | jq <span class=
 <td>Investigate immediately</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="12-host-commissioning-status"><span id="commissioning"></span>12. Host Commissioning Status</h2>
 <pre><code class="hljs bash"><span class="hljs-comment"># All hosts with their status</span>
 sddc_api <span class="hljs-string">"/v1/hosts"</span> | jq <span class="hljs-string">'.elements[] | {
@@ -1196,7 +1174,7 @@ sddc_api <span class="hljs-string">"/v1/hosts"</span> | jq <span class="hljs-str
 4. Retry: Cancel and recommission
 </div>
 
-<hr>
+
 <h2 id="13-workload-domain-health"><span id="domains"></span>13. Workload Domain Health</h2>
 <pre><code class="hljs bash"><span class="hljs-comment"># List all domains with health</span>
 sddc_api <span class="hljs-string">"/v1/domains"</span> | jq <span class="hljs-string">'.elements[] | {
@@ -1216,7 +1194,6 @@ sddc_api <span class="hljs-string">"/v1/clusters"</span> | jq <span class="hljs-
   primaryDatastore: .primaryDatastoreType
 }'</span>
 </code></pre>
-<hr>
 <h2 id="14-backup--restore"><span id="backup"></span>14. Backup &amp; Restore</h2>
 <pre><code class="hljs bash"><span class="hljs-comment"># Get backup configuration</span>
 sddc_api <span class="hljs-string">"/v1/system/backup-configuration"</span> | jq .
@@ -1268,9 +1245,6 @@ sddc_api <span class="hljs-string">"/v1/system/backup-configuration"</span> | jq
 <td>Critical risk</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="15-api-health-verification"><span id="api-health"></span>15. API Health Verification</h2>
 <h3 id="token-acquisition-test">Token Acquisition Test</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># Time the token acquisition</span>
@@ -1314,7 +1288,6 @@ sddc_api <span class="hljs-string">"/v1/system/backup-configuration"</span> | jq
   <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$EP</span>: HTTP <span class="hljs-variable">$HTTP_CODE</span> (<span class="hljs-variable">${DURATION}</span>ms)"</span>
 <span class="hljs-keyword">done</span>
 </code></pre>
-<hr>
 <h2 id="16-resource-utilization"><span id="resources"></span>16. Resource Utilization</h2>
 <pre><code class="hljs bash">ssh root@<span class="hljs-variable">$SDDC</span>
 
@@ -1370,8 +1343,7 @@ free -m
 3. Check large files: <code>du -sh /var/log/* | sort -rh | head -10</code>
 </div>
 
-<hr>
-<div class="page-break"></div>
+
 
 <h2 id="17-port-reference-table"><span id="ports"></span>17. Port Reference Table</h2>
 <h3 id="inbound-ports">Inbound Ports</h3>
@@ -1486,9 +1458,6 @@ free -m
 <td>Database (localhost)</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="18-common-issues--remediation"><span id="common-issues"></span>18. Common Issues &amp; Remediation</h2>
 <h3 id="181-service-failures">18.1 Service Failures</h3>
 <table>
@@ -1606,9 +1575,6 @@ sddc_api <span class="hljs-string">"/v1/tasks?status=IN_PROGRESS"</span> | jq <s
 <td>Add CA to SDDC Manager trust store</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="19-cli-quick-reference-card"><span id="cli-reference"></span>19. CLI Quick Reference Card</h2>
 <h3 id="service-management">Service Management</h3>
 <table>
@@ -1750,9 +1716,6 @@ sddc_api <span class="hljs-string">"/v1/tasks?status=IN_PROGRESS"</span> | jq <s
 <td>Nginx error log</td>
 </tr>
 </tbody></table>
-<hr>
-<div class="page-break"></div>
-
 <h2 id="20-api-quick-reference"><span id="api-reference"></span>20. API Quick Reference</h2>
 <h3 id="authentication">Authentication</h3>
 <pre><code class="hljs bash"><span class="hljs-comment"># Acquire token</span>
@@ -1903,7 +1866,6 @@ curl -sk -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-v
 <td>Filter by task type</td>
 </tr>
 </tbody></table>
-<hr>
 <div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #1565c0; color: #666; font-size: 9pt;">
 
 <p><strong>Fleet / SDDC Manager Health Check Handbook</strong>
