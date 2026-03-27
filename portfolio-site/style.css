@@ -869,6 +869,50 @@ strong {
   transition: all var(--transition);
 }
 
+/* --- Purchase CTA --- */
+.nav-cta {
+  background: var(--accent) !important;
+  color: var(--bg-primary) !important;
+  padding: 6px 14px !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+}
+.nav-cta:hover {
+  background: #00cfff !important;
+  transform: translateY(-1px);
+}
+.nav-cta::after {
+  display: none !important;
+}
+
+.doc-card-purchase {
+  border: 2px solid var(--accent) !important;
+  background: linear-gradient(135deg, var(--bg-card), rgba(0, 180, 216, 0.08)) !important;
+  max-width: 480px;
+}
+.doc-card-purchase:hover {
+  border-color: #00cfff !important;
+  box-shadow: 0 0 30px rgba(0, 180, 216, 0.2);
+}
+.doc-card-purchase .doc-icon svg {
+  stroke: var(--accent);
+}
+
+.doc-status-purchase {
+  display: inline-block;
+  padding: 6px 16px;
+  background: var(--accent);
+  color: var(--bg-primary);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+.doc-card-purchase:hover .doc-status-purchase {
+  background: #00cfff;
+}
+
 /* --- Contact --- */
 .contact-grid {
   display: grid;
