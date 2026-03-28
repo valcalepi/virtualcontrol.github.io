@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VCF Health Check &mdash; Product Brochure</title>
+<style>
+:root {
+  --blue: #003366;
+  --accent: #0077B6;
+  --light-blue: #E6F0FA;
+  --gray: #58595B;
+  --light-gray: #F5F7FA;
+  --green: #27AE60;
+  --text: #2c3e50;
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  line-height: 1.7;
+  background: var(--white);
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--accent) 100%);
+  color: var(--white);
+  padding: 60px 40px;
+  text-align: center;
+}
+.hero-brand {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.hero .tagline {
+  font-size: 20px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+.hero .subtagline {
+  font-size: 16px;
+  font-style: italic;
+  opacity: 0.7;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 35px;
+  flex-wrap: wrap;
+}
+.stat-box {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 10px;
+  padding: 18px 30px;
+  min-width: 140px;
+}
+.stat-box .number {
+  font-size: 32px;
+  font-weight: 700;
+  display: block;
+}
+.stat-box .label {
+  font-size: 13px;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Navigation */
+.toc {
+  background: var(--light-blue);
+  border-bottom: 3px solid var(--accent);
+  padding: 20px 40px;
+}
+.toc h3 {
+  color: var(--blue);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+.toc-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  list-style: none;
+}
+.toc-links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.toc-links a:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+/* Content */
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 40px 60px;
+}
+
+h2.section-title {
+  color: var(--blue);
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 50px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-left: 5px solid var(--accent);
+  padding-left: 15px;
+}
+
+h3.subsection-title {
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--light-blue);
+}
+
+h4 {
+  color: var(--gray);
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+p {
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent), transparent);
+  margin: 40px 0;
+}
+
+/* Lists */
+.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 16px;
+}
+.check-list li {
+  padding: 6px 0 6px 28px;
+  position: relative;
+  font-size: 15px;
+}
+.check-list li::before {
+  content: "\2713";
+  position: absolute;
+  left: 4px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Tables */
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+th {
+  background: var(--blue);
+  color: var(--white);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+}
+td {
+  padding: 9px 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+tr.alt-row {
+  background: var(--light-gray);
+}
+
+/* Code */
+.code-block {
+  background: var(--light-gray);
+  border-left: 4px solid var(--accent);
+  padding: 16px 20px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 13px;
+  margin: 16px 0;
+}
+
+/* Copyright */
+.copyright {
+  font-size: 12px;
+  color: var(--gray);
+  text-align: center;
+  margin: 4px 0;
+}
+
+/* Footer */
+.footer {
+  background: var(--blue);
+  color: var(--white);
+  text-align: center;
+  padding: 30px 40px;
+  font-size: 13px;
+}
+.footer a {
+  color: var(--light-blue);
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Print */
+@media print {
+  .hero { padding: 30px 20px; }
+  .toc { display: none; }
+  .content { padding: 20px; }
+  h2.section-title { page-break-before: auto; }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero { padding: 40px 20px; }
+  .hero h1 { font-size: 28px; }
+  .hero-stats { gap: 15px; }
+  .stat-box { min-width: 100px; padding: 12px 18px; }
+  .stat-box .number { font-size: 24px; }
+  .content { padding: 20px; }
+  h2.section-title { font-size: 22px; }
+  .toc { padding: 15px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-brand">Virtual Control LLC</div>
+  <h1>VCF Health Check</h1>
+  <div class="tagline">Automated Health Monitoring &amp; Compliance for VMware Cloud Foundation</div>
+  <div class="subtagline">One click. One minute. Complete visibility.</div>
+  <div class="hero-stats">
+    <div class="stat-box"><span class="number">100+</span><span class="label">Health Checks</span></div>
+    <div class="stat-box"><span class="number">60 sec</span><span class="label">Full Audit</span></div>
+    <div class="stat-box"><span class="number">10</span><span class="label">Report Formats</span></div>
+    <div class="stat-box"><span class="number">7</span><span class="label">Alert Channels</span></div>
+  </div>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul class="toc-links">
+    <li><a href="#the-problem-you-already-know-about">The Problem</a></li>
+    <li><a href="#what-if-you-could-check-everything-in-60-seconds">60-Second Checks</a></li>
+    <li><a href="#what-gets-checked">What Gets Checked</a></li>
+    <li><a href="#the-report-that-changes-how-you-work">Reports</a></li>
+    <li><a href="#alerts-where-you-already-work">Alerts</a></li>
+    <li><a href="#a-desktop-application-built-for-operations-teams">Desktop App</a></li>
+    <li><a href="#automation-that-runs-while-you-sleep">Automation</a></li>
+    <li><a href="#auto-remediation-for-safe-fixes">Auto-Remediation</a></li>
+    <li><a href="#built-for-msps-and-service-providers">MSPs</a></li>
+    <li><a href="#multi-environment-visibility">Multi-Environment</a></li>
+    <li><a href="#what-makes-this-different">Why Different</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#get-started">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- Content -->
+<div class="content">
+<p><strong>Your VCF Environment Deserves Better Than "It Seems Fine"</strong></p>
+<hr>
+<h2 id="the-problem-you-already-know-about" class="section-title">The Problem You Already Know About</h2>
+<p>You are running VMware Cloud Foundation. Your environment has vCenter, SDDC Manager, NSX, ESXi hosts, certificates, DNS records, datastores, vSAN clusters, and dozens of interconnected services &mdash; all of which need to be healthy for your infrastructure to function.</p>
+<p>Right now, how do you know everything is healthy?</p>
+<p>You check vCenter manually. You SSH into SDDC Manager. You open NSX and look around. You hope nothing slipped through the cracks. When something does break, you spend hours figuring out what went wrong, tracing it back through logs, and explaining to stakeholders why it happened.</p>
+<p>A certificate expired silently. DNS stopped resolving for a management component. A vSAN disk group went degraded and nobody noticed. An SDDC Manager backup has not run in 47 days. A vCenter service crashed and is not running. ESXi hosts drifted out of compliance.</p>
+<p>These are not hypothetical problems. They are the problems that wake you up at 2 AM, cost your company thousands in downtime, and erode trust with the clients you serve.</p>
+<hr>
+<h2 id="what-if-you-could-check-everything-in-60-seconds" class="section-title">What If You Could Check Everything In 60 Seconds</h2>
+<p>VCF Health Check connects to your entire VCF environment, runs over 100 individual checks across every major component, and gives you a single grade (A through F) with a detailed report &mdash; all in about one minute.</p>
+<p>One click. One minute. Complete visibility.</p>
+<p>No manual SSH sessions. No hopping between management consoles. No spreadsheets of things to remember to check. VCF Health Check does it all automatically, every time, consistently, and tells you exactly what needs attention.</p>
+<hr>
+<h2 id="what-gets-checked" class="section-title">What Gets Checked</h2>
+<p>VCF Health Check is not a generic monitoring tool. It was built specifically for VMware Cloud Foundation environments and understands the relationships between components that matter.</p>
+<h3 class="subsection-title">Infrastructure and Network (14 Checks)</h3>
+<p>DNS forward and reverse resolution for every management component. SSL certificate expiry monitoring with advance warnings. Network latency tracking to vCenter, SDDC Manager, and NSX. ESXi host health checks running in parallel for speed.</p>
+<p>If a DNS record is wrong, you will know. If a certificate is expiring in 30 days, you will know. If latency to a management endpoint is spiking, you will know.</p>
+<h3 class="subsection-title">vCenter Server (33 Checks)</h3>
+<p>The deepest coverage of any VCF health tool. API reachability, version and build detection, system health (CPU, memory, storage, swap, database), VM inventory, ESXi host connection states, cluster HA and DRS configuration, datastore capacity per-datastore, vSAN cluster and disk group health, vSAN resync and rebuild status, NTP time sync, root password expiry, individual service status with deep checks (vpxd, stsd, vpostgres, rhttpproxy), active alarms, VM snapshot age, license expiry, VCSA disk partition utilization, storage policies, content library sync, VCF BOM compliance, and 24-hour event log errors.</p>
+<p>33 checks. Every one of them matters. Every one of them has caused a real outage somewhere.</p>
+<h3 class="subsection-title">SDDC Manager (16 Checks)</h3>
+<p>API reachability with retry and backoff, version detection, NSX and vCenter status from SDDC Manager's perspective, management component health, certificate inventory with 60-day warnings, backup age and status, system prechecks, credential and password expiry, in-progress task detection, resource lock detection, host drift detection, depot connectivity, stale task identification, and lifecycle update availability.</p>
+<p>SDDC Manager is the control plane of your entire VCF deployment. If it is unhealthy, everything downstream is at risk.</p>
+<h3 class="subsection-title">NSX Manager (11 Checks)</h3>
+<p>API reachability with VIP and individual node fallback, control cluster status, management cluster status, transport node state, open alarms with severity classification, admin password expiry, version detection, edge cluster member health, distributed firewall rule count thresholds, certificate validation, and transport zone membership.</p>
+<p>NSX problems cascade fast. A failing transport node or a degraded control cluster can take down your entire network overlay in minutes.</p>
+<h3 class="subsection-title">VCF Operations and ARIA Suite (4 Checks)</h3>
+<p>Suite API reachability, node online status, collector health, and adapter data receiving verification.</p>
+<h3 class="subsection-title">Fleet and vRSLCM (2 Checks)</h3>
+<p>API reachability and environment deployment status.</p>
+<h3 class="subsection-title">Custom Plugin Checks</h3>
+<p>Need to check something specific to your environment? The plugin system lets you add custom checks that integrate directly into the grading, scoring, and reporting system.</p>
+<hr>
+<h2 id="the-report-that-changes-how-you-work" class="section-title">The Report That Changes How You Work</h2>
+<p>After every health check, VCF Health Check generates a comprehensive report. Not a wall of text. Not a raw log dump. A professionally designed, interactive report that you can hand to your CTO, your client, or your operations team.</p>
+<h3 class="subsection-title">Interactive HTML Report</h3>
+<p>A single self-contained HTML file with no external dependencies. Open it in any browser.</p>
+<ul class="check-list">
+<li>Dark mode and light mode with one click</li>
+<li>Executive view (high-level summary for leadership) and Technical view (full details for engineers)</li>
+<li>Pass, Warning, and Failure filters to focus on what matters</li>
+<li>Diff view to compare two runs side by side and see exactly what changed</li>
+<li>Dependency map showing component relationships and health status</li>
+<li>Score trend chart showing your health trajectory over time</li>
+<li>90-day heatmap calendar &mdash; a color-coded grid showing your daily health grade for the past three months</li>
+<li>SLA uptime tracker with per-component uptime percentages</li>
+<li>Network latency table with color-coded performance badges</li>
+<li>Remediation playbook export &mdash; a ready-to-use checklist of exactly what to fix and how</li>
+<li>Keyboard shortcuts for power users</li>
+<li>Mobile responsive for checking on your phone</li>
+<li>Print-optimized for hard copies</li>
+</ul>
+<h3 class="subsection-title">Additional Report Formats</h3>
+<p>Every run also generates reports in JSON (machine-readable for integrations), CSV (for spreadsheets and dashboards), plain text (for terminals and email), PDF (for formal distribution), and Markdown (for wikis and version control).</p>
+<p>Need to feed data into Prometheus? There is a flag for that. Need an Ansible inventory based on your VCF components? There is a flag for that too.</p>
+<hr>
+<h2 id="alerts-where-you-already-work" class="section-title">Alerts Where You Already Work</h2>
+<p>VCF Health Check integrates with the tools your team already uses:</p>
+<ul class="check-list">
+<li>Email (SMTP) with HTML report attachment</li>
+<li>Slack with color-coded grade messages</li>
+<li>Microsoft Teams with adaptive cards</li>
+<li>PagerDuty for automatic incident creation on failures</li>
+<li>OpsGenie for alert escalation</li>
+<li>Syslog (RFC 5424) for SIEM integration with Splunk or ELK</li>
+<li>Custom webhooks for any other system</li>
+</ul>
+<p>Set a threshold and only get notified when it matters. "Alert me when the grade drops below C." No noise. No alert fatigue. Just the signal you need.</p>
+<hr>
+<h2 id="a-desktop-application-built-for-operations-teams" class="section-title">A Desktop Application Built for Operations Teams</h2>
+<p>VCF Health Check comes with a professional desktop application that makes health checking as easy as clicking a button.</p>
+<h3 class="subsection-title">Dashboard</h3>
+<p>A single screen showing your current health grade, component-by-component breakdown, executive summary, and score trend chart. Open the app and instantly know the state of your environment.</p>
+<h3 class="subsection-title">Multi-Profile Management</h3>
+<p>Managing multiple VCF environments? Create a profile for each one. Production, staging, development, client environments &mdash; switch between them instantly. Clone profiles to save time. Import and export configurations.</p>
+<h3 class="subsection-title">Live Terminal Output</h3>
+<p>Watch the health check run in real time. Every check, every result, streaming live in the built-in terminal. Color-coded pass, warning, and failure indicators so you can see problems as they are found.</p>
+<h3 class="subsection-title">One-Click Reports</h3>
+<p>After a run completes, open any report format with a single click. HTML, JSON, TXT, PDF &mdash; all generated automatically, all accessible immediately.</p>
+<h3 class="subsection-title">Security Built In</h3>
+<p>User accounts with role-based access (admin and operator roles). PBKDF2-HMAC-SHA256 password hashing with 310,000 iterations. Brute-force lockout after 5 failed attempts. Fernet-encrypted credentials in profile storage. Full audit trail of every action.</p>
+<hr>
+<h2 id="automation-that-runs-while-you-sleep" class="section-title">Automation That Runs While You Sleep</h2>
+<p>Set it and forget it. VCF Health Check generates scheduling configurations for:</p>
+<ul class="check-list">
+<li>Windows Task Scheduler (one command generates the XML)</li>
+<li>Linux cron (one command generates the cron entry)</li>
+<li>systemd timers (one command generates the timer files)</li>
+</ul>
+<p>Run health checks every morning at 6 AM before your team arrives. Run them every hour during a maintenance window. Run them weekly and get a summary every Monday morning. Configure it once, and your VCF environments are monitored continuously without any manual effort.</p>
+<hr>
+<h2 id="auto-remediation-for-safe-fixes" class="section-title">Auto-Remediation for Safe Fixes</h2>
+<p>Some problems have obvious, safe fixes. Stale SDDC Manager tasks that have been stuck for days. Configuration items that drifted from expected values. VCF Health Check can automatically fix these issues during a run with the &mdash;fix flag, saving your team time and reducing the backlog of minor issues that pile up.</p>
+<p>For everything else, the remediation playbook tells you exactly what to do, step by step, with estimated time to fix each issue.</p>
+<hr>
+<h2 id="built-for-msps-and-service-providers" class="section-title">Built for MSPs and Service Providers</h2>
+<p>If you manage VCF environments for multiple clients, VCF Health Check was designed with you in mind.</p>
+<h3 class="subsection-title">Branded Reports</h3>
+<p>Put your company logo and name on every health check report. Hand your clients a professional, branded document that demonstrates the value of your monitoring and management services. Your clients see your brand, not ours.</p>
+<h3 class="subsection-title">Client Tracking</h3>
+<p>Organize environments by client. Track usage per client. Generate billing reports per client. Know exactly how much work you are doing for each customer and bill accordingly.</p>
+<h3 class="subsection-title">White Label</h3>
+<p>At the Enterprise tier, completely rebrand VCF Health Check as your own product. Your name, your branding, your product &mdash; powered by our engine.</p>
+<h3 class="subsection-title">API Export</h3>
+<p>Pull health check data programmatically into your own dashboards. Feed it into ServiceNow, Grafana, Datadog, or any system your operations team uses. Build custom reporting on top of our data.</p>
+<hr>
+<h2 id="multi-environment-visibility" class="section-title">Multi-Environment Visibility</h2>
+<p>Managing production, staging, and development environments? Or monitoring VCF deployments across multiple data centers?</p>
+<p>VCF Health Check can merge reports from multiple environments into a single consolidated dashboard. One HTML page showing the health of every environment side by side. Instantly see which environments need attention and which are running smoothly.</p>
+<hr>
+<h2 id="what-makes-this-different" class="section-title">What Makes This Different</h2>
+<p>There are other monitoring tools. Here is why VCF Health Check is different:</p>
+<p>It was built exclusively for VMware Cloud Foundation. Not adapted from a generic monitoring platform. Not a plugin for a larger tool. Every one of the 100+ checks was designed specifically for VCF components and the relationships between them.</p>
+<p>It runs in 60 seconds. Not 60 minutes. A complete health audit of your entire VCF environment in about one minute.</p>
+<p>It gives you a grade. Not a wall of data. A single letter grade (A through F) that instantly communicates the state of your environment to anyone &mdash; from the engineer who needs to fix things to the executive who needs to report on them.</p>
+<p>It tells you how to fix things. Not just what is wrong. Every failure and warning comes with specific remediation steps and estimated time to resolve.</p>
+<p>It works offline. No cloud dependency. No data leaving your network. No SaaS subscription that requires internet access. Install it, run it, keep your data on your infrastructure.</p>
+<p>It generates reports you can actually use. Hand them to clients. Present them to leadership. Attach them to change tickets. Export them to dashboards. Print them and pin them to the wall. The reports are designed to be useful, not just complete.</p>
+<hr>
+<h2 id="pricing" class="section-title">Pricing</h2>
+<h3 class="subsection-title">Starter &mdash; $499 Per Month</h3>
+<p>For small teams managing up to 5 VCF environments for up to 3 clients. All 100+ health checks. All report formats. All notification integrations. Everything you need to start monitoring your VCF environments professionally.</p>
+<p>Annual option: $4,999 per year (save $989).</p>
+<h3 class="subsection-title">Professional &mdash; $1,499 Per Month</h3>
+<p>For MSPs and IT teams managing up to 25 VCF environments for up to 15 clients. Everything in Starter, plus branded reports with your company logo and automated scheduling. This is the tier for service providers who want to look professional and save time.</p>
+<p>Annual option: $14,999 per year (save $2,989).</p>
+<h3 class="subsection-title">Enterprise &mdash; $3,999 Per Month</h3>
+<p>For large operations managing up to 100 VCF environments with unlimited clients. Everything in Professional, plus API export for dashboard integrations and full white-label capability to rebrand the product as your own. This is the tier for organizations that want maximum flexibility and zero limitations.</p>
+<p>Annual option: $39,999 per year (save $7,989).</p>
+<h3 class="subsection-title">Custom &mdash; Starting at $5,000 Per Month</h3>
+<p>For organizations with more than 100 environments or special requirements. We will design a plan that fits your exact needs.</p>
+<hr>
+<h2 id="get-started" class="section-title">Get Started</h2>
+<p>Contact Virtual Control LLC to discuss your VCF monitoring needs and get your license key.</p>
+<p>Every new installation includes a Setup Wizard that walks you through activation in under two minutes. Paste your key, confirm your paths, and you are running health checks immediately.</p>
+<p>No lengthy onboarding. No professional services engagement. No training required. If you can manage a VCF environment, you can use VCF Health Check.</p>
+<p>Your VCF environments are too important to monitor with hope and manual spot checks. Give your team &mdash; and your clients &mdash; the confidence that comes from knowing everything is healthy, every single day.</p>
+<hr>
+<p class="copyright">Copyright 2026 Virtual Control LLC. All rights reserved.</p>
+<p class="copyright">VCF Health Check is a product of Virtual Control LLC.</p>
+<p class="copyright">VMware and VMware Cloud Foundation are trademarks of Broadcom Inc.</p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>&copy; 2026 Virtual Control LLC. All rights reserved.</p>
+  <p>VMware and VMware Cloud Foundation are trademarks of Broadcom Inc.</p>
+  <p style="margin-top:12px"><a href="mailto:info@virtualcontrol.com">info@virtualcontrol.com</a></p>
+</div>
+
+</body>
+</html>
