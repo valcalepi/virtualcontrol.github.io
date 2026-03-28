@@ -5,6 +5,7 @@
 !portfolio-site/
 !portfolio-site/**
 !.gitignore
+!.nojekyll
 !README.md
 !index.html
 !style.css
