@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VCF Health Report - 2026-03-22 15:28:32</title>
+<style>
+/* Feature 14: Expandable result details */
+.rr .detail-toggle{cursor:pointer;color:var(--text2);font-size:.75em;margin-left:8px}
+.rr .detail-box{display:none;margin:4px 0 4px 50px;padding:6px 10px;background:var(--hover);border-radius:4px;font-size:.82em;font-family:monospace;white-space:pre-wrap;word-break:break-all;color:var(--text2)}
+.rr .detail-box.open{display:block}
+/* Feature 12: Dependency map */
+.dep-map{text-align:center;padding:12px 0}
+.dep-map svg text{font-family:'Segoe UI',sans-serif}
+/* Feature 13: ETA badges */
+.eta{font-size:.72em;padding:1px 6px;border-radius:3px;background:var(--border);color:var(--text2);margin-left:6px;white-space:nowrap}
+/* Feature 9: Diff view */
+.diff-bar{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.diff-bar select{padding:4px 8px;border:1px solid var(--border2);border-radius:4px;background:var(--card);color:var(--text);font-size:.82em}
+.diff-result{display:none}.diff-result.open{display:block}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:.85em}.diff-grid .dside{background:var(--card);padding:10px;border-radius:6px;border:1px solid var(--border)}
+.diff-grid .dside h4{margin-bottom:6px;font-size:.9em}
+.diff-added{background:rgba(39,174,96,.1);padding:2px 4px;border-radius:2px}
+.diff-removed{background:rgba(231,76,60,.1);padding:2px 4px;border-radius:2px}
+/* Feature 12: Executive/Technical toggle */
+.exec-view .card,.exec-view #details,.exec-view #trend,.exec-view #diff,.exec-view #depmap{display:none}
+.exec-view #summary,.exec-view .grade-row,.exec-view #exec-summary,.exec-view #components,.exec-view #failures,.exec-view #actions{display:block!important}
+.exec-view .grade-row{display:flex!important}
+/* Feature 14: SLA bars */
+.sla-bar{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:.85em}
+.sla-track{flex:1;height:10px;background:var(--border);border-radius:5px;overflow:hidden}
+.sla-fill{height:100%;border-radius:5px}
+.sla-pct{width:50px;text-align:right;font-weight:600;font-size:.82em}
+/* Feature 13: Full history chart */
+.hist-chart{padding:8px 0}
+/* Feature 15: Playbook export */
+.playbook-btn{margin-top:8px}
+/* Fix action log */
+.fix-item{padding:4px 8px;margin:2px 0;background:rgba(39,174,96,.08);border-left:3px solid var(--green);border-radius:3px;font-size:.85em}
+/* v7.0: Heatmap calendar */
+.heatmap{display:flex;flex-wrap:wrap;gap:2px;padding:8px 0}
+.hm-cell{width:11px;height:11px;border-radius:2px;cursor:pointer;transition:transform .1s}
+.hm-cell:hover{transform:scale(1.6);z-index:1}
+.hm-label{font-size:.7em;color:var(--text2);width:25px;text-align:right;line-height:13px;padding-right:3px}
+/* v7.0: Component mini timeline */
+.comp-timeline{display:flex;gap:1px;height:18px;align-items:flex-end}
+.ct-bar{flex:1;min-width:3px;border-radius:1px 1px 0 0;transition:height .2s}
+/* v7.0: Keyboard shortcut hints */
+.kbd{display:inline-block;padding:1px 5px;font-size:.7em;background:var(--hover);border:1px solid var(--border2);border-radius:3px;font-family:monospace;color:var(--text2);margin-left:4px;vertical-align:middle}
+/* v7.0: Focus indicators for a11y */
+a:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid var(--hdr2);outline-offset:2px;border-radius:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+</style>
+<style>
+:root{--bg:#f0f2f5;--card:#fff;--text:#2c3e50;--text2:#7f8c8d;--border:#ecf0f1;--border2:#dee2e6;--hover:#f8f9fa;--hdr1:#1a5276;--hdr2:#2980b9;--green:#27ae60;--yellow:#f39c12;--orange:#e67e22;--red:#e74c3c;--gray:#95a5a6}
+[data-theme="dark"]{--bg:#1a1a2e;--card:#16213e;--text:#e0e0e0;--text2:#8899aa;--border:#2a2a4a;--border2:#3a3a5a;--hover:#1e2a4a;--hdr1:#0d1b2a;--hdr2:#1b3a5c}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:220px;background:var(--card);border-right:1px solid var(--border);padding:16px 0;position:fixed;height:100vh;overflow-y:auto;z-index:100;transition:transform .3s}
+.sidebar h4{padding:8px 16px;font-size:.8em;text-transform:uppercase;color:var(--text2);letter-spacing:.05em}
+.sidebar a{display:block;padding:6px 16px;color:var(--text);text-decoration:none;font-size:.82em;border-left:3px solid transparent;transition:all .15s;word-wrap:break-word;overflow-wrap:break-word;line-height:1.3}
+.sidebar a:hover,.sidebar a.active{background:var(--hover);border-left-color:var(--hdr2)}
+.sidebar .grade-badge{display:inline-block;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;font-size:.7em;font-weight:700;color:#fff;margin-right:6px}
+.main{margin-left:220px;padding:24px;max-width:1000px;flex:1}
+.toolbar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.toolbar .spacer{flex:1}
+.btn{padding:6px 14px;border:1px solid var(--border2);border-radius:6px;background:var(--card);color:var(--text);cursor:pointer;font-size:.82em;transition:all .15s;display:inline-flex;align-items:center;gap:4px}
+.btn:hover{background:var(--hover);border-color:var(--text2)}
+.btn.active{background:var(--hdr2);color:#fff;border-color:var(--hdr2)}
+.filter-btn[data-active="true"]{opacity:1}.filter-btn[data-active="false"]{opacity:.4}
+.hdr{background:linear-gradient(135deg,var(--hdr1),var(--hdr2));color:#fff;padding:32px;border-radius:12px;margin-bottom:20px}
+.hdr h1{font-size:1.6em;font-weight:700}.hdr .sub{opacity:.85;font-size:.9em;margin-top:2px}
+.hdr .meta-row{margin-top:12px;display:flex;gap:20px;font-size:.85em;opacity:.9;flex-wrap:wrap}
+.grade-row{display:flex;gap:24px;margin-bottom:20px;flex-wrap:wrap;align-items:stretch}
+.grade-card{background:var(--card);border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.08);flex:1;min-width:200px}
+.grade-card.main-grade{display:flex;align-items:center;gap:20px}
+.circle{width:90px;height:90px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2em;font-weight:800;color:#fff;flex-shrink:0}
+.donut-card{display:flex;align-items:center;gap:16px}
+.donut-legend{font-size:.85em}.donut-legend div{margin:3px 0}.donut-legend .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.bar-o{background:var(--border);border-radius:8px;height:14px;width:100%;margin-top:8px;overflow:hidden}
+.bar-i{height:100%;border-radius:8px;transition:width .5s}
+.card{background:var(--card);border-radius:12px;padding:20px 24px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.card h3{font-size:1.05em;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.card h3 .toggle{font-size:.7em;color:var(--text2);transition:transform .2s}
+.card h3 .toggle.collapsed{transform:rotate(-90deg)}
+.card .body{overflow:hidden;transition:max-height .3s ease}
+.card .body.collapsed{max-height:0!important;padding:0}
+table{width:100%;border-collapse:collapse;font-size:.88em}
+th{background:var(--hover);text-align:left;padding:8px 10px;font-weight:600;border-bottom:2px solid var(--border2)}
+td{padding:8px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--hover)}.num{text-align:center;font-weight:600}
+.badge{color:#fff;padding:2px 10px;border-radius:3px;font-weight:600;font-size:.82em}
+.rr{display:flex;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);font-size:.88em}
+.rr:last-child{border-bottom:none}.rb{width:48px;text-align:center;flex-shrink:0;font-weight:700}.rm{flex:1}
+.rr.filter-hidden{display:none}
+.fi,.wi{padding:8px 12px;margin-bottom:5px;border-radius:6px;font-size:.88em}
+.fi{background:rgba(231,76,60,.08);border-left:4px solid var(--red)}.wi{background:rgba(243,156,18,.08);border-left:4px solid var(--yellow)}
+.ri{padding:10px 14px;margin-bottom:6px;border-radius:6px;font-size:.88em;display:flex;align-items:flex-start;gap:8px}
+.ri.fail-ri{background:rgba(231,76,60,.06);border-left:4px solid var(--red)}
+.ri.warn-ri{background:rgba(243,156,18,.06);border-left:4px solid var(--yellow)}
+.ri .fix{color:var(--text2);margin-top:4px;font-size:.86em}
+.ri input[type=checkbox]{margin-top:3px;flex-shrink:0;cursor:pointer}
+.ri.checked{opacity:.5;text-decoration:line-through}
+.exec{background:rgba(243,156,18,.1);border-left:4px solid var(--yellow);padding:12px 16px;border-radius:6px;margin-bottom:16px;font-size:.92em;display:flex;align-items:center;gap:10px}
+.exec .copy-btn{margin-left:auto;flex-shrink:0}
+.sh{font-weight:600;color:var(--text);padding:6px 0 3px;border-bottom:2px solid var(--hdr2);margin:8px 0 4px;font-size:.92em}
+.dt td,.dt th{text-align:center}
+.du{color:var(--red);font-weight:600}.dd{color:var(--green);font-weight:600}.ds{color:var(--gray)}
+.sparkline-row{display:flex;align-items:center;gap:12px;margin-top:8px;font-size:.85em;color:var(--text2)}
+.ft{text-align:center;color:var(--text2);font-size:.8em;margin-top:24px;padding:12px 0;border-top:1px solid var(--border)}
+.ts-live{font-size:.8em;color:var(--text2);margin-left:8px}
+.toast{position:fixed;bottom:24px;right:24px;background:#2c3e50;color:#fff;padding:10px 20px;border-radius:8px;font-size:.88em;opacity:0;transition:opacity .3s;z-index:999;pointer-events:none}
+.toast.show{opacity:1}
+@media(max-width:768px){.sidebar{transform:translateX(-220px)}.main{margin-left:0}.grade-row{flex-direction:column}.sidebar.open{transform:translateX(0)}.mob-toggle{display:block!important}}
+@media print{.sidebar,.toolbar,.mob-toggle,.copy-btn,.toggle,input[type=checkbox]{display:none!important}.main{margin-left:0}.card .body{max-height:none!important}body{background:#fff;color:#000}.card,.grade-card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}.hdr{print-color-adjust:exact;-webkit-print-color-adjust:exact}.badge{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style></head><body>
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+<a href="#summary" class="sr-only">Skip to main content</a>
+<button class="btn mob-toggle" style="display:none;position:fixed;top:8px;left:8px;z-index:200" onclick="document.querySelector('.sidebar').classList.toggle('open')" aria-label="Toggle navigation menu">Menu</button>
+<div class="layout">
+<nav class="sidebar" id="sidebar" role="navigation" aria-label="Report sections">
+<h4>Navigation</h4>
+<a href="#summary">Summary</a>
+<a href="#components">Components</a>
+<a href="#sec-Infrastructure-—-DNS-&amp;-Certificates">Infrastructure — DNS &amp; Certificates</a>
+<a href="#sec-vCenter-Server-(vcenter.lab.local)">vCenter Server (vcenter.lab.local)</a>
+<a href="#sec-SDDC-Manager-(sddc-manager.lab.local)">SDDC Manager (sddc-manager.lab.local)</a>
+<a href="#sec-NSX-Manager-(nsx-vip.lab.local)">NSX Manager (nsx-vip.lab.local)</a>
+<a href="#sec-VCF-Operations-(192.168.1.77)">VCF Operations (192.168.1.77)</a>
+<a href="#sec-Fleet---vRSLCM-(192.168.1.78)">Fleet / vRSLCM (192.168.1.78)</a>
+<a href="#depmap">Dependencies</a>
+<a href="#failures">Failures</a>
+<a href="#warnings">Warnings</a>
+<a href="#actions">Actions</a>
+<a href="#details">All Results</a>
+<a href="#trend">Trend</a>
+<a href="#diff">Diff View</a>
+<a href="#sla">SLA Uptime</a>
+<a href="#history">History</a>
+<a href="#latency">Latency</a>
+<a href="#heatmap">Heatmap</a>
+<div style="padding:16px;margin-top:auto;border-top:1px solid var(--border);">
+<div style="font-size:.8em;color:var(--text2);">Report generated</div>
+<div class="ts-live" id="ts-live">2026-03-22 15:28:32</div>
+</div>
+</nav>
+<main class="main" role="main" aria-label="Health check report">
+<div class="toolbar" role="toolbar" aria-label="Report controls">
+<button class="btn filter-btn" data-active="true" data-filter="PASS" onclick="toggleFilter('PASS',this)" style="color:var(--green)">Pass</button>
+<button class="btn filter-btn" data-active="true" data-filter="WARN" onclick="toggleFilter('WARN',this)" style="color:var(--yellow)">Warn</button>
+<button class="btn filter-btn" data-active="true" data-filter="FAIL" onclick="toggleFilter('FAIL',this)" style="color:var(--red)">Fail</button>
+<div class="spacer"></div>
+<button class="btn" onclick="toggleView()" id="view-btn" aria-label="Toggle executive view (E)">Executive View <span class="kbd">E</span></button>
+<button class="btn" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle dark mode (D)">Dark Mode <span class="kbd">D</span></button>
+<button class="btn" onclick="exportCSV()" aria-label="Export CSV">CSV</button>
+<button class="btn" onclick="exportPlaybook()" aria-label="Export playbook (P)">Playbook <span class="kbd">P</span></button>
+<button class="btn" onclick="window.print()" aria-label="Print report">Print</button>
+</div>
+
+<div class="hdr" id="summary">
+<h1>VCF 9.0 Environment Health Check</h1>
+<div class="sub">Automated infrastructure assessment &mdash; v8.0</div>
+<div class="meta-row">
+<span>Date: 2026-03-22 15:28:32</span>
+<span>Duration: 0m 45s</span><span>vCenter: 9.0.2.0 (Build 25148086)</span><span>SDDC: 9.0.1.0.24962180</span></div></div>
+<div class="exec" id="exec-summary"><strong>Executive Summary:</strong>&nbsp;Top priority: 1 failure(s) detected. Review failures below for remediation steps.<button class="btn copy-btn" onclick="copySummary()">Copy</button></div>
+<div class="grade-row">
+<div class="grade-card main-grade">
+<div class="circle" style="background:#27ae60;">B+</div>
+<div style="flex:1;">
+<h2 style="color:#27ae60;margin:0 0 2px;">GOOD — FEW ISSUES</h2>
+<div style="font-size:.88em;color:var(--text2);">Very few issues. Review and address failures.</div>
+<div style="margin-top:6px;font-size:.9em;"><strong>92%</strong>
+&nbsp;<span style="color:var(--green);">85P</span>
+&nbsp;<span style="color:var(--yellow);">7W</span>
+&nbsp;<span style="color:var(--red);">1F</span>
+&nbsp;<span style="color:var(--text2);">/ 93</span></div>
+<div class="bar-o"><div class="bar-i" style="width:92%;background:#27ae60;"></div></div>
+</div></div>
+<div class="grade-card donut-card">
+<svg width="140" height="140" viewBox="0 0 140 140"><circle cx="70.0" cy="70.0" r="60.0" fill="none" stroke="#27ae60" stroke-width="18" stroke-dasharray="344.6 32.4" stroke-dashoffset="94.2" stroke-linecap="round"/><circle cx="70.0" cy="70.0" r="60.0" fill="none" stroke="#f39c12" stroke-width="18" stroke-dasharray="28.4 348.6" stroke-dashoffset="-250.3" stroke-linecap="round"/><circle cx="70.0" cy="70.0" r="60.0" fill="none" stroke="#e74c3c" stroke-width="18" stroke-dasharray="4.1 372.9" stroke-dashoffset="-278.7" stroke-linecap="round"/><text x="70.0" y="76.0" text-anchor="middle" font-size="22" font-weight="800" fill="var(--text)">92%</text></svg>
+<div class="donut-legend">
+<div><span class="dot" style="background:var(--green);"></span>Passed: 85</div>
+<div><span class="dot" style="background:var(--yellow);"></span>Warnings: 7</div>
+<div><span class="dot" style="background:var(--red);"></span>Failed: 1</div>
+</div></div><div class="grade-card">
+<div style="font-size:.85em;font-weight:600;margin-bottom:4px;">Score Trend</div>
+<svg width="200" height="40" style="vertical-align:middle;"><polyline points="5.0,30.0 43.0,30.0 81.0,30.0 119.0,35.0 157.0,10.0 195.0,5.0" fill="none" stroke="#27ae60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="195.0" cy="5.0" r="4" fill="#27ae60"/></svg>
+<div class="sparkline-row">Last 6 runs</div>
+</div></div>
+<div class="card" id="components"><h3 onclick="toggleCard(this)">Component Breakdown <span class="toggle">&#9660;</span></h3><div class="body">
+<table>
+<tr><th>Component</th><th class="num">Pass</th><th class="num">Warn</th><th class="num">Fail</th><th class="num">Status</th><th class="num" style="width:80px;">Trend</th></tr>
+<tr><td>Infrastructure</td><td class="num">23</td><td class="num">4</td><td class="num">0</td><td class="num"><span class="badge" style="background:#f39c12;">WARN</span></td><td class="num"><div class="comp-timeline"><div class="ct-bar" style="height:13px;background:#27ae60;"></div><div class="ct-bar" style="height:13px;background:#27ae60;"></div><div class="ct-bar" style="height:13px;background:#27ae60;"></div><div class="ct-bar" style="height:13px;background:#27ae60;"></div><div class="ct-bar" style="height:13px;background:#27ae60;"></div><div class="ct-bar" style="height:13px;background:#27ae60;"></div><div class="ct-bar" style="height:13px;background:#27ae60;"></div><div class="ct-bar" style="height:13px;background:#27ae60;"></div><div class="ct-bar" style="height:13px;background:#27ae60;"></div><div class="ct-bar" style="height:13px;background:#27ae60;"></div></div></td></tr>
+<tr><td>vCenter Server</td><td class="num">36</td><td class="num">0</td><td class="num">1</td><td class="num"><span class="badge" style="background:#e74c3c;">FAIL</span></td><td class="num"><div class="comp-timeline"><div class="ct-bar" style="height:14px;background:#27ae60;"></div><div class="ct-bar" style="height:14px;background:#27ae60;"></div><div class="ct-bar" style="height:14px;background:#27ae60;"></div><div class="ct-bar" style="height:14px;background:#27ae60;"></div><div class="ct-bar" style="height:14px;background:#27ae60;"></div><div class="ct-bar" style="height:14px;background:#27ae60;"></div><div class="ct-bar" style="height:15px;background:#27ae60;"></div><div class="ct-bar" style="height:15px;background:#27ae60;"></div><div class="ct-bar" style="height:15px;background:#27ae60;"></div><div class="ct-bar" style="height:15px;background:#27ae60;"></div></div></td></tr>
+<tr><td>SDDC Manager</td><td class="num">11</td><td class="num">2</td><td class="num">0</td><td class="num"><span class="badge" style="background:#f39c12;">WARN</span></td><td class="num"><div class="comp-timeline"><div class="ct-bar" style="height:11px;background:#f39c12;"></div><div class="ct-bar" style="height:11px;background:#f39c12;"></div><div class="ct-bar" style="height:11px;background:#f39c12;"></div><div class="ct-bar" style="height:11px;background:#f39c12;"></div><div class="ct-bar" style="height:11px;background:#f39c12;"></div><div class="ct-bar" style="height:9px;background:#f39c12;"></div><div class="ct-bar" style="height:9px;background:#f39c12;"></div><div class="ct-bar" style="height:13px;background:#27ae60;"></div><div class="ct-bar" style="height:13px;background:#27ae60;"></div><div class="ct-bar" style="height:13px;background:#27ae60;"></div></div></td></tr>
+<tr><td>NSX Manager</td><td class="num">9</td><td class="num">0</td><td class="num">0</td><td class="num"><span class="badge" style="background:#27ae60;">PASS</span></td><td class="num"><div class="comp-timeline"><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div></div></td></tr>
+<tr><td>VCF Operations</td><td class="num">4</td><td class="num">1</td><td class="num">0</td><td class="num"><span class="badge" style="background:#f39c12;">WARN</span></td><td class="num"><div class="comp-timeline"><div class="ct-bar" style="height:12px;background:#27ae60;"></div><div class="ct-bar" style="height:12px;background:#27ae60;"></div><div class="ct-bar" style="height:12px;background:#27ae60;"></div><div class="ct-bar" style="height:12px;background:#27ae60;"></div><div class="ct-bar" style="height:12px;background:#27ae60;"></div><div class="ct-bar" style="height:12px;background:#27ae60;"></div><div class="ct-bar" style="height:12px;background:#27ae60;"></div><div class="ct-bar" style="height:12px;background:#27ae60;"></div><div class="ct-bar" style="height:12px;background:#27ae60;"></div><div class="ct-bar" style="height:12px;background:#27ae60;"></div></div></td></tr>
+<tr><td>Fleet (vRSLCM)</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num"><span class="badge" style="background:#27ae60;">PASS</span></td><td class="num"><div class="comp-timeline"><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div><div class="ct-bar" style="height:16px;background:#27ae60;"></div></div></td></tr>
+</table></div></div>
+<div class="card" id="trend"><h3 onclick="toggleCard(this)">Trend (Last 5 Runs) <span class="toggle">&#9660;</span></h3><div class="body">
+<table class="dt">
+<tr><th>Date</th><th>Grade</th><th>Pass</th><th>Warn</th><th>Fail</th><th>Score</th></tr>
+<tr style="background:rgba(39,174,96,.08);"><td>2026-03-22 15:28</td><td style="color:#27ae60;font-weight:700;">B+</td><td>85</td><td>7</td><td>1</td><td>92%</td></tr>
+<tr><td>2026-03-22 15:14</td><td>B+</td><td>85</td><td>7</td><td>1</td><td>91%</td></tr>
+<tr><td>2026-03-22 14:02</td><td>D</td><td>80</td><td>9</td><td>4</td><td>86%</td></tr>
+<tr><td>2026-03-22 13:50</td><td>B</td><td>78</td><td>11</td><td>0</td><td>87%</td></tr>
+<tr><td>2026-03-22 13:30</td><td>C</td><td>79</td><td>10</td><td>1</td><td>87%</td></tr>
+<tr><td>2026-03-22 12:25</td><td>B</td><td>79</td><td>11</td><td>0</td><td>87%</td></tr>
+</table></div></div>
+<div class="card" id="depmap"><h3 onclick="toggleCard(this)">Component Dependencies <span class="toggle">&#9660;</span></h3><div class="body"><div class="dep-map"><svg width="500" height="290" viewBox="0 0 500 290"><line x1="100" y1="140" x2="250" y2="40" stroke="var(--border2)" stroke-width="2" stroke-dasharray="4"/><line x1="100" y1="140" x2="250" y2="140" stroke="var(--border2)" stroke-width="2" stroke-dasharray="4"/><line x1="250" y1="140" x2="250" y2="240" stroke="var(--border2)" stroke-width="2" stroke-dasharray="4"/><line x1="250" y1="40" x2="250" y2="240" stroke="var(--border2)" stroke-width="2" stroke-dasharray="4"/><line x1="400" y1="140" x2="250" y2="40" stroke="var(--border2)" stroke-width="2" stroke-dasharray="4"/><line x1="400" y1="240" x2="250" y2="40" stroke="var(--border2)" stroke-width="2" stroke-dasharray="4"/><rect x="195" y="22" width="110" height="36" rx="8" fill="#e74c3c" opacity="0.15" stroke="#e74c3c" stroke-width="2"/><circle cx="210" cy="40" r="5" fill="#e74c3c"/><text x="252" y="45" text-anchor="middle" font-size="11" fill="var(--text)" font-weight="600">vCenter</text><rect x="45" y="122" width="110" height="36" rx="8" fill="#f39c12" opacity="0.15" stroke="#f39c12" stroke-width="2"/><circle cx="60" cy="140" r="5" fill="#f39c12"/><text x="102" y="145" text-anchor="middle" font-size="11" fill="var(--text)" font-weight="600">SDDC Manager</text><rect x="195" y="122" width="110" height="36" rx="8" fill="#27ae60" opacity="0.15" stroke="#27ae60" stroke-width="2"/><circle cx="210" cy="140" r="5" fill="#27ae60"/><text x="252" y="145" text-anchor="middle" font-size="11" fill="var(--text)" font-weight="600">NSX</text><rect x="195" y="222" width="110" height="36" rx="8" fill="#f39c12" opacity="0.15" stroke="#f39c12" stroke-width="2"/><circle cx="210" cy="240" r="5" fill="#f39c12"/><text x="252" y="245" text-anchor="middle" font-size="11" fill="var(--text)" font-weight="600">ESXi Hosts</text><rect x="345" y="122" width="110" height="36" rx="8" fill="#f39c12" opacity="0.15" stroke="#f39c12" stroke-width="2"/><circle cx="360" cy="140" r="5" fill="#f39c12"/><text x="402" y="145" text-anchor="middle" font-size="11" fill="var(--text)" font-weight="600">VCF Ops</text><rect x="345" y="222" width="110" height="36" rx="8" fill="#27ae60" opacity="0.15" stroke="#27ae60" stroke-width="2"/><circle cx="360" cy="240" r="5" fill="#27ae60"/><text x="402" y="245" text-anchor="middle" font-size="11" fill="var(--text)" font-weight="600">Fleet</text></svg></div></div></div>
+<div class="card" id="diff"><h3 onclick="toggleCard(this)">Compare Runs (Diff View) <span class="toggle">&#9660;</span></h3><div class="body">
+<div class="diff-bar">
+<label>Run A:</label><select id="diff-a"><option value="VCF-Health-Report_20260322_152831.json">2026-03-22 15:28:32 — Grade B+ (92%)  [Current]</option><option value="VCF-Health-Report_20260322_152520.json">2026-03-22 15:25:21 — Grade B+ (92%)</option><option value="VCF-Health-Report_20260322_151415.json">2026-03-22 15:14:15 — Grade B+ (92%)</option><option value="VCF-Health-Report_20260322_150500.json">2026-03-22 15:05:01 — Grade D (88%)</option><option value="VCF-Health-Report_20260322_140221.json">2026-03-22 14:02:22 — Grade D (86%)</option><option value="VCF-Health-Report_20260322_135632.json">2026-03-22 13:56:33 — Grade B (88%)</option><option value="VCF-Health-Report_20260322_135005.json">2026-03-22 13:50:06 — Grade B (88%)</option><option value="VCF-Health-Report_20260322_133018.json">2026-03-22 13:30:19 — Grade C (88%)</option><option value="VCF-Health-Report_20260322_130322.json">2026-03-22 13:03:23 — Grade B (88%)</option><option value="VCF-Health-Report_20260322_122532.json">2026-03-22 12:25:33 — Grade B (88%)</option><option value="VCF-Health-Report_20260322_122319.json">2026-03-22 12:23:20 — Grade B (88%)</option><option value="VCF-Health-Report_20260322_120614.json">2026-03-22 12:06:15 — Grade B (83%)</option><option value="VCF-Health-Report_20260322_120057.json">2026-03-22 12:00:58 — Grade B (83%)</option><option value="VCF-Health-Report_20260322_115355.json">2026-03-22 11:53:56 — Grade B (83%)</option><option value="VCF-Health-Report_20260322_114555.json">2026-03-22 11:45:56 — Grade C (83%)</option><option value="VCF-Health-Report_20260322_113818.json">2026-03-22 11:38:19 — Grade C (83%)</option><option value="VCF-Health-Report_20260322_112720.json">2026-03-22 11:27:21 — Grade C (82%)</option><option value="VCF-Health-Report_20260322_111542.json">2026-03-22 11:15:43 — Grade C (82%)</option><option value="VCF-Health-Report_20260322_104725.json">2026-03-22 10:47:26 — Grade C (83%)</option><option value="VCF-Health-Report_20260322_103646.json">2026-03-22 10:36:47 — Grade C (82%)</option><option value="VCF-Health-Report_20260320_193304.json">2026-03-20 19:33:05 — Grade C (74%)</option><option value="VCF-Health-Report_20260320_192126.json">2026-03-20 19:21:28 — Grade D (74%)</option><option value="VCF-Health-Report_20260320_191520.json">2026-03-20 19:15:21 — Grade D (73%)</option><option value="VCF-Health-Report_20260320_190621.json">2026-03-20 19:06:23 — Grade D (74%)</option><option value="VCF-Health-Report_20260320_184638.json">2026-03-20 18:46:39 — Grade D (75%)</option><option value="VCF-Health-Report_20260320_183805.json">2026-03-20 18:38:07 — Grade D (73%)</option><option value="VCF-Health-Report_20260320_181831.json">2026-03-20 18:18:33 — Grade D (76%)</option><option value="VCF-Health-Report_20260320_180607.json">2026-03-20 18:06:08 — Grade D (76%)</option><option value="VCF-Health-Report_20260320_180112.json">2026-03-20 18:01:14 — Grade D (74%)</option><option value="VCF-Health-Report_20260320_175355.json">2026-03-20 17:53:56 — Grade D (74%)</option><option value="VCF-Health-Report_20260320_174623.json">2026-03-20 17:46:23 — Grade D (74%)</option><option value="VCF-Health-Report_20260320_174214.json">2026-03-20 17:42:15 — Grade D (75%)</option><option value="VCF-Health-Report_20260320_173412.json">2026-03-20 17:34:13 — Grade D (74%)</option><option value="VCF-Health-Report_20260320_171914.json">2026-03-20 17:19:16 — Grade D (76%)</option><option value="VCF-Health-Report_20260320_165256.json">2026-03-20 16:52:57 — Grade D (75%)</option><option value="VCF-Health-Report_20260320_140015.json">2026-03-20 14:00:16 — Grade D (75%)</option><option value="VCF-Health-Report_20260320_130529.json">2026-03-20 13:05:30 — Grade D (72%)</option><option value="VCF-Health-Report_20260319_232118.json">2026-03-19 23:21:19 — Grade D (84%)</option><option value="VCF-Health-Report_20260319_225834.json">2026-03-19 22:58:35 — Grade D (75%)</option><option value="VCF-Health-Report_20260319_203305.json">2026-03-19 20:33:07 — Grade D (56%)</option><option value="VCF-Health-Report_20260319_200043.json">2026-03-19 20:00:44 — Grade D (81%)</option><option value="VCF-Health-Report_20260319_183751.json">2026-03-19 18:37:52 — Grade D (80%)</option><option value="VCF-Health-Report_20260319_182124.json">2026-03-19 18:21:25 — Grade F (72%)</option><option value="VCF-Health-Report_20260319_181647.json">2026-03-19 18:16:48 — Grade F (73%)</option><option value="VCF-Health-Report_20260319_180554.json">2026-03-19 18:05:55 — Grade F (76%)</option><option value="VCF-Health-Report_20260319_173747.json">2026-03-19 17:37:48 — Grade F (79%)</option><option value="VCF-Health-Report_20260319_173155.json">2026-03-19 17:31:56 — Grade F (76%)</option><option value="VCF-Health-Report_20260319_170716.json">2026-03-19 17:07:17 — Grade F (78%)</option><option value="VCF-Health-Report_20260319_144845.json">2026-03-19 14:48:47 — Grade F (72%)</option><option value="VCF-Health-Report_20260319_123148.json">2026-03-19 12:31:49 — Grade F (71%)</option><option value="VCF-Health-Report_20260319_120512.json">2026-03-19 12:05:13 — Grade F (71%)</option><option value="VCF-Health-Report_20260319_115959.json">2026-03-19 11:59:59 — Grade F (75%)</option><option value="VCF-Health-Report_20260319_101522.json">2026-03-19 10:15:23 — Grade F (73%)</option><option value="VCF-Health-Report_20260318_214301.json">2026-03-18 21:43:02 — Grade D (74%)</option><option value="VCF-Health-Report_20260318_211637.json">2026-03-18 21:16:38 — Grade D (67%)</option><option value="VCF-Health-Report_20260318_201447.json">2026-03-18 20:14:49 — Grade F (65%)</option><option value="VCF-Health-Report_20260318_131021.json">2026-03-18 13:10:21 — Grade D (64%)</option><option value="VCF-Health-Report_20260318_123839.json">2026-03-18 12:38:40 — Grade D (66%)</option><option value="VCF-Health-Report_20260318_123227.json">2026-03-18 12:32:28 — Grade D (66%)</option><option value="VCF-Health-Report_20260318_121325.json">2026-03-18 12:13:25 — Grade D (64%)</option><option value="VCF-Health-Report_20260318_114333.json">2026-03-18 11:43:33 — Grade D (71%)</option><option value="VCF-Health-Report_20260318_105450.json">2026-03-18 10:54:51 — Grade D (62%)</option><option value="VCF-Health-Report_20260318_104409.json"> — Grade  (0%)</option><option value="VCF-Health-Report_20260318_102959.json">2026-03-18 10:30:00 — Grade D (65%)</option><option value="VCF-Health-Report_20260317_190644.json">2026-03-17 19:06:45 — Grade D (68%)</option></select>
+<label>Run B:</label><select id="diff-b"><option value="VCF-Health-Report_20260322_152831.json">2026-03-22 15:28:32 — Grade B+ (92%)  [Current]</option><option value="VCF-Health-Report_20260322_152520.json">2026-03-22 15:25:21 — Grade B+ (92%)</option><option value="VCF-Health-Report_20260322_151415.json">2026-03-22 15:14:15 — Grade B+ (92%)</option><option value="VCF-Health-Report_20260322_150500.json">2026-03-22 15:05:01 — Grade D (88%)</option><option value="VCF-Health-Report_20260322_140221.json">2026-03-22 14:02:22 — Grade D (86%)</option><option value="VCF-Health-Report_20260322_135632.json">2026-03-22 13:56:33 — Grade B (88%)</option><option value="VCF-Health-Report_20260322_135005.json">2026-03-22 13:50:06 — Grade B (88%)</option><option value="VCF-Health-Report_20260322_133018.json">2026-03-22 13:30:19 — Grade C (88%)</option><option value="VCF-Health-Report_20260322_130322.json">2026-03-22 13:03:23 — Grade B (88%)</option><option value="VCF-Health-Report_20260322_122532.json">2026-03-22 12:25:33 — Grade B (88%)</option><option value="VCF-Health-Report_20260322_122319.json">2026-03-22 12:23:20 — Grade B (88%)</option><option value="VCF-Health-Report_20260322_120614.json">2026-03-22 12:06:15 — Grade B (83%)</option><option value="VCF-Health-Report_20260322_120057.json">2026-03-22 12:00:58 — Grade B (83%)</option><option value="VCF-Health-Report_20260322_115355.json">2026-03-22 11:53:56 — Grade B (83%)</option><option value="VCF-Health-Report_20260322_114555.json">2026-03-22 11:45:56 — Grade C (83%)</option><option value="VCF-Health-Report_20260322_113818.json">2026-03-22 11:38:19 — Grade C (83%)</option><option value="VCF-Health-Report_20260322_112720.json">2026-03-22 11:27:21 — Grade C (82%)</option><option value="VCF-Health-Report_20260322_111542.json">2026-03-22 11:15:43 — Grade C (82%)</option><option value="VCF-Health-Report_20260322_104725.json">2026-03-22 10:47:26 — Grade C (83%)</option><option value="VCF-Health-Report_20260322_103646.json">2026-03-22 10:36:47 — Grade C (82%)</option><option value="VCF-Health-Report_20260320_193304.json">2026-03-20 19:33:05 — Grade C (74%)</option><option value="VCF-Health-Report_20260320_192126.json">2026-03-20 19:21:28 — Grade D (74%)</option><option value="VCF-Health-Report_20260320_191520.json">2026-03-20 19:15:21 — Grade D (73%)</option><option value="VCF-Health-Report_20260320_190621.json">2026-03-20 19:06:23 — Grade D (74%)</option><option value="VCF-Health-Report_20260320_184638.json">2026-03-20 18:46:39 — Grade D (75%)</option><option value="VCF-Health-Report_20260320_183805.json">2026-03-20 18:38:07 — Grade D (73%)</option><option value="VCF-Health-Report_20260320_181831.json">2026-03-20 18:18:33 — Grade D (76%)</option><option value="VCF-Health-Report_20260320_180607.json">2026-03-20 18:06:08 — Grade D (76%)</option><option value="VCF-Health-Report_20260320_180112.json">2026-03-20 18:01:14 — Grade D (74%)</option><option value="VCF-Health-Report_20260320_175355.json">2026-03-20 17:53:56 — Grade D (74%)</option><option value="VCF-Health-Report_20260320_174623.json">2026-03-20 17:46:23 — Grade D (74%)</option><option value="VCF-Health-Report_20260320_174214.json">2026-03-20 17:42:15 — Grade D (75%)</option><option value="VCF-Health-Report_20260320_173412.json">2026-03-20 17:34:13 — Grade D (74%)</option><option value="VCF-Health-Report_20260320_171914.json">2026-03-20 17:19:16 — Grade D (76%)</option><option value="VCF-Health-Report_20260320_165256.json">2026-03-20 16:52:57 — Grade D (75%)</option><option value="VCF-Health-Report_20260320_140015.json">2026-03-20 14:00:16 — Grade D (75%)</option><option value="VCF-Health-Report_20260320_130529.json">2026-03-20 13:05:30 — Grade D (72%)</option><option value="VCF-Health-Report_20260319_232118.json">2026-03-19 23:21:19 — Grade D (84%)</option><option value="VCF-Health-Report_20260319_225834.json">2026-03-19 22:58:35 — Grade D (75%)</option><option value="VCF-Health-Report_20260319_203305.json">2026-03-19 20:33:07 — Grade D (56%)</option><option value="VCF-Health-Report_20260319_200043.json">2026-03-19 20:00:44 — Grade D (81%)</option><option value="VCF-Health-Report_20260319_183751.json">2026-03-19 18:37:52 — Grade D (80%)</option><option value="VCF-Health-Report_20260319_182124.json">2026-03-19 18:21:25 — Grade F (72%)</option><option value="VCF-Health-Report_20260319_181647.json">2026-03-19 18:16:48 — Grade F (73%)</option><option value="VCF-Health-Report_20260319_180554.json">2026-03-19 18:05:55 — Grade F (76%)</option><option value="VCF-Health-Report_20260319_173747.json">2026-03-19 17:37:48 — Grade F (79%)</option><option value="VCF-Health-Report_20260319_173155.json">2026-03-19 17:31:56 — Grade F (76%)</option><option value="VCF-Health-Report_20260319_170716.json">2026-03-19 17:07:17 — Grade F (78%)</option><option value="VCF-Health-Report_20260319_144845.json">2026-03-19 14:48:47 — Grade F (72%)</option><option value="VCF-Health-Report_20260319_123148.json">2026-03-19 12:31:49 — Grade F (71%)</option><option value="VCF-Health-Report_20260319_120512.json">2026-03-19 12:05:13 — Grade F (71%)</option><option value="VCF-Health-Report_20260319_115959.json">2026-03-19 11:59:59 — Grade F (75%)</option><option value="VCF-Health-Report_20260319_101522.json">2026-03-19 10:15:23 — Grade F (73%)</option><option value="VCF-Health-Report_20260318_214301.json">2026-03-18 21:43:02 — Grade D (74%)</option><option value="VCF-Health-Report_20260318_211637.json">2026-03-18 21:16:38 — Grade D (67%)</option><option value="VCF-Health-Report_20260318_201447.json">2026-03-18 20:14:49 — Grade F (65%)</option><option value="VCF-Health-Report_20260318_131021.json">2026-03-18 13:10:21 — Grade D (64%)</option><option value="VCF-Health-Report_20260318_123839.json">2026-03-18 12:38:40 — Grade D (66%)</option><option value="VCF-Health-Report_20260318_123227.json">2026-03-18 12:32:28 — Grade D (66%)</option><option value="VCF-Health-Report_20260318_121325.json">2026-03-18 12:13:25 — Grade D (64%)</option><option value="VCF-Health-Report_20260318_114333.json">2026-03-18 11:43:33 — Grade D (71%)</option><option value="VCF-Health-Report_20260318_105450.json">2026-03-18 10:54:51 — Grade D (62%)</option><option value="VCF-Health-Report_20260318_104409.json"> — Grade  (0%)</option><option value="VCF-Health-Report_20260318_102959.json">2026-03-18 10:30:00 — Grade D (65%)</option><option value="VCF-Health-Report_20260317_190644.json">2026-03-17 19:06:45 — Grade D (68%)</option></select>
+<button class="btn" onclick="loadDiff()">Compare</button>
+</div>
+<div id="diff-result" class="diff-result"></div>
+</div></div>
+<div class="card" id="failures"><h3 style="color:var(--red);" onclick="toggleCard(this)">Failures (1) <span class="toggle">&#9660;</span></h3><div class="body">
+<div class="fi">1. [vCenter Server (vcenter.lab.local)] vSAN health: red (Limits health issue)</div>
+</div></div>
+<div class="card" id="warnings"><h3 style="color:var(--yellow);" onclick="toggleCard(this)">Warnings (7) <span class="toggle">&#9660;</span></h3><div class="body">
+<div class="wi">1. [Infrastructure — DNS &amp; Certificates] ESXi 192.168.1.74: SSH enabled (port 22 open)</div>
+<div class="wi">2. [Infrastructure — DNS &amp; Certificates] ESXi 192.168.1.75: SSH enabled (port 22 open)</div>
+<div class="wi">3. [Infrastructure — DNS &amp; Certificates] ESXi 192.168.1.76: SSH enabled (port 22 open)</div>
+<div class="wi">4. [Infrastructure — DNS &amp; Certificates] ESXi 192.168.1.82: SSH enabled (port 22 open)</div>
+<div class="wi">5. [SDDC Manager (sddc-manager.lab.local)] 81 stale task(s) (&gt;24h) of 84 total</div>
+<div class="wi">6. [SDDC Manager (sddc-manager.lab.local)] Backup status: endpoint not available (HTTP 500)</div>
+<div class="wi">7. [VCF Operations (192.168.1.77)] Adapters: 9/17 receiving data</div>
+</div></div>
+<div class="card" id="actions"><h3 style="color:var(--hdr2);" onclick="toggleCard(this)">Recommended Actions (8) <span class="toggle">&#9660;</span></h3><div class="body">
+<div class="ri warn-ri" id="rem-0"><input type="checkbox" onchange="toggleChecked(this,0)"><div><strong style="color:var(--yellow);">[WARN]</strong> [Infrastructure — DNS &amp; Certificates] ESXi 192.168.1.74: SSH enabled (port 22 open)<span class="eta">~2m</span><div class="fix"><strong>Fix:</strong> Disable SSH in production: esxcli system ssh set --enabled=false.</div></div></div>
+<div class="ri warn-ri" id="rem-1"><input type="checkbox" onchange="toggleChecked(this,1)"><div><strong style="color:var(--yellow);">[WARN]</strong> [Infrastructure — DNS &amp; Certificates] ESXi 192.168.1.75: SSH enabled (port 22 open)<span class="eta">~2m</span><div class="fix"><strong>Fix:</strong> Disable SSH in production: esxcli system ssh set --enabled=false.</div></div></div>
+<div class="ri warn-ri" id="rem-2"><input type="checkbox" onchange="toggleChecked(this,2)"><div><strong style="color:var(--yellow);">[WARN]</strong> [Infrastructure — DNS &amp; Certificates] ESXi 192.168.1.76: SSH enabled (port 22 open)<span class="eta">~2m</span><div class="fix"><strong>Fix:</strong> Disable SSH in production: esxcli system ssh set --enabled=false.</div></div></div>
+<div class="ri warn-ri" id="rem-3"><input type="checkbox" onchange="toggleChecked(this,3)"><div><strong style="color:var(--yellow);">[WARN]</strong> [Infrastructure — DNS &amp; Certificates] ESXi 192.168.1.82: SSH enabled (port 22 open)<span class="eta">~2m</span><div class="fix"><strong>Fix:</strong> Disable SSH in production: esxcli system ssh set --enabled=false.</div></div></div>
+<div class="ri fail-ri" id="rem-4"><input type="checkbox" onchange="toggleChecked(this,4)"><div><strong style="color:var(--red);">[FAIL]</strong> [vCenter Server (vcenter.lab.local)] vSAN health: red (Limits health issue)<span class="eta"> Cluster: vSAN Direct homogeneous disk claiming; vSAN cluster configuration consistency | Performance service: Performance service status. Investigate in vCenter &gt; Cluster &gt; Monitor &gt; vSAN &gt; Health.|~15m</span><div class="fix"><strong>Fix:</strong> Failing checks: Capacity utilization: What if the most consumed host fails </div></div></div>
+<div class="ri warn-ri" id="rem-5"><input type="checkbox" onchange="toggleChecked(this,5)"><div><strong style="color:var(--yellow);">[WARN]</strong> [SDDC Manager (sddc-manager.lab.local)] 81 stale task(s) (&gt;24h) of 84 total<span class="eta">~5m</span><div class="fix"><strong>Fix:</strong> Review in SDDC Manager UI. VCF 9.0 maintains persistent background tasks. Manual cleanup: SDDC Manager &gt; Developer Center &gt; API Explorer &gt; PATCH /v1/tasks/{id}</div></div></div>
+<div class="ri warn-ri" id="rem-6"><input type="checkbox" onchange="toggleChecked(this,6)"><div><strong style="color:var(--yellow);">[WARN]</strong> [SDDC Manager (sddc-manager.lab.local)] Backup status: endpoint not available (HTTP 500)<span class="eta">~5m</span><div class="fix"><strong>Fix:</strong> Backup API may not be configured. Set up backup in SDDC Manager UI &gt; Administration &gt; Backup.</div></div></div>
+<div class="ri warn-ri" id="rem-7"><input type="checkbox" onchange="toggleChecked(this,7)"><div><strong style="color:var(--yellow);">[WARN]</strong> [VCF Operations (192.168.1.77)] Adapters: 9/17 receiving data<span class="eta">~5m</span><div class="fix"><strong>Fix:</strong> Some adapters not collecting. Check VCF Operations UI &gt; Administration &gt; Integrations.</div></div></div>
+</div></div>
+<div class="card" id="sla"><h3 onclick="toggleCard(this)">SLA Uptime Tracker <span class="toggle">&#9660;</span></h3><div class="body">
+<div style="font-size:.82em;color:var(--text2);margin-bottom:8px;">Based on 65 health check runs. A component is "UP" when it has zero failures.</div>
+<div class="sla-bar"><span style="width:140px;flex-shrink:0;"></span><div class="sla-track"><div class="sla-fill" style="width:100.0%;background:#27ae60;"></div></div><span class="sla-pct" style="color:#27ae60;">100.0%</span><span style="font-size:.75em;color:var(--text2);width:60px;">4/4</span></div>
+<div class="sla-bar"><span style="width:140px;flex-shrink:0;">Fleet</span><div class="sla-track"><div class="sla-fill" style="width:0.0%;background:#e74c3c;"></div></div><span class="sla-pct" style="color:#e74c3c;">0.0%</span><span style="font-size:.75em;color:var(--text2);width:60px;">0/1</span></div>
+<div class="sla-bar"><span style="width:140px;flex-shrink:0;">Fleet (vRSLCM)</span><div class="sla-track"><div class="sla-fill" style="width:40.6%;background:#e74c3c;"></div></div><span class="sla-pct" style="color:#e74c3c;">40.6%</span><span style="font-size:.75em;color:var(--text2);width:60px;">26/64</span></div>
+<div class="sla-bar"><span style="width:140px;flex-shrink:0;">Infrastructure</span><div class="sla-track"><div class="sla-fill" style="width:100.0%;background:#27ae60;"></div></div><span class="sla-pct" style="color:#27ae60;">100.0%</span><span style="font-size:.75em;color:var(--text2);width:60px;">65/65</span></div>
+<div class="sla-bar"><span style="width:140px;flex-shrink:0;">NSX</span><div class="sla-track"><div class="sla-fill" style="width:0.0%;background:#e74c3c;"></div></div><span class="sla-pct" style="color:#e74c3c;">0.0%</span><span style="font-size:.75em;color:var(--text2);width:60px;">0/1</span></div>
+<div class="sla-bar"><span style="width:140px;flex-shrink:0;">NSX Manager</span><div class="sla-track"><div class="sla-fill" style="width:32.8%;background:#e74c3c;"></div></div><span class="sla-pct" style="color:#e74c3c;">32.8%</span><span style="font-size:.75em;color:var(--text2);width:60px;">21/64</span></div>
+<div class="sla-bar"><span style="width:140px;flex-shrink:0;">SDDC</span><div class="sla-track"><div class="sla-fill" style="width:0.0%;background:#e74c3c;"></div></div><span class="sla-pct" style="color:#e74c3c;">0.0%</span><span style="font-size:.75em;color:var(--text2);width:60px;">0/1</span></div>
+<div class="sla-bar"><span style="width:140px;flex-shrink:0;">SDDC Manager</span><div class="sla-track"><div class="sla-fill" style="width:20.3%;background:#e74c3c;"></div></div><span class="sla-pct" style="color:#e74c3c;">20.3%</span><span style="font-size:.75em;color:var(--text2);width:60px;">13/64</span></div>
+<div class="sla-bar"><span style="width:140px;flex-shrink:0;">VCF</span><div class="sla-track"><div class="sla-fill" style="width:0.0%;background:#e74c3c;"></div></div><span class="sla-pct" style="color:#e74c3c;">0.0%</span><span style="font-size:.75em;color:var(--text2);width:60px;">0/1</span></div>
+<div class="sla-bar"><span style="width:140px;flex-shrink:0;">VCF Operations</span><div class="sla-track"><div class="sla-fill" style="width:35.9%;background:#e74c3c;"></div></div><span class="sla-pct" style="color:#e74c3c;">35.9%</span><span style="font-size:.75em;color:var(--text2);width:60px;">23/64</span></div>
+<div class="sla-bar"><span style="width:140px;flex-shrink:0;">vCenter</span><div class="sla-track"><div class="sla-fill" style="width:100.0%;background:#27ae60;"></div></div><span class="sla-pct" style="color:#27ae60;">100.0%</span><span style="font-size:.75em;color:var(--text2);width:60px;">1/1</span></div>
+<div class="sla-bar"><span style="width:140px;flex-shrink:0;">vCenter Server</span><div class="sla-track"><div class="sla-fill" style="width:67.2%;background:#e74c3c;"></div></div><span class="sla-pct" style="color:#e74c3c;">67.2%</span><span style="font-size:.75em;color:var(--text2);width:60px;">43/64</span></div>
+</div></div>
+<div class="card" id="history"><h3 onclick="toggleCard(this)">Health Score History (65 runs) <span class="toggle">&#9660;</span></h3><div class="body"><div class="hist-chart"><svg width="100%" viewBox="0 0 700 160" style="max-width:700px;"><line x1="50" y1="102.5" x2="670" y2="102.5" stroke="var(--border)" stroke-width="1"/><text x="45" y="106.5" text-anchor="end" font-size="10" fill="var(--text2)">25%</text><line x1="50" y1="75.0" x2="670" y2="75.0" stroke="var(--border)" stroke-width="1"/><text x="45" y="79.0" text-anchor="end" font-size="10" fill="var(--text2)">50%</text><line x1="50" y1="47.5" x2="670" y2="47.5" stroke="var(--border)" stroke-width="1"/><text x="45" y="51.5" text-anchor="end" font-size="10" fill="var(--text2)">75%</text><line x1="50" y1="20.0" x2="670" y2="20.0" stroke="var(--border)" stroke-width="1"/><text x="45" y="24.0" text-anchor="end" font-size="10" fill="var(--text2)">100%</text><polygon points="50,130 50.0,130.0 59.7,55.2 69.4,58.5 79.1,61.8 88.8,51.9 98.4,59.6 108.1,57.4 117.8,57.4 127.5,59.6 137.2,58.5 146.9,56.3 156.6,48.6 166.2,49.7 175.9,47.5 185.6,51.9 195.3,51.9 205.0,50.8 214.7,44.2 224.4,46.4 234.1,43.1 243.8,46.4 253.4,49.7 263.1,50.8 272.8,42.0 282.5,40.9 292.2,68.4 301.9,47.5 311.6,37.6 321.2,50.8 330.9,47.5 340.6,47.5 350.3,46.4 360.0,48.6 369.7,47.5 379.4,48.6 389.1,48.6 398.8,48.6 408.4,46.4 418.1,46.4 427.8,49.7 437.5,47.5 447.2,48.6 456.9,49.7 466.6,48.6 476.2,48.6 485.9,39.8 495.6,38.7 505.3,39.8 515.0,39.8 524.7,38.7 534.4,38.7 544.1,38.7 553.8,38.7 563.4,38.7 573.1,33.2 582.8,33.2 592.5,33.2 602.2,33.2 611.9,33.2 621.6,33.2 631.2,35.4 640.9,33.2 650.6,28.8 660.3,28.8 670.0,28.8 670.0,130" fill="#27ae60" opacity="0.1"/><polyline points="50.0,130.0 59.7,55.2 69.4,58.5 79.1,61.8 88.8,51.9 98.4,59.6 108.1,57.4 117.8,57.4 127.5,59.6 137.2,58.5 146.9,56.3 156.6,48.6 166.2,49.7 175.9,47.5 185.6,51.9 195.3,51.9 205.0,50.8 214.7,44.2 224.4,46.4 234.1,43.1 243.8,46.4 253.4,49.7 263.1,50.8 272.8,42.0 282.5,40.9 292.2,68.4 301.9,47.5 311.6,37.6 321.2,50.8 330.9,47.5 340.6,47.5 350.3,46.4 360.0,48.6 369.7,47.5 379.4,48.6 389.1,48.6 398.8,48.6 408.4,46.4 418.1,46.4 427.8,49.7 437.5,47.5 447.2,48.6 456.9,49.7 466.6,48.6 476.2,48.6 485.9,39.8 495.6,38.7 505.3,39.8 515.0,39.8 524.7,38.7 534.4,38.7 544.1,38.7 553.8,38.7 563.4,38.7 573.1,33.2 582.8,33.2 592.5,33.2 602.2,33.2 611.9,33.2 621.6,33.2 631.2,35.4 640.9,33.2 650.6,28.8 660.3,28.8 670.0,28.8" fill="none" stroke="#27ae60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50.0" cy="130.0" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><text x="50.0" y="148" text-anchor="middle" font-size="9" fill="var(--text2)"></text><circle cx="59.7" cy="55.2" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="69.4" cy="58.5" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="79.1" cy="61.8" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="88.8" cy="51.9" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="98.4" cy="59.6" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="108.1" cy="57.4" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="117.8" cy="57.4" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="127.5" cy="59.6" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><text x="127.5" y="148" text-anchor="middle" font-size="9" fill="var(--text2)">2026-03-18</text><circle cx="137.2" cy="58.5" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="146.9" cy="56.3" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="156.6" cy="48.6" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="166.2" cy="49.7" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="175.9" cy="47.5" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="185.6" cy="51.9" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="195.3" cy="51.9" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="205.0" cy="50.8" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><text x="205.0" y="148" text-anchor="middle" font-size="9" fill="var(--text2)">2026-03-19</text><circle cx="214.7" cy="44.2" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="224.4" cy="46.4" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="234.1" cy="43.1" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="243.8" cy="46.4" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="253.4" cy="49.7" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="263.1" cy="50.8" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="272.8" cy="42.0" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="282.5" cy="40.9" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><text x="282.5" y="148" text-anchor="middle" font-size="9" fill="var(--text2)">2026-03-19</text><circle cx="292.2" cy="68.4" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="301.9" cy="47.5" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="311.6" cy="37.6" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="321.2" cy="50.8" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="330.9" cy="47.5" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="340.6" cy="47.5" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="350.3" cy="46.4" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="360.0" cy="48.6" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><text x="360.0" y="148" text-anchor="middle" font-size="9" fill="var(--text2)">2026-03-20</text><circle cx="369.7" cy="47.5" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="379.4" cy="48.6" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="389.1" cy="48.6" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="398.8" cy="48.6" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="408.4" cy="46.4" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="418.1" cy="46.4" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="427.8" cy="49.7" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="437.5" cy="47.5" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><text x="437.5" y="148" text-anchor="middle" font-size="9" fill="var(--text2)">2026-03-20</text><circle cx="447.2" cy="48.6" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="456.9" cy="49.7" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="466.6" cy="48.6" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="476.2" cy="48.6" r="4" fill="#e67e22" stroke="#fff" stroke-width="1.5"/><circle cx="485.9" cy="39.8" r="4" fill="#e67e22" stroke="#fff" stroke-width="1.5"/><circle cx="495.6" cy="38.7" r="4" fill="#e67e22" stroke="#fff" stroke-width="1.5"/><circle cx="505.3" cy="39.8" r="4" fill="#e67e22" stroke="#fff" stroke-width="1.5"/><circle cx="515.0" cy="39.8" r="4" fill="#e67e22" stroke="#fff" stroke-width="1.5"/><text x="515.0" y="148" text-anchor="middle" font-size="9" fill="var(--text2)">2026-03-22</text><circle cx="524.7" cy="38.7" r="4" fill="#e67e22" stroke="#fff" stroke-width="1.5"/><circle cx="534.4" cy="38.7" r="4" fill="#e67e22" stroke="#fff" stroke-width="1.5"/><circle cx="544.1" cy="38.7" r="4" fill="#f39c12" stroke="#fff" stroke-width="1.5"/><circle cx="553.8" cy="38.7" r="4" fill="#f39c12" stroke="#fff" stroke-width="1.5"/><circle cx="563.4" cy="38.7" r="4" fill="#f39c12" stroke="#fff" stroke-width="1.5"/><circle cx="573.1" cy="33.2" r="4" fill="#f39c12" stroke="#fff" stroke-width="1.5"/><circle cx="582.8" cy="33.2" r="4" fill="#f39c12" stroke="#fff" stroke-width="1.5"/><circle cx="592.5" cy="33.2" r="4" fill="#f39c12" stroke="#fff" stroke-width="1.5"/><text x="592.5" y="148" text-anchor="middle" font-size="9" fill="var(--text2)">2026-03-22</text><circle cx="602.2" cy="33.2" r="4" fill="#e67e22" stroke="#fff" stroke-width="1.5"/><circle cx="611.9" cy="33.2" r="4" fill="#f39c12" stroke="#fff" stroke-width="1.5"/><circle cx="621.6" cy="33.2" r="4" fill="#f39c12" stroke="#fff" stroke-width="1.5"/><circle cx="631.2" cy="35.4" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="640.9" cy="33.2" r="4" fill="#e74c3c" stroke="#fff" stroke-width="1.5"/><circle cx="650.6" cy="28.8" r="4" fill="#27ae60" stroke="#fff" stroke-width="1.5"/><circle cx="660.3" cy="28.8" r="4" fill="#27ae60" stroke="#fff" stroke-width="1.5"/><circle cx="670.0" cy="28.8" r="4" fill="#27ae60" stroke="#fff" stroke-width="1.5"/><text x="670.0" y="148" text-anchor="middle" font-size="9" fill="var(--text2)">2026-03-22</text></svg></div></div></div>
+<div class="card" id="latency"><h3 onclick="toggleCard(this)">Network Latency <span class="toggle">&#9660;</span></h3><div class="body">
+<table><tr><th>Endpoint</th><th class="num">Latency (ms)</th><th class="num">Status</th></tr>
+<tr><td>vCenter</td><td class="num">29.0</td><td class="num"><span class="badge" style="background:#27ae60;">PASS</span></td></tr>
+<tr><td>SDDC Mgr</td><td class="num">31.2</td><td class="num"><span class="badge" style="background:#27ae60;">PASS</span></td></tr>
+<tr><td>NSX VIP</td><td class="num">30.0</td><td class="num"><span class="badge" style="background:#27ae60;">PASS</span></td></tr>
+</table></div></div>
+<div class="card" id="heatmap"><h3 onclick="toggleCard(this)">Health Heatmap (90 days) <span class="toggle">&#9660;</span></h3><div class="body"><div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;font-size:.75em;color:var(--text2);"><span>90 days ago</span><div style="flex:1"></div><span>Today</span></div><div class="heatmap"><div class="hm-cell" style="background:var(--border);" title="2025-12-23: No data"></div><div class="hm-cell" style="background:var(--border);" title="2025-12-24: No data"></div><div class="hm-cell" style="background:var(--border);" title="2025-12-25: No data"></div><div class="hm-cell" style="background:var(--border);" title="2025-12-26: No data"></div><div class="hm-cell" style="background:var(--border);" title="2025-12-27: No data"></div><div class="hm-cell" style="background:var(--border);" title="2025-12-28: No data"></div><div class="hm-cell" style="background:var(--border);" title="2025-12-29: No data"></div><div class="hm-cell" style="background:var(--border);" title="2025-12-30: No data"></div><div class="hm-cell" style="background:var(--border);" title="2025-12-31: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-01: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-02: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-03: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-04: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-05: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-06: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-07: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-08: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-09: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-10: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-11: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-12: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-13: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-14: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-15: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-16: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-17: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-18: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-19: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-20: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-21: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-22: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-23: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-24: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-25: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-26: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-27: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-28: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-29: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-30: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-01-31: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-01: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-02: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-03: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-04: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-05: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-06: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-07: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-08: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-09: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-10: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-11: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-12: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-13: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-14: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-15: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-16: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-17: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-18: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-19: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-20: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-21: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-22: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-23: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-24: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-25: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-26: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-27: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-02-28: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-01: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-02: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-03: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-04: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-05: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-06: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-07: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-08: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-09: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-10: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-11: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-12: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-13: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-14: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-15: No data"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-16: No data"></div><div class="hm-cell" style="background:#e74c3c;" title="2026-03-17: Grade D"></div><div class="hm-cell" style="background:#e74c3c;" title="2026-03-18: Grade D"></div><div class="hm-cell" style="background:#c0392b;" title="2026-03-19: Grade F"></div><div class="hm-cell" style="background:#e74c3c;" title="2026-03-20: Grade D"></div><div class="hm-cell" style="background:var(--border);" title="2026-03-21: No data"></div><div class="hm-cell" style="background:#2ecc71;" title="2026-03-22: Grade B+"></div></div><div style="display:flex;gap:4px;align-items:center;margin-top:6px;font-size:.72em;color:var(--text2);">Legend: <div class="hm-cell" style="background:#27ae60;width:10px;height:10px;"></div><span>A</span> <div class="hm-cell" style="background:#f1c40f;width:10px;height:10px;"></div><span>B</span> <div class="hm-cell" style="background:#e67e22;width:10px;height:10px;"></div><span>C</span> <div class="hm-cell" style="background:#e74c3c;width:10px;height:10px;"></div><span>D/F</span> <div class="hm-cell" style="background:var(--border);width:10px;height:10px;"></div><span>No data</span> </div></div></div>
+<div id="details">
+<div class="card" id="sec-Infrastructure-—-DNS-&amp;-Certificates"><h3 onclick="toggleCard(this)"><span style="color:var(--yellow);">&#9679;</span> Infrastructure — DNS &amp; Certificates <span style="font-weight:400;font-size:.8em;color:var(--text2);">(23P 4W 0F)</span> <span class="toggle">&#9660;</span></h3><div class="body">
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">DNS: vCenter (vcenter.lab.local) resolves to 192.168.1.69</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">DNS: SDDC Manager (sddc-manager.lab.local) resolves to 192.168.1.241</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">DNS: NSX VIP (nsx-vip.lab.local) resolves to 192.168.1.70</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">DNS: NSX Node (192.168.1.71) — IP address, resolution not needed</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">PTR: vCenter — 192.168.1.69 reverse-resolves to vcenter.lab.local</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">PTR: SDDC Manager — 192.168.1.241 reverse-resolves to sddc-manager.lab.local</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">PTR: NSX VIP — 192.168.1.70 reverse-resolves to nsx-vip.lab.local</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Cert: vCenter — valid for 686 days</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Cert: SDDC Manager — valid for 678 days</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Cert: NSX Manager — valid for 787 days</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Cert: VCF Operations — valid for 721 days</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Cert: Fleet (443) — valid for 710 days</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">ESXi 192.168.1.74: reachable (HTTPS 200)</div></div>
+<div class="rr" data-status="WARN"><div class="rb" style="color:var(--yellow);">WARN</div><div class="rm">ESXi 192.168.1.74: SSH enabled (port 22 open)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">ESXi 192.168.1.74: coredump configured (local file-based — netdump deprecated in VCF 9.0)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">ESXi 192.168.1.75: reachable (HTTPS 200)</div></div>
+<div class="rr" data-status="WARN"><div class="rb" style="color:var(--yellow);">WARN</div><div class="rm">ESXi 192.168.1.75: SSH enabled (port 22 open)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">ESXi 192.168.1.75: coredump configured (local file-based — netdump deprecated in VCF 9.0)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">ESXi 192.168.1.76: reachable (HTTPS 200)</div></div>
+<div class="rr" data-status="WARN"><div class="rb" style="color:var(--yellow);">WARN</div><div class="rm">ESXi 192.168.1.76: SSH enabled (port 22 open)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">ESXi 192.168.1.76: coredump configured (local file-based — netdump deprecated in VCF 9.0)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">ESXi 192.168.1.82: reachable (HTTPS 200)</div></div>
+<div class="rr" data-status="WARN"><div class="rb" style="color:var(--yellow);">WARN</div><div class="rm">ESXi 192.168.1.82: SSH enabled (port 22 open)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">ESXi 192.168.1.82: coredump configured (local file-based — netdump deprecated in VCF 9.0)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Latency to vCenter (vcenter.lab.local): 29.0ms</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Latency to SDDC Mgr (sddc-manager.lab.local): 31.2ms</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Latency to NSX VIP (nsx-vip.lab.local): 30.0ms</div></div>
+</div></div>
+<div class="card" id="sec-vCenter-Server-(vcenter.lab.local)"><h3 onclick="toggleCard(this)"><span style="color:var(--red);">&#9679;</span> vCenter Server (vcenter.lab.local) <span style="font-weight:400;font-size:.8em;color:var(--text2);">(36P 0W 1F)</span> <span class="toggle">&#9660;</span></h3><div class="body">
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">API reachable — session acquired</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">System health: GREEN</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">load: GREEN</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">mem: GREEN</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">storage: GREEN</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">swap: GREEN</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">database: HTTP 500 (known vCenter 9 issue — dbcc not found) (known issue — suppressed)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">VM inventory: 10 VMs registered</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">ESXi hosts: 4 in inventory</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Host esxi02.lab.local: CONNECTED / POWERED_ON</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Host esxi01.lab.local: CONNECTED / POWERED_ON</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Host esxi03.lab.local: CONNECTED / POWERED_ON</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Host esxi04.lab.local: CONNECTED / POWERED_ON</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Cluster vcenter-cl01: HA enabled, DRS enabled</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Datastore vcenter-cl01-ds-vsan01: 67% used (790.1GB free of 2400.0GB)</div></div>
+<div class="rr" data-status="FAIL"><div class="rb" style="color:var(--red);">FAIL</div><div class="rm">vSAN health: red (Limits health issue)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Time sync mode: ntp</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">NTP server: 192.168.1.230 (CONFIGURED)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Root password: valid for 46 days</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">vCenter services: API endpoint unavailable (known issue — suppressed)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">All VMs powered on — no power-state alarms</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">VM snapshots: none found</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">License check: endpoint returned HTTP 404 (known issue — suppressed)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">VCSA disk partitions: API returned no data (normal in some vCenter versions)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Network: 192.168.1.74 &lt;-&gt; 192.168.1.75 reachable (mgmt network)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Network: 192.168.1.75 &lt;-&gt; 192.168.1.76 reachable (mgmt network)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">BOM: vCenter 9.0.2.0 (Build 25148086) in VCF 9.x supported range</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Storage policies: endpoint not available (HTTP 500) — normal for some vCenter versions</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Content library: Local-Library (local)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">VCSA coredumps: no crash indicators (system health not RED)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">vSAN: no active resync operations</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">ESXi scratch: all 4 hosts connected (scratch partition accessible via management)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">vCenter: 0 failed tasks in last 24h</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Hardware sensor check: queried 4 host(s) via vCenter</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">vSAN disk health: 8 test(s) passed</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Service vpxd: API reports STOPPED but service is responding (vmon/systemd desync) (known issue — suppressed)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Service rhttpproxy: API reports STOPPED but service is responding (vmon/systemd desync) (known issue — suppressed)</div></div>
+</div></div>
+<div class="card" id="sec-SDDC-Manager-(sddc-manager.lab.local)"><h3 onclick="toggleCard(this)"><span style="color:var(--yellow);">&#9679;</span> SDDC Manager (sddc-manager.lab.local) <span style="font-weight:400;font-size:.8em;color:var(--text2);">(11P 2W 0F)</span> <span class="toggle">&#9660;</span></h3><div class="body">
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">API reachable — token acquired</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">NSX cluster (via SDDC): ACTIVE</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">vCenter (via SDDC): ACTIVE</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Mgmt: vcfOperationsFleetManagement (fleet.lab.local) — SUCCEEDED</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Mgmt: vcfOperations (vcf-ops.lab.local) — SUCCEEDED</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Mgmt: vcfOperationsCollector (collector.lab.local) — SUCCEEDED</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Mgmt: vcfAutomation — not deployed (optional)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Last SDDC backup: NO_BACKUPSh ago (, )</div></div>
+<div class="rr" data-status="WARN"><div class="rb" style="color:var(--yellow);">WARN</div><div class="rm">81 stale task(s) (&gt;24h) of 84 total</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">No stale resource locks</div></div>
+<div class="rr" data-status="WARN"><div class="rb" style="color:var(--yellow);">WARN</div><div class="rm">Backup status: endpoint not available (HTTP 500)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Host config: 4 hosts, no drift detected</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Depot: configuration returned (details unavailable)</div></div>
+</div></div>
+<div class="card" id="sec-NSX-Manager-(nsx-vip.lab.local)"><h3 onclick="toggleCard(this)"><span style="color:var(--green);">&#9679;</span> NSX Manager (nsx-vip.lab.local) <span style="font-weight:400;font-size:.8em;color:var(--text2);">(9P 0W 0F)</span> <span class="toggle">&#9660;</span></h3><div class="body">
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">API reachable via VIP (nsx-vip.lab.local)</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Control cluster: STABLE</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Management cluster: STABLE</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Transport nodes: 4/4 healthy</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">No open alarms</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">NSX admin password: no expiry configured</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">NSX edge clusters: none configured or empty response</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">DFW: 0 rules across 3 policies</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">3 transport zone(s) configured</div></div>
+</div></div>
+<div class="card" id="sec-VCF-Operations-(192.168.1.77)"><h3 onclick="toggleCard(this)"><span style="color:var(--yellow);">&#9679;</span> VCF Operations (192.168.1.77) <span style="font-weight:400;font-size:.8em;color:var(--text2);">(4P 1W 0F)</span> <span class="toggle">&#9660;</span></h3><div class="body">
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Suite-API reachable — token acquired</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Node 192.168.1.77: ONLINE</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Collector collector.lab.local: UP</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Collector VCF Operations Collector-vcf-ops: UP</div></div>
+<div class="rr" data-status="WARN"><div class="rb" style="color:var(--yellow);">WARN</div><div class="rm">Adapters: 9/17 receiving data</div></div>
+</div></div>
+<div class="card" id="sec-Fleet---vRSLCM-(192.168.1.78)"><h3 onclick="toggleCard(this)"><span style="color:var(--green);">&#9679;</span> Fleet / vRSLCM (192.168.1.78) <span style="font-weight:400;font-size:.8em;color:var(--text2);">(2P 0W 0F)</span> <span class="toggle">&#9660;</span></h3><div class="body">
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Fleet appliance reachable (HTTP 200) — managed via VCF Operations</div></div>
+<div class="rr" data-status="PASS"><div class="rb" style="color:var(--green);">PASS</div><div class="rm">Fleet status: managed via VCF Operations proxy (direct API disabled)</div></div>
+</div></div>
+</div>
+<div class="ft" role="contentinfo">VCF 9.0 Environment Health Check v8.0 &mdash; 2026-03-22 15:28:32<br>
+Target: VCF 9.0 Lab Environment &mdash; Duration: 0m 45s<br>
+&copy; 2026 Virtual Control LLC. All rights reserved.</div>
+</main></div>
+<script>
+// Dark mode
+function toggleTheme(){
+  const d=document.documentElement;
+  const dark=d.getAttribute('data-theme')==='dark';
+  d.setAttribute('data-theme',dark?'':'dark');
+  document.getElementById('theme-btn').textContent=dark?'Dark Mode':'Light Mode';
+  localStorage.setItem('vcf-theme',dark?'':'dark');
+}
+(function(){const t=localStorage.getItem('vcf-theme');if(t){document.documentElement.setAttribute('data-theme',t);if(t==='dark')document.getElementById('theme-btn').textContent='Light Mode';})();
+
+// Collapsible sections
+function toggleCard(el){
+  const body=el.nextElementSibling;
+  const tog=el.querySelector('.toggle');
+  if(body){body.classList.toggle('collapsed');}
+  if(tog){tog.classList.toggle('collapsed');}
+}
+
+// Filter
+function toggleFilter(status,btn){
+  const active=btn.getAttribute('data-active')==='true';
+  btn.setAttribute('data-active',active?'false':'true');
+  document.querySelectorAll('.rr[data-status="'+status+'"]').forEach(el=>{
+    el.classList.toggle('filter-hidden',active);
+  });
+}
+
+// Copy summary
+function copySummary(){
+  const txt=document.getElementById('exec-summary')?.textContent.replace('Copy','').trim();
+  if(txt)navigator.clipboard.writeText(txt).then(()=>showToast('Summary copied!'));
+}
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2000);
+}
+
+// Checklist persistence
+function toggleChecked(cb,idx){
+  const ri=document.getElementById('rem-'+idx);
+  if(ri)ri.classList.toggle('checked',cb.checked);
+  const state=JSON.parse(localStorage.getItem('vcf-checklist')||'{}');
+  state[idx]=cb.checked;localStorage.setItem('vcf-checklist',JSON.stringify(state));
+}
+(function(){const state=JSON.parse(localStorage.getItem('vcf-checklist')||'{}');
+Object.entries(state).forEach(([k,v])=>{
+  const ri=document.getElementById('rem-'+k);
+  if(ri){const cb=ri.querySelector('input');if(cb){cb.checked=v;if(v)ri.classList.add('checked');}
+});})();
+
+// Live timestamp
+(function(){
+  const el=document.getElementById('ts-live');
+  if(!el)return;
+  const gen=new Date('2026-03-22 15:28:32');
+  if(isNaN(gen))return;
+  function update(){
+    const diff=Math.floor((Date.now()-gen.getTime())/60000);
+    if(diff<1)el.textContent='Just now';
+    else if(diff<60)el.textContent=diff+'m ago';
+    else if(diff<1440)el.textContent=Math.floor(diff/60)+'h '+diff%60+'m ago';
+    else el.textContent=Math.floor(diff/1440)+'d ago';
+  }
+  update();setInterval(update,60000);
+})();
+
+// Sidebar active tracking
+(function(){
+  const links=document.querySelectorAll('.sidebar a[href^="#"]');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const a=document.querySelector('.sidebar a[href="#'+e.target.id+'"]');
+      if(a)a.classList.add('active');
+    });
+  },{threshold:0.3});
+  document.querySelectorAll('[id]').forEach(el=>obs.observe(el));
+})();
+
+// Feature 10: CSV Export from HTML
+function exportCSV(){
+  const rows=[['Status','Component','Message']];
+  document.querySelectorAll('.rr[data-status]').forEach(el=>{
+    const st=el.getAttribute('data-status');
+    const msg=el.querySelector('.rm')?.textContent||'';
+    const card=el.closest('.card');
+    const sec=card?card.querySelector('h3')?.textContent.replace(/[\u25BC\u25CF]/g,'').trim().split('(')[0].trim():'';
+    rows.push([st,sec,msg]);
+  });
+  const csv=rows.map(r=>r.map(c=>'"'+c.replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='VCF-Health-Report.csv';
+  a.click();
+  showToast('CSV exported!');
+}
+
+// Feature 9: Diff View — load two JSON reports and compare
+async function loadDiff(){
+  const a=document.getElementById('diff-a')?.value;
+  const b=document.getElementById('diff-b')?.value;
+  const out=document.getElementById('diff-result');
+  if(!a||!b||!out)return;
+  if(a===b){showToast('Select two different runs');return;}
+  out.classList.add('open');
+  out.innerHTML='Loading...';
+  try{
+    const dir=window.location.href.substring(0,window.location.href.lastIndexOf('/')+1);
+    const [ra,rb]=await Promise.all([fetch(dir+a).then(r=>r.json()),fetch(dir+b).then(r=>r.json())]);
+    let html='<div class="diff-grid"><div class="dside"><h4>'+ra.date+' — Grade '+ra.grade+' ('+ra.score+'%)</h4>';
+    html+='<div>Pass: '+ra.summary.passed+' | Warn: '+ra.summary.warnings+' | Fail: '+ra.summary.failed+'</div>';
+    html+='</div><div class="dside"><h4>'+rb.date+' — Grade '+rb.grade+' ('+rb.score+'%)</h4>';
+    html+='<div>Pass: '+rb.summary.passed+' | Warn: '+rb.summary.warnings+' | Fail: '+rb.summary.failed+'</div>';
+    html+='</div></div>';
+    // Find differences in results
+    const setA=new Set((ra.results||[]).map(r=>r.status+'|'+r.message));
+    const setB=new Set((rb.results||[]).map(r=>r.status+'|'+r.message));
+    const added=[...setB].filter(x=>!setA.has(x));
+    const removed=[...setA].filter(x=>!setB.has(x));
+    if(added.length||removed.length){
+      html+='<div style="margin-top:12px;">';
+      if(removed.length){
+        html+='<div style="margin-bottom:8px;font-weight:600;">Removed in Run B:</div>';
+        removed.forEach(r=>html+='<div class="diff-removed">'+r+'</div>');
+      }
+      if(added.length){
+        html+='<div style="margin:8px 0;font-weight:600;">New in Run B:</div>';
+        added.forEach(r=>html+='<div class="diff-added">'+r+'</div>');
+      }
+      html+='</div>';
+    }else{html+='<div style="margin-top:12px;color:var(--text2);">No differences found.</div>';}
+    out.innerHTML=html;
+  }catch(e){out.innerHTML='Error loading reports. Ensure JSON files are in the same directory.';}
+}
+
+// Feature 12: Executive / Technical view toggle
+function toggleView(){
+  const body=document.body;
+  const btn=document.getElementById('view-btn');
+  body.classList.toggle('exec-view');
+  const isExec=body.classList.contains('exec-view');
+  btn.textContent=isExec?'Technical View':'Executive View';
+  if(isExec)btn.classList.add('active');else btn.classList.remove('active');
+}
+
+// Feature 15: Export Remediation Playbook as Markdown
+function exportPlaybook(){
+  const actions=document.querySelectorAll('.ri');
+  if(!actions.length){showToast('No remediation actions to export');return;}
+  let md='# VCF Health Check — Remediation Playbook\n';
+  md+='Generated: '+new Date().toISOString().slice(0,19).replace("T"," ")+'\n\n';
+  md+='## Summary\n';
+  const fails=document.querySelectorAll('.ri.fail-ri').length;
+  const warns=document.querySelectorAll('.ri.warn-ri').length;
+  md+='- **Critical (FAIL):** '+fails+'\n';
+  md+='- **Warnings (WARN):** '+warns+'\n\n';
+  md+='## Critical Actions\n\n';
+  let idx=1;
+  actions.forEach(a=>{
+    if(!a.classList.contains('fail-ri'))return;
+    const txt=a.querySelector('div>div, div')?.textContent||a.textContent||'';
+    const parts=txt.replace(/\[FAIL\]/,'').trim().split('Fix:');
+    const issue=parts[0]?.trim()||'';
+    const fix=parts[1]?.trim()||'';
+    md+='### '+idx+'. '+issue+'\n';
+    if(fix)md+='**Remediation:** '+fix+'\n';
+    md+='\n';
+    idx++;
+  });
+  md+='## Warnings\n\n';
+  actions.forEach(a=>{
+    if(!a.classList.contains('warn-ri'))return;
+    const txt=a.querySelector('div>div, div')?.textContent||a.textContent||'';
+    const parts=txt.replace(/\[WARN\]/,'').trim().split('Fix:');
+    const issue=parts[0]?.trim()||'';
+    const fix=parts[1]?.trim()||'';
+    md+='### '+idx+'. '+issue+'\n';
+    if(fix)md+='**Remediation:** '+fix+'\n';
+    md+='\n';
+    idx++;
+  });
+  md+='---\n*Generated by VCF Health Check v8.0*\n';
+  const blob=new Blob([md],{type:'text/markdown'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='VCF-Remediation-Playbook.md';
+  a.click();
+  showToast('Playbook exported!');
+}
+
+// v7.0 Feature 16: Keyboard shortcuts
+document.addEventListener('keydown',function(e){
+  if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT'||e.target.tagName==='TEXTAREA')return;
+  switch(e.key.toLowerCase()){
+    case 'd': toggleTheme(); break;
+    case 'e': toggleView(); break;
+    case 'p': if(!e.ctrlKey&&!e.metaKey){exportPlaybook();e.preventDefault();} break;
+    case '?': showToast('Keys: D=dark mode, E=exec view, P=playbook, 1-9=sections'); break;
+  }
+  // Number keys 1-9 jump to sections
+  if(e.key>='1'&&e.key<='9'){
+    const links=document.querySelectorAll('.sidebar a[href^="#"]');
+    const idx=parseInt(e.key)-1;
+    if(links[idx]){links[idx].click();}
+  }
+});
+</script></body></html>
