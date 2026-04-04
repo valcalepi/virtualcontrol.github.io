@@ -1665,7 +1665,7 @@ class VCFHealthCheckApp:
 
                 # Click handler — bind to all descendants
                 _all_widgets = [env_card, accent, inner]
-                for w in (inner.winfo_children() if inner.winfo_children else []):
+                for w in inner.winfo_children():
                     _all_widgets.append(w)
                     if hasattr(w, "winfo_children"):
                         _all_widgets.extend(w.winfo_children())
