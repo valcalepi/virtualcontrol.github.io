@@ -2321,6 +2321,22 @@ class VCFHealthCheckApp:
             self._schedule_status_label = tk.Label(sched_row, text="", bg=ct_bg, fg=text_s,
                                                    font=("Segoe UI", 9, "italic"))
 
+        # Run options (checkboxes)
+        opts_row = tk.Frame(self.content, bg=ct_bg)
+        opts_row.pack(fill="x", padx=30, pady=(0, 5))
+        active_profile = self.profile_var.get()
+        _run_opts_data = {}
+        if active_profile and active_profile in self.profiles_data.get("profiles", {}):
+            _run_opts_data = self.profiles_data["profiles"][active_profile].get("run_options", {})
+        for opt_key, flag, desc in RUN_OPTIONS:
+            var = tk.BooleanVar(value=_run_opts_data.get(opt_key, False))
+            self.form_vars[f"opt_{opt_key}"] = var
+            tk.Checkbutton(
+                opts_row, text=f"{flag}  {desc}", variable=var,
+                bg=ct_bg, fg=text_p, font=("Segoe UI", 9),
+                activebackground=ct_bg, selectcolor=ct_bg,
+            ).pack(side="left", padx=(0, 12))
+
         # Terminal
         term_frame = tk.Frame(self.content, bg=term_bg, bd=1, relief="solid",
                               highlightbackground=self._get_color("BORDER"), highlightthickness=1)
