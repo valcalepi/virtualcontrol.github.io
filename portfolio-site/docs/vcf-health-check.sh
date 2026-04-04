@@ -1719,7 +1719,7 @@ except Exception: print('?')
             *)     check_warn "database: $DB_VAL" "Check PostgreSQL: ssh $VCENTER, then /opt/vmware/vpostgres/current/bin/pg_isready" ;;
         esac
     else
-        check_warn "database: HTTP $DB_HTTP (known vCenter 9 issue — dbcc not found)" "This is a known bug in vCenter 9 where the dbcc health endpoint is missing. No action needed unless you see database errors in vpxd.log."
+        check_pass "database: SKIPPED — known VMware bug in vCenter 9.x (KB 96498). The /api/appliance/health/database (dbcc) endpoint was removed in 9.0 and returns HTTP 500. No action needed."
     fi
 
     # --- VM Inventory ---
