@@ -2754,9 +2754,9 @@ class VCFHealthCheckApp:
                 latest = reports[0]
                 # Extract pass/warn/fail counts from summary
                 _summary = latest.get("summary", {})
-                _pass_c = _summary.get("pass", 0) if isinstance(_summary, dict) else 0
-                _warn_c = _summary.get("warn", 0) if isinstance(_summary, dict) else 0
-                _fail_c = _summary.get("fail", 0) if isinstance(_summary, dict) else 0
+                _pass_c = _summary.get("passed", 0) if isinstance(_summary, dict) else 0
+                _warn_c = _summary.get("warnings", 0) if isinstance(_summary, dict) else 0
+                _fail_c = _summary.get("failed", 0) if isinstance(_summary, dict) else 0
                 # Get env label from profile data
                 _prof = self.profiles_data["profiles"].get(active, {})
                 _flat = profile_to_form(_prof)
