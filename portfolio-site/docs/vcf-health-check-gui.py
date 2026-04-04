@@ -633,6 +633,10 @@ def export_env_file(filepath: str, flat: dict):
         lines.append(f"# --- {section_label} ---")
         for var, _lbl, ftype, _default in fields:
             val = flat.get(var, "")
+            # Convert backslashes to forward slashes for bash compatibility
+            # (Windows Python handles forward slashes fine)
+            if isinstance(val, str) and "\\" in val:
+                val = val.replace("\\", "/")
             if ftype == "textarea":
                 lines.append(f'{var}="{val}"')
             elif ftype == "int":

@@ -141,21 +141,28 @@ def html_report():
 
     # ── Customer logo (base64-encoded for inline embedding) ───────────
     _logo_html = ''
-    _logo_path = os.environ.get('CUSTOMER_LOGO', '')
-    if _logo_path and os.path.isfile(_logo_path):
-        try:
-            _logo_size = os.path.getsize(_logo_path)
-            if _logo_size <= 512_000:  # max 500 KB
-                _ext = os.path.splitext(_logo_path)[1].lower()
-                _mime_map = {'.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
-                             '.gif': 'image/gif', '.svg': 'image/svg+xml', '.bmp': 'image/bmp'}
-                _mime = _mime_map.get(_ext) or mimetypes.guess_type(_logo_path)[0] or ''
-                if _mime:
-                    with open(_logo_path, 'rb') as _lf:
-                        _logo_b64 = base64.b64encode(_lf.read()).decode()
-                    _logo_html = f'<img src="data:{_mime};base64,{_logo_b64}" class="customer-logo" alt="Customer Logo" />'
-        except Exception:
-            pass  # graceful fallback — no logo
+    _logo_path = os.environ.get('CUSTOMER_LOGO', '').strip().strip('"').strip("'")
+    if _logo_path:
+        # Normalize path separators for cross-platform compatibility
+        _logo_path = _logo_path.replace('\\', '/')
+        if os.path.isfile(_logo_path):
+            try:
+                _logo_size = os.path.getsize(_logo_path)
+                if _logo_size <= 512_000:  # max 500 KB
+                    _ext = os.path.splitext(_logo_path)[1].lower()
+                    _mime_map = {'.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
+                                 '.gif': 'image/gif', '.svg': 'image/svg+xml', '.bmp': 'image/bmp'}
+                    _mime = _mime_map.get(_ext) or mimetypes.guess_type(_logo_path)[0] or ''
+                    if _mime:
+                        with open(_logo_path, 'rb') as _lf:
+                            _logo_b64 = base64.b64encode(_lf.read()).decode()
+                        _logo_html = f'<img src="data:{_mime};base64,{_logo_b64}" class="customer-logo" alt="Customer Logo" />'
+                else:
+                    print(f"[LOGO] Skipped — file too large ({_logo_size} bytes)", file=sys.stderr)
+            except Exception as _logo_err:
+                print(f"[LOGO] Error reading {_logo_path}: {_logo_err}", file=sys.stderr)
+        else:
+            print(f"[LOGO] File not found: {_logo_path}", file=sys.stderr)
 
     h = f'''<!DOCTYPE html>
     <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
