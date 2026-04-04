@@ -3188,6 +3188,42 @@ class VCFHealthCheckApp:
                         return open_file
                     tk.Button(btns, text=label, command=make_open(path), **btn_kw).pack(side="left", padx=2)
 
+            # Delete button (admin only)
+            if self.current_user.get("role") == "admin":
+                def make_delete(report=r, date=date_str):
+                    def delete_report():
+                        if not messagebox.askyesno(
+                            "Delete Report",
+                            f"Delete the report from {date} and all its associated files?\n\nThis cannot be undone.",
+                        ):
+                            return
+                        deleted = []
+                        for fkey in ("path_json", "path_html", "path_txt", "path_csv", "path_md"):
+                            fpath = report.get(fkey)
+                            if fpath and os.path.isfile(fpath):
+                                try:
+                                    os.remove(fpath)
+                                    deleted.append(os.path.basename(fpath))
+                                except OSError:
+                                    pass
+                        # Also remove PDF if it exists
+                        json_path = report.get("path_json", "")
+                        if json_path:
+                            pdf_path = os.path.splitext(json_path)[0] + ".pdf"
+                            if os.path.isfile(pdf_path):
+                                try:
+                                    os.remove(pdf_path)
+                                    deleted.append(os.path.basename(pdf_path))
+                                except OSError:
+                                    pass
+                        _audit_log(self.current_user["username"], "REPORT_DELETED",
+                                   f"{date} ({len(deleted)} files)")
+                        self._show_reports()  # refresh view
+                    return delete_report
+                tk.Button(btns, text="\u2715", command=make_delete(r, date_str),
+                          bg=error, fg="white", font=("Segoe UI", 9, "bold"),
+                          relief="flat", padx=6, pady=2, cursor="hand2").pack(side="left", padx=(6, 0))
+
         # Bottom padding
         tk.Frame(scroll_frame, bg=ct_bg, height=30).pack()
 
