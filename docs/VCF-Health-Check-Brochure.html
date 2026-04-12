@@ -270,10 +270,10 @@ tr.alt-row {
   <div class="tagline">Automated Health Monitoring &amp; Compliance for VMware Cloud Foundation</div>
   <div class="subtagline">One click. Under five minutes. Complete visibility.</div>
   <div class="hero-stats">
-    <div class="stat-box"><span class="number">100+</span><span class="label">Health Checks</span></div>
+    <div class="stat-box"><span class="number">150+</span><span class="label">Health Checks</span></div>
     <div class="stat-box"><span class="number">&lt;5 min</span><span class="label">Full Audit</span></div>
     <div class="stat-box"><span class="number">10</span><span class="label">Report Formats</span></div>
-    <div class="stat-box"><span class="number">7</span><span class="label">Alert Channels</span></div>
+    <div class="stat-box"><span class="number">10</span><span class="label">Alert Channels</span></div>
   </div>
 </div>
 
@@ -312,14 +312,14 @@ tr.alt-row {
 <p>These are not hypothetical problems. They are the problems that wake you up at 2 AM, cost your company thousands in downtime, and erode trust with the clients you serve.</p>
 <hr>
 <h2 id="what-if-you-could-check-everything-in-under-5-minutes" class="section-title">What If You Could Check Everything In Under 5 Minutes</h2>
-<p>VCF Health Check connects to your entire VCF environment, runs over 100 individual checks across every major component, and gives you a single grade (A through F) with a detailed report &mdash; all in under five minutes.</p>
+<p>VCF Health Check connects to your entire VCF environment, runs over 130 individual checks across every major component, and gives you a single grade (A through F) with a detailed report &mdash; all in under five minutes.</p>
 <p>One click. Under five minutes. Complete visibility.</p>
 <p>No manual SSH sessions. No hopping between six management consoles. No spreadsheets of things to remember to check. VCF Health Check does it all automatically, every time, consistently, and tells you exactly what needs attention &mdash; with specific remediation steps for every issue found.</p>
 <hr>
 <h2 id="what-gets-checked" class="section-title">What Gets Checked</h2>
 <p>VCF Health Check is not a generic monitoring tool. It was built specifically for VMware Cloud Foundation environments and understands the relationships between components that matter. Every check was designed to catch a real problem that has caused a real outage somewhere.</p>
 <h3 class="subsection-title">Infrastructure and Network (14 Checks)</h3>
-<p>DNS forward resolution for every management component &mdash; vCenter, SDDC Manager, NSX VIP, and NSX Node. DNS reverse resolution (PTR record) consistency for the same four endpoints. SSL certificate expiry monitoring with configurable advance warnings (default: 30 days). Network latency tracking with TCP connect time measurement to vCenter, SDDC Manager, and NSX &mdash; reported in a color-coded latency table. ESXi host HTTPS reachability checks running in parallel for speed, plus per-host SSH port verification and coredump configuration validation.</p>
+<p>DNS forward resolution for every management component &mdash; vCenter, SDDC Manager, NSX VIP, and NSX Node. DNS reverse resolution (PTR record) consistency for the same four endpoints. SSL certificate expiry monitoring with configurable advance warnings (default: 30 days). Network latency tracking with TCP connect time measurement to vCenter, SDDC Manager, and NSX &mdash; reported in a color-coded latency table. ESXi host HTTPS reachability checks running in parallel for speed, plus per-host SSH port verification and coredump configuration validation. Clock drift detection compares time across all management endpoints using HTTP Date headers, warning at 5-second drift and failing at 30-second drift.</p>
 <p>If a DNS record is wrong, you will know before it causes a deployment failure. If a certificate is expiring in 30 days, you will know before it causes an outage at 2 AM. If latency to a management endpoint is spiking, you will know before users start complaining.</p>
 <h3 class="subsection-title">vCenter Server (36 Checks)</h3>
 <p>The deepest coverage of any VCF health tool:</p>
@@ -334,8 +334,9 @@ tr.alt-row {
 <li><strong>Services:</strong> Individual status checks for vpxd, STS, vpostgres, rhttpproxy, SCA, SPS, vsan-health, and vLCM</li>
 <li><strong>Operational Health:</strong> Active alarm count and severity, VM snapshot aging (configurable, default 72 hours), VCSA disk partition utilization (warn 80%, critical 90%), 24-hour event log error scan, ESXi hardware sensor health (parallelized), ESXi scratch partition check, DRS activity and migration tracking</li>
 </ul>
-<p>36 checks. Every one of them matters. Every one of them has caused a real outage somewhere.</p>
-<h3 class="subsection-title">SDDC Manager (16 Checks)</h3>
+<p>42 checks. Every one of them matters. Every one of them has caused a real outage somewhere.</p>
+<p>New in v9.0: vCenter alarm summary queries all active alarms via PropertyCollector, reporting critical and warning counts. ESXi BOM compliance validates each host build number against a customizable `vcf-bom-reference.json` reference file. Password expiry monitoring covers SSO accounts and ESXi root credentials via the SDDC credential store. vSAN resync and rebuild detection catches active resync operations that indicate data movement. Clock drift detection via HTTP Date header comparison identifies time synchronization issues. SDDC upgrade readiness queries the `/v1/upgradables` API to detect available updates.</p>
+<h3 class="subsection-title">SDDC Manager (19 Checks)</h3>
 <ul class="check-list">
 <li><strong>Connectivity:</strong> API reachability with retry and exponential backoff (automatic 5-second retry on first failure)</li>
 <li><strong>Status:</strong> Version detection, NSX and vCenter status from SDDC Manager's perspective, management component health per-component deployment status</li>
@@ -344,9 +345,11 @@ tr.alt-row {
 <li><strong>Lifecycle:</strong> System prechecks compliance, in-progress task count and stale task detection (stuck >24 hours), resource lock detection, host drift detection (ASSIGNED vs COMMISSIONED state), depot connectivity verification, lifecycle update availability</li>
 <li><strong>Auto-Remediation:</strong> Optional automatic cancellation of stale tasks blocking the lifecycle queue</li>
 </ul>
+<p>New in v9.0: upgrade readiness checking via the upgradables API, enhanced backup age and size tracking with configurable thresholds, and credential store password expiry monitoring.</p>
 <p>SDDC Manager is the control plane of your entire VCF deployment. If it is unhealthy, everything downstream is at risk. A single stuck task can block every lifecycle operation in the environment.</p>
-<h3 class="subsection-title">NSX Manager (11 Checks)</h3>
+<h3 class="subsection-title">NSX Manager (13 Checks)</h3>
 <p>API reachability with VIP-first and individual node fallback, version detection, control cluster stability, management cluster stability, transport node state (connected count vs total), critical and warning alarm counts, admin password expiry, edge cluster member health per edge cluster, distributed firewall rule count with configurable threshold (default 500), certificate validation, and transport zone membership count.</p>
+<p>Network topology validation verifies transport zone and node state health. Transport zone membership counts confirm proper host bindings.</p>
 <p>NSX problems cascade fast. A failing transport node or a degraded control cluster can take down your entire network overlay in minutes. A DFW rule count exceeding 500 signals a rule sprawl problem that will impact performance and make troubleshooting a nightmare.</p>
 <h3 class="subsection-title">VCF Operations and ARIA Suite (4 Checks)</h3>
 <p>Suite API reachability and token acquisition, node online status per cluster member, collector health verification, and adapter data receiving verification (active adapters vs total).</p>
@@ -362,6 +365,7 @@ tr.alt-row {
 <p><strong>Visualization:</strong></p>
 <ul class="check-list">
 <li>Donut SVG chart showing pass/warn/fail proportions at a glance</li>
+<li>Per-component trend line charts with grade annotations and trend statistics card showing improvement trajectories</li>
 <li>Score sparkline trend chart showing your health trajectory over runs</li>
 <li>90-day heatmap calendar &mdash; a color-coded grid showing your daily health grade for the past three months</li>
 <li>SVG dependency map showing component relationships with health-colored nodes and edges</li>
@@ -392,7 +396,7 @@ tr.alt-row {
 <p><strong>Usability:</strong></p>
 <ul class="check-list">
 <li>Keyboard shortcuts panel for power users</li>
-<li>Mobile responsive layout for checking on your phone</li>
+<li>Mobile-responsive CSS with breakpoints at 768px and 480px for checking reports on phones and tablets</li>
 <li>Auto-remediation log section (when &mdash;fix was used)</li>
 </ul>
 <h3 class="subsection-title">All 10 Report Formats</h3>
@@ -456,7 +460,7 @@ tr.alt-row {
 <p>Plus: a JSON Schema file (draft 2020-12) generated alongside every JSON report for downstream validation.</p>
 <hr>
 <h2 id="alerts-where-you-already-work" class="section-title">Alerts Where You Already Work</h2>
-<p>VCF Health Check integrates with seven notification channels:</p>
+<p>VCF Health Check integrates with ten notification channels:</p>
 <div class="table-wrap"><table>
 <tr class="table-header">
 <th>Channel</th>
@@ -489,6 +493,18 @@ tr.alt-row {
 <tr>
 <td><strong>Custom Webhook</strong></td>
 <td>HTTP POST with full JSON payload. Connect to ServiceNow, Grafana, Datadog, or anything with an API.</td>
+</tr>
+<tr class="alt-row">
+<td><strong>ServiceNow</strong></td>
+<td>The `&mdash;servicenow` flag auto-creates incidents from health check failures, mapping the health grade to ServiceNow priority levels. Configure with `SERVICENOW_INSTANCE`, `SERVICENOW_USER`, and `SERVICENOW_PASS` environment variables.</td>
+</tr>
+<tr>
+<td><strong>Jira</strong></td>
+<td>The `&mdash;jira` flag auto-creates Jira issues from failures. Configure with `JIRA_URL`, `JIRA_USER`, `JIRA_TOKEN`, and `JIRA_PROJECT` environment variables.</td>
+</tr>
+<tr class="alt-row">
+<td><strong>Email Digest</strong></td>
+<td>The `&mdash;email-report` flag sends the full HTML report as an email attachment with grade and score summary in the subject line.</td>
 </tr>
 </table></div>
 <p><strong>Threshold-based alerting:</strong> Set a grade threshold (default: C) and only get notified when the grade drops to that level or below. No noise. No alert fatigue. Just the signal you need.</p>
@@ -669,6 +685,10 @@ tr.alt-row {
 <ul class="check-list">
 <li>Cancel stale SDDC Manager tasks blocking the lifecycle queue</li>
 <li>Apply safe configuration corrections for known drift conditions</li>
+<li>Acknowledge stale vCenter alarms older than 72 hours</li>
+<li>Clean up failed vCenter tasks older than 7 days</li>
+<li>Restart stopped NSX services</li>
+<li>Report a summary of all fix actions taken</li>
 </ul>
 <p>For everything else, the remediation playbook tells you exactly what to do &mdash; step by step, with estimated time to fix each issue, grouped by component, with checkboxes you can tick off as you work through them.</p>
 <hr>
@@ -889,6 +909,18 @@ tr.alt-row {
 <td>`&mdash;cron [daily/hourly]`</td>
 <td>Generate cron entry and systemd timer</td>
 </tr>
+<tr>
+<td>`&mdash;servicenow`</td>
+<td>Create ServiceNow incidents from failures</td>
+</tr>
+<tr class="alt-row">
+<td>`&mdash;jira`</td>
+<td>Create Jira issues from failures</td>
+</tr>
+<tr>
+<td>`&mdash;email-report`</td>
+<td>Send HTML report as email attachment</td>
+</tr>
 </table></div>
 <hr>
 <h2 id="architecture" class="section-title">Architecture</h2>
@@ -929,7 +961,7 @@ tr.alt-row {
 </tr>
 <tr class="alt-row">
 <td><strong>Total</strong></td>
-<td><strong>11,199</strong></td>
+<td><strong>12,000+</strong></td>
 </tr>
 </table></div>
 <p>267 automated tests across two test suites validate every feature.</p>
@@ -979,7 +1011,7 @@ tr.alt-row {
 <p>Runs on Windows 10/11, macOS, and any Linux distribution. No installation required &mdash; run the files directly. No cloud dependency. All data stays on your infrastructure.</p>
 <hr>
 <h2 id="what-makes-this-different" class="section-title">What Makes This Different</h2>
-<p><strong>Built exclusively for VMware Cloud Foundation.</strong> Not adapted from a generic monitoring platform. Not a plugin for a larger tool. Every one of the 100+ checks was designed specifically for VCF components and the relationships between them. Orphaned VM detection. Unclaimed vSAN disk identification. Cluster capacity thresholds. SDDC Manager stale task detection. BOM compliance. These are VCF problems that generic tools do not know to check.</p>
+<p><strong>Built exclusively for VMware Cloud Foundation.</strong> Not adapted from a generic monitoring platform. Not a plugin for a larger tool. Every one of the 150+ checks was designed specifically for VCF components and the relationships between them. Orphaned VM detection. Unclaimed vSAN disk identification. Cluster capacity thresholds. SDDC Manager stale task detection. BOM compliance. These are VCF problems that generic tools do not know to check.</p>
 <p><strong>Runs in under 5 minutes.</strong> A complete health audit of your entire VCF environment in under five minutes. Parallel execution across components means five things are being checked simultaneously.</p>
 <p><strong>Gives you a grade.</strong> Not a wall of data. A single letter grade (A through F) that instantly communicates the state of your environment to anyone &mdash; from the engineer who needs to fix things to the executive who needs to report on them.</p>
 <p><strong>Tells you how to fix things.</strong> Not just what is wrong. Every failure and warning comes with specific remediation steps, estimated time to resolve, and a downloadable playbook checklist you can hand to an engineer and say "fix these."</p>
@@ -1024,7 +1056,7 @@ tr.alt-row {
 </tr>
 </table></div>
 <h3 class="subsection-title">Standard Edition</h3>
-<p>All 100+ health checks. All 10 report formats. All 7 notification channels. Desktop GUI application with encrypted credential storage, role-based access, and audit trail. Everything you need to monitor your VCF environments professionally.</p>
+<p>All 150+ health checks. All 10 report formats. All 10 notification channels. Desktop GUI application with encrypted credential storage, role-based access, and audit trail. Everything you need to monitor your VCF environments professionally.</p>
 <h3 class="subsection-title">Professional Edition</h3>
 <p>Everything in Standard, plus branded reports with your company logo, automated scheduling (Windows Task Scheduler, cron, systemd), and multi-environment dashboard. This is the edition for service providers who want to look professional and save time.</p>
 <h3 class="subsection-title">Enterprise Edition</h3>
