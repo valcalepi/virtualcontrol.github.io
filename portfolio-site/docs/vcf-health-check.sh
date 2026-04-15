@@ -1000,7 +1000,30 @@ except Exception: print(-1)
 " 2>/dev/null)
     if [ "$lock_count" = "0" ]; then echo "PASS|No stale resource locks|"
     elif [ "${lock_count:-0}" -gt 0 ] 2>/dev/null; then
-        echo "WARN|$lock_count active resource lock(s)|Check locks via GET /v1/resource-locks. Delete stale locks: DELETE /v1/resource-locks/{id}"
+        if [ "$AUTO_CLEANUP_TASKS" = "true" ]; then
+            local lock_ids=$(api_curl -H "Authorization: Bearer $token" \
+                "https://$SDDC/v1/resource-locks" | $PYTHON -c "
+import sys,json
+try:
+    for e in json.load(sys.stdin).get('elements',[]):
+        lid=e.get('id','')
+        if lid: print(lid)
+except Exception: pass
+" 2>/dev/null)
+            local cleaned_locks=0
+            while IFS= read -r lid; do
+                [ -z "$lid" ] && continue
+                api_curl -X DELETE -H "Authorization: Bearer $token" \
+                    "https://$SDDC/v1/resource-locks/$lid" >/dev/null 2>&1 && cleaned_locks=$((cleaned_locks+1))
+            done <<< "$lock_ids"
+            if [ "$cleaned_locks" -gt 0 ]; then
+                echo "WARN|$lock_count resource lock(s) — auto-cleared $cleaned_locks|Resource locks cleared by --cleanup-tasks"
+            else
+                echo "WARN|$lock_count active resource lock(s)|Failed to auto-clear. Delete manually: DELETE /v1/resource-locks/{id}"
+            fi
+        else
+            echo "WARN|$lock_count active resource lock(s)|Check locks via GET /v1/resource-locks. Delete stale locks: DELETE /v1/resource-locks/{id}. Or run with --cleanup-tasks."
+        fi
     else echo "WARN|Unable to check resource locks|"; fi
 
     # Backup
@@ -1917,7 +1940,7 @@ except Exception as e: print(f'ERROR|{e}')
     # --- Unclaimed Disks ---
     echo -e "  ${DIM}── Unclaimed Disks ──${NC}"
     UNCLAIMED_RESULT=$(echo "$HOST_RAW" | SESSION="$SESSION" VCENTER="$VCENTER" \
-        $_REAL_PYTHON "$SCRIPT_DIR/vcf_checks.py" check-unclaimed-disks 2>/dev/null)
+        $_REAL_PYTHON "$SCRIPT_DIR/vcf_checks.py" check-unclaimed-disks 2>/dev/null | tr -d '\r')
     while IFS='|' read -r utype uhost ucount; do
         [ -z "$utype" ] && continue
         case "$utype" in
@@ -1932,13 +1955,44 @@ except Exception as e: print(f'ERROR|{e}')
     if [ -n "$CLUSTER_DATA" ]; then
         while IFS='|' read -r ccid ccname _cha _cdrs; do
             [ -z "$ccid" ] && continue
+            # PropertyCollector for cluster resource summary (inline Python — same pattern as orphaned VM check)
             CAP_RESULT=$(api_curl -X POST \
                 -H "vmware-api-session-id: $SESSION" \
                 -H "Content-Type: application/json" \
-                -d "{\"_typeName\":\"RetrievePropertiesExRequestType\",\"specSet\":[{\"_typeName\":\"PropertyFilterSpec\",\"propSet\":[{\"_typeName\":\"PropertySpec\",\"type\":\"ClusterComputeResource\",\"pathSet\":[\"summary.totalCpu\",\"summary.effectiveCpu\",\"summary.totalMemory\",\"summary.effectiveMemory\",\"summary.usageSummary\"]}],\"objectSet\":[{\"_typeName\":\"ObjectSpec\",\"obj\":{\"_typeName\":\"ManagedObjectReference\",\"type\":\"ClusterComputeResource\",\"value\":\"$ccid\"},\"skip\":false}]}],\"options\":{\"_typeName\":\"RetrieveOptions\"}}" \
+                -d "{\"_typeName\":\"RetrievePropertiesExRequestType\",\"specSet\":[{\"_typeName\":\"PropertyFilterSpec\",\"propSet\":[{\"_typeName\":\"PropertySpec\",\"type\":\"ClusterComputeResource\",\"pathSet\":[\"summary.totalCpu\",\"summary.effectiveCpu\",\"summary.totalMemory\",\"summary.effectiveMemory\"]}],\"objectSet\":[{\"_typeName\":\"ObjectSpec\",\"obj\":{\"_typeName\":\"ManagedObjectReference\",\"type\":\"ClusterComputeResource\",\"value\":\"$ccid\"},\"skip\":false}]}],\"options\":{\"_typeName\":\"RetrieveOptions\"}}" \
                 "https://$VCENTER/sdk/vim25/9.0.0.0/PropertyCollector/propertyCollector/RetrievePropertiesEx" 2>/dev/null | \
                 CPU_WARN="$CLUSTER_CPU_WARN_PCT" CPU_CRIT="$CLUSTER_CPU_CRIT_PCT" MEM_WARN="$CLUSTER_MEM_WARN_PCT" MEM_CRIT="$CLUSTER_MEM_CRIT_PCT" \
-                $_REAL_PYTHON "$SCRIPT_DIR/vcf_checks.py" check-cluster-capacity 2>/dev/null)
+                $PYTHON -c "
+import sys,json,os
+try:
+    cpu_warn=int(os.environ.get('CPU_WARN',70)); cpu_crit=int(os.environ.get('CPU_CRIT',85))
+    mem_warn=int(os.environ.get('MEM_WARN',70)); mem_crit=int(os.environ.get('MEM_CRIT',85))
+    raw=sys.stdin.read()
+    if not raw.strip():
+        print('ERROR|empty response'); sys.exit(0)
+    d=json.loads(raw)
+    # Handle InvalidProperty error from vCenter 9.0
+    if d.get('_typeName')=='InvalidProperty':
+        print('ERROR|property not supported'); sys.exit(0)
+    objects=d.get('objects',[]); rv=d.get('returnval',None)
+    if isinstance(rv,dict): objects=rv.get('objects',[])
+    if not objects:
+        print('ERROR|no data'); sys.exit(0)
+    props={}
+    for obj in objects:
+        for p in obj.get('propSet',[]):
+            v=p.get('val',p.get('value',''))
+            if isinstance(v,dict): v=v.get('_value',v)
+            props[p['name']]=v
+    tc=int(props.get('summary.totalCpu',0) or 0); ec=int(props.get('summary.effectiveCpu',0) or 0)
+    tm=int(props.get('summary.totalMemory',0) or 0); em=int(props.get('summary.effectiveMemory',0) or 0)*1048576
+    if tc>0: print(f'CPU|{int(((tc-ec)/tc)*100)}|{tc-ec}|{tc}|{cpu_warn}|{cpu_crit}')
+    if tm>0: print(f'MEM|{int(((tm-em)/tm)*100)}|{round((tm-em)/1073741824,1)}|{round(tm/1073741824,1)}|{mem_warn}|{mem_crit}')
+except json.JSONDecodeError as e:
+    print(f'ERROR|bad response: {str(e)[:60]}')
+except Exception as e:
+    print(f'ERROR|{e}')
+" 2>/dev/null)
             while IFS='|' read -r ctype cpct cused ctotal cwarn ccrit; do
                 [ -z "$ctype" ] && continue
                 case "$ctype" in
@@ -2087,7 +2141,7 @@ except Exception: print('ERROR')
     # Query all VM snapshots in a single bulk Python call
     SNAP_RESULTS=$(api_curl -H "vmware-api-session-id: $SESSION" \
         "https://$VCENTER/api/vcenter/vm" 2>/dev/null | VC_SESSION="$SESSION" VCENTER="$VCENTER" SNAP_HOURS="$SNAPSHOT_WARN_HOURS" \
-        $_REAL_PYTHON "$SCRIPT_DIR/vcf_checks.py" check-snapshots 2>/dev/null)
+        $_REAL_PYTHON "$SCRIPT_DIR/vcf_checks.py" check-snapshots 2>/dev/null | tr -d '\r')
     snap_total=0; snap_stale_count=0
     while IFS= read -r sline; do
         case "$sline" in
@@ -2159,10 +2213,17 @@ except Exception: print('APIERROR')
 
     # --- Feature 1: VCSA Disk Partitions ---
     echo -e "  ${DIM}── VCSA Disk Partitions ──${NC}"
-    DISK_DATA=$(api_curl -H "vmware-api-session-id: $SESSION" \
-        "https://$VCENTER/api/appliance/system/storage" 2>/dev/null)
-    DISK_HTTP=$(api_curl -o /dev/null -w "%{http_code}" -H "vmware-api-session-id: $SESSION" \
-        "https://$VCENTER/api/appliance/system/storage" 2>/dev/null)
+    # Try multiple endpoints (varies by vCenter version)
+    DISK_HTTP="000"; DISK_DATA=""
+    for _disk_ep in "api/appliance/system/storage" "api/appliance/health/storage" "rest/appliance/system/storage"; do
+        DISK_HTTP=$(api_curl -o /dev/null -w "%{http_code}" -H "vmware-api-session-id: $SESSION" \
+            "https://$VCENTER/$_disk_ep" 2>/dev/null)
+        if [ "$DISK_HTTP" = "200" ]; then
+            DISK_DATA=$(api_curl -H "vmware-api-session-id: $SESSION" \
+                "https://$VCENTER/$_disk_ep" 2>/dev/null)
+            break
+        fi
+    done
     if [ "$DISK_HTTP" = "200" ] && [ -n "$DISK_DATA" ]; then
         DISK_RESULTS=$(echo "$DISK_DATA" | $PYTHON -c "
 import sys,json
@@ -3104,6 +3165,9 @@ HTML_DATA_FILE="$TMP_DIR/html-data.txt"
     echo "META:exec_summary=$EXEC_SUMMARY"
     echo "META:vc_version=$VC_VERSION"
     echo "META:sddc_version=$SDDC_VERSION"
+    echo "META:customer_name=${CUSTOMER_NAME:-}"
+    echo "META:customer_logo=${CUSTOMER_LOGO:-}"
+    echo "META:customer_env_label=${CUSTOMER_ENV_LABEL:-VCF 9.0 Lab Environment}"
     if [ -n "$PREV_GRADE" ] && [ "$PREV_GRADE" != "?" ]; then
         echo "HIST:prev_grade=$PREV_GRADE"
         echo "HIST:prev_passed=$PREV_PASSED"

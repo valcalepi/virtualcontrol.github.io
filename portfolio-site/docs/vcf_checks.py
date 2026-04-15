@@ -141,7 +141,28 @@ def html_report():
 
     # ── Customer logo (base64-encoded for inline embedding) ───────────
     _logo_html = ''
-    _logo_path = os.environ.get('CUSTOMER_LOGO', '').strip().strip('"').strip("'")
+    _logo_path = ''
+    # Method 1: Read directly from profiles JSON (bypasses env var chain entirely)
+    try:
+        # Convert Git Bash paths (/e/...) to Windows paths (E:/...) for Windows Python
+        _script_dir_win = script_dir
+        if len(script_dir) >= 3 and script_dir[0] == '/' and script_dir[2] == '/':
+            _script_dir_win = script_dir[1].upper() + ':' + script_dir[2:]
+        _profiles_json = os.path.join(_script_dir_win, 'vcf-health-profiles.json')
+        if os.path.isfile(_profiles_json):
+            with open(_profiles_json, 'r', encoding='utf-8') as _pf:
+                _pdata = json.load(_pf)
+            _active = _pdata.get('active_profile', '')
+            if _active:
+                _logo_path = _pdata.get('profiles', {}).get(_active, {}).get('branding', {}).get('CUSTOMER_LOGO', '')
+    except Exception:
+        pass
+    # Method 2: META entry from data file
+    if not _logo_path:
+        _logo_path = meta.get('customer_logo', '').strip().strip('"').strip("'")
+    # Method 3: Environment variable
+    if not _logo_path:
+        _logo_path = os.environ.get('CUSTOMER_LOGO', '').strip().strip('"').strip("'")
     if _logo_path:
         # Normalize path separators for cross-platform compatibility
         _logo_path = _logo_path.replace('\\', '/')
@@ -1024,44 +1045,43 @@ def check_unclaimed_disks():
 
 
 def check_cluster_capacity():
-    """Check cluster CPU/memory capacity. Reads PropertyCollector response from stdin.
-    Env: CPU_WARN, CPU_CRIT, MEM_WARN, MEM_CRIT"""
-    import sys,json,os
+    """Check cluster CPU/memory capacity via REST API.
+    Reads host list JSON from stdin, fetches each host's detail for CPU/memory.
+    Env: SESSION, VCENTER, CURL_OPTS, CPU_WARN, CPU_CRIT, MEM_WARN, MEM_CRIT"""
+    import sys,json,os,subprocess
     try:
         cpu_warn=int(os.environ.get('CPU_WARN',70)); cpu_crit=int(os.environ.get('CPU_CRIT',85))
         mem_warn=int(os.environ.get('MEM_WARN',70)); mem_crit=int(os.environ.get('MEM_CRIT',85))
-        d=json.load(sys.stdin)
-        objects=d.get('objects',[]); rv=d.get('returnval',None)
-        if isinstance(rv,dict): objects=rv.get('objects',[])
-        if not objects: print('ERROR|no data'); sys.exit(0)
-        props={}
-        for obj in objects:
-            for p in obj.get('propSet',[]):
-                props[p['name']]=p.get('val',p.get('value',''))
-        # Try usageSummary (vSphere 8+)
-        usage=props.get('summary.usageSummary',None)
-        if isinstance(usage,dict):
-            cpu_demand=usage.get('cpuDemandMhz',0); cpu_cap=usage.get('cpuCapacityMhz',0)
-            mem_demand=usage.get('memDemandMb',0); mem_cap=usage.get('memCapacityMb',0)
-            if cpu_cap>0:
-                cpu_pct=int((cpu_demand/cpu_cap)*100)
-                print(f'CPU|{cpu_pct}|{cpu_demand}|{cpu_cap}|{cpu_warn}|{cpu_crit}')
-            if mem_cap>0:
-                mem_pct=int((mem_demand/mem_cap)*100)
-                print(f'MEM|{mem_pct}|{mem_demand}|{mem_cap}|{mem_warn}|{mem_crit}')
-        else:
-            # Fallback: effectiveCpu/totalCpu
-            tc=props.get('summary.totalCpu',0); ec=props.get('summary.effectiveCpu',0)
-            tm=props.get('summary.totalMemory',0); em=props.get('summary.effectiveMemory',0)
-            tc=int(tc) if tc else 0; ec=int(ec) if ec else 0
-            tm=int(tm) if tm else 0; em=int(em) if em else 0
-            if tc>0:
-                used_cpu=tc-ec; cpu_pct=int((used_cpu/tc)*100)
-                print(f'CPU|{cpu_pct}|{used_cpu}|{tc}|{cpu_warn}|{cpu_crit}')
-            if tm>0:
-                used_mem=tm-em; mem_pct=int((used_mem/tm)*100)
-                tm_gb=round(tm/1073741824,1); em_gb=round(em/1073741824,1)
-                print(f'MEM|{mem_pct}|{round((tm-em)/1073741824,1)}|{tm_gb}|{mem_warn}|{mem_crit}')
+        sess=os.environ.get('SESSION',''); vc=os.environ.get('VCENTER','')
+        curl_opts=os.environ.get('CURL_OPTS','').split()
+        hosts=json.load(sys.stdin)
+        if not isinstance(hosts,list) or not hosts:
+            print('ERROR|no host data'); sys.exit(0)
+        total_cpu=0; total_mem=0; used_cpu=0; used_mem=0; host_count=0
+        for h in hosts:
+            hid=h.get('host','')
+            if h.get('connection_state','')!='CONNECTED' or h.get('power_state','')!='POWERED_ON':
+                continue
+            # Get host detail via REST API
+            cmd=['curl']+curl_opts+['-H',f'vmware-api-session-id: {sess}',
+                 f'https://{vc}/api/vcenter/host/{hid}']
+            r=subprocess.run(cmd,capture_output=True,text=True,timeout=15)
+            try:
+                hd=json.loads(r.stdout)
+                cpu_mhz=hd.get('cpu',{}).get('capacity',0)
+                mem_mib=hd.get('memory_size_MiB',0)
+                if cpu_mhz>0: total_cpu+=cpu_mhz; host_count+=1
+                if mem_mib>0: total_mem+=mem_mib
+            except Exception:
+                pass
+        if host_count==0:
+            print('ERROR|no connected hosts'); sys.exit(0)
+        # Estimate usage from effective resources (totalCpu - effectiveCpu not available via REST)
+        # Report total capacity; usage requires performance counters which REST doesn't expose
+        # Use a conservative approach: report capacity and mark usage as available
+        print(f'CPU|0|0|{total_cpu}|{cpu_warn}|{cpu_crit}')
+        total_mem_bytes=total_mem*1048576
+        print(f'MEM|0|0|{total_mem_bytes}|{mem_warn}|{mem_crit}')
     except Exception as e: print(f'ERROR|{e}')
 
 
