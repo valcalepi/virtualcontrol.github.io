@@ -11,3 +11,9 @@
 !style.css
 !docs/
 !docs/**
+
+# Product source - keep OUT of public portfolio repo (security, 2026-07-07)
+portfolio-site/docs/vcf-health-check.sh
+portfolio-site/docs/vcf-health-check-gui.py
+portfolio-site/docs/vcf_checks.py
+portfolio-site/docs/vcf_license_manager.py
