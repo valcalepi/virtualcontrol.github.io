@@ -37,10 +37,10 @@
   <header class="hero" id="hero">
     <div class="hero-bg-pattern"></div>
     <div class="container hero-content">
-      <div class="hero-badge">VCF 9 Certified Engineer</div>
+      <div class="hero-badge">VCF 9 Certified Administrator</div>
       <h1 class="hero-name">Michael Hayes</h1>
-      <p class="hero-title">VCF 9 Infrastructure Engineer <span class="accent">|</span> VMware Cloud Foundation Specialist</p>
-      <p class="hero-tagline">Building and operating enterprise private cloud infrastructure</p>
+      <p class="hero-title">VMware Cloud Foundation Architect <span class="accent">|</span> Design &bull; Deployment &bull; Operations</p>
+      <p class="hero-tagline">Design decisions traced to the requirement they serve and cited to Broadcom source</p>
       <div class="hero-links">
         <a href="docs/Michael_Hayes_Resume_Architect.pdf#page=1" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
@@ -70,22 +70,23 @@
         <h2 class="section-title">About</h2>
         <div class="about-grid">
           <div class="about-text">
-            <p class="about-lead">VCF 9 certified infrastructure engineer specializing in VMware Cloud Foundation deployment, operations, and troubleshooting.</p>
-            <p>With 25 years of hands-on vSphere experience and full-stack VCF expertise from bare metal to monitoring, I build, configure, operate, and troubleshoot production-grade private cloud infrastructure across the entire VMware Cloud Foundation stack.</p>
-            <p>As founder of <strong>Virtual Control LLC</strong>, I bring a deep commitment to understanding every layer of the VCF platform &mdash; not just theory, but real-world implementation and problem-solving in fully functional lab environments.</p>
+            <p class="about-lead">VMware Cloud Foundation architect with 25 years of hands-on enterprise virtualization experience, spanning design, deployment, validation and root-cause troubleshooting across the full VCF 9 stack.</p>
+            <p>My most recent engagement delivered a VCF Operations 9 monitoring design for a Fortune 100 energy utility through a Broadcom Premier Partner, issued as a client-facing High-Level Design with production build guides, per-team hand-off packets, and a stakeholder Q&amp;A brief. Before that I was sole architect and sole engineer for a complete VMware estate across a nine-year engagement, including full ownership of the storage estate.</p>
+            <p>I document design decisions as <strong>decision, justification and implication</strong> &mdash; each traced to the requirement it serves and cited to Broadcom source. That discipline runs through everything here: a 60-page architecture design playbook where every claim carries a source and a verification date, an engagement handbook a delivery team can execute consistently, and an HLD generator that blocks its own output when an intake violates a published VCF limit.</p>
+            <p>As founder of <strong>Virtual Control LLC</strong>, I run a full nested VCF 9.0.1 environment end-to-end &mdash; vSphere, vSAN, NSX, SDDC Manager, VCF Operations and Aria Automation &mdash; for capability development, testing and client enablement. The library below is the output of that practice: real recovery work, not theory.</p>
           </div>
           <div class="about-highlights">
             <div class="highlight-card">
-              <div class="highlight-number">9.0</div>
-              <div class="highlight-label">VCF Version</div>
-            </div>
-            <div class="highlight-card">
               <div class="highlight-number">25+</div>
-              <div class="highlight-label">Years vSphere Experience</div>
+              <div class="highlight-label">Years Enterprise Virtualization</div>
             </div>
             <div class="highlight-card">
-              <div class="highlight-number">End-to-End</div>
-              <div class="highlight-label">Deploy &bull; Operate &bull; Troubleshoot</div>
+              <div class="highlight-number">377</div>
+              <div class="highlight-label">VCF 9 Design Elements Cited to Source</div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-number">9 Years</div>
+              <div class="highlight-label">Sole Architect, Full VMware Estate</div>
             </div>
           </div>
         </div>
@@ -120,8 +121,50 @@
     <!-- Technical Skills Section -->
     <section class="section" id="skills">
       <div class="container">
-        <h2 class="section-title">Technical Skills</h2>
+        <h2 class="section-title">Design &amp; Technical Capability</h2>
         <div class="skills-grid">
+
+          <div class="skill-card">
+            <div class="skill-header">
+              <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <h3>Design Method</h3>
+            </div>
+            <ul class="skill-list">
+              <li>Requirement traceability <span class="skill-note">(business objective &rarr; technical requirement)</span></li>
+              <li>Conceptual, logical and physical design layers</li>
+              <li>Separate registers for requirements, constraints, assumptions and risks</li>
+              <li>Decisions recorded with justification and implication</li>
+              <li>Design validation criteria defined alongside requirements</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-header">
+              <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+              <h3>VCF 9 Architecture</h3>
+            </div>
+            <ul class="skill-list">
+              <li>Fleet, instance and domain taxonomy</li>
+              <li>Cluster models <span class="skill-note">(single-rack, L2 and L3 multi-rack, stretched)</span></li>
+              <li>vSAN storage models and network fabric models</li>
+              <li>NSX management and Edge cluster models</li>
+              <li>Single Sign-On, tenancy and consumption models</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-header">
+              <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+              <h3>AMPRS Design</h3>
+            </div>
+            <ul class="skill-list">
+              <li><strong>Availability</strong> &mdash; stretched clusters, fault domains, admission control sizing</li>
+              <li><strong>Manageability</strong> &mdash; vLCM images, VCF Operations fleet lifecycle</li>
+              <li><strong>Performance</strong> &mdash; vSAN network sizing, Network I/O Control shares</li>
+              <li><strong>Recoverability</strong> &mdash; RPO and RTO driven</li>
+              <li><strong>Security</strong> &mdash; certificate, identity and access design</li>
+            </ul>
+          </div>
 
           <div class="skill-card">
             <div class="skill-header">
