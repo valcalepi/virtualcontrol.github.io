@@ -102,9 +102,17 @@
             <div class="cert-badge">
               <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
             </div>
-            <h3 class="cert-name">VCF 9 Certified</h3>
+            <h3 class="cert-name">VCF 9 Administrator</h3>
             <p class="cert-issuer">Broadcom</p>
             <p class="cert-desc">VMware Cloud Foundation 9.0 deployment, operations, and lifecycle management</p>
+          </div>
+          <div class="cert-card">
+            <div class="cert-badge">
+              <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 class="cert-name">VCP &mdash; VCF Architect <span class="cert-progress">In Progress</span></h3>
+            <p class="cert-issuer">Broadcom &middot; 2V0-13.25</p>
+            <p class="cert-desc">VMware Certified Professional, VMware Cloud Foundation Architect</p>
           </div>
           <div class="cert-card">
             <div class="cert-badge">
@@ -227,8 +235,8 @@
     <!-- Lab Environment Section -->
     <section class="section section-alt" id="lab">
       <div class="container">
-        <h2 class="section-title">Hands-On VCF 9 Lab Environment</h2>
-        <p class="section-subtitle">Full production-grade VCF 9 environment built from the ground up for testing, certification prep, and real-world operational experience.</p>
+        <h2 class="section-title">VCF 9 Design &amp; Validation Environment</h2>
+        <p class="section-subtitle">A full nested VCF 9.0.1 estate &mdash; four ESXi hosts at the verified management-domain minimum &mdash; run end-to-end for design validation, capability development and client enablement. Every runbook and RCA in the library below came out of this environment.</p>
 
         <div class="lab-architecture">
           <div class="lab-tier">
@@ -274,6 +282,11 @@
                 <span class="lab-node-name">ESXi 9.0 Host 3</span>
                 <span class="lab-node-role">Nested Hypervisor</span>
               </div>
+              <div class="lab-node lab-node-host">
+                <div class="lab-node-status"></div>
+                <span class="lab-node-name">ESXi 9.0 Host 4</span>
+                <span class="lab-node-role">Nested Hypervisor</span>
+              </div>
             </div>
           </div>
 
@@ -299,6 +312,11 @@
                 <span class="lab-node-name">Offline VCF Depot</span>
                 <span class="lab-node-role">HTTPS Repository</span>
               </div>
+              <div class="lab-node lab-node-ops">
+                <div class="lab-node-status"></div>
+                <span class="lab-node-name">Aria Automation 8.18</span>
+                <span class="lab-node-role">Infrastructure as Code</span>
+              </div>
               <div class="lab-node lab-node-infra">
                 <div class="lab-node-status"></div>
                 <span class="lab-node-name">Windows AD / DNS / NTP</span>
@@ -314,35 +332,39 @@
     <section class="section" id="capabilities">
       <div class="container">
         <h2 class="section-title">What I Can Do</h2>
-        <p class="section-subtitle">Proven capabilities across the full VCF lifecycle</p>
+        <p class="section-subtitle">Design capability first, backed by the engineering depth to build and recover what I design</p>
         <div class="capabilities-grid">
+          <div class="capability-item">
+            <div class="capability-marker"></div>
+            <p>Produce client-facing High-Level Designs <span class="capability-detail">Requirement traceability; decision, justification and implication; cited to Broadcom source</span></p>
+          </div>
+          <div class="capability-item">
+            <div class="capability-marker"></div>
+            <p>Run a design engagement end-to-end <span class="capability-detail">Assessment &rarr; requirements &rarr; HLD &rarr; validation &rarr; hand-off and education</span></p>
+          </div>
+          <div class="capability-item">
+            <div class="capability-marker"></div>
+            <p>Design VCF 9 topologies <span class="capability-detail">Fleet / instance / domain taxonomy, cluster models, vSAN storage, NSX Edge, Single Sign-On</span></p>
+          </div>
+          <div class="capability-item">
+            <div class="capability-marker"></div>
+            <p>Size and validate against published limits <span class="capability-detail">Latency, MTU and host counts checked against the 377-element VCF 9.0 design corpus</span></p>
+          </div>
+          <div class="capability-item">
+            <div class="capability-marker"></div>
+            <p>Design monitoring and alerting architectures <span class="capability-detail">Custom management packs, super metrics, dashboards, alert definitions</span></p>
+          </div>
           <div class="capability-item">
             <div class="capability-marker"></div>
             <p>Deploy VCF 9 environments end-to-end <span class="capability-detail">SDDC Manager &rarr; ESXi &rarr; vCenter &rarr; NSX &rarr; Operations</span></p>
           </div>
           <div class="capability-item">
             <div class="capability-marker"></div>
-            <p>Configure and troubleshoot VCF Operations dashboards, alerts, and integrations</p>
+            <p>Root-cause failures across the full stack <span class="capability-detail">vpxd / cluster-store, NSX transport plane, vSAN, credential and certificate lifecycle</span></p>
           </div>
           <div class="capability-item">
             <div class="capability-marker"></div>
-            <p>Deploy and integrate VCF Operations for Logs with syslog forwarding and content packs</p>
-          </div>
-          <div class="capability-item">
-            <div class="capability-marker"></div>
-            <p>Automate infrastructure tasks using vCenter REST API and Python</p>
-          </div>
-          <div class="capability-item">
-            <div class="capability-marker"></div>
-            <p>Build offline depots and HTTPS repositories for air-gapped deployments</p>
-          </div>
-          <div class="capability-item">
-            <div class="capability-marker"></div>
-            <p>Create professional technical documentation and runbooks</p>
-          </div>
-          <div class="capability-item">
-            <div class="capability-marker"></div>
-            <p>Troubleshoot complex appliance issues <span class="capability-detail">Service failures, OOM, Cassandra, bootstrap</span></p>
+            <p>Automate design and delivery <span class="capability-detail">Aria Automation IaC, REST API development, PowerCLI / PowerShell / Python / Bash</span></p>
           </div>
         </div>
       </div>
