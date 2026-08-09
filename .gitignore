@@ -17,3 +17,5 @@ portfolio-site/docs/vcf-health-check.sh
 portfolio-site/docs/vcf-health-check-gui.py
 portfolio-site/docs/vcf_checks.py
 portfolio-site/docs/vcf_license_manager.py
+!images/
+!images/**
