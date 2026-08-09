@@ -1,12 +1,12 @@
-# Michael Hayes | VCF 9 Infrastructure Engineer
+# Michael Hayes | VMware Cloud Foundation Architect
 
 Professional portfolio site for **Michael Hayes**, founder of **Virtual Control LLC**.
 
-25+ years of hands-on vSphere experience | VCF 9 Certified | VCP 3.0 - 6.5
+25+ years of enterprise virtualization | VCF 9 Administrator | VCP-DCV 3.0 - 6.5 | VCF Architect (2V0-13.25) in progress
 
 ## About
 
-Infrastructure engineer specializing in VMware Cloud Foundation deployment, operations, and troubleshooting. Full-stack VCF expertise from bare metal to monitoring, with deep experience across the entire VMware Cloud Foundation stack.
+VMware Cloud Foundation architect with 25 years of hands-on enterprise virtualization experience, spanning design, deployment, validation and root-cause troubleshooting across the full VCF 9 stack. Design decisions documented as decision, justification and implication, traced to the requirement they serve and cited to Broadcom source.
 
 ## Documentation
 
